@@ -10,6 +10,10 @@ La prochaine version du logiciel InfoGares sera disponible le 11 Avril 2021 et a
  
  ▶️ Edition de l'écran des arrivées
  
+ ▶️ Défilement des textes d'informations trop long
+ 
+ ▶️ Défilement de l'écran de départs en cas de trains trop nombreux
+ 
  ▶️ Système de rapport d'erreurs
  
  
