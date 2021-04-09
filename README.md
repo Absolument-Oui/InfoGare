@@ -26,3 +26,7 @@ La prochaine version du logiciel InfoGares ajoutera les fonctionnalités suivant
  
  
 *Sous reserve de modification
+
+## Version Web et Android
+
+Nous cherchons des volontaires pour aider au développement de la version Web et Android de InfoGares. N'hésitez pas à vous proposer :)
