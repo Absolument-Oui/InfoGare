@@ -14,6 +14,8 @@ La prochaine version du logiciel InfoGares ajoutera les fonctionnalités suivant
  
  ▶️ Propriétés avancées des trains
  
+ ▶️ Motif de retard "supprimé"
+ 
  ▶️ Défilement des textes d'informations trop long
  
  ▶️ Défilement de l'écran de départs en cas de trains trop nombreux
