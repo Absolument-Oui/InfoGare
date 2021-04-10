@@ -26,8 +26,6 @@ Pour télécharger le logiciel, rendez-vous sur [cette page](https://github.com/
  
  🆗 Système de mises à jour automatiques
  
- 
-*Sous reserve de modification
 
 ## Version Web et Android
 
