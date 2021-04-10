@@ -6,8 +6,6 @@ Pour télécharger le logiciel, rendez-vous sur [cette page](https://github.com/
 
 ## Fonctionnalités en cours de développement pour la/les prochaine(s) version(s)
 
-La prochaine version du logiciel InfoGares ajoutera les fonctionnalités suivantes* : 
-
  ▶️ Ecran des arrivées
  
  ▶️ Edition de l'écran des arrivées
