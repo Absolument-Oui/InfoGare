@@ -4,13 +4,17 @@ Code non-disponible pour l'instant
 
 Pour télécharger le logiciel, rendez-vous sur [cette page](https://github.com/Absolument-Oui/InfoGares/releases)
 
-## Fonctionnalités en cours de développement pour la prochaine version
+## Fonctionnalités en cours de développement pour la/les prochaine(s) version(s)
 
 La prochaine version du logiciel InfoGares ajoutera les fonctionnalités suivantes* : 
 
  ▶️ Ecran des arrivées
  
  ▶️ Edition de l'écran des arrivées
+ 
+ ▶️ Deux types d'écrans : écrans de gares rurales et écrans de grandes gares (déja existants)
+ 
+ ▶️ Validation des champs obligatoires lors de la création ou la modification de trains
  
  ▶️ Propriétés avancées des trains
  
