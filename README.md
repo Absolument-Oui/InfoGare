@@ -12,7 +12,7 @@ Pour télécharger le logiciel, rendez-vous sur [cette page](https://github.com/
  
  ▶️ Deux types d'écrans : écrans de gares rurales et écrans de grandes gares (déja existants)
  
- ▶️ Validation des champs obligatoires lors de la création ou la modification de trains
+ 🆗 Validation des champs obligatoires lors de la création ou la modification de trains
  
  ▶️ Propriétés avancées des trains
  
