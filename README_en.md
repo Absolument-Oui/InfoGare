@@ -27,9 +27,7 @@ To download the software, go to [this page](https://github.com/Absolument-Oui/In
   ▶️ ️ Error reporting system
  
   🆗  Automatic updates system
- 
- 
-*Can be modified
+  
 
 ## Web and Android version
 
