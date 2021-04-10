@@ -4,7 +4,7 @@ Code non-disponible pour l'instant
 
 Pour télécharger le logiciel, rendez-vous sur [cette page](https://github.com/Absolument-Oui/InfoGares/releases)
 
-## Fonctionnalités en cours de dépourla prochaine version
+## Fonctionnalités en cours de développement pour la prochaine version
 
 La prochaine version du logiciel InfoGares ajoutera les fonctionnalités suivantes* : 
 
