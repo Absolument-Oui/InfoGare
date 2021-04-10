@@ -1,10 +1,10 @@
-**InfoGares**
+# InfoGares
 
 Code not available at the moment
 
 To download the software, go to this page
 
-**Features under development for the next version**
+## Features under development for the next version
 
 The next version of InfoGares software will add the following features *:
 
@@ -26,6 +26,6 @@ The next version of InfoGares software will add the following features *:
 
 *Subject to change
 
-**Web and Android version**
+## Web and Android version
 
 We are looking for volunteers to help develop the Web and Android version of InfoGares. Do not hesitate to offer you :)
