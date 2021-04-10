@@ -2,17 +2,19 @@
 
 Code not available at the moment
 
-_**Note: that the software is not available in English**_
+_**Note: this the software is not available in English**_
 
 To download the software, go to [this page](https://github.com/Absolument-Oui/InfoGares/releases)
 
 ## Features under development for the next version
 
-The next version of InfoGares software will add the following features* : 
-
   ▶️ ️ Arrivals screen
  
   ▶️ ️ Editing the arrivals screen
+  
+  ▶️  Two types of screens : rural station screen and big station screens (already presents)
+  
+  ▶️  Validation of fields on creating or editing train
  
   ▶️  Advanced train properties
  
@@ -27,8 +29,8 @@ The next version of InfoGares software will add the following features* :
   🆗  Automatic updates system
  
  
-*Subject to change
+*Can be modified
 
 ## Web and Android version
 
-We are looking for volunteers to help develop the Web and Android version of InfoGares. Do not hesitate to offer you :)
+We are looking for volunteers to help develop the Web and Android version of InfoGares. Do not hesitate to offer your help :)
