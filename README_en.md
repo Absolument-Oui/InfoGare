@@ -8,29 +8,29 @@ To download the software, go to [this page](https://github.com/Absolument-Oui/In
 
 ## Features under development for the next version
 
-  ▶️ ️ Arrivals screen
+  ▶️ Arrivals screen
  
-  ▶️ ️ Editing the arrivals screen
+  ▶️ Editing the arrivals screen
   
-  ▶️  Two types of screens : rural station screen and big station screens (already presents)
+  ▶️ Two types of screens : rural station screen and big station screens (already presents)
   
-  🆗  Validation of fields on creating or editing train
+  🆗 Validation of fields on creating or editing train
   
-  ▶️ ️ Different logos for the departures screen
+  ▶️ ️Different logos for the departures screen
  
-  ▶️  Advanced train properties
+  ▶️ Advanced train properties
  
-  ▶️  Reason for delay "deleted"
+  ▶️ Reason for delay "deleted"
  
-  ▶️  Scrolling of information texts too long
+  ▶️ Scrolling of information texts too long
  
-  ▶️ ️ Scrolling through the departures screen in the event of too many trains
+  ▶️ Scrolling through the departures screen in the event of too many trains
  
-  ▶️ ️ Error reporting system
+  ▶️ Error reporting system
  
-  🆗  Automatic updates system
+  🆗 Automatic updates system
   
-  ▶️ ️ Software customization settings
+  ▶️ ️Software customization settings
 
 ## Web and Android version
 
