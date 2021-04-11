@@ -14,7 +14,9 @@ To download the software, go to [this page](https://github.com/Absolument-Oui/In
   
   ▶️  Two types of screens : rural station screen and big station screens (already presents)
   
-  ▶️  Validation of fields on creating or editing train
+  🆗  Validation of fields on creating or editing train
+  
+  ▶️ ️ Different logos for the departures screen
  
   ▶️  Advanced train properties
  
@@ -28,6 +30,7 @@ To download the software, go to [this page](https://github.com/Absolument-Oui/In
  
   🆗  Automatic updates system
   
+  ▶️ ️ Software customization settings
 
 ## Web and Android version
 
