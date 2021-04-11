@@ -14,6 +14,8 @@ Pour télécharger le logiciel, rendez-vous sur [cette page](https://github.com/
  
  🆗 Validation des champs obligatoires lors de la création ou la modification de trains
  
+ ▶️ Différents logos pour l'écran des départs
+ 
  ▶️ Propriétés avancées des trains
  
  ▶️ Motif de retard "supprimé"
