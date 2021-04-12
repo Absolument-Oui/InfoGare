@@ -1,3 +1,5 @@
+Read in [[English]](https://github.com/Absolument-Oui/InfoGares/blob/main/README_en.md)
+
 # InfoGares
 
 Code non-disponible pour l'instant
