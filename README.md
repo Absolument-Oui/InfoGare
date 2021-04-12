@@ -10,6 +10,10 @@ Pour télécharger le logiciel, rendez-vous sur [cette page](https://github.com/
  
  🆗 Edition de l'écran des arrivées
  
+ ▶️ Ecran de quai
+ 
+ ▶️ Ecran de train
+ 
  ▶️ Deux types d'écrans : écrans de gares rurales et écrans de grandes gares (déja existants)
  
  🆗 Validation des champs obligatoires lors de la création ou la modification de trains
