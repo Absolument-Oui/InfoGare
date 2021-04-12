@@ -18,7 +18,7 @@ Pour télécharger le logiciel, rendez-vous sur [cette page](https://github.com/
  
  ▶️ Propriétés avancées des trains
  
- ▶️ Motif de retard "supprimé"
+ 🆗 Motif de retard "supprimé"
  
  🆗 Défilement des textes d'informations trop long
  
