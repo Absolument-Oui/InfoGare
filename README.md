@@ -40,3 +40,7 @@ Pour télécharger le logiciel, rendez-vous sur [cette page](https://github.com/
 ## Version Web et Android
 
 Nous cherchons des volontaires pour aider au développement de la version Web et Android de InfoGares. N'hésitez pas à vous proposer :)
+
+## Propositions d'ajouts
+
+Nous sommes preneurs de tout ajout utile dans ce logiciel. Pour ce faire, ouvrez une Issue, puis choisissez "Demande d'ajout". Peut être votre demande sera acceptée ;)
