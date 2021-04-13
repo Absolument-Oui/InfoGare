@@ -44,3 +44,7 @@ Nous cherchons des volontaires pour aider au développement de la version Web et
 ## Propositions d'ajouts
 
 Nous sommes preneurs de tout ajout utile dans ce logiciel. Pour ce faire, ouvrez une Issue, puis choisissez "Demande d'ajout". Peut être votre demande sera acceptée ;)
+
+# Sons
+
+Si vous pouvez nous aider à créer des annonces sonores en gare, n'hésitez pas à proposer.
