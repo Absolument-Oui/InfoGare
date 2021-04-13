@@ -1,3 +1,5 @@
+Lire en [[Français]](https://github.com/Absolument-Oui/InfoGares/blob/main/README.md)
+
 # InfoGares
 
 Code not available at the moment
@@ -11,12 +13,16 @@ To download the software, go to [this page](https://github.com/Absolument-Oui/In
   🆗 Arrivals screen
  
   🆗 Editing the arrivals screen
+
+  ▶️ Train plateform screen
+
+  ▶️ Train screen
   
   ▶️ Two types of screens : rural station screen and big station screens (already presents)
   
   🆗 Validation of fields on creating or editing train
   
-  🆗 ️Different logos for the departures screen
+  🆗 Different logos for the departures screen
  
   ▶️ Advanced train properties
  
@@ -30,8 +36,12 @@ To download the software, go to [this page](https://github.com/Absolument-Oui/In
  
   🆗 Automatic updates system
   
-  🆗 ️Software customization settings
+  🆗 Software customization settings
 
 ## Web and Android version
 
 We are looking for volunteers to help develop the Web and Android version of InfoGares. Do not hesitate to offer your help :)
+
+## Addition proposals
+
+We accept any useful additions to this software. To do this, open an Issue, then choose "Demande d'ajout" (Add Request). Maybe your request will be accepted ;)
