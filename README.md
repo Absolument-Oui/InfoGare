@@ -22,15 +22,10 @@ Pour télécharger le logiciel, rendez-vous sur [cette page](https://github.com/
  
  ▶️ Système de rapport d'erreurs
  
-
-## Version Web et Android
+## Pour les volontaires
 
 Nous cherchons des volontaires pour aider au développement de la version Web et Android de InfoGares. N'hésitez pas à vous proposer :)
 
-## Propositions d'ajouts
-
 Nous sommes preneurs de tout ajout utile dans ce logiciel. Pour ce faire, ouvrez une Issue, puis choisissez "Demande d'ajout". Peut être votre demande sera acceptée ;)
 
-# Sons
-
-Si vous pouvez nous aider à créer des annonces sonores en gare, n'hésitez pas à proposer.
+Si vous voulez nous aider à créer des annonces sonores de gares, n'hésitez pas à les proposer.
