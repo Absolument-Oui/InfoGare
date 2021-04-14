@@ -10,38 +10,24 @@ To download the software, go to [this page](https://github.com/Absolument-Oui/In
 
 ## Features under development for the next version
 
-  🆗 Arrivals screen
- 
-  🆗 Editing the arrivals screen
+ ▶️ Train plateform screen
 
-  ▶️ Train plateform screen
+ ▶️ Train screen
+  
+ ▶️ Two types of screens : rural station screen and big station screens (already presents)
+  
+ ▶️ Gare RER
+ 
+ ▶️ Advanced train properties
+ 
+ ▶️ Scrolling through the departures screen in the event of too many trains
+ 
+ ▶️ Error reporting system
 
-  ▶️ Train screen
-  
-  ▶️ Two types of screens : rural station screen and big station screens (already presents)
-  
-  🆗 Validation of fields on creating or editing train
-  
-  🆗 Different logos for the departures screen
- 
-  ▶️ Advanced train properties
- 
-  🆗 Reason for delay "deleted"
- 
-  🆗 Scrolling of information texts too long
- 
-  ▶️ Scrolling through the departures screen in the event of too many trains
- 
-  ▶️ Error reporting system
- 
-  🆗 Automatic updates system
-  
-  🆗 Software customization settings
-
-## Web and Android version
+## For volunteers
 
 We are looking for volunteers to help develop the Web and Android version of InfoGares. Do not hesitate to offer your help :)
 
-## Addition proposals
-
 We accept any useful additions to this software. To do this, open an Issue, then choose "Demande d'ajout" (Add Request). Maybe your request will be accepted ;)
+
+If you want to help us create audio station announcements, don't hesitate to suggest them.
