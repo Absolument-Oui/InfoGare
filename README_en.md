@@ -8,7 +8,7 @@ To download the software, go to [this page](https://github.com/Absolument-Oui/In
 
 _The code was not available at this moment_
 
-_We are now focusing on the web version of InfoGares. The PC version is maintained, but at less regular intervals._
+**_We are now focusing on the web version of InfoGares. The PC version is maintained, but at less regular intervals._**
 
 ## Features under development for the next version
 
