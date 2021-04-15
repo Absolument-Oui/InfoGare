@@ -4,7 +4,7 @@ Read in [[English]](https://github.com/Absolument-Oui/InfoGares/blob/main/README
 
 Pour télécharger le logiciel, rendez-vous sur [cette page](https://github.com/Absolument-Oui/InfoGares/releases)
 
-_Le code n'est pas disponible pour l'instant_
+_Le code n'est pas disponible pour l'instant._
 
 _Nous nous concentrons à présent sur la version web de InfoGares. La version PC est maintenue, mais à intervalles moins réguliers._
 
