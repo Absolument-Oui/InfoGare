@@ -6,6 +6,8 @@ Code non-disponible pour l'instant
 
 Pour télécharger le logiciel, rendez-vous sur [cette page](https://github.com/Absolument-Oui/InfoGares/releases)
 
+# Nous nous concentrons à présent sur la version web de InfoGares. La version PC est maintenue, mais à intervalles moins réguliers.
+
 ## Fonctionnalités en cours de développement pour la/les prochaine(s) version(s)
  
  ▶️ Ecran de quai
