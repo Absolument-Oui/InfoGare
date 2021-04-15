@@ -27,4 +27,5 @@ _Le code n'est pas disponible pour l'instant._
 ## Pour les volontaires
 
 Nous cherchons des volontaires pour aider au développement de la version Web et Android de InfoGares. N'hésitez pas à vous proposer :)
+
 Nous sommes preneurs de tout ajout utile dans ce logiciel. Pour ce faire, ouvrez une Issue, puis choisissez "Demande d'ajout". Peut être votre demande sera acceptée ;)
