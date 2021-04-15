@@ -2,11 +2,13 @@ Lire en [[Français]](https://github.com/Absolument-Oui/InfoGares/blob/main/READ
 
 # InfoGares
 
-Code not available at the moment
-
-_**Note: this the software is not available in English**_
+_This the software is not available in English_
 
 To download the software, go to [this page](https://github.com/Absolument-Oui/InfoGares/releases)
+
+_The code was not available at this moment_
+
+**_We are now focusing on the web version of InfoGares. The PC version is maintained, but at less regular intervals._**
 
 ## Features under development for the next version
 
@@ -27,7 +29,4 @@ To download the software, go to [this page](https://github.com/Absolument-Oui/In
 ## For volunteers
 
 We are looking for volunteers to help develop the Web and Android version of InfoGares. Do not hesitate to offer your help :)
-
 We accept any useful additions to this software. To do this, open an Issue, then choose "Demande d'ajout" (Add Request). Maybe your request will be accepted ;)
-
-If you want to help us create audio station announcements, don't hesitate to suggest them.
