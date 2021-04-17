@@ -1,0 +1,1003 @@
+/* -- compass -- */
+
+/* -- sass files -- */
+
+/* -- colors -- */
+
+/* -- colors (screen) -- */
+
+/* -- widths -- */
+
+/* -- base -- */
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    -moz-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+    overflow-x: hidden;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    -webkit-background-size: contain;
+    background-size: contain;
+}
+
+body {
+    font-family: 'Achemine' !important;
+    font-size: 1vh;
+    font-weight: normal;
+    line-height: 1;
+}
+
+small {
+    font-weight: inherit;
+}
+
+.message-overlay {
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #003a79;
+    z-index: 6000;
+    vertical-align: auto;
+    text-align: center;
+}
+
+
+.message-overlay.arrivals {
+    background-color: #0c5639;
+}
+
+.message-overlay .text {
+    font-size: 50px;
+    color: white;
+    margin: 0 auto;
+    z-index: 8000;
+}
+
+.message-overlay .petit-trigramme {
+    text-align: center;
+    font-weight: bold;
+    line-height: 1.3;
+    text-align: center;
+    border: solid 0.35vh #fff;
+    font-size: 5em;
+    border-radius: 5%;
+    margin-top: 1em;
+    padding: 10px 20px 10px 20px;
+    background: #fff;
+    color: #003a79;
+    z-index: 8000;
+}
+
+.message-overlay.arrivals .petit-trigramme {
+    color:#0c5639;   
+}
+
+.message-overlay .row-background {
+    background-image: url(../../../images/row-background-departures.svg);
+    z-index: 7000;
+}
+
+.message-overlay.arrivals .row-background {
+    background-image: url(../../../images/row-background-arrivals.svg);
+}
+
+
+/* OVERRIDE BOOTSTRAP */
+
+.clearfix::before, .clearfix::after, .dl-horizontal dd::before, .dl-horizontal dd::after, .container::before, .container::after, .container-fluid::before, .container-fluid::after, .row::before, .row::after, .form-horizontal .form-group::before, .form-horizontal .form-group::after, .btn-toolbar::before, .btn-toolbar::after, .btn-group-vertical>.btn-group::before, .btn-group-vertical>.btn-group::after, .nav::before, .nav::after, .navbar::before, .navbar::after, .navbar-header::before, .navbar-header::after, .navbar-collapse::before, .navbar-collapse::after, .pager::before, .pager::after, .panel-body::before, .panel-body::after, .modal-footer::before, .modal-footer::after {
+    content: none !important;
+}
+
+.row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+small {
+    font-size: revert !important;
+}
+
+/* END OVERRIDE BOOTSTRAP */
+
+*, :after, :before {
+    outline: none;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+*:focus, *:active, :after:focus, :after:active, :before:focus, :before:active {
+    outline: none;
+}
+
+a,a:hover,a:focus,a:after,a:visited,a:active {
+    color: inherit;
+    text-decoration: none;
+}
+
+.rows {
+    position: relative;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -moz-transition: left 0.3s ease;
+    -o-transition: left 0.3s ease;
+    -webkit-transition: left 0.3s ease;
+    transition: left 0.3s ease;
+}
+
+.rows .row-group {
+    height: 10%;
+}
+
+.rows .row-group:hover {
+    cursor: default;
+}
+
+.rows .row-group>.row {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    height: 100%;
+    color: #fff;
+}
+
+.rows .row-group>.row>div {
+    display: table-cell;
+    overflow: hidden;
+    line-height: 1.2;
+    vertical-align: text-bottom;
+}
+
+/* -- sizes -- */
+
+.rows .row-group.row-group-2 {
+    height: 20%;
+}
+
+.rows .row-group.row-group-10 {
+    height: 100%;
+}
+
+/* -- bar -- */
+
+.row-group-bar {
+    position: absolute;
+    bottom: 0;
+    height: 10%;
+    padding-left: 2vh;
+}
+
+.row-group-bar.row-group-bar-yellow {
+    background: #ffbf51 !important;
+}
+
+.row-group-bar.row-group-bar-yellow .text-scroll-x {
+    color: #003a79;
+    font-style: normal !important;
+}
+
+.row-group-bar.row-group-bar-red {
+    background: #cd0037 !important;
+}
+
+.row-group-bar.row-group-bar-red .text-scroll-x {
+    color: #ffffff;
+    font-style: normal !important;
+}
+
+.row-group-bar .col-first {
+    width: auto !important;
+    vertical-align: middle !important;
+}
+
+.row-group-bar .col-first .bar-informations {
+    font-size: 7em;
+}
+
+.row-group-bar .col-first .bar-informations {
+    font-size: 7em;
+}
+
+.row-group-bar .col-second {
+    width: 30vh;
+    text-align: center;
+    vertical-align: bottom !important;
+}
+
+/* -- selection -- */
+
+::selection {
+    color: inherit;
+    background: transparent;
+}
+
+::-moz-selection {
+    color: inherit;
+    background: transparent;
+}
+
+/* -- informations -- */
+
+.bar-informations {
+    display: inline-block;
+    white-space: nowrap;
+    font-style: italic;
+}
+
+/* -- clock -- */
+
+.bar-clock {
+    display: inline-block;
+    position: relative;
+    z-index: 5000;
+    width: 80%;
+    height: 7.5vh;
+    font-size: 5vh;
+    font-weight: bold;
+    line-height: 1.5;
+    border: solid 0.5vh #fff;
+    border-bottom: none;
+    border-radius: 0.8vh 0.8vh 0 0;
+    background: #003a79;
+}
+
+.bar-clock small {
+    display: inline-block;
+    padding-left: 1.6vh;
+    color: #ff9f17;
+}
+
+.time-modified {
+    color: #ff7535;
+}
+
+/* -- blink -- */
+
+.animation-blink {
+    position: relative;
+}
+
+.animation-blink .animation-blink-1, .animation-blink .animation-blink-2 {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    will-change: visibility;
+    animation: blink 4s steps(2, start) infinite;
+    -webkit-animation: blink 4s steps(2, start) infinite;
+}
+
+.animation-blink .animation-blink-2 {
+    visibility: hidden;
+    animation-delay: 2s;
+    -webkit-animation-delay: 2s;
+}
+
+.animation-blink .animation-blink-clock {
+    animation: blink 1.5s steps(2, start) infinite;
+    -webkit-animation: blink 1.5s steps(2, start) infinite;
+}
+
+@keyframes blink {
+    from {
+        visibility: visible;
+    }
+    to {
+        visibility: hidden;
+    }
+}
+
+@-webkit-keyframes blink {
+    from {
+        visibility: visible;
+    }
+    to {
+        visibility: hidden;
+    }
+}
+
+/* -- scroll-x -- */
+
+.animation-scroll-x {
+    transform: translateZ(0);
+    will-change: transform;
+    animation: scrollX 0s linear infinite;
+    -webkit-animation: scrollX 0s linear infinite;
+}
+
+@keyframes scrollX {
+    from {
+        transform: translateX(0%);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+@-webkit-keyframes scrollX {
+    from {
+        transform: translateX(0%);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+/* -- scroll-y -- */
+
+.row-group-informations .scroll-y {
+    transform: translateZ(0);
+    will-change: transform;
+    position: absolute;
+}
+
+.row-group-train .scroll-y {
+    transform: translateZ(0);
+    will-change: transform;
+    position: relative;
+}
+
+/* -- texts -- */
+
+.text-scroll-x {
+    display: inline-block;
+    padding-left: 100%;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 8em;
+    white-space: nowrap;
+}
+
+.text-scroll-x span {
+    display: inline;
+}
+
+.text-scroll-x span:after {
+    content: '';
+    display: inline-block;
+    width: 2.5vh;
+    height: 2.5vh;
+    margin: 0 1.5vh;
+    margin-bottom: 0.5vh;
+    border-radius: 50%;
+    background: #f5f900;
+}
+
+.text-scroll-x span:last-child:after {
+    display: none;
+}
+
+.text-type {
+    line-height: 1;
+    font-size: 3.3em;
+    font-family: 'Achemine';
+    display: inline-block;
+    word-spacing: -2px;
+}
+
+.text-number {
+    line-height: 1;
+    font-size: 4em;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.text-time {
+    color: #f5f900;
+    font-size: 6.5em;
+    font-weight: bold;
+}
+
+.col-second-second.text-time .animation-blink {
+    position: revert !important;
+}
+
+.col-second-second.text-time .animation-blink .msg {
+    font-size: 0.7em !important;
+    color: white !important;
+}
+
+.col-second-second.text-time .animation-blink .msg-imp {
+    font-size: 0.495em !important;
+    color:  #f5f900 !important;
+} 
+
+.text-features-1 {
+    margin-top: 2%;
+    font-size: 3.5em;
+    font-weight: bold;
+}
+
+.text-features-2 {
+    color: #fff;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+.text-features-3 {
+    color: #f5f900;
+    font-size: 3.5em;
+    font-weight: bold;
+}
+
+/* -- background -- */
+
+.row-background {
+    position: absolute;
+    right: 5vh;
+    bottom: 10vh;
+    width: 23vh;
+    height: 90%;
+    background-repeat: no-repeat;
+}
+
+.row-background.extended {
+    bottom: 1vh;
+}
+
+/* -- cols -- */
+
+.row-group {
+    height: 10%;
+}
+
+.row-group .row {
+    position: relative;
+}
+
+.row-group .row .col-first {
+    width: 17vh;
+}
+
+.row-group .row .col-first-details {
+    display: relative;
+    color: #f5f900;
+    width: 60vh;
+    font-size: 5em;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.row-group .row .col-second {
+    position: relative;
+}
+
+.row-group .row .col-second-first {
+    width: 20vh;
+    vertical-align: middle !important;
+}
+
+.row-group .row .col-second-second {
+    width: 24vh;
+}
+
+.row-group .row .col-second-third {
+    font-size: 8em;
+    white-space: nowrap;
+}
+
+.row-group .row .col-second-merged {
+    width: 44vh;
+}
+
+.row-group .row .col-second-merged>div {
+    display: table;
+}
+
+.row-group .row .col-second-merged>div>div {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.row-group .row .col-hide {
+    display: block;
+    position: relative;
+    width: 0;
+    overflow: visible !important;
+}
+
+.row-group .row .col-hide .col-hide-inner {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: -1vh;
+    width: 100vh;
+    overflow: hidden;
+}
+
+.row-group .row .col-third {
+    position: relative;
+    z-index: 1;
+    width: 18vh;
+    overflow: visible !important;
+}
+
+/* -- sizes -- */
+
+.rows .row-group-2 .row:nth-of-type(1) {
+    height: 55%;
+}
+
+.rows .row-group-2 .row:nth-of-type(1)>div {
+    line-height: 1;
+}
+
+.rows .row-group-2 .row:nth-of-type(1) .col-second-first {
+    vertical-align: text-bottom !important;
+}
+
+.rows .row-group-2 .row:nth-of-type(1) .col-second-first .animation-blink {
+    height: 6vh;
+}
+
+.rows .row-group-2 .row:nth-of-type(1) .col-second-third {
+    font-size: 10em;
+}
+
+.rows .row-group-2 .row:nth-of-type(1) .col-second-third .animation-rotate {
+    height: 11vh;
+}
+
+.rows .row-group-2 .row:nth-of-type(1) .col-second-third .animation-rotate div {
+    margin-bottom: 1vh;
+}
+
+.rows .row-group-2 .row:nth-of-type(1) .text-time {
+    font-size: 7.5em;
+}
+
+.rows .row-group-2 .row:nth-of-type(1) .train-track {
+    height: 11vh;
+    width: 11vh;
+    font-size: 7.5em;
+    line-height: 1.4;
+}
+
+.rows .row-group-2 .row:nth-of-type(1) .train-track.train-track-p:before {
+    width: 10.25vh;
+    height: 10.25vh;
+}
+
+.rows .row-group-2 .row:nth-of-type(1) .train-track.train-track-h:not(.train-track-view) {
+    line-height: 0.4em;
+}
+
+.rows .row-group-2 .row:nth-of-type(2) {
+    height: 45%;
+}
+
+.rows .row-group-2 .row:nth-of-type(2)>div {
+    line-height: 1.05;
+}
+
+/* -- styles -- */
+
+.rows.rows-departures, .rows.rows-transilien {
+    background: #003a79;
+}
+
+.rows.rows-departures .row-group:nth-of-type(odd), .rows.rows-transilien .row-group:nth-of-type(odd) {
+    background: #0064aa;
+}
+
+.rows.rows-departures .row-group:nth-of-type(odd) .train-track-h:not(.train-track-view), .rows.rows-transilien .row-group:nth-of-type(odd) .train-track-h:not(.train-track-view) {
+    color: #0064aa;
+}
+
+.rows.rows-departures .row-group:nth-of-type(even), .rows.rows-transilien .row-group:nth-of-type(even) {
+    background: #003a79;
+}
+
+.rows.rows-departures .row-group:nth-of-type(even) .train-track-h:not(.train-track-view), .rows.rows-transilien .row-group:nth-of-type(even) .train-track-h:not(.train-track-view) {
+    color: #003a79;
+}
+
+.rows.rows-departures .row-background, .rows.rows-transilien .row-background {
+    background-image: url(../../../images/row-background-departures.svg);
+}
+
+.rows.rows-arrivals {
+    background: #0c5639;
+}
+
+.rows.rows-arrivals .row-group:nth-of-type(odd) {
+    background: #217a42;
+}
+
+.rows.rows-arrivals .row-group:nth-of-type(odd) .train-track-h:not(.train-track-view) {
+    color: #217a42;
+}
+
+.rows.rows-arrivals .row-group:nth-of-type(even) {
+    background: #0c5639;
+}
+
+.rows.rows-arrivals .row-group:nth-of-type(even) .train-track-h:not(.train-track-view) {
+    color: #0c5639;
+}
+
+.rows.rows-arrivals .row-background {
+    background-image: url(../../../images/row-background-arrivals.svg);
+}
+
+.rows.rows-error {
+    background: #ec0e0e;
+}
+
+.rows.rows-error .row-group:nth-of-type(odd) {
+    background: #a00e0e;
+}
+
+/* -- logo -- */
+
+.train-logo {
+    height: 6vh;
+    background: no-repeat center;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    -webkit-background-size: contain;
+    background-size: contain;
+}
+
+.train-logo.train-logo-sncf {
+    background-image: url(../../../images/logo-sncf.svg);
+}
+
+.train-logo.train-logo-inoui {
+    background-image: url(../../img/screen/logos/logo-inoui.svg);
+    height: 5vh;
+}
+
+.train-logo.train-logo-ter {
+    background-image: url(../../img/screen/logos/logo-ter.svg);
+}
+
+.train-logo.train-logo-ice {
+    background-image: url(../../img/screen/logos/logo-ice.svg);
+}
+
+.train-logo.train-logo-lyria {
+    background-image: url(../../img/screen/logos/logo-lyria.svg);
+}
+
+.train-logo.train-logo-ouigo {
+    background-image: url(../../img/screen/logos/logo-ouigo.svg);
+}
+
+.train-logo.train-logo-ler {
+    background-image: url(../../img/screen/logos/logo-ler.svg);
+}
+
+.train-logo.train-logo-eurostar {
+    background-image: url(../../img/screen/logos/logo-eurostar.svg);
+}
+
+.train-logo.train-logo-thalys {
+    background-image: url(../../img/screen/logos/logo-thalys.svg);
+}
+
+.train-logo.train-logo-thello {
+    background-image: url(../../img/screen/logos/logo-thello.svg);
+}
+
+.train-logo.train-logo-rer-a {
+    background-image: url(../../img/screen/logos/logo-rer-a.svg);
+}
+
+.train-logo.train-logo-rer-b {
+    background-image: url(../../img/screen/logos/logo-rer-b.svg);
+}
+
+.train-logo.train-logo-rer-c {
+    background-image: url(../../img/screen/logos/logo-rer-c.svg);
+}
+
+.train-logo.train-logo-rer-d {
+    background-image: url(../../img/screen/logos/logo-rer-d.svg);
+}
+
+.train-logo.train-logo-rer-e {
+    background-image: url(../../img/screen/logos/logo-rer-e.svg);
+}
+
+.train-logo.train-logo-t-h {
+    background-image: url(../../img/screen/logos/logo-t-h.svg);
+}
+
+.train-logo.train-logo-t-j {
+    background-image: url(../../img/screen/logos/logo-t-j.svg);
+}
+
+.train-logo.train-logo-t-k {
+    background-image: url(../../img/screen/logos/logo-t-k.svg);
+}
+
+.train-logo.train-logo-t-l {
+    background-image: url(../../img/screen/logos/logo-t-l.svg);
+}
+
+.train-logo.train-logo-t-n {
+    background-image: url(../../img/screen/logos/logo-t-n.svg);
+}
+
+.train-logo.train-logo-t-p {
+    background-image: url(../../img/screen/logos/logo-t-p.svg);
+}
+
+.train-logo.train-logo-t-r {
+    background-image: url(../../img/screen/logos/logo-t-r.svg);
+}
+
+.train-logo.train-logo-t-u {
+    background-image: url(../../img/screen/logos/logo-t-u.svg);
+}
+
+/* -- type - number -- */
+
+.train-type-number {
+    display: inline-block;
+}
+
+/* -- information-dynamic -- */
+
+.train-information-dynamic {
+    position: absolute;
+    right: 0;
+    top: 0.7vh;
+    bottom: 0.7vh;
+    width: 53vh;
+    padding-left: 2vh;
+    font-size: 4em;
+    line-height: 1;
+    border-left: 0.5vh #fff solid;
+}
+
+.train-information-dynamic.train-information-dynamic-yellow {
+    color: #f5f900;
+    border-color: #f5f900;
+}
+
+.train-information-dynamic-station {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* -- track -- */
+
+.train-track {
+    display: none;
+    position: absolute;
+    top: 0.75vh;
+    right: 3vh;
+    width: 8vh;
+    height: 8vh;
+    font-size: 5.6em;
+    font-weight: bold;
+    line-height: 1.3;
+    text-align: center;
+    border: solid 0.35vh #fff;
+    border-radius: 10%;
+    z-index: 1000;
+}
+
+.train-track.train-track-view.voie { transition: all .2s ease-in-out; }
+
+.train-track:hover.train-track-view.voie { transform: scale(1.1); }
+
+.train-track span a:hover, .train-track span a:visited, .train-track span a:focus, .train-track span a:after, .train-track span a:active {
+    text-decoration: none !important;
+    color: white !important;
+}
+
+.train-track span {
+    display: none;
+}
+
+.train-track.train-track-view {
+    display: block;
+}
+
+.train-track.train-track-view span {
+    display: inline;
+}
+
+.train-track.train-track-view h1, .train-track.train-track-view small {
+    display: none;
+}
+
+.train-track.train-track-p {
+    display: block;
+}
+
+.train-track.train-track-p.train-track-view {
+    background: transparent !important;
+}
+
+.train-track.train-track-p.train-track-view:before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    display: block;
+    width: 7.25vh;
+    height: 7.25vh;
+}
+
+.train-track.train-track-p.train-track-view.train-track-y:before {
+    box-shadow: 1.25vh 1.25vh 0 #f5f900;
+}
+
+.train-track.train-track-p.train-track-view.train-track-b:before {
+    box-shadow: 1.25vh 1.25vh 0 #115db6;
+}
+
+.train-track.train-track-p.train-track-y {
+    background: #f5f900;
+}
+
+.train-track.train-track-p.train-track-b {
+    background: #115db6;
+}
+
+.train-track.train-track-h:not(.train-track-view) {
+    display: block;
+    padding-top: 0;
+    line-height: 0.4;
+    background: #fff;
+}
+
+.rows .row-group-2 .row:nth-of-type(1) .train-track.train-track-h:not(.train-track-view) h1 {
+    padding-top: 3px;
+}
+
+.train-track.train-track-h:not(.train-track-view) h1 {
+    font-size: 1.3em !important;
+    font-weight: bolder;
+    padding-top: 0.2em;
+    margin: 0;
+}
+
+.train-track.train-track-h:not(.train-track-view) small {
+    font-size: 0.5em !important;
+    font-weight: lighter;
+    margin-top: 0;
+}
+
+.train-track.train-track-view.noview {
+    border: dashed 0.35vh #fff;
+    opacity: .7;
+}
+
+.train-track.train-track-car {
+    border: none;
+    background: url(../../img/screen/logos/track-car.svg) no-repeat center;
+    background-size: cover;
+}
+
+/* -- rotate -- */
+
+.animation-rotate {
+    height: 10vh;
+    overflow: hidden;
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+.animation-rotate .animation-rotate-inner {
+    height: 100%;
+    animation: rotate 9s linear infinite;
+    -webkit-animation: rotate 9s linear infinite;
+}
+
+.animation-rotate .animation-rotate-inner-speed {
+    height: 100%;
+    animation: rotate 4s linear infinite;
+    -webkit-animation: rotate 4s linear infinite;
+}
+
+.animation-rotate .animation-rotate-inner div {
+    margin-bottom: 0.5vh;
+}
+
+@keyframes rotate {
+    33% {
+        transform: translateY(0%);
+    }
+    50%, 83.33% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
+}
+
+@-webkit-keyframes rotate {
+    33% {
+        transform: translateY(0%);
+    }
+    50%, 83.33% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
+}
+
+/* -- dynamic -- */
+
+.animation-dynamic {
+    transform: translateX(100%) translateZ(0);
+    will-change: transform;
+    animation: dynamic 13s linear infinite;
+    -webkit-animation: dynamic 13s linear infinite;
+}
+
+@keyframes dynamic {
+    0% {
+        transform: translateX(100%) translateZ(0);
+    }
+    20%, 60% {
+        transform: translateX(0%) translateZ(0);
+    }
+    80% {
+        transform: translateX(100%) translateZ(0);
+    }
+}
+
+@-webkit-keyframes dynamic {
+    0% {
+        transform: translateX(100%) translateZ(0);
+    }
+    20%, 60% {
+        transform: translateX(0%) translateZ(0);
+    }
+    80% {
+        transform: translateX(100%) translateZ(0);
+    }
+}
+
+/* -- animation-dynamic-station -- */
+
+.animation-dynamic-station {
+    width: calc(100% - 0vh);
+    transform: translateZ(0);
+    will-change: width;
+    animation: dynamic_station 13s linear infinite;
+    -webkit-animation: dynamic_station 13s linear infinite;
+    height: 100%;
+}
+
+@keyframes dynamic_station {
+    0% {
+        width: calc(100% - 0vh);
+    }
+    20%, 60% {
+        width: calc(100% - 55vh);
+    }
+    80% {
+        width: calc(100% - 0vh);
+    }
+}
+
+@-webkit-keyframes dynamic_station {
+    0% {
+        width: calc(100% - 0vh);
+    }
+    20%, 60% {
+        width: calc(100% - 55vh);
+    }
+    80% {
+        width: calc(100% - 0vh);
+    }
+}

@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Page sans titre</title>
+    <script src="scripts/apparence.js" type="text/javascript"></script>
+    <link title="Light mode" href="scripts/bootstrap-sncf-metier/bootstrap-sncf.min.css" rel="stylesheet">
+    <link title="Dark mode" href="scripts/bootstrap-sncf-metier/bootstrap-sncf.darkmode.min.css" rel="stylesheet alternate">
+</head>
+<body onload="checkLogin();">
+    <nav role="navigation" class="mastnav">
+  <ul class="mastnav-top">
+    <li>
+        <a href="index.htm" class="mastnav-item">
+            <i class="icons-arrow-prev icons-size-1x5" aria-hidden="true"></i>
+            <span class="font-weight-medium">Accueil</span>
+        </a>
+    </li>
+    <li>
+      <a href="gares.htm" class="mastnav-item">
+        <i class="icons-file icons-size-1x5" aria-hidden="true"></i>
+        <span class="font-weight-medium">Mes gares</span>
+      </a>
+    </li>
+    <li>
+      <a href="#" class="mastnav-item">
+        <i class="icons-menu-account icons-size-1x5" aria-hidden="true"></i>
+        <span class="font-weight-medium">Mon profil</span>
+      </a>
+    </li>
+    <li id="mnu_login">
+      <a href="#" class="mastnav-item active">
+        <i class="icons-circle-account-connected icons-size-1x5" aria-hidden="true"></i>
+        <span class="font-weight-medium">Se connecter</span>
+      </a>
+    </li>
+    <li class="d-lg-none">
+      <button type="button" class="mastnav-item options-menu-btn" data-component="state" data-state="active, active" data-behaviour="toggle, toggle" data-target=".options-menu-btn, .options-menu">
+        <i class="icons-options icons-size-1x5" aria-hidden="true"></i>
+        <span class="font-weight-medium">Plus</span>
+      </button>
+    </li>
+  </ul>
+  <div class="mastnav-bottom d-none d-lg-block">
+    <a href="#" class="mastnav-item mastnav-item-horizontal">
+      <i class="icons-circle-reverse icons-size-1x5" aria-hidden="true"></i>
+      <span class="font-weight-medium" onclick="toggleDarkmode();">Mode sombre</span>
+    </a>
+  </div>
+</nav>
+
+<div style="margin-left: 150px; margin-right: 50px; margin-top: 50px; margin-bottom: 50px;">
+
+    <div class="form-error mb-3" id="error" hidden=true>
+        <h2>Oups ! Il y a un problème !</h2>
+        <ul class="mt-1 mb-0">
+            <li id="checkemail" hidden=true>Veuillez vérifier votre adresse email.</li>
+            <li id="checkusername" hidden=true>Veuillez vérifier que votre nom d'utilisateur ne comporte que des caractères alpha-numériques, des tirets-bas (_) ou des tirets (-).</li>
+            <li id="checkpassword" hidden=true>Veuillez vérifier votre mot de passe.</li>
+            <li id="emailexists" hidden=true>Cette adresse email est déjà utilisée.</li>
+            <li id="passwordweak" hidden=true>Votre mot de passe est trop court.</li>
+        </ul>
+    </div>
+
+    <div class="form-group" id=login>
+        <label for="email">Adresse email</label>
+        <div class="form-control-container ">
+            <input type="email" class="form-control " id="email" title="Adresse email" placeholder="Adresse email" value="">
+            <span class="form-control-state"></span>
+        </div><br />
+        <label for="password">Mot de passe</label>
+        <div class="form-control-container">
+            <input type=password class="form-control" id="password" title="Mot de passe" placeholder="Mot de passe" value="" />
+            <span class="form-control-state"></span>
+        </div><br />
+        <button type="submit" class="btn btn-primary" onclick="login(document.getElementById('email').value, document.getElementById('password').value);">Se connecter</button>&nbsp;
+        <span onclick="document.getElementById('signin').hidden=false; document.getElementById('login').hidden=true;" style="cursor: pointer;">Pas de compte ?</span>
+    </div>
+  
+    <div class="form-group" id="signin" hidden=true>
+        <label for="username">Nom d'utilisateur</label>
+        <div class="form-control-container">
+            <input type=text class="form-control" id="username" title="Nom d'utilisateur" placeholder="Nom d'utilisateur" value="" />
+            <span class="form-control-state"></span>
+        </div><br />
+        <label for="email">Adresse email</label>
+        <div class="form-control-container ">
+            <input type="email" class="form-control " id="email1" title="Adresse email" placeholder="Adresse email" value="">
+            <span class="form-control-state"></span>
+        </div><br />
+        <label for="password">Mot de passe</label>
+        <div class="form-control-container">
+            <input type=password class="form-control" id="password1" title="Mot de passe" placeholder="Mot de passe" value="" />
+            <span class="form-control-state"></span>
+        </div><br />
+        <button type="submit" class="btn btn-primary" onclick="signin(document.getElementById('email1').value, document.getElementById('password1').value, document.getElementById('username').value);">S'inscrire</button>&nbsp;
+        <span onclick="document.getElementById('signin').hidden=true; document.getElementById('login').hidden=false;" style="cursor: pointer;">Déjà un compte ?</span>
+    </div>
+</div>
+
+    <!-- SCRIPTS -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-auth.js"></script>
+    <script src="scripts/initialize.js"></script>
+    <script src="scripts/login.js"></script>
+
+</body>
+</html>

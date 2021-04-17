@@ -1,0 +1,29 @@
+@font-face {
+    font-family: "Avenir";
+    font-weight: 200;
+    src: url("./avenir-lighter.woff?v=6e92fe4") format("woff")
+}
+
+@font-face {
+    font-family: "Avenir";
+    font-weight: normal;
+    src: url("./avenir-book.woff?v=289509e") format("woff")
+}
+
+@font-face {
+    font-family: "Avenir";
+    font-weight: 500;
+    src: url("./avenir-medium.woff?v=28bf542") format("woff")
+}
+
+@font-face {
+    font-family: "Avenir";
+    font-weight: 700;
+    src: url("./avenir-bold-black.woff?v=23d9497") format("woff")
+}
+
+@font-face {
+    font-family: "Avenir";
+    font-weight: 600;
+    src: url("./avenir-heavy.woff?v=9b00dfb") format("woff")
+}
