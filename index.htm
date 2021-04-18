@@ -6,9 +6,11 @@
     <link title="Light mode" href="scripts/bootstrap-sncf-metier/bootstrap-sncf.min.css" rel="stylesheet">
     <link title="Dark mode" href="scripts/bootstrap-sncf-metier/bootstrap-sncf.darkmode.min.css" rel="stylesheet alternate">
     <link rel=Stylesheet href="styles/Index.css" type="text/css" />
+    <link rel="icon" href="images/favicon.png" size="16x16" type="image/png" />
+    <link rel="icon" href="images/favicon.png" size="32x32" type="image/png" />
     <title>InfoGares - Accueil</title>
 </head>
-<body onload="checkLogin(); toggleLogo();" class="light">
+<body onload="checkLogin(); initLogo();" class="light">
 <div>
     <nav role="navigation" class="mastnav">
   <ul class="mastnav-top">
@@ -25,7 +27,7 @@
       </a>
     </li>
     <li>
-      <a href="#" class="mastnav-item">
+      <a href="compte.htm" class="mastnav-item">
         <i class="icons-menu-account icons-size-1x5" aria-hidden="true"></i>
         <span class="font-weight-medium">Mon profil</span>
       </a>
@@ -46,7 +48,7 @@
   <div class="mastnav-bottom d-none d-lg-block">
     <a href="#" class="mastnav-item mastnav-item-horizontal">
       <i class="icons-circle-reverse icons-size-1x5" aria-hidden="true"></i>
-      <span class="font-weight-medium" onclick="toggleDarkAndLogo();">Mode sombre</span>
+      <span class="font-weight-medium" onclick="toggleDarkmode(); initLogo();">Mode sombre</span>
     </a>
   </div>
 </nav>

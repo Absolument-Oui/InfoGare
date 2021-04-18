@@ -75,6 +75,10 @@ function loadGare(userid){
                         var managmentitemsymbol = document.createElement('div');
                         var icon = document.createElement('i');
                         var managmentitemmain = document.createElement('div');
+                        var managmentitemaction = document.createElement('div');
+                        var btnmodify = document.createElement('button');
+                        var btnmodifyicon = document.createElement('i');
+                        var spanmodify = document.createElement('span');
                         var title = document.createElement('h2');
                         var metalist = document.createElement('ul');
                         var traintypeli = document.createElement('li');
@@ -102,9 +106,29 @@ function loadGare(userid){
                         managmentitemsymbol.setAttribute('class', 'management-item-symbol');
                         managmentitemsymbol.appendChild(icon);
                         
+                        btnmodify.setAttribute('class', 'btn btn-options dropdown-toggle');
+                        btnmodify.setAttribute('type', 'button');
+                        btnmodify.setAttribute('title', 'Modifier la gare');
+                        btnmodify.setAttribute('data-toggle', 'dropdown');
+                        
+                        btnmodifyicon.setAttribute('class', 'icons-pencil');
+                        btnmodifyicon.setAttribute('aria-hidden', 'true');
+                        
+                        spanmodify.setAttribute('class', 'sr-only');
+                        spanmodify.appendChild(document.createTextNode('Modifier'));
+                        
+                        btnmodify.appendChild(btnmodifyicon);
+                        btnmodify.appendChild(spanmodify);
+                        
+                        managmentitemaction.appendChild(btnmodify);
+                                                
+                        managmentitemaction.setAttribute('class', 'managerment-item-action');
+                        
+                        
                         managmentitemcontent.setAttribute('class', 'management-item-content');
                         managmentitemcontent.appendChild(managmentitemsymbol);
                         managmentitemcontent.appendChild(managmentitemmain);
+                        managmentitemcontent.appendChild(managmentitemaction);
                         
                         listgroupitem.setAttribute('class', 'list-group-item management-item');
                         listgroupitem.appendChild(managmentitemcontent);
@@ -162,4 +186,11 @@ function createTrain() {
     }).then((snapshot) => {
         document.getElementById('created').hidden = false;
     });
+}
+
+var active_train;
+
+function loadTrainModification(id){
+    active_train = id;
+    
 }

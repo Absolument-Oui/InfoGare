@@ -80,3 +80,11 @@ function checkLogin() {
       }
     });
 }
+
+function logout() {
+    firebase.auth().signOut().then(() => {
+      window.location.href="index.htm";
+    }).catch((error) => {
+      console.error(error.message);
+    });
+}
