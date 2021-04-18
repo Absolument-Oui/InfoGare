@@ -52,8 +52,14 @@
 </div>
 
 <div style="margin-bottom: 50px; margin-left: 150px; margin-right: 50px; margin-top: 50px;">
+
+    <p class="text-primary pl-4 pt-2 pb-2 font-weight-medium" hidden=true id="created">
+      <i class="icons-checked mr-2" aria-hidden="true"></i> Le train à bien été créé ! <span style="cursor: pointer;" onclick="window.location.reload;">Recharger la page
+    </p>
+
     <div id=actions>
         <div class="btn btn-primary" data-toggle="modal" data-target="#new_train">Nouveau train</div>
+        <div class="btn btn-success" onclick="window.open('departs.htm'+document.location.search, '', 'height=500,width=750');">Afficher les départs</div>
     </div>
     <div id="trains_div" style="margin-top: 25px;">
         <ul class="list-group" id="trains" hidden=true>
@@ -72,7 +78,7 @@
       <div class="modal-body">
         <label for="train_number">Numéro du train</label>
         <div class="form-control-container">
-            <input type=text class="form-control" placeholder="Entrez le numéro du train" id="train_number" />
+            <input type=number class="form-control" placeholder="Entrez le numéro du train" id="train_number" />
             <span class="form-control-state"></span>
         </div><br />
         <label for="train_dest">Destination</label>
@@ -124,7 +130,7 @@
               </button>
             </div>
           </div>
-        </div><br />
+        </div><br /><br />
         <label for="train_retard">Retard</label>
         <div class="form-control-container" id="train_retard">
             <div class="custom-control custom-radio custom-control-inline">
@@ -143,7 +149,25 @@
                 <input type=radio id="supprime" name="retards" class="custom-control-input" />
                 <label class="custom-control-label font-weight-medium" for="supprime">supprimé</label>
             </div>
-        </div>
+        </div><br />
+        <label for="retard_time">Temps de retard (applicable uniquement si 'retard' est séléctionné)</label>
+        <div class="form-control-container">
+            <input type=number id="retard_time" class="form-control" placeholder="Entrez le nombre de minutes de retard" />
+            <span class="form-control-state"></span>
+        </div><br />        
+        <label for="train_voie">Voie de départ</label>
+        <div class="form-control-container">
+            <input type=text id="train_voie" class="form-control" placeholder="Entrez le numéro de la voie" />
+            <span class="form-control-state"></span>
+        </div><br />
+        <label class="font-weight-medium mb-2" for="addreceivers1">Gares desservies</label>
+        <div class="form-control-container form-chips-container" data-component="chips">
+          <input data-role="typewriter" type="text" class="chips-input stretchy" id="addreceivers1" />
+          <label class="font-weight-medium mb-2 sr-only" for="gares">Gares</label>
+          <select class="sr-only" data-role="input" tabindex="-1" aria-hidden="true" id="gares" multiple>
+          </select>
+        </div><br />
+        <button type=button class="btn btn-secondary" id="cancel" data-toggle="modal" data-target="#new_train">Annuler</button><button type=submit class="btn btn-primary" id="validate" onclick="createTrain();">Créer</button>
       </div>
     </div>
   </div>

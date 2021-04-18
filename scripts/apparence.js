@@ -22,3 +22,15 @@ function toggleDarkmode() {
   inactivecss.setAttribute('href', oldhref)
   localStorage.setItem('bootstrap-sncf-css-name', name)
 }
+
+function toggleDarkAndLogo() {
+    toggleDarkmode();
+    var mode = localStorage.getItem('bootstrap-sncf-css-name');
+    if (mode === 'dark') {
+        document.getElementById('logo').src = 'images/icon.png';
+        document.body.setAttribute('class', 'dark');
+    } else {
+        document.getElementById('logo').src = 'images/icon_theme_claire.png';
+        document.body.setAttribute('class', 'light');
+    }
+}

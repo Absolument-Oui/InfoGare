@@ -5,9 +5,10 @@
     <script src="scripts/apparence.js" type="text/javascript"></script>
     <link title="Light mode" href="scripts/bootstrap-sncf-metier/bootstrap-sncf.min.css" rel="stylesheet">
     <link title="Dark mode" href="scripts/bootstrap-sncf-metier/bootstrap-sncf.darkmode.min.css" rel="stylesheet alternate">
+    <link rel=Stylesheet href="styles/Index.css" type="text/css" />
     <title>InfoGares - Accueil</title>
 </head>
-<body onload="checkLogin();">
+<body onload="checkLogin(); toggleLogo();" class="light">
 <div>
     <nav role="navigation" class="mastnav">
   <ul class="mastnav-top">
@@ -45,7 +46,7 @@
   <div class="mastnav-bottom d-none d-lg-block">
     <a href="#" class="mastnav-item mastnav-item-horizontal">
       <i class="icons-circle-reverse icons-size-1x5" aria-hidden="true"></i>
-      <span class="font-weight-medium" onclick="toggleDarkmode();">Mode sombre</span>
+      <span class="font-weight-medium" onclick="toggleDarkAndLogo();">Mode sombre</span>
     </a>
   </div>
 </nav>
@@ -53,7 +54,7 @@
 
 <div style="padding-bottom: 50px; padding-left: 150px; padding-right: 50px; padding-top: 50px;">
     <center>
-        <img src="images/icon.png" /><br />
+        <img src="images/icon.png" id="logo" /><br />
         <h1>InfoGares</h1>
         <p>InfoGares est un site de création et d'affichage d'infogares personnalisées. Il existe également sous forme de logiciel pour PC.</p>
     </center>
