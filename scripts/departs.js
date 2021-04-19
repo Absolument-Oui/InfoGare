@@ -177,6 +177,7 @@ function loadTrains(user_id, id){
             i++;
             
         });
+        scrollX();
     });
 }
 

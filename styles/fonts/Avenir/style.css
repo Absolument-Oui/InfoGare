@@ -1,19 +1,19 @@
 @font-face {
     font-family: "Avenir";
     font-weight: 200;
-    src: url("./avenir-lighter.woff?v=6e92fe4") format("woff")
+    src: url("./Metropolis-Light.otf") format("otf")
 }
 
 @font-face {
     font-family: "Avenir";
     font-weight: normal;
-    src: url("./avenir-book.woff?v=289509e") format("woff")
+    src: url("./Metropolis-Regular.otf") format("otf")
 }
 
 @font-face {
     font-family: "Avenir";
     font-weight: 500;
-    src: url("./avenir-medium.woff?v=28bf542") format("woff")
+    src: url("./Metropolis-Medium.otf") format("otf")
 }
 
 @font-face {
