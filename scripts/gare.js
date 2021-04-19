@@ -2,6 +2,7 @@
 var uid = undefined;
 
 var gare_id = null;
+var id = null;
 
 function loadGares(userid) {
     uid = userid;
@@ -10,17 +11,37 @@ function loadGares(userid) {
             snapshot.forEach((childsnapshot) => {
                 var name = childsnapshot.val().name;
                 var id = childsnapshot.val().id;
+                var trains = childsnapshot.child('trains').numChildren();
                 var listgroupitem = document.createElement('li');
                 var managmentitemcontent = document.createElement('div');
                 var managmentitemsymbol = document.createElement('div');
                 var icon = document.createElement('i');
                 var managmentitemmain = document.createElement('div');
                 var title = document.createElement('h2');
+                var metalist = document.createElement('ul');
+                var id_div = document.createElement('li');
+                var trains_div = document.createElement('li');
+                var managmentitemaction = document.createElement('div');
+                var btn_del = document.createElement('button');
+                var btn_del_i = document.createElement('i');
+                var btn_del_span = document.createElement('span');
                 
                 title.appendChild(document.createTextNode(name));
+                id_div.appendChild(document.createTextNode('ID : '+id));
+                trains_div.appendChild(document.createTextNode(trains+' trains'));
+                
+                id_div.setAttribute('class', 'meta-list-item');
+                trains_div.setAttribute('class', 'meta-list-item separator');
+                
+                metalist.setAttribute('class', 'meta-list font-weight-medium');
+                metalist.appendChild(id_div);
+                metalist.appendChild(trains_div);
                 
                 managmentitemmain.setAttribute('class', 'management-item-main');
+                managmentitemmain.setAttribute('style', 'cursor: pointer;');
+                managmentitemmain.setAttribute('onclick', 'window.location.href="gare.htm?id='+id+'"');
                 managmentitemmain.appendChild(title);
+                managmentitemmain.appendChild(metalist);
                 
                 icon.setAttribute('class', 'icons-itinerary-train-station icons-size-1x25');
                 icon.setAttribute('aria-hidden', 'true');
@@ -28,13 +49,29 @@ function loadGares(userid) {
                 managmentitemsymbol.setAttribute('class', 'management-item-symbol');
                 managmentitemsymbol.appendChild(icon);
                 
+                btn_del_i.setAttribute('class', 'icons-circle-delete');
+                btn_del_i.setAttribute('aria-hidden', 'true');
+                
+                btn_del_span.setAttribute('class', 'sr-only');
+                btn_del_span.appendChild(document.createTextNode('Supprimer'));
+                
+                btn_del.setAttribute('class', 'btn btn-options dropdown-toggle');
+                btn_del.setAttribute('data-toggle', 'modal');
+                btn_del.setAttribute('data-target', '#del');
+                btn_del.setAttribute('onclick', 'setGare('+id+'); document.getElementById("del_gare_name").appendChild(document.createTextNode("'+name+'"));');
+                btn_del.setAttribute('title', 'Supprimer la gare');
+                btn_del.appendChild(btn_del_i);
+                btn_del.appendChild(btn_del_span);
+                
+                managmentitemaction.setAttribute('class', 'management-item-action');
+                managmentitemaction.appendChild(btn_del);
+                
                 managmentitemcontent.setAttribute('class', 'management-item-content');
                 managmentitemcontent.appendChild(managmentitemsymbol);
                 managmentitemcontent.appendChild(managmentitemmain);
+                managmentitemcontent.appendChild(managmentitemaction);
                 
                 listgroupitem.setAttribute('class', 'list-group-item management-item');
-                listgroupitem.setAttribute('style', 'cursor: pointer;');
-                listgroupitem.setAttribute('onclick', 'window.location.href="gare.htm?id='+id+'"');
                 listgroupitem.appendChild(managmentitemcontent);
                 
                 document.getElementById('gares').appendChild(listgroupitem);
@@ -43,6 +80,20 @@ function loadGares(userid) {
         }else{
             document.getElementById('gares_div').appendChild(document.createTextNode('Aucune gare pour le moment ;)'));
         }
+    });
+}
+
+function setGare(gid) {
+    id = gid;
+}
+
+function getGare() {
+    return id;
+}
+
+function delGare(gid) {
+    database.child("users").child(uid).child("gares").child(gid).remove().then(() => {
+        document.getElementById('gare_del').hidden = false;
     });
 }
 

@@ -58,6 +58,10 @@
     <p class="text-primary pl-4 pt-2 pb-2 font-weight-medium" id="gare_added" hidden=true>
       <i class="icons-checked mr-2" aria-hidden="true"></i> La gare à bien été créée ! <a onclick="window.location.reload();" style="cursor: pointer;">Recharger la page</a>
     </p>
+    <p class="text-danger pl-4 pt-2 pb-2 font-weight-medium" id="gare_del" hidden=true>
+      La gare à bien été supprimmée <a onclick="window.location.reload();" style="cursor: pointer;">Recharger la page</a>
+    </p>
+    
 
     <div id=actions>
         <div class="btn btn-primary" data-toggle="modal" data-target="#new_gare">Nouvelle gare</div>
@@ -82,11 +86,33 @@
                 <input type=text class="form-control" placeholder="Nom de la gare" id="gare_name" />
                 <span class="form-control-state"></span>
             </div><br />
-            <button class="btn btn-primary" type=submit onclick="createGare(document.getElementById('gare_name').value);">Créer</button>
+            <button class="btn btn-secondary" data-toggle="modal" data-target="#new_gare">Annuler</button>&nbsp;<button class="btn btn-primary" type=submit onclick="createGare(document.getElementById('gare_name').value);" data-toggle="modal" data-target="#new_gare">Créer</button><button class="btn btn-primary" onclick="modifyGare();" data-toggle="modal" data-target="#new_gare" hidden=true>Modifier</button>
         </div>
     </div>
   </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="del" tabindex="-1" role="dialog" aria-labelledby="del_dlg_title" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="h1 modal-title" id="del_dlg_title">Supprimer la gare</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Êtes-vous sûr de vouloir supprimer la gare de <span id="del_gare_name"></span> ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
+        <button type="button" class="btn btn-primary btn-danger" onclick="delGare(getGare());" data-dismiss="modal">Oui</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
     <!-- SCRIPTS -->
     <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
