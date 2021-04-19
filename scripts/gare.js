@@ -25,6 +25,9 @@ function loadGares(userid) {
                 var btn_del = document.createElement('button');
                 var btn_del_i = document.createElement('i');
                 var btn_del_span = document.createElement('span');
+                var btn_modify = document.createElement('button');
+                var btn_modify_i = document.createElement('i');
+                var btn_modify_span = document.createElement('span');
                 
                 title.appendChild(document.createTextNode(name));
                 id_div.appendChild(document.createTextNode('ID : '+id));
@@ -63,7 +66,22 @@ function loadGares(userid) {
                 btn_del.appendChild(btn_del_i);
                 btn_del.appendChild(btn_del_span);
                 
+                btn_modify_i.setAttribute('class', 'icons-pencil');
+                btn_modify_i.setAttribute('aria-hidden', 'true');
+                
+                btn_modify_span.setAttribute('class', 'sr-only');
+                btn_modify_span.appendChild(document.createTextNode('Modifier'));
+                
+                btn_modify.setAttribute('class', 'btn btn-options dropdown-toggle');
+                btn_modify.setAttribute('data-toggle', 'modal')
+                btn_modify.setAttribute('data-target', '#modif_gare');
+                btn_modify.setAttribute('onclick', 'prepModif('+id+');');
+                btn_modify.setAttribute('title', 'Modifier la gare');
+                btn_modify.appendChild(btn_modify_i);
+                btn_modify.appendChild(btn_modify_span);
+                
                 managmentitemaction.setAttribute('class', 'management-item-action');
+                managmentitemaction.appendChild(btn_modify);
                 managmentitemaction.appendChild(btn_del);
                 
                 managmentitemcontent.setAttribute('class', 'management-item-content');
@@ -80,6 +98,21 @@ function loadGares(userid) {
         }else{
             document.getElementById('gares_div').appendChild(document.createTextNode('Aucune gare pour le moment ;)'));
         }
+    });
+}
+
+function prepModif(gid) {
+    database.child("users").child(uid).child("gares").child(gid).get().then((snapshot) => {
+        document.getElementById('modif_gare_name').value = snapshot.val().name;
+        document.getElementById('modify_gare_btn').setAttribute('onclick', 'modifyGare('+snapshot.val().id+');');
+    });
+}
+
+function modifyGare(gid) {
+    database.child("users").child(uid).child("gares").child(gid).update({
+        name: document.getElementById('modif_gare_name').value
+    }).then((snapshot) => {
+        document.getElementById('gare_modified').hidden = false;
     });
 }
 

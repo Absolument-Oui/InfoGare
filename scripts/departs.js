@@ -76,6 +76,7 @@ function loadTrains(user_id, id){
             
             var gares_split = train_gares.split("|");
             var retard, textfeature;
+            var animation_time = 5.30 * gares_split.length;
             
             if (train_retard_type === 'alheure') {
                 retard = 'à l\'heure';
@@ -146,7 +147,7 @@ function loadTrains(user_id, id){
                 firstcol_secondrow.setAttribute('class', 'col-first');
                 
                 gares.setAttribute('class', 'train-stations text-scroll-x scroll-x animation-scroll-x');
-                gares.setAttribute('style', 'animation-duration: 23.6032s; padding-left: 100%;');
+                gares.setAttribute('style', 'animation-duration: '+animation_time+'s; padding-left: 100%;');
                 secondcol_secondrow.appendChild(gares);
                 secondcol_secondrow.setAttribute('class', 'col-second');
                 
