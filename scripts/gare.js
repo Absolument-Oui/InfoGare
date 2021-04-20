@@ -114,6 +114,7 @@ function prepModifTrain(tid) {
         document.getElementById('modif_train_dest').value = snapshot.val().destination;
         document.getElementById('modif_train_type').value = snapshot.val().type;
         document.getElementById('modif_train_hour').value = snapshot.val().hour;
+        document.getElementById('modif_train_retard_time').value = snapshot.val().retardtime;
         if (snapshot.val().retardtype === 'alheure') {
             document.getElementById('modif_train_alheure').checked = true;
         } else if (snapshot.val().retardtype === 'retindet') {
@@ -123,12 +124,11 @@ function prepModifTrain(tid) {
         } else {
             document.getElementById('modif_train_suppr').checked = true;
         }
-        document.getElementById('modif_train_retard_time').value = snapshot.val().retardtime;
         document.getElementById('modif_train_voie').value = snapshot.val().voie;
         var gares = snapshot.val().gares;
-        gares = gares.split('|');
-        var chips_group = document.createElement('div');
+        gares = gares.substr(0, gares.length - 1).split('|');
         gares.forEach((item, index) => {
+            var chips_group = document.createElement('div');
             var option = document.createElement('option');
             var text_span = document.createElement('span');
             var btn_close = document.createElement('button');
@@ -141,6 +141,7 @@ function prepModifTrain(tid) {
             btn_close_span.setAttribute('class', 'sr-only');
             
             bnt_close_i.setAttribute('class', 'icons-close');
+            bnt_close_i.setAttribute('aria-hidden', 'true');
             
             btn_close.setAttribute('class', 'chips chips-btn chips-only-icon');
             btn_close.appendChild(btn_close_span);
@@ -151,12 +152,39 @@ function prepModifTrain(tid) {
             
             option.value = item;
             option.innerText = item;
-            document.getElementById('modif_train_gares').appendChild(option);
+            option.selected = true;
+            chips_group.setAttribute('class', 'chips-group');
+            //document.getElementById('chips').insertBefore(chips_group, document.getElementById('addreceivers2'));
+            //document.getElementById('modif_train_gares').appendChild(option);
         });
-        chips_group.setAttribute('class', 'chips-group');
-        document.getElementById('chips').insertBefore(chips_group, document.getElementById('addreceivers2'));
         
-        document.getElemntById('validate2').setAttribute('onclick', 'modifGare('+tid+');');
+        document.getElementById('validate2').setAttribute('onclick', 'modifTrain('+tid+');');
+    });
+}
+
+function modifTrain(tid) {
+    var retardtype;
+    
+    if (document.getElementById('modif_train_alheure').checked == true) {
+        retardtype = 'alheure';
+    } else if (document.getElementById('modif_train_retindet').checked == true) {
+        retardtype = 'retindet';
+    } else if (document.getElementById('modif_train_ret').checked == true) {
+        retardtype = 'ret';
+    } else {
+        retardtype = 'suppr';
+    }
+    
+    database.child("users").child(uid).child("gares").child(gare_id).child("trains").child(tid).update({
+        number: document.getElementById('modif_train_number').value,
+        dest: document.getElementById('modif_train_dest').value,
+        hour: document.getElementById('modif_train_hour').value,
+        type: document.getElementById('modif_train_type').value,
+        retardtime: document.getElementById('modif_train_retard_time').value,
+        retardtype: retardtype,
+        voie: document.getElementById('modif_train_voie').value
+    }).then((snapshot) => {
+        document.getElementById('modified').hidden = false;
     });
 }
 

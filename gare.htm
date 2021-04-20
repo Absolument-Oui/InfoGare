@@ -59,6 +59,10 @@
     <p class="text-primary pl-4 pt-2 pb-2 font-weight-medium" hidden=true id="created">
       <i class="icons-checked mr-2" aria-hidden="true"></i> Le train à bien été créé ! <a style="cursor: pointer;" onclick="window.location.reload();">Recharger la page</a>
     </p>
+    
+    <p class="text-primary pl-4 pt-2 pb-2 font-weight-medium" hidden=true id="modified">
+      <i class="icons-checked mr-2" aria-hidden="true"></i> Le train à bien été modifié ! <a style="cursor: pointer;" onclick="window.location.reload();">Recharger la page</a>
+    </p>
 
     <div id=actions>
         <div class="btn btn-primary" data-toggle="modal" data-target="#new_train">Nouveau train</div>
@@ -176,7 +180,7 @@
   </div>
 </div>
 
-<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modif_train_title" aria-hidden="true" id="modif_train">
+<div class="modal fade" tabindex="-2" role="dialog" aria-labelledby="modif_train_title" aria-hidden="true" id="modif_train">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
@@ -243,19 +247,19 @@
         <div class="form-control-container" id="modif_train_retard">
             <div class="custom-control custom-radio custom-control-inline">
               <input type="radio" id="modif_train_alheure" name="retards" class="custom-control-input">
-              <label class="custom-control-label font-weight-medium" for="alheure">à l'heure</label>
+              <label class="custom-control-label font-weight-medium" for="modif_train_alheure">à l'heure</label>
             </div>
             <div class="custom-control custom-radio custom-control-inline">
               <input type="radio" id="modif_train_retindet" name="retards" class="custom-control-input">
-              <label class="custom-control-label font-weight-medium" for="retindet">ret. indet.</label>
+              <label class="custom-control-label font-weight-medium" for="modif_train_retindet">ret. indet.</label>
             </div>
             <div class="custom-control custom-radio custom-control-inline">
                 <input type=radio id="modif_train_ret" name="retards" class="custom-control-input" />
-                <label class="custom-control-label font-weight-medium" for="ret">retard</label>
+                <label class="custom-control-label font-weight-medium" for="modif_train_ret">retard</label>
             </div>
             <div class="custom-control custom-radio custom-control-inline">
                 <input type=radio id="modif_train_suppr" name="retards" class="custom-control-input" />
-                <label class="custom-control-label font-weight-medium" for="supprime">supprimé</label>
+                <label class="custom-control-label font-weight-medium" for="modif_train_suppr">supprimé</label>
             </div>
         </div><br />
         <label for="modif_train_retard_time">Temps de retard (applicable uniquement si 'retard' est séléctionné)</label>
@@ -269,13 +273,14 @@
             <span class="form-control-state"></span>
         </div><br />
         <label class="font-weight-medium mb-2" for="addreceivers2">Gares desservies</label>
-        <div class="form-control-container form-chips-container" data-component="chips" id="chips">
+        <h2>Non pris en charge pour le moment !</h2>
+        <!-- <div class="form-control-container form-chips-container" data-component="chips" id="chips" disabled>
           <input data-role="typewriter" type="text" class="chips-input stretchy" id="addreceivers2" />
-          <label class="font-weight-medium mb-2 sr-only" for="modif_gares">Gares</label>
+          <label class="font-weight-medium mb-2 sr-only" for="modif_train_gares">Gares</label>
           <select class="sr-only" data-role="input" tabindex="-1" aria-hidden="true" id="modif_train_gares" multiple>
           </select>
-        </div><br />
-        <button type=button class="btn btn-secondary" id="cancel2" data-toggle="modal" data-target="#modif_train">Annuler</button>&nbsp;<button type=submit class="btn btn-primary" id="validate2" data-toggle="modal" data-target="#modif_train" onclick="modifTrain();">Modifier</button>
+        </div> !--><br />
+        <button type=button class="btn btn-secondary" id="cancel2" data-toggle="modal" data-target="#modif_train">Annuler</button>&nbsp;<button type=submit class="btn btn-primary" id="validate2" data-toggle="modal" data-target="#modif_train">Modifier</button>
       </div>
     </div>
   </div>
