@@ -1,29 +1,10 @@
 @font-face {
-    font-family: "Avenir";
-    font-weight: 200;
-    src: url("./Metropolis-Light.otf") format("otf")
-}
-
-@font-face {
-    font-family: "Avenir";
+    font-family: 'Avenir';
+    src: url('avenir_regular.eot');
+    src: url('avenir_regular.eot?#iefix') format('embedded-opentype'),
+         url('avenir_regular.woff') format('woff'),
+         url('avenir_regular.ttf') format('truetype'),
+         url('avenir_regular.svg#avenirregular') format('svg');
     font-weight: normal;
-    src: url("./Metropolis-Regular.otf") format("otf")
-}
-
-@font-face {
-    font-family: "Avenir";
-    font-weight: 500;
-    src: url("./Metropolis-Medium.otf") format("otf")
-}
-
-@font-face {
-    font-family: "Avenir";
-    font-weight: 700;
-    src: url("./avenir-bold-black.woff?v=23d9497") format("woff")
-}
-
-@font-face {
-    font-family: "Avenir";
-    font-weight: 600;
-    src: url("./avenir-heavy.woff?v=9b00dfb") format("woff")
+    font-style: normal;
 }

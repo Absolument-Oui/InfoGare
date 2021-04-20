@@ -1,28 +1,5 @@
 ﻿const database = firebase.database().ref();
 
-function clock(){
-	date = new Date;
-	date.setHours(date.getHours()+(date.getTimezoneOffset()/-60));
-	
-	h = date.getUTCHours();
-	if(h<10){
-		h = '0'+h;
-	}
-	$('.rows.rows-departures #clock-hours, .rows.rows-arrivals #clock-hours').html(h);
-	m = date.getUTCMinutes();
-	if(m<10){
-		m = '0'+m;
-	}
-	$('.rows.rows-departures #clock-minutes, .rows.rows-arrivals #clock-minutes').html(m);
-	s = date.getUTCSeconds();
-	if(s<10){
-		s = '0'+s;
-	}
-	$('.rows.rows-departures #clock-seconds, .rows.rows-arrivals #clock-seconds').html(s);
-	setTimeout('clock("clock");','1000');
-	return true;
-}
-
 function loadTrains(user_id, id){
     database.child("users").child(user_id).child("gares").child(id).child("trains").get().then((snapshot) => {
         var i = 0;
@@ -74,7 +51,7 @@ function loadTrains(user_id, id){
             const train_retard_time = childsnapshot.val().retardtime;
             const train_voie = childsnapshot.val().voie;
             
-            var gares_split = train_gares.split("|");
+            var gares_split = train_gares.substr(0, train_gares.length - 1).split("|");
             var retard, textfeature;
             var animation_time = 5.30 * gares_split.length;
             
@@ -180,5 +157,3 @@ function loadTrains(user_id, id){
         scrollX();
     });
 }
-
-clock();
