@@ -170,11 +170,117 @@
           <select class="sr-only" data-role="input" tabindex="-1" aria-hidden="true" id="gares" multiple>
           </select>
         </div><br />
-        <button type=button class="btn btn-secondary" id="cancel" data-toggle="modal" data-target="#new_train">Annuler</button>&nbsp;<button type=submit class="btn btn-primary" id="validate" data-toggle="modal" data-target="#new_train" onclick="createTrain();">Créer</button><button type=submit class="btn btn-primary" data-toggle="modal" data-target="#new_train" id="modify" onclick="modifyTrain();" hidden=true>Modifier</button>
+        <button type=button class="btn btn-secondary" id="cancel" data-toggle="modal" data-target="#new_train">Annuler</button>&nbsp;<button type=submit class="btn btn-primary" id="validate" data-toggle="modal" data-target="#new_train" onclick="createTrain();">Créer</button>
       </div>
     </div>
   </div>
 </div>
+
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modif_train_title" aria-hidden="true" id="modif_train">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 id="modif_train_title" class="h1 modal-title">Modifier un train</h5>
+        <button type=button class="close" data-dismiss="modal" aria-label="Fermer"><span aria-hidde,=true>&times;</span></button>
+      </div>
+      <div class="modal-body">
+        <label for="modif_train_number">Numéro du train</label>
+        <div class="form-control-container">
+            <input type=number class="form-control" placeholder="Entrez le numéro du train" id="modif_train_number" />
+            <span class="form-control-state"></span>
+        </div><br />
+        <label for="modif_train_dest">Destination</label>
+        <div class="form-control-container">
+            <input type=text class="form-control" placeholder="Entrez la gare de destination du train" id="modif_train_dest" />
+            <span class="form-control-state"></span>
+        </div><br />
+        <label for="modif_train_type">Type de train</label>
+        <div class="select-improved" data-component="select-exclusive">
+          <div class="select-control">
+            <div class="input-group" data-role="select-toggle">
+              <p class="form-control is-placeholder  d-flex align-items-center" data-role="placeholder" data-selected-prefix="Sélection actuelle">Sélectionnez un type de train</p>
+              <select class="sr-only" id="modif_train_type" data-role="input" tabindex="-1" aria-hidden="true">
+                <option selected data-role="default-hidden-option" disabled hidden>Sélectionnez un type de train</option>
+                <option data-id="1" >TER</option>
+                <option data-id="2" >TGV</option>
+                <option data-id="3" >OuiGo</option>
+
+              </select>
+              <div class="input-group-append input-group-last">
+                <button class="btn btn-primary btn-only-icon " data-role="btn" type="button" aria-expanded="false" aria-controls="selecttoggle2">
+                  <i class="icons-arrow-down icons-size-x75" aria-hidden="true"></i>
+                  <span class="sr-only">Sélectionner</span>
+                </button>
+              </div>
+            </div>
+            <div class="select-menu" id="-selecttoggle2">
+              <div class="d-flex flex-column">
+                <div class="flex-fluid overflow-y" role="list" data-role="menu">
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="1">TER</button></span>
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="2">TGV</button></span>
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="3">OuiGo</button></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div><br />
+        <label for="modif_train_hour">Heure de départ</label>
+        <div data-component="picker" data-mode="time" data-increment-hours-on-minutes-max>
+          <div class="input-group" data-toggle>
+            <div class="form-control-container">
+              <input id="modif_train_hour" tabindex="-1" type="text" class="form-control" placeholder="Sélectionner une heure" data-input>
+              <span class="form-control-state"></span>
+            </div>
+            <div class="input-group-append">
+              <button type="button" class="btn btn-primary btn-only-icon" data-role="btn" aria-expanded="false">
+                <span class="sr-only">Saisir l’heure</span>
+                <i class="icons-calendar-time" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+        </div><br /><br />
+        <label for="modif_train_retard">Retard</label>
+        <div class="form-control-container" id="modif_train_retard">
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" id="modif_train_alheure" name="retards" class="custom-control-input">
+              <label class="custom-control-label font-weight-medium" for="alheure">à l'heure</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" id="modif_train_retindet" name="retards" class="custom-control-input">
+              <label class="custom-control-label font-weight-medium" for="retindet">ret. indet.</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type=radio id="modif_train_ret" name="retards" class="custom-control-input" />
+                <label class="custom-control-label font-weight-medium" for="ret">retard</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type=radio id="modif_train_suppr" name="retards" class="custom-control-input" />
+                <label class="custom-control-label font-weight-medium" for="supprime">supprimé</label>
+            </div>
+        </div><br />
+        <label for="modif_train_retard_time">Temps de retard (applicable uniquement si 'retard' est séléctionné)</label>
+        <div class="form-control-container">
+            <input type=number id="modif_train_retard_time" class="form-control" placeholder="Entrez le nombre de minutes de retard" />
+            <span class="form-control-state"></span>
+        </div><br />        
+        <label for="modif_train_voie">Voie de départ</label>
+        <div class="form-control-container">
+            <input type=text id="modif_train_voie" class="form-control" placeholder="Entrez le numéro de la voie" />
+            <span class="form-control-state"></span>
+        </div><br />
+        <label class="font-weight-medium mb-2" for="addreceivers2">Gares desservies</label>
+        <div class="form-control-container form-chips-container" data-component="chips" id="chips">
+          <input data-role="typewriter" type="text" class="chips-input stretchy" id="addreceivers2" />
+          <label class="font-weight-medium mb-2 sr-only" for="modif_gares">Gares</label>
+          <select class="sr-only" data-role="input" tabindex="-1" aria-hidden="true" id="modif_train_gares" multiple>
+          </select>
+        </div><br />
+        <button type=button class="btn btn-secondary" id="cancel2" data-toggle="modal" data-target="#modif_train">Annuler</button>&nbsp;<button type=submit class="btn btn-primary" id="validate2" data-toggle="modal" data-target="#modif_train" onclick="modifTrain();">Modifier</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 
     <!-- SCRIPTS -->

@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Train</title>
+    <link rel=Stylesheet href="styles/quai/screen/train.css" type="text/css" />
+    <link rel=Stylesheet href="styles/fonts/Achemine/style.css" type="text/css" />
+    <link rel=Stylesheet href="styles/fonts/Avenir/style.css" type="text/css" />
+    <link rel="icon" href="images/favicon.png" size="16x16" type="image/png" />
+    <link rel="icon" href="images/favicon.png" size="32x32" type="image/png" />
+</head>
+<body>
+
+    <div class="rows row-screen rows-departures">
+        <div class="row-group row-group-bar row-group-bar row-group-bar-yellow">
+            <div class="row">
+                <div class="col-first">
+                    <div class="bar-informations text-scroll-x scroll-x animation-scroll-x">Les informations défilantes ne sont pas encore disponibles !</div>
+                </div>
+                <div class="col-second">
+                    <div class="bar-clock">
+                        <span id=clock-hours>00</span>
+                        <span class="animation-blink">
+                            <span class="animation-blink-clock">:</span>
+                        </span>
+                        <span id=clock-minutes>00</span>
+                        <small id=clock-seconds>00</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row-group row-group-train">
+            <div class="row">
+                <div class="col-first">
+                    <div class="row-background"></div>
+                    <div class="train-logo train-logo-sncf"></div>
+                    <div class="train-time" id="train_ret">
+                        <div class="text-time-hours" id="train_hour"></div>
+                        <div class="text-time-ontime" id="train_retard_type"></div>
+                    </div>
+                    <div class="train-station text-station" id="train_dest"></div>
+                    <div class="train-informations">
+                        <div class="text-type" id="train_type"></div>
+                        <div class="text-number" id="train_number"></div>
+                    </div>
+                </div>
+                <div class="col-second">
+                    <div class="col-second-container">
+                        <table class="train-stations scroll-y">
+                            <tbody id="gares">
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-auth.js"></script>
+    <script src="scripts/jquery/jquery.js"></script>
+    <script src="scripts/screen.js"></script>
+    <script src="scripts/initialize.js"></script>
+    <script src="scripts/train.js"></script>
+    <script>
+        firebase.auth().onAuthStateChanged(function(user) {
+          if (user) {
+            loadTrain(user.uid);
+          } else {
+
+          }
+        });
+    </script>
+
+</body>
+</html>

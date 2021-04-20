@@ -649,7 +649,7 @@ a {
 .text-type {
     line-height: 1;
     font-size: 3.3em;
-    font-weight: normal;
+    font-family: 'Avenir';
     display: inline-block;
 }
 
@@ -871,7 +871,7 @@ a {
 
 .rows.rows-departures .row-background,
 .rows.rows-transilien .row-background {
-    background-image: url(../../../images/row-background-departures.svg);
+    background-image: url(../../../images/screen/departure/row-background-departures.svg);
 }
 
 .rows.rows-arrivals {
@@ -919,11 +919,11 @@ a {
 }
 
 .train-logo.train-logo-sncf {
-    background-image: url(../../../images/logo-sncf.svg);
+    background-image: url(../../../images/screen/departure/logo-sncf.svg);
 }
 
 .train-logo.train-logo-inoui {
-    background-image: url(../../img/screen/logos/logo-inoui.svg);
+    background-image: url(../../../images/screen/departure/logo-inoui.svg);
 }
 
 .train-logo.train-logo-ter {

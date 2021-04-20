@@ -75,7 +75,7 @@ function loadGares(userid) {
                 btn_modify.setAttribute('class', 'btn btn-options dropdown-toggle');
                 btn_modify.setAttribute('data-toggle', 'modal')
                 btn_modify.setAttribute('data-target', '#modif_gare');
-                btn_modify.setAttribute('onclick', 'prepModif('+id+');');
+                btn_modify.setAttribute('onclick', 'prepModifGare('+id+');');
                 btn_modify.setAttribute('title', 'Modifier la gare');
                 btn_modify.appendChild(btn_modify_i);
                 btn_modify.appendChild(btn_modify_span);
@@ -101,10 +101,62 @@ function loadGares(userid) {
     });
 }
 
-function prepModif(gid) {
+function prepModifGare(gid) {
     database.child("users").child(uid).child("gares").child(gid).get().then((snapshot) => {
         document.getElementById('modif_gare_name').value = snapshot.val().name;
         document.getElementById('modify_gare_btn').setAttribute('onclick', 'modifyGare('+snapshot.val().id+');');
+    });
+}
+
+function prepModifTrain(tid) {
+    database.child("users").child(uid).child("gares").child(gare_id).child("trains").child(tid).get().then((snapshot) => {
+        document.getElementById('modif_train_number').value = snapshot.val().number;
+        document.getElementById('modif_train_dest').value = snapshot.val().destination;
+        document.getElementById('modif_train_type').value = snapshot.val().type;
+        document.getElementById('modif_train_hour').value = snapshot.val().hour;
+        if (snapshot.val().retardtype === 'alheure') {
+            document.getElementById('modif_train_alheure').checked = true;
+        } else if (snapshot.val().retardtype === 'retindet') {
+            document.getElementById('modif_train_retindet').checked = true;
+        } else if (snapshot.val().retardtype === 'ret') {
+            document.getElementById('modif_train_retindet').checked = true;
+        } else {
+            document.getElementById('modif_train_suppr').checked = true;
+        }
+        document.getElementById('modif_train_retard_time').value = snapshot.val().retardtime;
+        document.getElementById('modif_train_voie').value = snapshot.val().voie;
+        var gares = snapshot.val().gares;
+        gares = gares.split('|');
+        var chips_group = document.createElement('div');
+        gares.forEach((item, index) => {
+            var option = document.createElement('option');
+            var text_span = document.createElement('span');
+            var btn_close = document.createElement('button');
+            var btn_close_span = document.createElement('span');
+            var bnt_close_i = document.createElement('i');
+            
+            text_span.setAttribute('class', 'chips chips-label');
+            text_span.innerText = item;
+            
+            btn_close_span.setAttribute('class', 'sr-only');
+            
+            bnt_close_i.setAttribute('class', 'icons-close');
+            
+            btn_close.setAttribute('class', 'chips chips-btn chips-only-icon');
+            btn_close.appendChild(btn_close_span);
+            btn_close.appendChild(bnt_close_i);
+            
+            chips_group.appendChild(text_span);
+            chips_group.appendChild(btn_close);
+            
+            option.value = item;
+            option.innerText = item;
+            document.getElementById('modif_train_gares').appendChild(option);
+        });
+        chips_group.setAttribute('class', 'chips-group');
+        document.getElementById('chips').insertBefore(chips_group, document.getElementById('addreceivers2'));
+        
+        document.getElemntById('validate2').setAttribute('onclick', 'modifGare('+tid+');');
     });
 }
 
@@ -181,6 +233,8 @@ function loadGare(userid){
                         metalist.appendChild(traintypeli);
                         
                         managmentitemmain.setAttribute('class', 'management-item-main');
+                        managmentitemmain.setAttribute('onclick', 'window.open("train.htm?gid='+gare_id+'&tid='+id+'", "", "height=500,width=750");');
+                        managmentitemmain.setAttribute('style', 'cursor: pointer;');
                         managmentitemmain.appendChild(title);
                         managmentitemmain.appendChild(metalist);
                         
@@ -193,7 +247,9 @@ function loadGare(userid){
                         btnmodify.setAttribute('class', 'btn btn-options dropdown-toggle');
                         btnmodify.setAttribute('type', 'button');
                         btnmodify.setAttribute('title', 'Modifier la gare');
-                        btnmodify.setAttribute('data-toggle', 'dropdown');
+                        btnmodify.setAttribute('onclick', 'prepModifTrain('+id+');');
+                        btnmodify.setAttribute('data-toggle', 'modal');
+                        btnmodify.setAttribute('data-target', '#modif_train');
                         
                         btnmodifyicon.setAttribute('class', 'icons-pencil');
                         btnmodifyicon.setAttribute('aria-hidden', 'true');
