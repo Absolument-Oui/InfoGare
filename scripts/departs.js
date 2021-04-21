@@ -1,7 +1,8 @@
 ﻿const database = firebase.database().ref();
 
 function loadTrains(user_id, id){
-    database.child("users").child(user_id).child("gares").child(id).child("trains").get().then((snapshot) => {
+    var ref = database.child("users").child(user_id).child("gares").child(id).child("trains"); //.orderByChild('hour');
+    ref.get().then((snapshot) => {
         var i = 0;
         snapshot.forEach((childsnapshot) => {
             // Root
