@@ -30,8 +30,9 @@ function scrollX(){
 		if($(this).width()>$(this).parent().width()){
 			$(this).addClass('animation-scroll-x');
 			$(this).css({
-				'-webkit-animation-duration' : (distance/100)+'s',
-				'animation-duration' : (distance/100)+'s'
+				'-webkit-animation-duration' : (distance/150)+'s',
+				'animation-duration' : (distance/150)+'s',
+				'padding-left' : '100%'
 			});
 		}else{
 			$(this).css({
@@ -50,10 +51,9 @@ function scrollY(limit){
 	var elem = $('.scroll-y');
 	var elemHeight = elem.height();
 	var parentHeight = elem.parent().height();
-	var elemHeightRelative   = elemHeight/parentHeight*100;
-
-
-	if (elemHeightRelative>limit){
+	var elemHeightRelative  = elemHeight/parentHeight*100;
+	
+	if (elemHeightRelative>limit && limit < 100){
 		var distance = (elemHeight-(parentHeight/1.1))/$(window).height()*100;
 		var time     = distance/6+10;
 		var delay    = 5/time*100;
@@ -91,7 +91,6 @@ function fullScreen(){
 			document.webkitCancelFullScreen();
 		}
 	}
-	toggleSidebar('left');
 }
 
 /* -- clock -- */

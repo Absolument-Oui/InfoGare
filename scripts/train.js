@@ -98,6 +98,11 @@ function loadTrain(uid) {
             document.getElementById('gares').appendChild(tr);
         });
     });
+    
+    database.child("users").child(uid).child("gares").child(params.get('gid')).get().then((snapshot) => {
+        document.getElementById('infos').innerHTML = snapshot.val().infos.replace('\n', ' &nbsp;');
+    });
+    
     scrollX();
-    scrollY(0);
+    scrollY();
 }

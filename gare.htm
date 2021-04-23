@@ -13,45 +13,45 @@
 <body onload="checkLogin();">
 <div>
     <nav role="navigation" class="mastnav">
-  <ul class="mastnav-top">
-    <li>
-        <a href="index.htm" class="mastnav-item">
-            <i class="icons-arrow-prev icons-size-1x5" aria-hidden="true"></i>
-            <span class="font-weight-medium">Accueil</span>
+      <ul class="mastnav-top">
+        <li>
+            <a href="index.htm" class="mastnav-item">
+                <i class="icons-arrow-prev icons-size-1x5" aria-hidden="true"></i>
+                <span class="font-weight-medium">Accueil</span>
+            </a>
+        </li>
+        <li>
+          <a href="gares.htm" class="mastnav-item">
+            <i class="icons-file icons-size-1x5" aria-hidden="true"></i>
+            <span class="font-weight-medium">Mes gares</span>
+          </a>
+        </li>
+        <li>
+          <a href="compte.htm" class="mastnav-item">
+            <i class="icons-menu-account icons-size-1x5" aria-hidden="true"></i>
+            <span class="font-weight-medium">Mon profil</span>
+          </a>
+        </li>
+        <li id="mnu_login">
+          <a href="login.htm" class="mastnav-item">
+            <i class="icons-circle-account-connected icons-size-1x5" aria-hidden="true"></i>
+            <span class="font-weight-medium">Se connecter</span>
+          </a>
+        </li>
+        <li class="d-lg-none">
+          <button type="button" class="mastnav-item options-menu-btn" data-component="state" data-state="active, active" data-behaviour="toggle, toggle" data-target=".options-menu-btn, .options-menu">
+            <i class="icons-options icons-size-1x5" aria-hidden="true"></i>
+            <span class="font-weight-medium">Plus</span>
+          </button>
+        </li>
+      </ul>
+      <div class="mastnav-bottom d-none d-lg-block">
+        <a href="#" class="mastnav-item mastnav-item-horizontal">
+          <i class="icons-circle-reverse icons-size-1x5" aria-hidden="true"></i>
+          <span class="font-weight-medium" onclick="toggleDarkmode();">Mode sombre</span>
         </a>
-    </li>
-    <li>
-      <a href="gares.htm" class="mastnav-item">
-        <i class="icons-file icons-size-1x5" aria-hidden="true"></i>
-        <span class="font-weight-medium">Mes gares</span>
-      </a>
-    </li>
-    <li>
-      <a href="compte.htm" class="mastnav-item">
-        <i class="icons-menu-account icons-size-1x5" aria-hidden="true"></i>
-        <span class="font-weight-medium">Mon profil</span>
-      </a>
-    </li>
-    <li id="mnu_login">
-      <a href="login.htm" class="mastnav-item">
-        <i class="icons-circle-account-connected icons-size-1x5" aria-hidden="true"></i>
-        <span class="font-weight-medium">Se connecter</span>
-      </a>
-    </li>
-    <li class="d-lg-none">
-      <button type="button" class="mastnav-item options-menu-btn" data-component="state" data-state="active, active" data-behaviour="toggle, toggle" data-target=".options-menu-btn, .options-menu">
-        <i class="icons-options icons-size-1x5" aria-hidden="true"></i>
-        <span class="font-weight-medium">Plus</span>
-      </button>
-    </li>
-  </ul>
-  <div class="mastnav-bottom d-none d-lg-block">
-    <a href="#" class="mastnav-item mastnav-item-horizontal">
-      <i class="icons-circle-reverse icons-size-1x5" aria-hidden="true"></i>
-      <span class="font-weight-medium" onclick="toggleDarkmode();">Mode sombre</span>
-    </a>
-  </div>
-</nav>
+      </div>
+    </nav>
 </div>
 
 <div style="margin-bottom: 50px; margin-left: 150px; margin-right: 50px; margin-top: 50px;">
@@ -63,10 +63,15 @@
     <p class="text-primary pl-4 pt-2 pb-2 font-weight-medium" hidden=true id="modified">
       <i class="icons-checked mr-2" aria-hidden="true"></i> Le train à bien été modifié ! <a style="cursor: pointer;" onclick="window.location.reload();">Recharger la page</a>
     </p>
+    
+    <p class="text-danger pl-4 pt-2 pb-2 font-weight-medium" id="train_del" hidden=true>
+      Le train à bien été supprimmée <a onclick="window.location.reload();" style="cursor: pointer;">Recharger la page</a>
+    </p>
+    
 
     <div id=actions>
         <div class="btn btn-primary" data-toggle="modal" data-target="#new_train">Nouveau train</div>
-        <div class="btn btn-success" onclick="window.open('departs.htm'+document.location.search, '', 'height=500,width=750');">Afficher les départs</div>
+        <div id="showdeparts" class="btn btn-success" onclick="window.open('departs.htm'+document.location.search, '', 'height=500,width=750');">Afficher les départs</div>
     </div>
     <div id="trains_div" style="margin-top: 25px;">
         <ul class="list-group" id="trains" hidden=true>
@@ -297,11 +302,11 @@
         </button>
       </div>
       <div class="modal-body">
-        ...
+        Souhaitez-vous vraiment supprimer ce train ?
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
+        <button type="button" class="btn btn-primary" id="btn_del" data-dismiss="modal">Oui</button>
       </div>
     </div>
   </div>
@@ -323,6 +328,7 @@
         firebase.auth().onAuthStateChanged(function(user) {
           if (user) {
             loadGare(user.uid);
+            loadParams();
           } else {
 
           }

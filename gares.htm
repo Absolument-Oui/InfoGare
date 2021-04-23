@@ -89,6 +89,11 @@
                 <input type=text class="form-control" placeholder="Nom de la gare" id="gare_name" />
                 <span class="form-control-state"></span>
             </div><br />
+            <label for="gare_infos"></label>
+            <div class="form-control-container">
+              <textarea class="form-control stretchy" id="gare_infos" placeholder="Entrez les informations pour cette gare" ZgotmplZ></textarea>
+              <span class="form-control-state"></span>
+            </div>
             <button class="btn btn-secondary" data-toggle="modal" data-target="#new_gare">Annuler</button>&nbsp;<button class="btn btn-primary" type=submit onclick="createGare(document.getElementById('gare_name').value);" data-toggle="modal" data-target="#new_gare">Créer</button>
         </div>
     </div>
@@ -108,6 +113,12 @@
                 <input type=text class="form-control" placeholder="Nom de la gare" id="modif_gare_name" />
                 <span class="form-control-state"></span>
             </div><br />
+            <label for="modif_gare_infos"></label>
+            <div class="form-control-container">
+              <textarea class="form-control stretchy" id="modif_gare_infos" placeholder="Entrez les informations pour cette gare" ZgotmplZ></textarea>
+              <span class="form-control-state"></span>
+            </div>
+
             <button class="btn btn-secondary" data-toggle="modal" data-target="#modif_gare">Annuler</button>&nbsp;<button class="btn btn-primary" data-toggle="modal" data-target="#modif_gare" id="modify_gare_btn">Modifier</button>
         </div>
     </div>

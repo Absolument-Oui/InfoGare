@@ -3,6 +3,16 @@ var uid = undefined;
 
 var gare_id = null;
 var id = null;
+var openmethod = true;
+
+function loadParams() {
+    database.child("users").child(uid).get().then((snapshot) => {
+        openmethod = snapshot.val().openmethod;
+        if (!openmethod) {
+            document.getElementById('showdeparts').setAttribute('onclick', 'window.open("departs.htm'+window.location.search+'");');
+        }
+    });
+}
 
 function loadGares(userid) {
     uid = userid;
@@ -105,6 +115,7 @@ function prepModifGare(gid) {
     database.child("users").child(uid).child("gares").child(gid).get().then((snapshot) => {
         document.getElementById('modif_gare_name').value = snapshot.val().name;
         document.getElementById('modify_gare_btn').setAttribute('onclick', 'modifyGare('+snapshot.val().id+');');
+        document.getElementById('modif_gare_infos').value = snapshot.val().infos;
     });
 }
 
@@ -190,7 +201,8 @@ function modifTrain(tid) {
 
 function modifyGare(gid) {
     database.child("users").child(uid).child("gares").child(gid).update({
-        name: document.getElementById('modif_gare_name').value
+        name: document.getElementById('modif_gare_name').value,
+        infos: document.getElementById('modif_gare_infos').value
     }).then((snapshot) => {
         document.getElementById('gare_modified').hidden = false;
     });
@@ -210,11 +222,18 @@ function delGare(gid) {
     });
 }
 
+function delTrain(tid) {
+    database.child("users").child(uid).child("gares").child(gare_id).child("trains").child(tid).remove().then(() => {
+        document.getElementById('train_del').hidden = false;
+    });
+}
+
 function createGare(name) {
     var id = Math.round(Math.random() * 1000000000)
     database.child("users").child(uid).child("gares").child(id).set({
         id: id,
-        name: name
+        name: name,
+        infos: document.getElementById('gare_infos').value
     }).then((snapshot) => {
         document.getElementById('gare_added').hidden = false;
     });
@@ -247,6 +266,9 @@ function loadGare(userid){
                         var metalist = document.createElement('ul');
                         var traintypeli = document.createElement('li');
                         var hourli = document.createElement('li');
+                        var btndel = document.createElement('button');
+                        var btndelicon = document.createElement('i');
+                        var spandel = document.createElement('span');
                         
                         title.appendChild(document.createTextNode(dest));
                         traintypeli.appendChild(document.createTextNode(traintype));
@@ -261,7 +283,11 @@ function loadGare(userid){
                         metalist.appendChild(traintypeli);
                         
                         managmentitemmain.setAttribute('class', 'management-item-main');
-                        managmentitemmain.setAttribute('onclick', 'window.open("train.htm?gid='+gare_id+'&tid='+id+'", "", "height=500,width=750");');
+                        if (openmethod) {
+                            managmentitemmain.setAttribute('onclick', 'window.open("train.htm?gid='+gare_id+'&tid='+id+'", "", "height=500,width=750");');
+                        } else {
+                            managmentitemmain.setAttribute('onclick', 'window.open("train.htm?gid='+gare_id+'&tid='+id+'");');
+                        }
                         managmentitemmain.setAttribute('style', 'cursor: pointer;');
                         managmentitemmain.appendChild(title);
                         managmentitemmain.appendChild(metalist);
@@ -274,7 +300,7 @@ function loadGare(userid){
                         
                         btnmodify.setAttribute('class', 'btn btn-options dropdown-toggle');
                         btnmodify.setAttribute('type', 'button');
-                        btnmodify.setAttribute('title', 'Modifier la gare');
+                        btnmodify.setAttribute('title', 'Modifier le train');
                         btnmodify.setAttribute('onclick', 'prepModifTrain('+id+');');
                         btnmodify.setAttribute('data-toggle', 'modal');
                         btnmodify.setAttribute('data-target', '#modif_train');
@@ -288,11 +314,26 @@ function loadGare(userid){
                         btnmodify.appendChild(btnmodifyicon);
                         btnmodify.appendChild(spanmodify);
                         
-                        managmentitemaction.appendChild(btnmodify);
-                                                
+                        btndel.setAttribute('class', 'btn btn-options dropdown-toggle');
+                        btndel.setAttribute('type', 'button');
+                        btndel.setAttribute('title', 'Supprimer le train');
+                        btndel.setAttribute('onclick', 'document.getElementById("btn_del").setAttribute("onclick", "delTrain(' + id + ');");');
+                        btndel.setAttribute('data-toggle', 'modal');
+                        btndel.setAttribute('data-target', '#del_train');
+                        
+                        btndelicon.setAttribute('class', 'icons-circle-delete');
+                        btndelicon.setAttribute('aria-hidden', 'true');
+                        
+                        spandel.setAttribute('class', 'sr-only');
+                        spandel.appendChild(document.createTextNode('Supprimer'));
+                        
+                        btndel.appendChild(btndelicon);
+                        btndel.appendChild(spandel);
+                                          
                         managmentitemaction.setAttribute('class', 'managerment-item-action');
-                        
-                        
+                        managmentitemaction.appendChild(btnmodify);
+                        managmentitemaction.appendChild(btndel);
+
                         managmentitemcontent.setAttribute('class', 'management-item-content');
                         managmentitemcontent.appendChild(managmentitemsymbol);
                         managmentitemcontent.appendChild(managmentitemmain);

@@ -1,7 +1,7 @@
 ﻿const database = firebase.database().ref();
 
 function loadTrains(user_id, id){
-    var ref = database.child("users").child(user_id).child("gares").child(id).child("trains"); //.orderByChild('hour');
+    var ref = database.child("users").child(user_id).child("gares").child(id).child("trains");
     ref.get().then((snapshot) => {
         var i = 0;
         snapshot.forEach((childsnapshot) => {
@@ -154,6 +154,10 @@ function loadTrains(user_id, id){
             
             i++;
             
+        });
+        
+        database.child("users").child(user_id).child("gares").child(id).get().then((snapshot) => {
+            document.getElementById('infos').innerHTML = snapshot.val().infos.replace('\n', ' &nbsp;');
         });
         scrollX();
     });

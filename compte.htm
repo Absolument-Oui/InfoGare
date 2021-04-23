@@ -9,7 +9,7 @@
     <link rel="icon" href="images/favicon.png" size="32x32" type="image/png" />
     <title>InfoGares - Profil</title>
 </head>
-<body onload="checkLogin(); loadInfos();" class="light">
+<body onload="checkLogin(); loadInfos(); " class="light">
 <div>
     <nav role="navigation" class="mastnav">
   <ul class="mastnav-top">
@@ -60,6 +60,20 @@
     <h3 id="email"></h3>
     <br />
     <button type=button class="btn btn-danger" data-toggle="modal" data-target="#logout">Se déconnecter</button>
+    <br /><br />
+    <h1>Paramètres</h1>
+    
+    <label for="param1">Ouvrir les écrans dans </label>
+    <div class="options-control">
+      <div class="options-item">
+        <input type="radio" name="optionsRadio" id="openinwindow" class="sr-only" onclick="modifParams();" checked/>
+        <label class="options-btn font-weight-medium" for="openinwindow">Une fênetre à part</label>
+      </div>
+      <div class="options-item">
+        <input type="radio" name="optionsRadio" id="openintab" class="sr-only" onclick="modifParams();"/>
+        <label class="options-btn font-weight-medium" for="openintab">Un nouvel onglet</label>
+      </div>
+    </div>
     
     
 </div>
