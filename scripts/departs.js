@@ -76,7 +76,15 @@ function loadTrains(user_id, id){
                 gares.appendChild(span);
             });
             
-            logo.setAttribute('class', 'train-logo train-logo-sncf');
+            if (train_type === 'TER') {
+                logo.setAttribute('class', 'train-logo train-logo-ter');
+            } else if (train_type === 'TGV') {
+                logo.setAttribute('class', 'train-logo train-logo-inoui');
+            } else if (train_type === 'OuiGo') {
+                logo.setAttribute('class', 'train-logo train-logo-ouigo');
+            } else {            
+                logo.setAttribute('class', 'train-logo train-logo-sncf');
+            }
             
             firstcol_firstrow.setAttribute('class', 'col-first');
             firstcol_firstrow.appendChild(logo);

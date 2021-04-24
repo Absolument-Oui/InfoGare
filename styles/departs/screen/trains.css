@@ -895,7 +895,7 @@ a {
 }
 
 .rows.rows-arrivals .row-background {
-    background-image: url(../../img/screen/backgrounds/row-background-arrivals.svg);
+    background-image: url(../../../images/screen/arrives/row-background-arrivals.svg);
 }
 
 .rows.rows-error {
@@ -919,91 +919,91 @@ a {
 }
 
 .train-logo.train-logo-sncf {
-    background-image: url(../../../images/screen/departure/logo-sncf.svg);
+    background-image: url(../../../images/screen/common/logo-sncf.svg);
 }
 
 .train-logo.train-logo-inoui {
-    background-image: url(../../../images/screen/departure/logo-inoui.svg);
+    background-image: url(../../../images/screen/common/logo-inoui.svg);
 }
 
 .train-logo.train-logo-ter {
-    background-image: url(../../img/screen/logos/logo-ter.svg);
+    background-image: url(../../../images/screen/common/logo-ter.svg);
 }
 
 .train-logo.train-logo-ice {
-    background-image: url(../../img/screen/logos/logo-ice.svg);
+    background-image: url(../../../images/screen/common/logo-ice.svg);
 }
 
 .train-logo.train-logo-lyria {
-    background-image: url(../../img/screen/logos/logo-lyria.svg);
+    background-image: url(../../../images/screen/common/logo-lyria.svg);
 }
 
 .train-logo.train-logo-ouigo {
-    background-image: url(../../img/screen/logos/logo-ouigo.svg);
+    background-image: url(../../../images/screen/common/logo-ouigo.svg);
 }
 
 .train-logo.train-logo-ler {
-    background-image: url(../../img/screen/logos/logo-ler.svg);
+    background-image: url(../../images/screen/common/logo-ler.svg);
 }
 
 .train-logo.train-logo-eurostar {
-    background-image: url(../../img/screen/logos/logo-eurostar.svg);
+    background-image: url(../../images/screen/common/logo-eurostar.svg);
 }
 
 .train-logo.train-logo-thalys {
-    background-image: url(../../img/screen/logos/logo-thalys.svg);
+    background-image: url(../../../images/screen/common/logo-thalys.svg);
 }
 
 .train-logo.train-logo-rer-a {
-    background-image: url(../../img/screen/logos/logo-rer-a.svg);
+    background-image: url(../../../images/screen/common/logo-rer-a.svg);
 }
 
 .train-logo.train-logo-rer-b {
-    background-image: url(../../img/screen/logos/logo-rer-b.svg);
+    background-image: url(../../../images/screen/common/logo-rer-b.svg);
 }
 
 .train-logo.train-logo-rer-c {
-    background-image: url(../../img/screen/logos/logo-rer-c.svg);
+    background-image: url(../../../images/screen/common/logo-rer-c.svg);
 }
 
 .train-logo.train-logo-rer-d {
-    background-image: url(../../img/screen/logos/logo-rer-d.svg);
+    background-image: url(../../../images/screen/common/logo-rer-d.svg);
 }
 
 .train-logo.train-logo-rer-e {
-    background-image: url(../../img/screen/logos/logo-rer-e.svg);
+    background-image: url(../../../images/screen/common/logo-rer-e.svg);
 }
 
 .train-logo.train-logo-t-h {
-    background-image: url(../../img/screen/logos/logo-t-h.svg);
+    background-image: url(../../../images/screen/common/logo-t-h.svg);
 }
 
 .train-logo.train-logo-t-j {
-    background-image: url(../../img/screen/logos/logo-t-j.svg);
+    background-image: url(../../../images/screen/common/logo-t-j.svg);
 }
 
 .train-logo.train-logo-t-k {
-    background-image: url(../../img/screen/logos/logo-t-k.svg);
+    background-image: url(../../../images/screen/common/logo-t-k.svg);
 }
 
 .train-logo.train-logo-t-l {
-    background-image: url(../../img/screen/logos/logo-t-l.svg);
+    background-image: url(../../../images/screen/common/logo-t-l.svg);
 }
 
 .train-logo.train-logo-t-n {
-    background-image: url(../../img/screen/logos/logo-t-n.svg);
+    background-image: url(../../../images/screen/common/logo-t-n.svg);
 }
 
 .train-logo.train-logo-t-p {
-    background-image: url(../../img/screen/logos/logo-t-p.svg);
+    background-image: url(../../../images/screen/common/logo-t-p.svg);
 }
 
 .train-logo.train-logo-t-r {
-    background-image: url(../../img/screen/logos/logo-t-r.svg);
+    background-image: url(../../../images/screen/common/logo-t-r.svg);
 }
 
 .train-logo.train-logo-t-u {
-    background-image: url(../../img/screen/logos/logo-t-u.svg);
+    background-image: url(../../../images/screen/common/logo-t-u.svg);
 }
 
 
@@ -1130,7 +1130,7 @@ a {
 
 .train-track.train-track-car {
     border: none;
-    background: url(../../img/screen/logos/track-car.svg) no-repeat center;
+    background: url(../../../images/screen/common/track-car.svg) no-repeat center;
     background-size: cover;
 }
 
