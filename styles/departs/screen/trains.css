@@ -148,6 +148,15 @@ a {
     font-style: normal !important;
 }
 
+.row-group-bar.row-group-bar-purple {
+    background: #50077D !important;
+}
+
+.row-group-bar.row-group-bar-purple .text-scroll-x {
+    color: #ffffff;
+    font-style: normal !important;
+}
+
 .row-group-bar .col-first {
     width: auto !important;
     vertical-align: middle !important;

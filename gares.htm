@@ -89,11 +89,39 @@
                 <input type=text class="form-control" placeholder="Nom de la gare" id="gare_name" />
                 <span class="form-control-state"></span>
             </div><br />
+            <label for="gare_type">Type de gare</label>
+            <div class="select-improved" data-component="select-exclusive">
+              <div class="select-control">
+                <div class="input-group" data-role="select-toggle">
+                  <p class="form-control is-placeholder  d-flex align-items-center" data-role="placeholder" data-selected-prefix="Sélection actuelle">Sélectionnez un type de train</p>
+                  <select class="sr-only" id="gare_type" data-role="input" tabindex="-1" aria-hidden="true">
+                    <option selected data-role="default-hidden-option" disabled hidden>Sélectionnez un type de gare</option>
+                    <option data-id="1" >neutral</option>
+                    <option data-id="2" >RER</option>
+
+                  </select>
+                  <div class="input-group-append input-group-last">
+                    <button class="btn btn-primary btn-only-icon " data-role="btn" type="button" aria-expanded="false" aria-controls="selecttoggle">
+                      <i class="icons-arrow-down icons-size-x75" aria-hidden="true"></i>
+                      <span class="sr-only">Sélectionner</span>
+                    </button>
+                  </div>
+                </div>
+                <div class="select-menu" id="-selecttoggle">
+                  <div class="d-flex flex-column">
+                    <div class="flex-fluid overflow-y" role="list" data-role="menu">
+                      <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="1">Gare normale</button></span>
+                      <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="2">Gare RER</button></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div><br />
             <label for="gare_infos">Texte d'informations</label>
             <div class="form-control-container">
               <textarea class="form-control stretchy" id="gare_infos" placeholder="Entrez les informations pour cette gare" ZgotmplZ></textarea>
               <span class="form-control-state"></span>
-            </div>
+            </div><br />
             <button class="btn btn-secondary" data-toggle="modal" data-target="#new_gare">Annuler</button>&nbsp;<button class="btn btn-primary" type=submit onclick="createGare(document.getElementById('gare_name').value);" data-toggle="modal" data-target="#new_gare">Créer</button>
         </div>
     </div>
@@ -113,11 +141,13 @@
                 <input type=text class="form-control" placeholder="Nom de la gare" id="modif_gare_name" />
                 <span class="form-control-state"></span>
             </div><br />
+            <label for="modif_gare_type">Type de gare</label>
+            <p id="modif_gare_type">Impossible de changer de type de gare. Recréez-en une nouvelle à la place</p>
             <label for="modif_gare_infos">Texte d'informations</label>
             <div class="form-control-container">
               <textarea class="form-control stretchy" id="modif_gare_infos" placeholder="Entrez les informations pour cette gare" ZgotmplZ></textarea>
               <span class="form-control-state"></span>
-            </div>
+            </div><br />
 
             <button class="btn btn-secondary" data-toggle="modal" data-target="#modif_gare">Annuler</button>&nbsp;<button class="btn btn-primary" data-toggle="modal" data-target="#modif_gare" id="modify_gare_btn">Modifier</button>
         </div>

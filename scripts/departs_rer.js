@@ -50,7 +50,8 @@ function loadTrains(user_id, id){
             const train_gares = childsnapshot.val().gares;
             const train_retard_type = childsnapshot.val().retardtype;
             const train_retard_time = childsnapshot.val().retardtime;
-            const train_voie = childsnapshot.val().voie;
+            const train_mission = childsnapshot.val().mission;
+            const train_length = childsnapshot.val().length;
             
             var gares_split = train_gares.substr(0, train_gares.length - 1).split("|");
             var retard, textfeature;
@@ -76,15 +77,15 @@ function loadTrains(user_id, id){
                 gares.appendChild(span);
             });
             
-            if (train_type === 'RER-A') {
+            if (train_type === 'RER A') {
                 logo.setAttribute('class', 'train-logo train-logo-rer-a');
-            } else if (train_type === 'RER-B') {
+            } else if (train_type === 'RER B') {
                 logo.setAttribute('class', 'train-logo train-logo-rer-b');
-            } else if (train_type === 'RER-C') {
+            } else if (train_type === 'RER C') {
                 logo.setAttribute('class', 'train-logo train-logo-rer-c');
-            } else if (train_type === 'RER-D') {
+            } else if (train_type === 'RER D') {
                 logo.setAttribute('class', 'train-logo train-logo-rer-d');
-            } else if (train_type === 'RER-E') {
+            } else if (train_type === 'RER E') {
                 logo.setAttribute('class', 'train-logo train-logo-rer-e');
             } else {            
                 logo.setAttribute('class', 'train-logo train-logo-sncf');
@@ -96,7 +97,7 @@ function loadTrains(user_id, id){
             animationblink.setAttribute('class', 'animation-blink');
             animationblink1.setAttribute('class', 'animation-blink-1');
             type.setAttribute('class', 'text-type');
-            type.appendChild(document.createTextNode(train_type));
+            type.appendChild(document.createTextNode(train_mission));
             number.setAttribute('class', 'text-number');
             number.appendChild(document.createTextNode(train_number));
             animationblink2.setAttribute('class', 'animation-blink-2 text-features-'+textfeature);
@@ -119,7 +120,11 @@ function loadTrains(user_id, id){
             secondthirdcol_firstrow.appendChild(dest);
             secondthirdcol_firstrow.setAttribute('class', 'col-second-third');
             
-            track.setAttribute('class', 'rer train-lng train-long');
+            if (train_length === 'trainlong') {
+                track.setAttribute('class', 'rer train-lng train-long');
+            } else {
+                track.setAttribute('class', 'rer train-lng train-court');
+            }
             
             thirdcol_firstrow.appendChild(track);
             thirdcol_firstrow.setAttribute('class', 'col-third');
