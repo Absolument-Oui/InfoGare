@@ -1,3 +1,15 @@
+/*
+    COPYRIGHT ABSOLUMENT OUI (ORIGINAL PAR SOCIAL GARE)
+    Ce fichier est protégé par la propriété
+    intellectuelle en France et dans d'autres pays
+    
+    Toute reproduction (même partielle), utilisation
+    ou modification sans l'accord de son créateur
+    constitue un délit. 
+*/
+
+
+
 /* -- compass -- */
 
 
@@ -1006,6 +1018,25 @@ a {
     background-image: url(../../../images/screen/common/logo-t-u.svg);
 }
 
+
+/* -- rer --*/
+
+.rer.train-lng {
+    height: 100%;
+    background: no-repeat center;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    -webkit-background-size: contain;
+    background-size: contain;
+}
+
+.rer.train-lng.train-long {
+    background-image: url(../../../images/screen/rer/train_long.png);
+}
+
+.rer.train-lng.train-court {
+    background-image: url(../../../images/screen/rer/train_court.png);
+}
 
 /* -- type - number -- */
 

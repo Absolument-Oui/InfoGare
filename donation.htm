@@ -11,15 +11,15 @@
     <meta name="description" content="Site de création et d'affichage d'infogares" />
     <meta name="keywords" content="InfoGares, info gare, social gare, SocialGare" />
     <meta name="author" content="Absolument Oui" />
-    <title>InfoGares - Accueil</title>
+    <title>InfoGares - Donner</title>
     <script data-ad-client="ca-pub-3014614649994013" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 </head>
-<body onload="checkLogin(); initLogo();" class="light">
+<body onload="checkLogin(); checkClicked();">
 <div>
     <nav role="navigation" class="mastnav">
   <ul class="mastnav-top">
     <li>
-        <a href="#" class="mastnav-item active">
+        <a href="index.htm" class="mastnav-item">
             <i class="icons-large-building icons-size-1x5" aria-hidden="true"></i>
             <span class="font-weight-medium">Accueil</span>
         </a>
@@ -65,14 +65,13 @@
 
 <div style="padding-bottom: 50px; padding-left: 150px; padding-right: 50px; padding-top: 50px;">
     <center>
-        <img src="images/icon.png" id="logo"><br />
-        <h1>InfoGares</h1>
-        <p>InfoGares est un site de création et d'affichage d'infogares personnalisées. Il existe également sous forme de logiciel pour PC.</p>
+        <h1>Donner pour le projet.</h1>
+        <h2>Notre site internet n'est pas encore éligible pour recevoir des publicités. Néanmoins, vous pouvez donner en cliquant sur le lien ci-dessous, qui vous permet de nous donner en regardant une publicité. Nous vous conseillons de laisser au moins 1 jour entre chaque clic.</h2>
+        <a href="https://www.clictune.com/aShs">Voir une publicité</a>
+        <br /><br /><br /><br />
+        <h1 id="clicks"></h1>
+        <h1 id="money"></h1>
     </center>
-    <div class="footerbar">
-        <center><span>Logo par <a href="https://github.com/guerinlupus" target="_blank">guerinlupus</a> | Design par <a href="https://designmetier-bootstrap.sncf.fr/" target="_blank">SNCF</a> | Dev par <a href="https://github.com/Absolument-Oui" target="_blank">Absolument Oui</a></span></center>
-        <center><a href=apropos.htm>&Agrave; propos</a> | <a href="donation.htm">Donner</a></center>
-    </div>
 </div>
 
     <!-- SCRIPTS -->
@@ -82,5 +81,6 @@
     <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-auth.js"></script>
     <script src="scripts/initialize.js"></script>
     <script src="scripts/login.js"></script>
+    <script src="scripts/donation.js"></script>
 </body>
 </html>

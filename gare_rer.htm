@@ -71,7 +71,7 @@
 
     <div id=actions>
         <div class="btn btn-primary" data-toggle="modal" data-target="#new_train">Nouveau train</div>
-        <div id="showdeparts" class="btn btn-success" onclick="window.open('departs.htm'+document.location.search, '', 'height=500,width=750');">Afficher les départs</div>
+        <div id="showdeparts" class="btn btn-success" onclick="window.open('departs_rer.htm'+document.location.search, '', 'height=500,width=750');">Afficher les départs</div>
     </div>
     <div id="trains_div" style="margin-top: 25px;">
         <ul class="list-group" id="trains" hidden=true>
@@ -98,35 +98,10 @@
             <input type=text class="form-control" placeholder="Entrez la gare de destination du train" id="train_dest" />
             <span class="form-control-state"></span>
         </div><br />
-        <label for="train_type">Type de train</label>
-        <div class="select-improved" data-component="select-exclusive">
-          <div class="select-control">
-            <div class="input-group" data-role="select-toggle">
-              <p class="form-control is-placeholder  d-flex align-items-center" data-role="placeholder" data-selected-prefix="Sélection actuelle">Sélectionnez un type de train</p>
-              <select class="sr-only" id="train_type" data-role="input" tabindex="-1" aria-hidden="true">
-                <option selected data-role="default-hidden-option" disabled hidden>Sélectionnez un type de train</option>
-                <option data-id="1" >TER</option>
-                <option data-id="2" >TGV</option>
-                <option data-id="3" >OuiGo</option>
-
-              </select>
-              <div class="input-group-append input-group-last">
-                <button class="btn btn-primary btn-only-icon " data-role="btn" type="button" aria-expanded="false" aria-controls="selecttoggle">
-                  <i class="icons-arrow-down icons-size-x75" aria-hidden="true"></i>
-                  <span class="sr-only">Sélectionner</span>
-                </button>
-              </div>
-            </div>
-            <div class="select-menu" id="-selecttoggle">
-              <div class="d-flex flex-column">
-                <div class="flex-fluid overflow-y" role="list" data-role="menu">
-                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="1">TER</button></span>
-                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="2">TGV</button></span>
-                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="3">OuiGo</button></span>
-                </div>
-              </div>
-            </div>
-          </div>
+        <label for="train_mission">Mission du train</label>
+        <div class="form-control-container">
+            <input type=text class="form-control" placeholder="Entre le code de mission du train" id="train_mission" />
+            <span class="form-control-state"></span>
         </div><br />
         <label for="train_hour">Heure de départ</label>
         <div data-component="picker" data-mode="time" data-increment-hours-on-minutes-max>
@@ -203,35 +178,10 @@
             <input type=text class="form-control" placeholder="Entrez la gare de destination du train" id="modif_train_dest" />
             <span class="form-control-state"></span>
         </div><br />
-        <label for="modif_train_type">Type de train</label>
-        <div class="select-improved" data-component="select-exclusive">
-          <div class="select-control">
-            <div class="input-group" data-role="select-toggle">
-              <p class="form-control is-placeholder  d-flex align-items-center" data-role="placeholder" data-selected-prefix="Sélection actuelle">Sélectionnez un type de train</p>
-              <select class="sr-only" id="modif_train_type" data-role="input" tabindex="-1" aria-hidden="true">
-                <option selected data-role="default-hidden-option" disabled hidden>Sélectionnez un type de train</option>
-                <option data-id="1" >TER</option>
-                <option data-id="2" >TGV</option>
-                <option data-id="3" >OuiGo</option>
-
-              </select>
-              <div class="input-group-append input-group-last">
-                <button class="btn btn-primary btn-only-icon " data-role="btn" type="button" aria-expanded="false" aria-controls="selecttoggle2">
-                  <i class="icons-arrow-down icons-size-x75" aria-hidden="true"></i>
-                  <span class="sr-only">Sélectionner</span>
-                </button>
-              </div>
-            </div>
-            <div class="select-menu" id="-selecttoggle2">
-              <div class="d-flex flex-column">
-                <div class="flex-fluid overflow-y" role="list" data-role="menu">
-                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="1">TER</button></span>
-                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="2">TGV</button></span>
-                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="3">OuiGo</button></span>
-                </div>
-              </div>
-            </div>
-          </div>
+        <label for="modif_train_mission">Mission du train</label>
+        <div class="form-control-container">
+            <input type=text class="form-control" placeholder="Entrez le code de mission du train" id="modif_train_mission" />
+            <span class="form-control-state"></span>
         </div><br />
         <label for="modif_train_hour">Heure de départ</label>
         <div data-component="picker" data-mode="time" data-increment-hours-on-minutes-max>
