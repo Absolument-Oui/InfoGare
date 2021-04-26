@@ -157,6 +157,15 @@ a {
     font-style: normal !important;
 }
 
+.row-group-bar.row-group-bar-black {
+    background: #000000;
+}
+
+.row-gtoup-bar.row-group-bar-black .text-scroll-x {
+    color: #ffffff;
+    font-style: normal !important;
+}
+
 .row-group-bar .col-first {
     width: auto !important;
     vertical-align: middle !important;

@@ -163,6 +163,32 @@ a {
     vertical-align: bottom !important;
 }
 
+/* -- rer --*/
+
+.row-rer .col-first {
+    position: relative;
+    width: 100%;
+    height: 30vh;
+    padding: 2.5vh;
+    vertical-align: top;
+    background: #fff;
+}
+
+.row-rer .col-second {
+    position: relative;
+    width: 100%;
+    height: 60vh;
+    padding: 2.5vh;
+    vertical-align: top;
+    background: #004394;
+}
+
+.rer.text-station {
+    font-size: 8.7em;
+    font-weight: 800;
+    display: inline;
+    color: #000000;
+}
 
 /* -- selection -- */
 
@@ -794,39 +820,103 @@ a {
     background-size: contain;
 }
 
+.rer.train-logo {
+    width: 20vh;
+    height: 10vh;
+    margin-bottom: 2vh;
+    background: no-repeat center;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    -webkit-background-size: contain;
+    background-size: conatin;
+}
+
 .train-logo.train-logo-sncf {
-    background-image: url(../../../images/screen/quai/logo-sncf-color.svg);
-}
-
-.train-logo.train-logo-thalys {
-    background-image: url(../../img/screen/logos/logo-thalys-color.svg);
-}
-
-.train-logo.train-logo-ouigo {
-    width: 6vh;
-    height: 6vh;
-    background-image: url(../../img/screen/logos/logo-ouigo-color.svg);
-}
-
-.train-logo.train-logo-eurostar {
-    width: 14vh;
-    background-image: url(../../img/screen/logos/logo-eurostar-color.svg);
+    background-image: url(../../../images/screen/rer/logo-sncf-color.svg);
 }
 
 .train-logo.train-logo-inoui {
-    background-image: url(../../img/screen/logos/logo-inoui-color.svg);
+    background-image: url(../../../images/screen/common/logo-inoui.svg);
 }
 
 .train-logo.train-logo-ter {
-    background-image: url(../../img/screen/logos/logo-ter-color.svg);
+    background-image: url(../../../images/screen/common/logo-ter.svg);
 }
 
 .train-logo.train-logo-ice {
-    background-image: url(../../img/screen/logos/logo-ice-color.svg);
+    background-image: url(../../../images/screen/common/logo-ice.svg);
 }
 
 .train-logo.train-logo-lyria {
-    background-image: url(../../img/screen/logos/logo-lyria-color.svg);
+    background-image: url(../../../images/screen/common/logo-lyria.svg);
+}
+
+.train-logo.train-logo-ouigo {
+    background-image: url(../../../images/screen/common/logo-ouigo.svg);
+}
+
+.train-logo.train-logo-ler {
+    background-image: url(../../images/screen/common/logo-ler.svg);
+}
+
+.train-logo.train-logo-eurostar {
+    background-image: url(../../images/screen/common/logo-eurostar.svg);
+}
+
+.train-logo.train-logo-thalys {
+    background-image: url(../../../images/screen/common/logo-thalys.svg);
+}
+
+.train-logo.train-logo-rer-a {
+    background-image: url(../../../images/screen/rer/logo-rer-a-color.svg);
+}
+
+.train-logo.train-logo-rer-b {
+    background-image: url(../../../images/screen/rer/logo-rer-b-color.svg);
+}
+
+.train-logo.train-logo-rer-c {
+    background-image: url(../../../images/screen/rer/logo-rer-c-color.svg);
+}
+
+.train-logo.train-logo-rer-d {
+    background-image: url(../../../images/screen/rer/logo-rer-d-color.svg);
+}
+
+.train-logo.train-logo-rer-e {
+    background-image: url(../../../images/screen/rer/logo-rer-e-color.svg);
+}
+
+.train-logo.train-logo-t-h {
+    background-image: url(../../../images/screen/common/logo-t-h.svg);
+}
+
+.train-logo.train-logo-t-j {
+    background-image: url(../../../images/screen/common/logo-t-j.svg);
+}
+
+.train-logo.train-logo-t-k {
+    background-image: url(../../../images/screen/common/logo-t-k.svg);
+}
+
+.train-logo.train-logo-t-l {
+    background-image: url(../../../images/screen/common/logo-t-l.svg);
+}
+
+.train-logo.train-logo-t-n {
+    background-image: url(../../../images/screen/common/logo-t-n.svg);
+}
+
+.train-logo.train-logo-t-p {
+    background-image: url(../../../images/screen/common/logo-t-p.svg);
+}
+
+.train-logo.train-logo-t-r {
+    background-image: url(../../../images/screen/common/logo-t-r.svg);
+}
+
+.train-logo.train-logo-t-u {
+    background-image: url(../../../images/screen/common/logo-t-u.svg);
 }
 
 
