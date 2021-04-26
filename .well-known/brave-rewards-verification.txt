@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: infogares.ga
+Token: ba40a13766a569757caa70aad8580d728d5e446eccddd9708f0896f67c010b8f
