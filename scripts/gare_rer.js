@@ -9,7 +9,7 @@ function loadParams() {
     database.child("users").child(uid).get().then((snapshot) => {
         openmethod = snapshot.val().openmethod;
         if (!openmethod) {
-            document.getElementById('showdeparts').setAttribute('onclick', 'window.open("departs.htm'+window.location.search+'");');
+            document.getElementById('showdeparts').setAttribute('onclick', 'window.open("departs_rer.htm'+window.location.search+'");');
         }
     });
 }

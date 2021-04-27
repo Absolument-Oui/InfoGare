@@ -72,6 +72,7 @@
     <div id=actions>
         <div class="btn btn-primary" data-toggle="modal" data-target="#new_train">Nouveau train</div>
         <div id="showdeparts" class="btn btn-success" onclick="window.open('departs.htm'+document.location.search, '', 'height=500,width=750');">Afficher les départs</div>
+        <div id="showarrives" class="btn btn-success" onclick="window.open('arrives.htm'+document.location.search, '', 'height=500,width=750');">Afficher les arrivés</div>
     </div>
     <div id="trains_div" style="margin-top: 25px;">
         <ul class="list-group" id="trains" hidden=true>
@@ -93,6 +94,11 @@
             <input type=number class="form-control" placeholder="Entrez le numéro du train" id="train_number" />
             <span class="form-control-state"></span>
         </div><br />
+        <label for="train_prov">Provenance</label>
+        <div class="form-control-container">
+            <input type=text class="form-control" placeholder="Entrez la gare de provenance du train" id="train_prov" />
+            <span class="form-control-state"></span>
+        </div>
         <label for="train_dest">Destination</label>
         <div class="form-control-container">
             <input type=text class="form-control" placeholder="Entrez la gare de destination du train" id="train_dest" />
@@ -128,11 +134,26 @@
             </div>
           </div>
         </div><br />
-        <label for="train_hour">Heure de départ</label>
+        <label for="train_hour_arrive">Heure d'arrivée</label>
+                <div data-component="picker" data-mode="time" data-increment-hours-on-minutes-max>
+          <div class="input-group" data-toggle>
+            <div class="form-control-container">
+              <input id="train_hour_arrive" tabindex="-1" type="text" class="form-control" placeholder="Sélectionner une heure" data-input>
+              <span class="form-control-state"></span>
+            </div>
+            <div class="input-group-append">
+              <button type="button" class="btn btn-primary btn-only-icon" data-role="btn" aria-expanded="false">
+                <span class="sr-only">Saisir l’heure</span>
+                <i class="icons-calendar-time" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+        </div><br /><br />
+        <label for="train_hour_depart">Heure de départ</label>
         <div data-component="picker" data-mode="time" data-increment-hours-on-minutes-max>
           <div class="input-group" data-toggle>
             <div class="form-control-container">
-              <input id="train_hour" tabindex="-1" type="text" class="form-control" placeholder="Sélectionner une heure" data-input>
+              <input id="train_hour_depart" tabindex="-1" type="text" class="form-control" placeholder="Sélectionner une heure" data-input>
               <span class="form-control-state"></span>
             </div>
             <div class="input-group-append">
@@ -172,7 +193,14 @@
             <input type=text id="train_voie" class="form-control" placeholder="Entrez le numéro de la voie" />
             <span class="form-control-state"></span>
         </div><br />
-        <label class="font-weight-medium mb-2" for="addreceivers1">Gares desservies</label>
+        <label class="font-weight-medium mb-2" for="addreceivers2">Gares desservies (depuis la provenance)</label>
+        <div class="form-control-container form-chips-container" data-component="chips">
+          <input data-role="typewriter" type="text" class="chips-input stretchy" id="addreceivers2" />
+          <label class="font-weight-medium mb-2 sr-only" for="from">Gares</label>
+          <select class="sr-only" data-role="input" tabindex="-1" aria-hidden="true" id="from" multiple>
+          </select>
+        </div><br />
+        <label class="font-weight-medium mb-2" for="addreceivers1">Gares desservies (vers la destination)</label>
         <div class="form-control-container form-chips-container" data-component="chips">
           <input data-role="typewriter" type="text" class="chips-input stretchy" id="addreceivers1" />
           <label class="font-weight-medium mb-2 sr-only" for="gares">Gares</label>

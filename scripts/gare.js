@@ -265,8 +265,10 @@ function loadGare(userid){
                 if (snapshot.exists()) {
                     snapshot.forEach((childsnapshot) => {
                         var dest = childsnapshot.val().destination;
+                        var prov = childsnapshot.val().provenance;
                         var id = childsnapshot.val().id;
-                        var hour = childsnapshot.val().hour;
+                        var hourdepart = childsnapshot.val().hourdepart;
+                        var hourarrive = childsnapshot.val().hourarrive;
                         var traintype = childsnapshot.val().type;
                         var listgroupitem = document.createElement('li');
                         var managmentitemcontent = document.createElement('div');
@@ -281,19 +283,24 @@ function loadGare(userid){
                         var metalist = document.createElement('ul');
                         var traintypeli = document.createElement('li');
                         var hourli = document.createElement('li');
+                        var provli = document.createElement('li');
                         var btndel = document.createElement('button');
                         var btndelicon = document.createElement('i');
                         var spandel = document.createElement('span');
                         
                         title.appendChild(document.createTextNode(dest));
+                        provli.appendChild(document.createTextNode('Provenance : ' + prov));
                         traintypeli.appendChild(document.createTextNode(traintype));
-                        hourli.appendChild(document.createTextNode(hour));
+                        hourli.appendChild(document.createTextNode(hourarrive + ' > ' + hourdepart));
                         
-                        hourli.setAttribute('class', 'meta-list-item');
+                        provli.setAttribute('class', 'meta-list-item');
+                        
+                        hourli.setAttribute('class', 'meta-list-item separator');
                                                 
                         traintypeli.setAttribute('class', 'meta-list-item separator');
                         
                         metalist.setAttribute('class', 'meta-list font-weight-medium');
+                        metalist.appendChild(provli);
                         metalist.appendChild(hourli);
                         metalist.appendChild(traintypeli);
                         
@@ -389,22 +396,31 @@ function createTrain() {
         rettype = 'suppr';
     }
     var gares = "";
+    var from = "";
     
     var x = document.getElementById('gares');
-    var i;
+    var y = document.getElementById('from');
+    var i, j;
     
     for (i = 0; i < x.length; i++) {
         gares = gares + x.options[i].value + "|";
     }
     
+    for (j = 0; j < y.length; j++) {
+        from = from + y.options[i].value + "|";
+    }
+    
     database.child("users").child(uid).child("gares").child(gare_id).child("trains").child(trainid).set({
         id: trainid,
         destination: document.getElementById('train_dest').value,
+        provenance: document.getElementById('train_prov').value,
         number: document.getElementById('train_number').value,
         type: e.options[e.selectedIndex].text,
-        hour: document.getElementById('train_hour').value.replace(':', 'h'),
+        hourdepart: document.getElementById('train_hour_depart').value.replace(':', 'h'),
+        hourarrive: document.getElementById('train_hour_arrive').value.replace(':', 'h'),
         retardtype: rettype,
         retardtime: document.getElementById('retard_time').value,
+        from: from,
         gares: gares,
         voie: document.getElementById('train_voie').value
     }).then((snapshot) => {

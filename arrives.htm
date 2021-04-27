@@ -2,7 +2,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Départs</title>
+    <title>Arrivés</title>
     <link rel=Stylesheet href="styles/departs/screen/trains.css" type="text/css" />
     <link rel=Stylesheet href="styles/fonts/Achemine/style.css" type="text/css" />
     <link rel=Stylesheet href="styles/fonts/Avenir/style.css" type="text/css" />
@@ -11,9 +11,9 @@
 
 </head>
 <body>
-    <div class="rows rows-departures" id="rows" onclick="fullScreen();">
+    <div class="rows rows-arrivals" id="rows" onclick="fullScreen();">
         <div class="row-background"></div>
-        <div class="row-group row-group-bar row-group-bar-purple">
+        <div class="row-group row-group-bar">
             <div class="row">
                 <div class="col-first">
                     <div class="bar-informations text-scroll-x scroll-x animation-scroll-x" style="animation-duration: 12.30s; padding-left: 100%;" id="infos"></div></div>
@@ -41,12 +41,12 @@
     <script src="scripts/bootstrap-sncf-metier/bootstrap-sncf.min.js"></script>
     <script src="scripts/initialize.js"></script>
     <script src="scripts/screen.js"></script>
-    <script src="scripts/departs_rer.js"></script>
+    <script src="scripts/arrives.js"></script>
     <script>
         firebase.auth().onAuthStateChanged(function(user) {
           if (user) {
             var params = new URLSearchParams(document.location.search);
-            loadTrains(user.uid, params.get('id'));
+            loadArrives(user.uid, params.get('id'));
           } else {
 
           }

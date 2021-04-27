@@ -9,7 +9,7 @@ function loadTrain(uid) {
         if (snapshot.val().retardtype === 'alheure') {
             var hour = document.createElement('div');
             var alheure = document.createElement('div');
-            hour.innerText = snapshot.val().hour.replace(':', 'h');
+            hour.innerText = snapshot.val().hourdepart.replace(':', 'h');
             hour.setAttribute('class', 'text-time-hours');
             alheure.innerText = 'à l\'heure';
             alheure.setAttribute('class', 'text-time-ontime');
@@ -24,7 +24,7 @@ function loadTrain(uid) {
             var retindet = document.createElement('div');
             animblink.setAttribute('class', 'col-second-merged animation-blink');
             animblink1.setAttribute('class', 'animation-blink-1');
-            hour.innerText = snapshot.val().hour.replace(':', 'h');
+            hour.innerText = snapshot.val().hourdepart.replace(':', 'h');
             hour.setAttribute('class', 'text-time-hours');
             ontime.setAttribute('class', 'text-time-ontime');
             animblink2.setAttribute('class', 'animation-blink-2');
@@ -45,7 +45,7 @@ function loadTrain(uid) {
             var retindet = document.createElement('div');
             animblink.setAttribute('class', 'col-second-merged animation-blink');
             animblink1.setAttribute('class', 'animation-blink-1');
-            hour.innerText = snapshot.val().hour.replace(':', 'h');
+            hour.innerText = snapshot.val().hourdepart.replace(':', 'h');
             hour.setAttribute('class', 'text-time-hours');
             ontime.setAttribute('class', 'text-time-ontime');
             animblink2.setAttribute('class', 'animation-blink-2');
@@ -66,7 +66,7 @@ function loadTrain(uid) {
             var retindet = document.createElement('div');
             animblink.setAttribute('class', 'col-second-merged animation-blink');
             animblink1.setAttribute('class', 'animation-blink-1');
-            hour.innerText = snapshot.val().hour.replace(':', 'h');
+            hour.innerText = snapshot.val().hourdepart.replace(':', 'h');
             hour.setAttribute('class', 'text-time-hours');
             ontime.setAttribute('class', 'text-time-ontime');
             animblink2.setAttribute('class', 'animation-blink-2');

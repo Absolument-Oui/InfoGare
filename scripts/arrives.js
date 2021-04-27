@@ -1,11 +1,11 @@
 ﻿const database = firebase.database().ref();
 
-function loadTrains(user_id, id){
+function loadArrives(user_id, id){
     var ref = database.child("users").child(user_id).child("gares").child(id).child("trains");
     ref.get().then((snapshot) => {
         var i = 0;
         snapshot.forEach((childsnapshot) => {
-        if (childsnapshot.val().hourdepart !== null) {
+        if (childsnapshot.val().hourarrive !== null) {
             // Root
             var firstrow = document.createElement('div');
             var secondrow = document.createElement('div');
@@ -44,11 +44,11 @@ function loadTrains(user_id, id){
             var gares = document.createElement('div');
             
             // Values
-            const train_destination = childsnapshot.val().destination;
-            const train_hour = childsnapshot.val().hourdepart;
+            const train_destination = childsnapshot.val().provenance;
+            const train_hour = childsnapshot.val().hourarrive;
             const train_number = childsnapshot.val().number;
             const train_type = childsnapshot.val().type;
-            const train_gares = childsnapshot.val().gares;
+            const train_gares = childsnapshot.val().from;
             const train_retard_type = childsnapshot.val().retardtype;
             const train_retard_time = childsnapshot.val().retardtime;
             const train_voie = childsnapshot.val().voie;
