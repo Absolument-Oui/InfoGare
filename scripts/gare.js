@@ -10,6 +10,7 @@ function loadParams() {
         openmethod = snapshot.val().openmethod;
         if (!openmethod) {
             document.getElementById('showdeparts').setAttribute('onclick', 'window.open("departs.htm'+window.location.search+'");');
+            document.getElementById('showarrives').setAttribute('onclick', 'window.open("arrives.htm'+window.location.search+'");');
         }
     });
 }
@@ -202,7 +203,8 @@ function modifTrain(tid) {
     database.child("users").child(uid).child("gares").child(gare_id).child("trains").child(tid).update({
         number: document.getElementById('modif_train_number').value,
         dest: document.getElementById('modif_train_dest').value,
-        hour: document.getElementById('modif_train_hour').value.replace(':', 'h'),
+        hourdepart: document.getElementById('modif_train_hour_depart').value.replace(':', 'h'),
+        hourarrive: document.getElementById('modif_train_hour_arrive').value.replace(':', 'h'),
         type: document.getElementById('modif_train_type').value,
         retardtime: document.getElementById('modif_train_retard_time').value,
         retardtype: retardtype,
@@ -407,7 +409,7 @@ function createTrain() {
     }
     
     for (j = 0; j < y.length; j++) {
-        from = from + y.options[i].value + "|";
+        from = from + y.options[j].value + "|";
     }
     
     database.child("users").child(uid).child("gares").child(gare_id).child("trains").child(trainid).set({

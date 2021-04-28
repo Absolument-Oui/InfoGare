@@ -36,7 +36,7 @@ function scrollX(){
 			});
 		}else{
 			$(this).css({
-				'padding-left' : 0
+				'padding-left' : '100%'
 			});
 		}
 	});

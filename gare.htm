@@ -135,7 +135,7 @@
           </div>
         </div><br />
         <label for="train_hour_arrive">Heure d'arrivée</label>
-                <div data-component="picker" data-mode="time" data-increment-hours-on-minutes-max>
+        <div data-component="picker" data-mode="time" data-increment-hours-on-minutes-max>
           <div class="input-group" data-toggle>
             <div class="form-control-container">
               <input id="train_hour_arrive" tabindex="-1" type="text" class="form-control" placeholder="Sélectionner une heure" data-input>
@@ -226,6 +226,11 @@
             <input type=number class="form-control" placeholder="Entrez le numéro du train" id="modif_train_number" />
             <span class="form-control-state"></span>
         </div><br />
+        <label for="modif_train_prov">Provenance</label>
+        <div class="form-control-container">
+            <input type=text class="form-control" placeholder="Entrez la gare de provenance du train" id="modif_train_prov" />
+            <span class="form-control-state"></span>
+        </div>
         <label for="modif_train_dest">Destination</label>
         <div class="form-control-container">
             <input type=text class="form-control" placeholder="Entrez la gare de destination du train" id="modif_train_dest" />
@@ -261,11 +266,26 @@
             </div>
           </div>
         </div><br />
-        <label for="modif_train_hour">Heure de départ</label>
+        <label for="modif_train_hour_arrive">Heure d'arrivée</label>
         <div data-component="picker" data-mode="time" data-increment-hours-on-minutes-max>
           <div class="input-group" data-toggle>
             <div class="form-control-container">
-              <input id="modif_train_hour" tabindex="-1" type="text" class="form-control" placeholder="Sélectionner une heure" data-input>
+              <input id="modif_train_hour_depart" tabindex="-1" type="text" class="form-control" placeholder="Sélectionner une heure" data-input>
+              <span class="form-control-state"></span>
+            </div>
+            <div class="input-group-append">
+              <button type="button" class="btn btn-primary btn-only-icon" data-role="btn" aria-expanded="false">
+                <span class="sr-only">Saisir l’heure</span>
+                <i class="icons-calendar-time" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+        </div><br /><br />
+        <label for="modif_train_hour_depart">Heure de départ</label>
+        <div data-component="picker" data-mode="time" data-increment-hours-on-minutes-max>
+          <div class="input-group" data-toggle>
+            <div class="form-control-container">
+              <input id="modif_train_hour_depart" tabindex="-1" type="text" class="form-control" placeholder="Sélectionner une heure" data-input>
               <span class="form-control-state"></span>
             </div>
             <div class="input-group-append">
@@ -305,7 +325,9 @@
             <input type=text id="modif_train_voie" class="form-control" placeholder="Entrez le numéro de la voie" />
             <span class="form-control-state"></span>
         </div><br />
-        <label class="font-weight-medium mb-2" for="addreceivers2">Gares desservies</label>
+        <label class="font-weight-medium mb-2" for="addreceivers4">Gares desservies (depuis la provenance)</label>
+        <p>Non pris en charge pour le moment !</p>
+        <label class="font-weight-medium mb-2" for="addreceivers3">Gares desservies (vers la destination)</label>
         <p>Non pris en charge pour le moment !</p>
         <!-- <div class="form-control-container form-chips-container" data-component="chips" id="chips" disabled>
           <input data-role="typewriter" type="text" class="chips-input stretchy" id="addreceivers2" />
