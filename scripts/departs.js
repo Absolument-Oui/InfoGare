@@ -80,7 +80,7 @@ function loadTrains(user_id, id){
             if (train_type === 'TER') {
                 logo.setAttribute('class', 'train-logo train-logo-ter');
             } else if (train_type === 'TGV') {
-                logo.setAttribute('class', 'train-logo train-logo-inoui');
+                logo.setAttribute('class', 'train-logo train-logo-tgv');
             } else if (train_type === 'OuiGo') {
                 logo.setAttribute('class', 'train-logo train-logo-ouigo');
             } else {            
@@ -168,7 +168,7 @@ function loadTrains(user_id, id){
         
         database.child("users").child(user_id).child("gares").child(id).get().then((snapshot) => {
             document.getElementById('infos').innerHTML = snapshot.val().infos.replace('\n', ' &nbsp;');
-            scrollX();
         });
+        scrollX();
     });
 }

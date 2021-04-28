@@ -44,7 +44,7 @@ function loadTrains(user_id, id){
             
             // Values
             const train_destination = childsnapshot.val().destination;
-            const train_hour = childsnapshot.val().hour;
+            const train_hour = childsnapshot.val().hourdepart;
             const train_number = childsnapshot.val().number;
             const train_type = childsnapshot.val().type;
             const train_gares = childsnapshot.val().gares;
