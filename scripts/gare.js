@@ -137,8 +137,10 @@ function prepModifTrain(tid) {
     database.child("users").child(uid).child("gares").child(gare_id).child("trains").child(tid).get().then((snapshot) => {
         document.getElementById('modif_train_number').value = snapshot.val().number;
         document.getElementById('modif_train_dest').value = snapshot.val().destination;
+        document.getElementById('modif_train_prov').value = snapshot.val().provenance;
         document.getElementById('modif_train_type').value = snapshot.val().type;
-        document.getElementById('modif_train_hour').value = snapshot.val().hour;
+        document.getElementById('modif_train_hour_depart').value = snapshot.val().hourdepart;
+        document.getElementById('modif_train_hour_arrive').value = snapshot.val().hourarrive;
         document.getElementById('modif_train_retard_time').value = snapshot.val().retardtime;
         if (snapshot.val().retardtype === 'alheure') {
             document.getElementById('modif_train_alheure').checked = true;
@@ -202,7 +204,8 @@ function modifTrain(tid) {
     
     database.child("users").child(uid).child("gares").child(gare_id).child("trains").child(tid).update({
         number: document.getElementById('modif_train_number').value,
-        dest: document.getElementById('modif_train_dest').value,
+        destination: document.getElementById('modif_train_dest').value,
+        provenance: document.getElementById('modif_train_prov').value,
         hourdepart: document.getElementById('modif_train_hour_depart').value.replace(':', 'h'),
         hourarrive: document.getElementById('modif_train_hour_arrive').value.replace(':', 'h'),
         type: document.getElementById('modif_train_type').value,
