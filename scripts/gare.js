@@ -213,7 +213,7 @@ function modifTrain(tid) {
         retardtype: retardtype,
         voie: document.getElementById('modif_train_voie').value
     }).then((snapshot) => {
-        document.getElementById('modified').hidden = false;
+        document.location.reload();
     });
 }
 
@@ -222,7 +222,7 @@ function modifyGare(gid) {
         name: document.getElementById('modif_gare_name').value,
         infos: document.getElementById('modif_gare_infos').value
     }).then((snapshot) => {
-        document.getElementById('gare_modified').hidden = false;
+        document.location.reload();
     });
 }
 
@@ -236,13 +236,13 @@ function getGare() {
 
 function delGare(gid) {
     database.child("users").child(uid).child("gares").child(gid).remove().then(() => {
-        document.getElementById('gare_del').hidden = false;
+        document.location.reload();
     });
 }
 
 function delTrain(tid) {
     database.child("users").child(uid).child("gares").child(gare_id).child("trains").child(tid).remove().then(() => {
-        document.getElementById('train_del').hidden = false;
+        document.location.reload();
     });
 }
 
@@ -255,7 +255,7 @@ function createGare(name) {
         infos: document.getElementById('gare_infos').value,
         type: gare_type
     }).then((snapshot) => {
-        document.getElementById('gare_added').hidden = false;
+        document.location.reload();
     });
 }
 
@@ -429,7 +429,7 @@ function createTrain() {
         gares: gares,
         voie: document.getElementById('train_voie').value
     }).then((snapshot) => {
-        document.getElementById('created').hidden = false;
+        document.location.reload();
     });
 }
 
