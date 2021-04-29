@@ -80,7 +80,7 @@ function loadArrives(user_id, id){
             if (train_type === 'TER') {
                 logo.setAttribute('class', 'train-logo train-logo-ter');
             } else if (train_type === 'TGV') {
-                logo.setAttribute('class', 'train-logo train-logo-inoui');
+                logo.setAttribute('class', 'train-logo train-logo-tgv');
             } else if (train_type === 'OuiGo') {
                 logo.setAttribute('class', 'train-logo train-logo-ouigo');
             } else {            

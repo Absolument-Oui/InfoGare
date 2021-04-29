@@ -6,6 +6,13 @@ function loadTrain(uid) {
         document.getElementById('train_number').innerText = snapshot.val().number;
         document.getElementById('train_type').innerText = snapshot.val().type;
         document.getElementById('train_dest').innerText = snapshot.val().destination;
+        
+        if (snapshot.val().type === 'TER') {
+            document.getElementById('logo').setAttribute('class', 'train-logo train-logo-ter');
+        }else if (snapshot.val().type === 'TGV') {
+            document.getElementById('logo').setAttribute('class', 'train-logo train-logo-tgv');
+        }
+        
         if (snapshot.val().retardtype === 'alheure') {
             var hour = document.createElement('div');
             var alheure = document.createElement('div');

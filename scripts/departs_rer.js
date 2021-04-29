@@ -2,7 +2,7 @@
 
 function loadTrains(user_id, id){
     var ref = database.child("users").child(user_id).child("gares").child(id).child("trains");
-    ref.get().then((snapshot) => {
+    ref.limitToFirst(7).get().then((snapshot) => {
         var i = 0;
         snapshot.forEach((childsnapshot) => {
             // Root
@@ -44,7 +44,6 @@ function loadTrains(user_id, id){
             
             // Values
             const train_destination = childsnapshot.val().destination;
-            const train_hour = childsnapshot.val().hourdepart;
             const train_number = childsnapshot.val().number;
             const train_type = childsnapshot.val().type;
             const train_gares = childsnapshot.val().gares;
@@ -52,6 +51,14 @@ function loadTrains(user_id, id){
             const train_retard_time = childsnapshot.val().retardtime;
             const train_mission = childsnapshot.val().mission;
             const train_length = childsnapshot.val().length;
+            
+            var train_hour;
+            
+            if (childsnapshot.val().hourdepart === undefined) {
+                train_hour = childsnapshot.val().hour
+            } else {
+                train_hour = childsnapshot.val().hourdepart;
+            }
             
             var gares_split = train_gares.substr(0, train_gares.length - 1).split("|");
             var retard, textfeature;

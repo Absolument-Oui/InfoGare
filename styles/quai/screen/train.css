@@ -832,7 +832,7 @@ a {
 }
 
 .train-logo.train-logo-sncf {
-    background-image: url(../../../images/screen/rer/logo-sncf-color.svg);
+    background-image: url(../../../images/screen/quai/logo-sncf-color.svg);
 }
 
 .train-logo.train-logo-inoui {
@@ -840,7 +840,11 @@ a {
 }
 
 .train-logo.train-logo-ter {
-    background-image: url(../../../images/screen/common/logo-ter.svg);
+    background-image: url(../../../images/screen/quai/logo-ter-color.svg);
+}
+
+.train-logo.train-logo-tgv {
+    background-image: url(../../../images/screen/quai/logo-tgv-color.svg);
 }
 
 .train-logo.train-logo-ice {
@@ -852,7 +856,7 @@ a {
 }
 
 .train-logo.train-logo-ouigo {
-    background-image: url(../../../images/screen/common/logo-ouigo.svg);
+    background-image: url(../../../images/screen/quai/logo-ouigo-color.svg);
 }
 
 .train-logo.train-logo-ler {

@@ -2,7 +2,7 @@
 
 function loadTrains(user_id, id){
     var ref = database.child("users").child(user_id).child("gares").child(id).child("trains");
-    ref.get().then((snapshot) => {
+    ref.limitToFirst(7).get().then((snapshot) => {
         var i = 0;
         snapshot.forEach((childsnapshot) => {
         if (childsnapshot.val().hourdepart !== null) {

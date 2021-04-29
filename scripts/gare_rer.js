@@ -19,7 +19,7 @@ function prepModifTrain(tid) {
         document.getElementById('modif_train_number').value = snapshot.val().number;
         document.getElementById('modif_train_dest').value = snapshot.val().destination;
         document.getElementById('modif_train_type').value = snapshot.val().type;
-        document.getElementById('modif_train_hour').value = snapshot.val().hour;
+        document.getElementById('modif_train_hour').value = snapshot.val().hourdepart;
         document.getElementById('modif_train_retard_time').value = snapshot.val().retardtime;
         document.getElementById('modif_train_mission').value = snapshot.val().mission;
         if (snapshot.val().retardtype === 'alheure') {
@@ -97,7 +97,7 @@ function modifTrain(tid) {
     database.child("users").child(uid).child("gares").child(gare_id).child("trains").child(tid).update({
         number: document.getElementById('modif_train_number').value,
         dest: document.getElementById('modif_train_dest').value,
-        hour: document.getElementById('modif_train_hour').value.replace(':', 'h'),
+        hourdepart: document.getElementById('modif_train_hour').value.replace(':', 'h'),
         type: document.getElementById('modif_train_type').value,
         retardtime: document.getElementById('modif_train_retard_time').value,
         mission: document.getElementById('modif_train_mission').value,
@@ -134,7 +134,7 @@ function loadGare(userid){
                     snapshot.forEach((childsnapshot) => {
                         var dest = childsnapshot.val().destination;
                         var id = childsnapshot.val().id;
-                        var hour = childsnapshot.val().hour;
+                        var hour = childsnapshot.val().hourdepart;
                         var traintype = childsnapshot.val().type;
                         var listgroupitem = document.createElement('li');
                         var managmentitemcontent = document.createElement('div');
@@ -278,7 +278,7 @@ function createTrain() {
         destination: document.getElementById('train_dest').value,
         number: document.getElementById('train_number').value,
         type: e.options[e.selectedIndex].text,
-        hour: document.getElementById('train_hour').value.replace(':', 'h'),
+        hourdepart: document.getElementById('train_hour').value.replace(':', 'h'),
         retardtype: rettype,
         retardtime: document.getElementById('retard_time').value,
         gares: gares,
