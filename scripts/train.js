@@ -11,6 +11,8 @@ function loadTrain(uid) {
             document.getElementById('logo').setAttribute('class', 'train-logo train-logo-ter');
         }else if (snapshot.val().type === 'TGV') {
             document.getElementById('logo').setAttribute('class', 'train-logo train-logo-tgv');
+        } else if (snapshot.val().type === 'OuiGo') {
+            document.getElementById('logo').setAttribute('class', 'train-logo train-logo-ouigo');
         }
         
         if (snapshot.val().retardtype === 'alheure') {

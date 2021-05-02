@@ -4,6 +4,7 @@
 <head>
     <title>InfoGares - Gares</title>
     <script src="scripts/apparence.js" type="text/javascript"></script>
+    <link rel="Stylesheet" href="styles/Global.css" type="text/css" />
     <link title="Light mode" href="scripts/bootstrap-sncf-metier/bootstrap-sncf.min.css" rel="stylesheet">
     <link title="Dark mode" href="scripts/bootstrap-sncf-metier/bootstrap-sncf.darkmode.min.css" rel="stylesheet alternate">
     <link rel="icon" href="images/favicon.png" size="16x16" type="image/png" />
@@ -53,7 +54,7 @@
   </div>
 </nav>
 
-<div style="margin-bottom: 50px; margin-left: 150px; margin-right: 50px; margin-top: 50px;">
+<div class="main-content">
 
     <p class="text-primary pl-4 pt-2 pb-2 font-weight-medium" id="gare_added" hidden=true>
       <i class="icons-checked mr-2" aria-hidden="true"></i> La gare à bien été créée ! <a onclick="window.location.reload();" style="cursor: pointer;">Recharger la page</a>
@@ -74,6 +75,11 @@
             
         </ul>
     </div>
+    <div class="footerbar">
+        <center><span>Logo par <a href="https://github.com/guerinlupus" target="_blank">guerinlupus</a> | Design par <a href="https://designmetier-bootstrap.sncf.fr/" target="_blank">SNCF</a> | Dev par <a href="https://github.com/Absolument-Oui" target="_blank">Absolument Oui</a></span></center>
+        <center><a href=apropos.htm>&Agrave; propos</a> | <a href= cgu.htm>CGU</a> | <a href=mentionslegales.htm>Mentions légales</a> | <a href="donation.htm">Nous soutenir</a></center>
+    </div>
+
 </div>
 
 <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dlg_title" aria-hidden="true" id="new_gare">

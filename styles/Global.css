@@ -17,3 +17,22 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+@media (max-width: 1023.98px) {
+    .main-content {
+        padding-left: 50px;
+        padding-right: 50px;
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .main-content {
+        padding-left: 150px;
+        padding-right: 50px;
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+}
+

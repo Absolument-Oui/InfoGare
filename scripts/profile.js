@@ -16,6 +16,14 @@ function loadInfos() {
             document.getElementById('username').innerText = user.displayName;
             document.getElementById('email').innerText = user.email;
             loadParams();
+            firebase.database().ref('users/'+uid+'/gares').get().then((snapshot) => {
+                var childs = 0;
+                document.getElementById('gares_nbr').innerText = snapshot.numChildren();
+                snapshot.forEach((child) => {
+                    childs += snapshot.child('trains').numChildren();
+                });
+                document.getElementById('trains_nbr').innerText = childs;
+            });
         }
     });
 }

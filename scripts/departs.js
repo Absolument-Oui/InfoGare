@@ -1,7 +1,9 @@
 ﻿const database = firebase.database().ref();
 
 function loadTrains(user_id, id){
-    var ref = database.child("users").child(user_id).child("gares").child(id).child("trains");
+    var group = document.createElement('div');
+    group.setAttribute('id', 'group');
+    var ref = firebase.database().ref("users/" + user_id + "/gares/" + id + "/trains");
     ref.limitToFirst(7).get().then((snapshot) => {
         var i = 0;
         snapshot.forEach((childsnapshot) => {
@@ -159,16 +161,44 @@ function loadTrains(user_id, id){
                 rowgroup.appendChild(secondrow);
             }
             
-            document.getElementById('rows').appendChild(rowgroup);
+            group.appendChild(rowgroup);
             
             i++;
         }
             
         });
         
+        document.getElementById('group').remove();
+        document.getElementById('rows').appendChild(group);
+        
         database.child("users").child(user_id).child("gares").child(id).get().then((snapshot) => {
             document.getElementById('infos').innerHTML = snapshot.val().infos.replace('\n', ' &nbsp;');
         });
         scrollX();
     });
+}
+
+function checkHiddenTrains(uid, gid) {
+    database.child('users').child(uid).child('gares').child(gid).child('trains').get().then((snapshot) => {
+        snapshot.forEach((child) => {
+            var now = new Date(Date.now());
+            var trainhour = new Date();
+            
+            trainhour.setHours(child.val().hourdepart.substr(0, 2), child.val().hourdepart.substr(3, 5), 0, 0);
+            
+            console.log(now);
+            console.log(trainhour);
+
+            if (now.toLocaleTimeString().replaceAll(':', '') > trainhour.toLocaleTimeString().replaceAll(':', '')) {
+                child.update({
+                    hidden: true
+                });
+            } else if (now.toLocaleTimeString().replaceAll(':', '') == trainhour.toLocaleTimeString().replaceAll(':', '') - 1) {
+                child.update({
+                    hidden: false
+                });
+            }
+        });
+    });
+    loadTrains(uid, gid);
 }

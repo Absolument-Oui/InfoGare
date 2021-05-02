@@ -3,6 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <script src="scripts/apparence.js" type="text/javascript"></script>
+    <link rel="Stylesheet" href="styles/Global.css" type="text/css" />
     <link title="Light mode" href="scripts/bootstrap-sncf-metier/bootstrap-sncf.min.css" rel="stylesheet">
     <link title="Dark mode" href="scripts/bootstrap-sncf-metier/bootstrap-sncf.darkmode.min.css" rel="stylesheet alternate">
     <link rel="icon" href="images/favicon.png" size="16x16" type="image/png" />
@@ -54,7 +55,7 @@
     </nav>
 </div>
 
-<div style="margin-bottom: 50px; margin-left: 150px; margin-right: 50px; margin-top: 50px;">
+<div class="main-content">
 
     <p class="text-primary pl-4 pt-2 pb-2 font-weight-medium" hidden=true id="created">
       <i class="icons-checked mr-2" aria-hidden="true"></i> Le train à bien été créé ! <a style="cursor: pointer;" onclick="window.location.reload();">Recharger la page</a>
@@ -79,6 +80,12 @@
             
         </ul>
     </div>
+    <div class="footerbar">
+        <center><span>Logo par <a href="https://github.com/guerinlupus" target="_blank">guerinlupus</a> | Design par <a href="https://designmetier-bootstrap.sncf.fr/" target="_blank">SNCF</a> | Dev par <a href="https://github.com/Absolument-Oui" target="_blank">Absolument Oui</a></span></center>
+        <center><a href=apropos.htm>&Agrave; propos</a> | <a href= cgu.htm>CGU</a> | <a href=mentionslegales.htm>Mentions légales</a> | <a href="donation.htm">Nous soutenir</a></center>
+    </div>
+
+    
 </div>
 
 <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="new_train_title" aria-hidden="true" id="new_train">
@@ -111,10 +118,12 @@
               <p class="form-control is-placeholder  d-flex align-items-center" data-role="placeholder" data-selected-prefix="Sélection actuelle">Sélectionnez un type de train</p>
               <select class="sr-only" id="train_type" data-role="input" tabindex="-1" aria-hidden="true">
                 <option selected data-role="default-hidden-option" disabled hidden>Sélectionnez un type de train</option>
-                <option data-id="1" >TER</option>
+                <optgroup label="Trains régionaux">
+                    <option data-id="1" >TER</option>
+                </optgroup>
                 <option data-id="2" >TGV</option>
                 <option data-id="3" >OuiGo</option>
-
+                <option data-id="4" >Thalys</option>
               </select>
               <div class="input-group-append input-group-last">
                 <button class="btn btn-primary btn-only-icon " data-role="btn" type="button" aria-expanded="false" aria-controls="selecttoggle">
@@ -325,16 +334,16 @@
             <input type=text id="modif_train_voie" class="form-control" placeholder="Entrez le numéro de la voie" />
             <span class="form-control-state"></span>
         </div><br />
-        <label class="font-weight-medium mb-2" for="addreceivers4">Gares desservies (depuis la provenance)</label>
-        <p>Non pris en charge pour le moment !</p>
-        <label class="font-weight-medium mb-2" for="addreceivers3">Gares desservies (vers la destination)</label>
-        <p>Non pris en charge pour le moment !</p>
-        <!-- <div class="form-control-container form-chips-container" data-component="chips" id="chips" disabled>
-          <input data-role="typewriter" type="text" class="chips-input stretchy" id="addreceivers2" />
-          <label class="font-weight-medium mb-2 sr-only" for="modif_train_gares">Gares</label>
-          <select class="sr-only" data-role="input" tabindex="-1" aria-hidden="true" id="modif_train_gares" multiple>
-          </select>
-        </div> !--><br />
+        <label class="font-weight-medium mb-2" for="modif_train_gares_prov">Gares desservies (depuis la provenance)</label>
+        <div class="form-control-container">
+            <input type="text" id="modif_train_gares_prov" class="form-control" placeholder="Entrez les gares desservies" />
+            <span class="form-control-state"></span>
+        </div><br />
+        <label class="font-weight-medium mb-2" for="modif_train_gares_dest">Gares desservies (vers la destination)</label>
+        <div class="form-control-container">
+            <input type="text" id="modif_train_gares_dest" class="form-control" placeholder="Entrez les gares desservies" />
+            <span class="form-control-state"></span>
+        </div><br />
         <button type=button class="btn btn-secondary" id="cancel2" data-toggle="modal" data-target="#modif_train">Annuler</button>&nbsp;<button type=submit class="btn btn-primary" id="validate2" data-toggle="modal" data-target="#modif_train">Modifier</button>
       </div>
     </div>

@@ -153,6 +153,9 @@ function prepModifTrain(tid) {
         }
         document.getElementById('modif_train_voie').value = snapshot.val().voie;
         var gares = snapshot.val().gares;
+        document.getElementById('modif_train_gares_dest').value = gares;
+        var from = snapshot.val().from;
+        document.getElementById('modif_train_gares_prov').value = from;
         gares = gares.substr(0, gares.length - 1).split('|');
         gares.forEach((item, index) => {
             var chips_group = document.createElement('div');
@@ -211,7 +214,9 @@ function modifTrain(tid) {
         type: document.getElementById('modif_train_type').value,
         retardtime: document.getElementById('modif_train_retard_time').value,
         retardtype: retardtype,
-        voie: document.getElementById('modif_train_voie').value
+        voie: document.getElementById('modif_train_voie').value,
+        gares: document.getElementById('modif_train_gares_dest').value,
+        from: document.getElementById('modif_train_gares_prov').value
     }).then((snapshot) => {
         document.location.reload();
     });

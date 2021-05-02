@@ -5,7 +5,7 @@ function loadArrives(user_id, id){
     ref.get().then((snapshot) => {
         var i = 0;
         snapshot.forEach((childsnapshot) => {
-        if (childsnapshot.val().hourarrive !== null) {
+        if (childsnapshot.val().hourarrive !== undefined) {
             // Root
             var firstrow = document.createElement('div');
             var secondrow = document.createElement('div');
