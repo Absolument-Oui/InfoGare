@@ -7,7 +7,7 @@ function loadTrains(user_id, id){
     ref.limitToFirst(7).get().then((snapshot) => {
         var i = 0;
         snapshot.forEach((childsnapshot) => {
-        if (childsnapshot.val().hourdepart !== "") {
+        if (childsnapshot.val().hourdepart != "") {
             // Root
             var firstrow = document.createElement('div');
             var secondrow = document.createElement('div');
