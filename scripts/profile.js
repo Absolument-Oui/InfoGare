@@ -20,7 +20,7 @@ function loadInfos() {
                 var childs = 0;
                 document.getElementById('gares_nbr').innerText = snapshot.numChildren();
                 snapshot.forEach((child) => {
-                    childs += snapshot.child('trains').numChildren();
+                    childs +=  child.child('trains').numChildren();
                 });
                 document.getElementById('trains_nbr').innerText = childs;
             });
