@@ -6,13 +6,24 @@ function loadTrain(uid) {
         document.getElementById('train_number').innerText = snapshot.val().number;
         document.getElementById('train_type').innerText = snapshot.val().type;
         document.getElementById('train_dest').innerText = snapshot.val().destination;
+
+        var logo = document.getElementById('logo');
+        var train_type = snapshot.val().type;
         
-        if (snapshot.val().type === 'TER') {
-            document.getElementById('logo').setAttribute('class', 'train-logo train-logo-ter');
-        }else if (snapshot.val().type === 'TGV') {
-            document.getElementById('logo').setAttribute('class', 'train-logo train-logo-tgv');
-        } else if (snapshot.val().type === 'OuiGo') {
-            document.getElementById('logo').setAttribute('class', 'train-logo train-logo-ouigo');
+        if (train_type === 'TER') {
+            logo.setAttribute('class', 'train-logo train-logo-ter');
+        } else if (train_type === 'TGV') {
+            logo.setAttribute('class', 'train-logo train-logo-tgv');
+        } else if (train_type === 'OuiGo') {
+            logo.setAttribute('class', 'train-logo train-logo-ouigo');
+        } else if (train_type === 'inOui') {
+            logo.setAttribute('class', 'train-logo train-logo-inoui');
+        } else if (train_type === 'Thalys') {
+            logo.setAttribute('class', 'train-logo train-logo-thalys');
+        } else if (train_type === 'Eurostar') {
+            logo.setAttribute('class', 'train-logo train-logo-eurostar');
+        } else {            
+            logo.setAttribute('class', 'train-logo train-logo-sncf');
         }
         
         if (snapshot.val().retardtype === 'alheure') {

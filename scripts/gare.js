@@ -19,8 +19,8 @@ function loadParams() {
     });
 }
 
-function createGareLink(id) {
-    var glink = "https://infogares.page.link/?link=https://infogares.ga/gare.htm?uid="+uid+"&id="+id;
+function createGareLink(gid) {
+    var glink = "https://infogares.page.link/?link=https://infogares.ga/gare.htm?uid="+uid+"&id="+gid;
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "https://firebasedynamiclinks.googleapis.com/v1/shortLinks?key=AIzaSyCWi0EChm97lofJrhqBp6wRRtgQGKq8IEg", false);
     xhr.setRequestHeader('Content-Type', 'application/json');

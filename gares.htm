@@ -253,6 +253,7 @@
             firebase.auth().onAuthStateChanged(function(user) {
               if (user) {
                 loadGares(user.uid);
+                setUid(user.uid);
               } else {
 
               }

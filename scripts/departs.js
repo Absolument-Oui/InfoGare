@@ -85,6 +85,12 @@ function loadTrains(user_id, id){
                 logo.setAttribute('class', 'train-logo train-logo-tgv');
             } else if (train_type === 'OuiGo') {
                 logo.setAttribute('class', 'train-logo train-logo-ouigo');
+            } else if (train_type === 'inOui') {
+                logo.setAttribute('class', 'train-logo train-logo-inoui');
+            } else if (train_type === 'Thalys') {
+                logo.setAttribute('class', 'train-logo train-logo-thalys');
+            } else if (train_type === 'Eurostar') {
+                logo.setAttribute('class', 'train-logo train-logo-eurostar');
             } else {            
                 logo.setAttribute('class', 'train-logo train-logo-sncf');
             }
