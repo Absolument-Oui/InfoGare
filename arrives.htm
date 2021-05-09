@@ -46,9 +46,16 @@
         firebase.auth().onAuthStateChanged(function(user) {
           if (user) {
             var params = new URLSearchParams(document.location.search);
-            loadArrives(user.uid, params.get('id'));
+            if (params.has('uid')) {
+                loadArrives(params.get('uid'), params.get('id'));
+            } else {
+                loadArrives(user.uid, params.get('id'));
+            }
           } else {
-
+            var params = new URLSearchParams(document.location.search);
+            if (params.has('uid')) {
+                loadArrives(params.get('uid'), params.get('id'));
+            }
           }
         });
          

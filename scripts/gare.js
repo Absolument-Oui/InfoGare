@@ -5,6 +5,10 @@ var gare_id = null;
 var id = null;
 var openmethod = true;
 
+function setUid(val) {
+    uid = val;
+}
+
 function loadParams() {
     database.child("users").child(uid).get().then((snapshot) => {
         openmethod = snapshot.val().openmethod;
@@ -13,6 +17,24 @@ function loadParams() {
             document.getElementById('showarrives').setAttribute('onclick', 'window.open("arrives.htm'+window.location.search+'");');
         }
     });
+}
+
+function createGareLink(id) {
+    var glink = "https://infogares.page.link/?link=https://infogares.ga/gare.htm?uid="+uid+"&id="+id;
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "https://firebasedynamiclinks.googleapis.com/v1/shortLinks?key=AIzaSyCWi0EChm97lofJrhqBp6wRRtgQGKq8IEg", false);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send(JSON.stringify({
+        longDynamicLink: glink
+    }));
+    var data = JSON.parse(xhr.responseText);
+    var link = data['shortLink'];
+    database.child('users').child(uid).child('gares').child(id).update({
+        link: link
+    }).then(() => {
+        document.getElementById('share_link').value = link;
+        loadQR(link);
+    })
 }
 
 function loadGares(userid) {
@@ -24,6 +46,7 @@ function loadGares(userid) {
                 var id = childsnapshot.val().id;
                 var trains = childsnapshot.child('trains').numChildren();
                 var type = childsnapshot.val().type;
+                var link = childsnapshot.val().link;
                 var listgroupitem = document.createElement('li');
                 var managmentitemcontent = document.createElement('div');
                 var managmentitemsymbol = document.createElement('div');
@@ -41,6 +64,9 @@ function loadGares(userid) {
                 var btn_modify = document.createElement('button');
                 var btn_modify_i = document.createElement('i');
                 var btn_modify_span = document.createElement('span');
+                var btn_public = document.createElement('button');
+                var btn_public_i = document.createElement('i');
+                var btn_public_span = document.createElement('span');
                 
                 title.appendChild(document.createTextNode(name));
                 id_div.appendChild(document.createTextNode('ID : '+id));
@@ -103,8 +129,23 @@ function loadGares(userid) {
                 btn_modify.setAttribute('title', 'Modifier la gare');
                 btn_modify.appendChild(btn_modify_i);
                 btn_modify.appendChild(btn_modify_span);
+
+                btn_public_i.setAttribute('class', 'icons-share');
+                btn_public_i.setAttribute('aria-hidden', 'true');
+
+                btn_public_span.setAttribute('class', 'sr-only');
+                btn_public_span.appendChild(document.createTextNode('Partager'));
+
+                btn_public.setAttribute('class', 'btn btn-options dropdown-toggle');
+                btn_public.setAttribute('data-toggle', 'modal');
+                btn_public.setAttribute('data-target', '#share');
+                btn_public.setAttribute('onclick', 'prepSharing('+id+');');
+                btn_public.setAttribute('title', 'Partager la gare');
+                btn_public.appendChild(btn_public_i);
+                btn_public.appendChild(btn_public_span);
                 
                 managmentitemaction.setAttribute('class', 'management-item-action');
+                managmentitemaction.appendChild(btn_public);
                 managmentitemaction.appendChild(btn_modify);
                 managmentitemaction.appendChild(btn_del);
                 
@@ -130,6 +171,25 @@ function prepModifGare(gid) {
         document.getElementById('modif_gare_name').value = snapshot.val().name;
         document.getElementById('modify_gare_btn').setAttribute('onclick', 'modifyGare('+snapshot.val().id+');');
         document.getElementById('modif_gare_infos').value = snapshot.val().infos;
+    });
+}
+
+function prepSharing(gid) {
+    database.child("users").child(uid).child("gares").child(gid).get().then((snapshot) => {
+        document.getElementById('share_public').checked = snapshot.val().public;
+        if (snapshot.val().link === undefined) {
+            createGareLink(snapshot.val().id);
+        } else {
+            loadQR(snapshot.val().link);
+            document.getElementById('share_link').value = snapshot.val().link;
+        }
+        document.getElementById('share_validate').setAttribute('onclick', 'modifSharing('+snapshot.val().id+');');
+    });
+}
+
+function modifSharing (gid) {
+    database.child("users").child(uid).child("gares").child(gid).update({
+        public: document.getElementById('share_public').checked
     });
 }
 
@@ -265,13 +325,12 @@ function createGare(name) {
 }
 
 function loadGare(userid){
-    uid = userid;
     var params = new URLSearchParams(window.location.search);
     gare_id = params.get("id");
-    database.child("users").child(uid).child("gares").child(params.get("id")).get().then((snapshot) => {
+    database.child("users").child(userid).child("gares").child(params.get("id")).get().then((snapshot) => {
         if (snapshot.exists()) {
             document.title = 'InfoGares - '+snapshot.val().name;
-            database.child("users").child(uid).child("gares").child(params.get("id")).child("trains").get().then((snapshot) => {
+            database.child("users").child(userid).child("gares").child(params.get("id")).child("trains").get().then((snapshot) => {
                 if (snapshot.exists()) {
                     snapshot.forEach((childsnapshot) => {
                         var dest = childsnapshot.val().destination;
@@ -316,9 +375,17 @@ function loadGare(userid){
                         
                         managmentitemmain.setAttribute('class', 'management-item-main');
                         if (openmethod) {
-                            managmentitemmain.setAttribute('onclick', 'window.open("train.htm?gid='+gare_id+'&tid='+id+'", "", "height=500,width=750");');
+                            if (userid == uid) {
+                                managmentitemmain.setAttribute('onclick', 'window.open("train.htm?gid='+gare_id+'&tid='+id+'", "", "height=500,width=750");');
+                            } else {
+                                managmentitemmain.setAttribute('onclick', 'window.open("train.htm?uid='+userid+'&gid='+gare_id+'&tid='+id+'", "", "height=500,width=750");');
+                            }
                         } else {
-                            managmentitemmain.setAttribute('onclick', 'window.open("train.htm?gid='+gare_id+'&tid='+id+'");');
+                            if (userid == uid) {
+                                managmentitemmain.setAttribute('onclick', 'window.open("train.htm?gid='+gare_id+'&tid='+id+'");');
+                            } else {
+                                managmentitemmain.setAttribute('onclick', 'window.open("train.htm?uid='+userid+'&gid='+gare_id+'&tid='+id+'");');
+                            }
                         }
                         managmentitemmain.setAttribute('style', 'cursor: pointer;');
                         managmentitemmain.appendChild(title);
@@ -369,7 +436,9 @@ function loadGare(userid){
                         managmentitemcontent.setAttribute('class', 'management-item-content');
                         managmentitemcontent.appendChild(managmentitemsymbol);
                         managmentitemcontent.appendChild(managmentitemmain);
-                        managmentitemcontent.appendChild(managmentitemaction);
+                        if (userid == uid) {
+                            managmentitemcontent.appendChild(managmentitemaction);
+                        }
                         
                         listgroupitem.setAttribute('class', 'list-group-item management-item');
                         listgroupitem.appendChild(managmentitemcontent);
@@ -382,7 +451,7 @@ function loadGare(userid){
                 }
             });
         } else {
-            window.location.href = "gares.htm";
+            //window.location.href = "gares.htm";
         }
     }).catch((error) => {
         // alert(error.message);

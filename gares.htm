@@ -161,6 +161,35 @@
   </div>
 </div>
 
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="share_dlg_title" aria-hidden="true" id="share">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="h1 modal-title" id="share_dlg_title" width="100%">Partager la gare</h5>
+            <button type=button class="close" data-dismiss="modal" aria-label="Fermer"><span aria-hidden=true>&times;</span></button>
+        </div>
+        <div class="modal-body">
+          <label>Partager la gare</label><br>
+          <label for="share_public" class="switch-control">
+            <span class="sr-only">Activer/désactiver le partage</span>
+            <input type="checkbox" id="share_public" class="sr-only" onchange="createGareLink();">
+            <span class="switch-control-slider"></span>
+          </label>
+          <br><br>
+          <label for="share_link">Lien de la gare</label>
+          <div class="form-control-container">
+            <input type="url" class="form-control" id="share_link" readonly>
+            <span class="control-state"></span>
+          </div><br>
+          <label for="qr">QR Code de la gare</label>
+          <center><img id="qr"></center>
+          <br>
+          <button class="btn btn-secondary" data-toggle="modal" data-target="#share">Annuler</button>&nbsp;<button class="btn btn-primary" data-toggle="modal" data-target="#share" id="share_validate">Modifier</button>
+        </div>
+    </div>
+  </div>
+</div>
+
 <!-- Modal -->
 <div class="modal fade" id="del" tabindex="-1" role="dialog" aria-labelledby="del_dlg_title" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -210,6 +239,7 @@
     <script src="scripts/initialize.js"></script>
     <script src="scripts/login.js"></script>
     <script src="scripts/gare.js"></script>
+    <script src="scripts/qrcode.js"></script>
     <script>
         if (localStorage.getItem('cookies_accepted') === undefined) {
             $('#cookies').modal('show');
