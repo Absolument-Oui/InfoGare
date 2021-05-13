@@ -37,3 +37,13 @@ function loadParams() {
         }
     });
 }
+
+function chgPass(oldpass, newpass) {
+    var email = firebase.auth().currentUser.email;
+    var credential = firebase.auth.EmailAuthProvider.credential(email, oldpass);
+    firebase.auth().currentUser.reauthenticateWithCredential(credential).then(function() {
+        firebase.auth().currentUser.updatePassword(newpass).then(() => {
+            window.location.reload();
+        });
+    });
+}

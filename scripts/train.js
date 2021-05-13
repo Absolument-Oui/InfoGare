@@ -124,5 +124,5 @@ function loadTrain(uid) {
     });
     
     scrollX();
-    scrollY();
+    scrollY(75);
 }

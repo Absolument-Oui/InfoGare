@@ -56,13 +56,16 @@
 
 <div class="main-content">
     <i class="icons-circle-account-connected icons-size-140px"></i>
-    <br />
+    <br /><br>
     <h1 id="username"></h1>
     <h3 id="email"></h3>
     <br />
     <button type=button class="btn btn-danger" data-toggle="modal" data-target="#logout">Se déconnecter</button>
     <br /><br />
     <h1>Paramètres</h1>
+
+    <button class="btn btn-primary" id="chg_pass" data-toggle="modal" data-target="#chg_password">Changer de mot de passe</button>
+    <br><br>
     
     <label for="param1">Ouvrir les écrans dans </label>
     <div class="options-control">
@@ -79,7 +82,21 @@
     <h1>Informations sur le compte</h1>
     <h2>Nombre de gares : <span id="gares_nbr"></span></h2>
     <h2>Nombre de trains : <span id="trains_nbr"></span></h2>
-    
+    <br><br>
+
+    <div><center>
+      <script type="text/javascript">
+        atOptions = {
+          'key' : '62f83595bf4108dc83fb371a83c554ec',
+          'format' : 'iframe',
+          'height' : 60,
+          'width' : 468,
+          'params' : {}
+        };
+        document.write('<scr' + 'ipt type="text/javascript" src="http' + (location.protocol === 'https:' ? 's' : '') + '://www.varietyofdisplayformats.com/62f83595bf4108dc83fb371a83c554ec/invoke.js"></scr' + 'ipt>');
+      </script>
+    </center></div>
+
     <div class="footerbar">
         <center><span>Logo par <a href="https://github.com/guerinlupus" target="_blank">guerinlupus</a> | Design par <a href="https://designmetier-bootstrap.sncf.fr/" target="_blank">SNCF</a> | Dev par <a href="https://github.com/Absolument-Oui" target="_blank">Absolument Oui</a></span></center>
         <center><a href=apropos.htm>&Agrave; propos</a> | <a href= cgu.htm>CGU</a> | <a href=mentionslegales.htm>Mentions légales</a> | <a href="donation.htm">Nous soutenir</a></center>
@@ -119,6 +136,35 @@
       </div>
       <div class="modal-body">
         <p>Avant de continuer, nous aimerions vous signaler que ce site utilise des cookies afin de vous donner une meilleure expérience.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="chg_password" tabindex="-1" role="dialog" aria-labelledby="chg_password_title" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="h1 modal-title" id="chg_password_title">Changer de mot de passe</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <label for="chg_password_old">Mot de passe actuel</label>
+        <div class="form-control-container">
+          <input type="password" class="form-control" id="chg_password_old" placeholder="Entrez votre mot de passe actuel">
+          <span class="form-control-state"></span>
+        </div><br>
+        <label for="chg_password_text">Nouveau mot de passe</label>
+        <div class="form-control-container">
+          <input type="password" class="form-control" id="chg_password_text" placeholder="Entrez votre nouveau mot de passe">
+          <span class="form-control-state"></span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+        <button type="button" class="btn btn-primary btn-danger" onclick="chgPass(document.getElementById('chg_password_old').value, document.getElementById('chg_password_text').value);" data-dismiss="modal">Valider</button>
       </div>
     </div>
   </div>

@@ -81,6 +81,12 @@ function checkLogin() {
     });
 }
 
+function sendPass(email) {
+  firebase.auth().sendPasswordResetEmail(email).then(() => {
+    alert('Un email de réinitialisation de votre mot de passe viens de vous être envoyé !');
+  });
+}
+
 function logout() {
     firebase.auth().signOut().then(() => {
       window.location.href="index.htm";
