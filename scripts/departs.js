@@ -5,12 +5,12 @@ function loadTrains(user_id, id){
     group.setAttribute('id', 'group');
     var ref = firebase.database().ref("users/" + user_id + "/gares/" + id + "/trains");
     ref.get().then((snapshot) => {
-        var list = {};
+        /*var list = {};
         snapshot.forEach((child) => {
             list[list.length] = {
                 id: 
             };
-        })
+        })*/
         var i = 0;
         snapshot.forEach((childsnapshot) => {
         if (childsnapshot.val().hourdepart != "") {
