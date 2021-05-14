@@ -83,6 +83,18 @@ function loadArrives(user_id, id){
                 logo.setAttribute('class', 'train-logo train-logo-tgv');
             } else if (train_type === 'OuiGo') {
                 logo.setAttribute('class', 'train-logo train-logo-ouigo');
+            } else if (train_type === 'inOui') {
+                logo.setAttribute('class', 'train-logo train-logo-inoui');
+            } else if (train_type === 'Thalys') {
+                logo.setAttribute('class', 'train-logo train-logo-thalys');
+            } else if (train_type === 'Eurostar') {
+                logo.setAttribute('class', 'train-logo train-logo-eurostar');
+            } else if (train_type === 'TGV Lyria') {
+                logo.setAttribute('class', 'train-logo train-logo-lyria');
+            } else if (train_type === 'ICE') {
+                logo.setAttribute('class', 'train-logo train-logo-ice');
+            } else if (train_type === 'Fluo Grand Est') {
+                logo.setAttribute('class', 'train-logo train-logo-fluo');
             } else {            
                 logo.setAttribute('class', 'train-logo train-logo-sncf');
             }

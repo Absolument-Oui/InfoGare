@@ -848,11 +848,15 @@ a {
 }
 
 .train-logo.train-logo-ice {
-    background-image: url(../../../images/screen/common/logo-ice.svg);
+    background-image: url(../../../images/screen/quai/logo-ice-color.svg);
 }
 
 .train-logo.train-logo-lyria {
     background-image: url(../../../images/screen/quai/logo-lyria-color.svg);
+}
+
+.train-logo.train-logo-fluo {
+    background-image: url(../../../images/screen/quai/logo-fluo-color.svg);
 }
 
 .train-logo.train-logo-ouigo {

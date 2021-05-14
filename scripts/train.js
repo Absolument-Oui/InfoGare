@@ -22,6 +22,12 @@ function loadTrain(uid) {
             logo.setAttribute('class', 'train-logo train-logo-thalys');
         } else if (train_type === 'Eurostar') {
             logo.setAttribute('class', 'train-logo train-logo-eurostar');
+        } else if (train_type === 'TGV Lyria') {
+            logo.setAttribute('class', 'train-logo train-logo-lyria');
+        } else if (train_type === 'ICE') {
+            logo.setAttribute('class', 'train-logo train-logo-ice');
+        } else if (train_type === 'Fluo Grand Est') {
+            logo.setAttribute('class', 'train-logo train-logo-fluo');
         } else {            
             logo.setAttribute('class', 'train-logo train-logo-sncf');
         }

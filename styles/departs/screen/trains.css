@@ -977,7 +977,11 @@ a {
 }
 
 .train-logo.train-logo-ler {
-    background-image: url(../../images/screen/common/logo-ler.svg);
+    background-image: url(../../../images/screen/common/logo-ler.svg);
+}
+
+.train-logo.train-logo-fluo {
+    background-image: url(../../../images/screen/common/logo-fluo.svg);
 }
 
 .train-logo.train-logo-eurostar {
