@@ -1,19 +1,38 @@
 ﻿const database = firebase.database().ref();
 
+var list = new Array();
+
 function loadTrains(user_id, id){
     var group = document.createElement('div');
     group.setAttribute('id', 'group');
     var ref = firebase.database().ref("users/" + user_id + "/gares/" + id + "/trains");
     ref.get().then((snapshot) => {
-        /*var list = {};
         snapshot.forEach((child) => {
-            list[list.length] = {
-                id: 
-            };
-        })*/
+            if (child.val().hourdepart != "") {
+                list.push({
+                    number: child.val().number,
+                    destination: child.val().destination,
+                    hourdepart: child.val().hourdepart,
+                    type: child.val().type,
+                    gares: child.val().gares,
+                    retardtime: child.val().retardtime,
+                    retardtype: child.val().retardtype,
+                    voie: child.val().voie
+                });
+            }
+        });
+        list.sort((a, b) => {
+            var x = a.hourdepart.toLowerCase();
+            var y = b.hourdepart.toLowerCase();
+            if (x < y) {return -1;}
+            if (x > y) {return 1;}
+            return 0;
+        });
         var i = 0;
-        snapshot.forEach((childsnapshot) => {
-        if (childsnapshot.val().hourdepart != "") {
+        list.forEach((value, index, array) => {
+            if (i = 7) {
+                stop();
+            }
             // Root
             var firstrow = document.createElement('div');
             var secondrow = document.createElement('div');
@@ -52,14 +71,14 @@ function loadTrains(user_id, id){
             var gares = document.createElement('div');
             
             // Values
-            const train_destination = childsnapshot.val().destination;
-            const train_hour = childsnapshot.val().hourdepart;
-            const train_number = childsnapshot.val().number;
-            const train_type = childsnapshot.val().type;
-            const train_gares = childsnapshot.val().gares;
-            const train_retard_type = childsnapshot.val().retardtype;
-            const train_retard_time = childsnapshot.val().retardtime;
-            const train_voie = childsnapshot.val().voie;
+            const train_destination = value["destination"];
+            const train_hour = value["hourdepart"];
+            const train_number = value["number"];
+            const train_type = value["type"];
+            const train_gares = value["gares"];
+            const train_retard_type = value["retardtype"];
+            const train_retard_time = value["retardtime"];
+            const train_voie = value["voie"];
             
             var gares_split = train_gares.substr(0, train_gares.length - 1).split("|");
             var retard, textfeature;
@@ -175,11 +194,8 @@ function loadTrains(user_id, id){
             
             group.appendChild(rowgroup);
             
-            i++;
-        }
-            
-        });
-        
+            i++;            
+        });        
         document.getElementById('group').remove();
         document.getElementById('rows').appendChild(group);
         
