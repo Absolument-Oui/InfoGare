@@ -26,6 +26,15 @@ function loadTrains(user_id, id){
                 } else {
                     showed = child.val().show;
                 }
+                
+                var voieshowed;
+
+                if (child.val().showvoie === undefined) {
+                    voieshowed = true;
+                } else {
+                    voieshowed = child.val().showvoie;
+                }
+
                 list.push({
                     number: child.val().number,
                     destination: child.val().destination,
@@ -35,7 +44,8 @@ function loadTrains(user_id, id){
                     retardtime: child.val().retardtime,
                     retardtype: child.val().retardtype,
                     voie: child.val().voie,
-                    show: showed
+                    show: showed,
+                    showvoie: voieshowed
                 });
             }
         });
@@ -177,7 +187,9 @@ function loadTrains(user_id, id){
                     track.appendChild(voie);
                     track.setAttribute('class', 'train-track train-track-view voie');
                     
-                    thirdcol_firstrow.appendChild(track);
+                    if (value['showvoie']) {
+                        thirdcol_firstrow.appendChild(track);
+                    }
                     thirdcol_firstrow.setAttribute('class', 'col-third');
                     
                     firstrow.appendChild(firstcol_firstrow);

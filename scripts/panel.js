@@ -180,12 +180,24 @@ function prepModifAff(tid) {
             document.getElementById('modif_aff_train').checked = snapshot.val().show;
         }
 
+        if (snapshot.val().showvoie === undefined) {
+            document.getElementById('modif_aff_voie_div').hidden = false;
+            document.getElementById('modif_aff_voie').checked = true;
+        } else {
+            document.getElementById('modif_aff_voie_div').hidden = snapshot.val().showvoie;
+            document.getElementById('modif_aff_voie').checked = snapshot.val().showvoie;
+        }
+
+        document.getElementById('modif_aff_voie_voie').value = snapshot.val().voie;
+
         document.getElementById('modif_aff_val').setAttribute('onclick', 'modifAff('+tid+');');
     });
 }
 
 function modifAff(tid) {
     db.child('trains').child(tid).update({
-        show: document.getElementById('modif_aff_train').checked
+        show: document.getElementById('modif_aff_train').checked,
+        showvoie: document.getElementById('modif_aff_voie').checked,
+        voie: document.getElementById('modif_aff_voie_voie').value
     });
 }

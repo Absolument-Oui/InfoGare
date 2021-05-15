@@ -82,7 +82,21 @@
             <label for="modif_aff_train">Affichage du train</label>
             <div class="custom-control custom-checkbox">
               <input type="checkbox" class="custom-control-input" id="modif_aff_train">
-              <label class="custom-control-label"for="modif_aff_train">Afficher le train</label>
+              <label class="custom-control-label" for="modif_aff_train">Afficher le train</label>
+            </div>
+            <br>
+            <label for="modif_aff_voie">Affichage de la voie</label>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="modif_aff_voie" onchange="document.getElementById('modif_aff_voie_div').hidden = !this.checked;">
+              <label class="custom-control-label" for="modif_aff_voie">Afficher la voie</label>
+            </div>
+            <br>
+            <div id="modif_aff_voie_div">
+              <label for="modif_aff_voie_voie">Numéro de voie</label>
+              <div class="form-control-container">
+                <input type="text" class="form-control" id="modif_aff_voie_voie" placeholder="Entrez le numéro de la voie">
+                <span class="form-control-state"></span>
+              </div>
             </div>
           </div>
           <div class="modal-footer">
