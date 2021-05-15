@@ -54,6 +54,9 @@
             } else {
                 loadTrains(user.uid, params.get('id'));
             }
+            if (params.has('panel')) {
+                window.open('panel.htm'+window.location.search, '', 'height=500,width=750');
+            }
           } else {
             var params = new URLSearchParams(document.location.search);
             loadTrains(params.get('uid'), params.get('id'));

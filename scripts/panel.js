@@ -7,11 +7,7 @@ function setDb(user_id) {
 }
 
 function closePanel() {
-    if (params.get('showin') == 'window') {
-        window.close();
-    } else {
-        history.go(-1);
-    }
+    window.close();
 }
 
 function changeInfos() {
@@ -178,7 +174,11 @@ function modifRet(tid) {
 
 function prepModifAff(tid) {
     db.child('trains').child(tid).get().then((snapshot) => {
-        document.getElementById('modif_aff_train').checked = snapshot.val().show;
+        if (snapshot.val().show === undefined) {
+            document.getElementById('modif_aff_train').checked = true;
+        } else {
+            document.getElementById('modif_aff_train').checked = snapshot.val().show;
+        }
 
         document.getElementById('modif_aff_val').setAttribute('onclick', 'modifAff('+tid+');');
     });

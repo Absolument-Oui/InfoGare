@@ -16,7 +16,7 @@ function loadParams() {
         autoopenpanel = snapshot.val().autoopenpanel;
         if (!openmethod) {
             if (autoopenpanel) {
-                document.getElementById('showdeparts').setAttribute('onclick', 'window.open("departs.htm'+window.location.search+'"); window.open("panel.htm'+window.location.search+'");');
+                document.getElementById('showdeparts').setAttribute('onclick', 'window.open("departs.htm'+window.location.search+'&panel");');
                 document.getElementById('showarrives').setAttribute('onclick', 'window.open("arrives.htm'+window.location.search+'");');
             } else {
                 document.getElementById('showdeparts').setAttribute('onclick', 'window.open("departs.htm'+window.location.search+'");');
@@ -24,7 +24,7 @@ function loadParams() {
             }
         } else {
             if (autoopenpanel) {
-                document.getElementById('showdeparts').setAttribute('onclick', 'window.open("departs.htm'+document.location.search+'", "", "height=500,width=750"); window.open("panel.htm'+window.location.search+'", "", "height=500,width=750");');
+                document.getElementById('showdeparts').setAttribute('onclick', 'window.open("departs.htm'+document.location.search+'&panel", "", "height=500,width=750");');
             }
         }
     });
