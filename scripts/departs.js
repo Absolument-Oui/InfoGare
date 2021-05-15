@@ -6,6 +6,17 @@ function loadTrains(user_id, id){
     var group = document.createElement('div');
     group.setAttribute('id', 'group');
     var ref = firebase.database().ref("users/" + user_id + "/gares/" + id + "/trains");
+    var infos = firebase.database().ref("users/"+user_id+"/gares/"+id);
+
+    infos.on('child_changed', (snapshot) => {
+        var txt = snapshot.val();
+        document.getElementById('infos').innerHTML = txt.replaceAll('\n', ' &nbsp;');
+    });
+
+    ref.on('child_changed', (snapshot) => {
+        location.reload();
+    });
+
     ref.get().then((snapshot) => {
         snapshot.forEach((child) => {
             if (child.val().hourdepart != "") {

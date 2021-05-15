@@ -77,7 +77,19 @@
         <input type="radio" name="optionsRadio" id="openintab" class="sr-only" onclick="modifParams();"/>
         <label class="options-btn font-weight-medium" for="openintab">Un nouvel onglet</label>
       </div>
-    </div><br /><br />
+    </div>
+    <br><br>
+    <label for="param2">Ouvrir automatiquement le panneau de contrôle</label>
+    <div class="options-control">
+      <div class="options-item">
+        <input type="radio" name="optionsRadio2" id="activated" class="sr-only" onclick="modifParams();" >
+        <label class="options-btn font-weight-medium" for="activated">Activé</label>
+      </div>
+      <div class="options-item">
+        <input type="radio" name="optionsRadio2" id="desactivated" class="sr-only" onclick="modifParams();" checked>
+        <label class="options-btn font-weight-medium" for="desactivated">Désactivé</label>
+      </div>
+    </div>
     
     <h1>Informations sur le compte</h1>
     <h2>Nombre de gares : <span id="gares_nbr"></span></h2>

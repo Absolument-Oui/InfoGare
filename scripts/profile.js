@@ -3,7 +3,8 @@ const database = firebase.database().ref();
 
 function modifParams() {
     database.child("users").child(uid).update({
-        openmethod: document.getElementById('openinwindow').checked
+        openmethod: document.getElementById('openinwindow').checked,
+        autoopenpanel: document.getElementById('activated').checked
     }).then((snapshot) => {
         
     });
@@ -34,6 +35,12 @@ function loadParams() {
             document.getElementById('openinwindow').checked = true;
         } else {
             document.getElementById('openintab').checked = true;
+        }
+
+        if (snapshot.val().autoopenpanel) {
+            document.getElementById('activated').checked = true;
+        } else {
+            document.getElementById('desactivated').checked = true;
         }
     });
 }

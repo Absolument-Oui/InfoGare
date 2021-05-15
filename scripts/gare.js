@@ -4,6 +4,7 @@ var uid = undefined;
 var gare_id = null;
 var id = null;
 var openmethod = true;
+var autoopenpanel = false;
 
 function setUid(val) {
     uid = val;
@@ -12,9 +13,19 @@ function setUid(val) {
 function loadParams() {
     database.child("users").child(uid).get().then((snapshot) => {
         openmethod = snapshot.val().openmethod;
+        autoopenpanel = snapshot.val().autoopenpanel;
         if (!openmethod) {
-            document.getElementById('showdeparts').setAttribute('onclick', 'window.open("departs.htm'+window.location.search+'");');
-            document.getElementById('showarrives').setAttribute('onclick', 'window.open("arrives.htm'+window.location.search+'");');
+            if (autoopenpanel) {
+                document.getElementById('showdeparts').setAttribute('onclick', 'window.open("departs.htm'+window.location.search+'"); window.open("panel.htm'+window.location.search+'");');
+                document.getElementById('showarrives').setAttribute('onclick', 'window.open("arrives.htm'+window.location.search+'");');
+            } else {
+                document.getElementById('showdeparts').setAttribute('onclick', 'window.open("departs.htm'+window.location.search+'");');
+                document.getElementById('showarrives').setAttribute('onclick', 'window.open("arrives.htm'+window.location.search+'");');
+            }
+        } else {
+            if (autoopenpanel) {
+                document.getElementById('showdeparts').setAttribute('onclick', 'window.open("departs.htm'+document.location.search+'", "", "height=500,width=750"); window.open("panel.htm'+window.location.search+'", "", "height=500,width=750");');
+            }
         }
     });
 }
