@@ -1,5 +1,7 @@
 ﻿const database = firebase.database().ref();
 
+var list = new Array();
+
 function loadArrives(user_id, id){
     var ref = database.child("users").child(user_id).child("gares").child(id).child("trains");
     ref.get().then((snapshot) => {

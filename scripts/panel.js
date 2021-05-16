@@ -184,7 +184,7 @@ function prepModifAff(tid) {
             document.getElementById('modif_aff_voie_div').hidden = false;
             document.getElementById('modif_aff_voie').checked = true;
         } else {
-            document.getElementById('modif_aff_voie_div').hidden = snapshot.val().showvoie;
+            document.getElementById('modif_aff_voie_div').hidden = !snapshot.val().showvoie;
             document.getElementById('modif_aff_voie').checked = snapshot.val().showvoie;
         }
 
