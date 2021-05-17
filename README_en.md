@@ -31,3 +31,7 @@ _The code was not available at this moment_
 We are looking for volunteers to help develop the Web and Android version of InfoGares. Do not hesitate to offer your help :)
 
 We accept any useful additions to this software. To do this, open an Issue, then choose "Demande d'ajout" (Add Request). Maybe your request will be accepted ;)
+
+## Contact
+
+Email : contact@infogares.ga
