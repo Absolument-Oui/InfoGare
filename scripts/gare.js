@@ -260,6 +260,7 @@ function prepModifTrain(tid) {
         });
         
         document.getElementById('validate2').setAttribute('onclick', 'modifTrain('+tid+');');
+        document.getElementById('validate3').innerText = 'Modifier';
     });
 }
 
@@ -367,6 +368,9 @@ function loadGare(userid){
                         var btndel = document.createElement('button');
                         var btndelicon = document.createElement('i');
                         var spandel = document.createElement('span');
+                        var btndupli = document.createElement('button');
+                        var btndupliicon = document.createElement('i');
+                        var spandupli = document.createElement('span');
                         
                         title.appendChild(document.createTextNode(dest));
                         provli.appendChild(document.createTextNode('Provenance : ' + prov));
@@ -439,9 +443,26 @@ function loadGare(userid){
                         
                         btndel.appendChild(btndelicon);
                         btndel.appendChild(spandel);
+
+                        btndupli.setAttribute('class', 'btn btn-options dropdown-toggle');
+                        btndupli.setAttribute('type', 'button');
+                        btndupli.setAttribute('title', 'Dupliquer le train');
+                        btndupli.setAttribute('onclick', 'prepDupliTrain('+id+');');
+                        btndupli.setAttribute('data-toggle', 'modal');
+                        btndupli.setAttribute('data-target', '#modif_train');
+
+                        btndupliicon.setAttribute('class', 'icons-distribution');
+                        btndupliicon.setAttribute('aria-hidden', 'true');
+
+                        spandupli.setAttribute('class', 'sr-only');
+                        spandupli.appendChild(document.createTextNode('Dupliquer'));
+
+                        btndupli.appendChild(btndupliicon);
+                        btndupli.appendChild(spandupli);
                                           
                         managmentitemaction.setAttribute('class', 'managerment-item-action');
                         managmentitemaction.appendChild(btnmodify);
+                        managmentitemaction.appendChild(btndupli);
                         managmentitemaction.appendChild(btndel);
 
                         managmentitemcontent.setAttribute('class', 'management-item-content');
@@ -467,6 +488,63 @@ function loadGare(userid){
     }).catch((error) => {
         // alert(error.message);
     });
+}
+
+function prepDupliTrain(tid) {
+    database.child('users').child(uid).child('gares').child(gare_id).child('trains').child(tid).get().then((snapshot) => {
+        document.getElementById('modif_train_number').value = snapshot.val().number;
+        document.getElementById('modif_train_prov').value = snapshot.val().provenance;
+        document.getElementById('modif_train_dest').value = snapshot.val().destination;
+        document.getElementById('modif_train_type').value = snapshot.val().type;
+        document.getElementById('modif_train_hour_arrive').value = snapshot.val().hourarrive;
+        document.getElementById('modif_train_hour_depart').value = snapshot.val().hourdepart;
+        if (snapshot.val().retardtype === 'ret') {
+            document.getElementById('modif_train_ret').checked = true;
+        } else if (snapshot.val().retardtype === 'alheure') {
+            document.getElementById('modif_train_alheure').checked = true;
+        } else if (snapshot.val().retardtype === 'retindet') {
+            document.getElementById('modif_train_retindet').checked = true;
+        } else if (snapshot.val().retardtype === 'suppr') {
+            document.getElementById('modif_train_suppr').checked == true;
+        }
+        document.getElementById('modif_train_retard_time').value = snapshot.val().retardtime;
+        document.getElementById('modif_train_voie').value = snapshot.val().voie;
+        document.getElementById('modif_train_gares_prov').value = snapshot.val().from;
+        document.getElementById('modif_train_gares_dest').value = snapshot.val().gares;
+
+        document.getElementById('validate2').setAttribute('onclick', 'dupliTrain()');
+        document.getElementById('validate2').innerText = 'Dupliquer';
+    });
+}
+
+function dupliTrain() {
+    var trainid = Math.round(Math.random() * 1000000000);
+
+    var rtype = undefined;
+
+    if (document.getElementById('modif_train_alheure').checked) {
+        rtype = 'alheure';
+    } else if (document.getElementById('modif_train_retindet').checked) {
+        rtype = 'retindet';
+    } else if(document.getElementById('modif_train_ret').checked) {
+        rtype = 'ret';
+    } else if (document.getElementById('modif_train_suppr').checked) {
+        rtype = 'suppr';
+    }
+
+    database.child('users').child(uid).child('gares').child(gare_id).child('trains').child(trainid).set({
+        number: document.getElementById('modif_train_number').value,
+        provenance: document.getElementById('modif_train_prov').value,
+        destination: document.getElementById('modif_train_dest').value,
+        type: document.getElementById('modif_train_type').value,
+        retardtype: rtype,
+        retardtime: document.getElementById('modif_train_retard_time').value,
+        voie: document.getElementById('modif_train_voie').value,
+        from: document.getElementById('modif_train_gares_prov').value,
+        gares: document.getElementById('modif_train_gares_dest').value
+    }).then(() => {
+        window.location.reload();
+    })
 }
 
 function createTrain() {

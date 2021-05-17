@@ -149,6 +149,8 @@ function loadTrains(user_id, id){
                         logo.setAttribute('class', 'train-logo train-logo-ice');
                     } else if (train_type === 'Fluo Grand Est') {
                         logo.setAttribute('class', 'train-logo train-logo-fluo');
+                    } else if (train_type === 'TER Occitanie') {
+                        logo.setAttribute('class', 'train-logo train-logo-occitanie');
                     } else {            
                         logo.setAttribute('class', 'train-logo train-logo-sncf');
                     }

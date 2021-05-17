@@ -984,6 +984,10 @@ a {
     background-image: url(../../../images/screen/common/logo-fluo.svg);
 }
 
+.train-logo.train-logo-occitanie {
+    background-image: url(../../../images/screen/common/logo-occitanie.svg);
+}
+
 .train-logo.train-logo-eurostar {
     background-image: url(../../../images/screen/common/logo-eurostar.svg);
 }

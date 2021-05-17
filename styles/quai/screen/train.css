@@ -186,7 +186,7 @@ a {
 .rer.text-station {
     font-size: 8.7em;
     font-weight: 800;
-    display: inline;
+    display: inline-block;
     color: #000000;
 }
 
@@ -828,7 +828,8 @@ a {
     -moz-background-size: contain;
     -o-background-size: contain;
     -webkit-background-size: contain;
-    background-size: conatin;
+    background-size: contain;
+    display: inline-block;
 }
 
 .train-logo.train-logo-sncf {
@@ -857,6 +858,10 @@ a {
 
 .train-logo.train-logo-fluo {
     background-image: url(../../../images/screen/quai/logo-fluo-color.svg);
+}
+
+.train-logo.train-logo-occitanie {
+    background-image: url(../../../images/screen/quai/logo-occitanie-color.svg);
 }
 
 .train-logo.train-logo-ouigo {
