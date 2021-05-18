@@ -34,4 +34,4 @@ We accept any useful additions to this software. To do this, open an Issue, then
 
 ## Contact
 
-Email : contact@infogares.ga
+E-mail : [contact@infogare.fr](mailto:contact@infogare.fr)
