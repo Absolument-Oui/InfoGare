@@ -187,7 +187,31 @@ a {
     font-size: 8.7em;
     font-weight: 800;
     display: inline-block;
-    color: #000000;
+    color: #003A79;
+}
+
+.rer.text-mision {
+    color: #003a79 !important;
+    font-size: 6.5em;
+    font-weight: 600;
+    font-family: 'Avenir';
+    display: inline-block;
+}
+
+.rer.text-time-hours {
+    color: #003A79 !important;
+    font-size: 6.5em;
+    font-weight: 800;
+    font-family: 'Achemine';
+    display: inline-block;
+}
+
+.rer.text-train-length {
+    color: #003A79;
+    font-size: 6.5em;
+    font-weight: 800;
+    font-family: 'Achemine';
+    display: inline-block;
 }
 
 /* -- selection -- */
