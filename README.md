@@ -32,4 +32,4 @@ Nous sommes preneurs de tout ajout utile dans ce logiciel. Pour ce faire, ouvrez
 
 ## Contact
 
-Email : [contact@infogares.ga](mailto:contact@infogares.ga)
+E-mail : [contact@infogare.fr](mailto:contact@infogare.fr)
