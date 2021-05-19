@@ -4,7 +4,8 @@ const database = firebase.database().ref();
 function modifParams() {
     database.child("users").child(uid).update({
         openmethod: document.getElementById('openinwindow').checked,
-        autoopenpanel: document.getElementById('activated').checked
+        autoopenpanel: document.getElementById('activated').checked,
+        newsletter: document.getElementById('newsletteryes').checked
     }).then((snapshot) => {
         
     });
@@ -41,6 +42,12 @@ function loadParams() {
             document.getElementById('activated').checked = true;
         } else {
             document.getElementById('desactivated').checked = true;
+        }
+
+        if (snapshot.val().newsletter) {
+            document.getElementById('newsletteryes').checked = true;
+        } else {
+            document.getElementById('newsletterno').checked = true;
         }
     });
 }
