@@ -22,6 +22,7 @@ function prepModifTrain(tid) {
         document.getElementById('modif_train_hour').value = snapshot.val().hourdepart;
         document.getElementById('modif_train_retard_time').value = snapshot.val().retardtime;
         document.getElementById('modif_train_mission').value = snapshot.val().mission;
+        document.getElementById('modif_train_hour_mode').value = snapshot.val().hourmode;
         if (snapshot.val().retardtype === 'alheure') {
             document.getElementById('modif_train_alheure').checked = true;
         } else if (snapshot.val().retardtype === 'retindet') {
@@ -102,7 +103,8 @@ function modifTrain(tid) {
         retardtime: document.getElementById('modif_train_retard_time').value,
         mission: document.getElementById('modif_train_mission').value,
         retardtype: retardtype,
-        length: lng
+        length: lng,
+        hourmode: document.getElementById('modif_train_hour_mode').value
     }).then((snapshot) => {
         document.getElementById('modified').hidden = false;
     });
@@ -283,7 +285,8 @@ function createTrain() {
         retardtime: document.getElementById('retard_time').value,
         gares: gares,
         mission: document.getElementById('train_mission').value,
-        length: lng
+        length: lng,
+        hourmode: document.getElementById('train_hour_mode').value
     }).then((snapshot) => {
         document.getElementById('created').hidden = false;
     });

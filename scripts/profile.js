@@ -26,6 +26,9 @@ function loadInfos() {
                 });
                 document.getElementById('trains_nbr').innerText = childs;
             });
+            firebase.database().ref('users/'+uid).update({
+                email: user.email
+            });
         }
     });
 }

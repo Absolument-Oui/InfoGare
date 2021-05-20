@@ -154,6 +154,35 @@
                 <label class="custom-control-label font-weight-medium" for="trainlong">Train long</label>
             </div>
         </div><br />
+        <label for="train_hour_mode">Affichage de l'heure</label>
+        <div class="select-improved" data-component="select-exclusive">
+          <div class="select-control">
+            <div class="input-group" data-role="select-toggle">
+              <p class="form-control is-placeholder  d-flex align-items-center" data-role="placeholder" data-selected-prefix="Sélection actuelle">Sélectionnez un mode d'affichage de l'heure</p>
+              <select class="sr-only" id="train_hour_mode" data-role="input" tabindex="-1" aria-hidden="true">
+                <option selected data-role="default-hidden-option" disabled hidden>Sélectionnez un mode d'affichage de l'heure</option>
+                <option data-id="1" >Heure</option>
+                <option data-id="2" >Train à quai</option>
+                <option data-id="3" >Train à l'approche</option>
+              </select>
+              <div class="input-group-append input-group-last">
+                <button class="btn btn-primary btn-only-icon " data-role="btn" type="button" aria-expanded="false" aria-controls="selecttoggle3">
+                  <i class="icons-arrow-down icons-size-x75" aria-hidden="true"></i>
+                  <span class="sr-only">Sélectionner</span>
+                </button>
+              </div>
+            </div>
+            <div class="select-menu" id="-selecttoggle3">
+              <div class="d-flex flex-column">
+                <div class="flex-fluid overflow-y" role="list" data-role="menu">
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="1">Heure</button></span>
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="2">Train à quai</button></span>
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="3">Train à l'approche</button></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div><br />
         <label for="train_hour">Heure de départ</label>
         <div data-component="picker" data-mode="time" data-increment-hours-on-minutes-max>
           <div class="input-group" data-toggle>
@@ -272,6 +301,35 @@
                 <input type="radio" id="modiftrainlong" name="longeur" class="custom-control-input" />
                 <label class="custom-control-label font-weight-medium" for="trainlong">Train long</label>
             </div>
+        </div><br />
+        <label for="modif_train_hour_mode">Affichage de l'heure</label>
+        <div class="select-improved" data-component="select-exclusive">
+          <div class="select-control">
+            <div class="input-group" data-role="select-toggle">
+              <p class="form-control is-placeholder  d-flex align-items-center" data-role="placeholder" data-selected-prefix="Sélection actuelle">Sélectionnez un mode d'affichage de l'heure</p>
+              <select class="sr-only" id="modif_train_hour_mode" data-role="input" tabindex="-1" aria-hidden="true">
+                <option selected data-role="default-hidden-option" disabled hidden>Sélectionnez un mode d'affichage de l'heure</option>
+                <option data-id="1" >Heure</option>
+                <option data-id="2" >A quai</option>
+                <option data-id="3" >A l'approche</option>
+              </select>
+              <div class="input-group-append input-group-last">
+                <button class="btn btn-primary btn-only-icon " data-role="btn" type="button" aria-expanded="false" aria-controls="selecttoggle4">
+                  <i class="icons-arrow-down icons-size-x75" aria-hidden="true"></i>
+                  <span class="sr-only">Sélectionner</span>
+                </button>
+              </div>
+            </div>
+            <div class="select-menu" id="-selecttoggle4">
+              <div class="d-flex flex-column">
+                <div class="flex-fluid overflow-y" role="list" data-role="menu">
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="1">Heure</button></span>
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="2">Train à quai</button></span>
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="3">Train à l'approche</button></span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div><br />
         <label for="modif_train_hour">Heure de départ</label>
         <div data-component="picker" data-mode="time" data-increment-hours-on-minutes-max>

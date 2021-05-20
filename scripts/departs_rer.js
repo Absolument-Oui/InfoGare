@@ -15,7 +15,8 @@ function loadTrains(user_id, id){
                     retardtime: child.val().retardtime,
                     retardtype: child.val().retardtype,
                     mission: child.val().mission,
-                    length: child.val().length
+                    length: child.val().length,
+                    hourmode: child.val().hourmode
                 });
             }
         });
@@ -76,6 +77,7 @@ function loadTrains(user_id, id){
                 const train_mission = value["mission"];
                 const train_length = value["length"];
                 const train_hour = value["hourdepart"];
+                const train_hour_mode = value["hourmode"];
                 
                 var gares_split = train_gares.substr(0, train_gares.length - 1).split("|");
                 var retard, textfeature;
@@ -135,8 +137,29 @@ function loadTrains(user_id, id){
                 secondfirstcol_firstrow.appendChild(animationblink);
                 secondfirstcol_firstrow.setAttribute('class', 'col-second-first');
                 
-                secondsecondcol_firstrow.appendChild(document.createTextNode(train_hour.replace(':', 'h')));
-                secondsecondcol_firstrow.setAttribute('class', 'col-second-second text-time');
+                secondsecondcol_firstrow.setAttribute('class', 'col-second-second animation-blink');
+
+                if (train_hour_mode === 'Heure') {
+                    secondsecondcol_firstrow.setAttribute('class', 'col-second-second text-time');
+                    secondsecondcol_firstrow.appendChild(document.createTextNode(train_hour));
+                } else {
+                    var second_animationblink1 = document.createElement('div');
+                    var second_animationblink2 = document.createElement('div');
+
+                    second_animationblink1.setAttribute('class', 'rer-hour-mode animation-blink-1');
+                    if (train_hour_mode === 'A quai') {
+                        second_animationblink1.appendChild(document.createTextNode('à quai'));
+                    } else {
+                        second_animationblink1.appendChild(document.createTextNode('à l\'approche'));
+                    }
+
+                    second_animationblink2.setAttribute('class', 'text-time animation-blink-2');
+                    second_animationblink2.appendChild(document.createTextNode(train_hour.replace(':', 'h')));
+
+                    secondsecondcol_firstrow.appendChild(second_animationblink1);
+                    secondsecondcol_firstrow.appendChild(second_animationblink2);
+                }
+
                 
                 dest.appendChild(document.createTextNode(train_destination));
                 dest.setAttribute('class', '');
