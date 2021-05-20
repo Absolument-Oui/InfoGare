@@ -31,7 +31,7 @@ function loadParams() {
 }
 
 function createGareLink(gid) {
-    var glink = "https://infogares.page.link/?link=https://infogares.ga/gare.htm?uid="+uid+"&id="+gid;
+    var glink = "https://infogares.page.link/?link=https://infogare.fr/gare.htm?uid="+uid+"%26id="+gid;
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "https://firebasedynamiclinks.googleapis.com/v1/shortLinks?key=AIzaSyCWi0EChm97lofJrhqBp6wRRtgQGKq8IEg", false);
     xhr.setRequestHeader('Content-Type', 'application/json');
@@ -40,7 +40,8 @@ function createGareLink(gid) {
     }));
     var data = JSON.parse(xhr.responseText);
     var link = data['shortLink'];
-    database.child('users').child(uid).child('gares').child(id).update({
+    console.log(link);
+    database.child('users').child(uid).child('gares').child(gid).update({
         link: link
     }).then(() => {
         document.getElementById('share_link').value = link;
@@ -198,7 +199,7 @@ function prepSharing(gid) {
     });
 }
 
-function modifSharing (gid) {
+function modifSharing(gid) {
     database.child("users").child(uid).child("gares").child(gid).update({
         public: document.getElementById('share_public').checked
     });
