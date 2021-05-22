@@ -342,7 +342,7 @@ function loadGare(userid){
     gare_id = params.get("id");
     database.child("users").child(userid).child("gares").child(params.get("id")).get().then((snapshot) => {
         if (snapshot.exists()) {
-            document.title = 'InfoGares - '+snapshot.val().name;
+            document.title = 'InfoGare - '+snapshot.val().name;
             database.child("users").child(userid).child("gares").child(params.get("id")).child("trains").get().then((snapshot) => {
                 if (snapshot.exists()) {
                     snapshot.forEach((childsnapshot) => {
