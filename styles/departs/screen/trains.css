@@ -720,10 +720,8 @@ a {
     font-weight: bold;
 }
 
-.text-time-retard {
+.text-time.retard {
     color: #f9a200;
-    font-size: 6.5em;
-    font-weight: bold;
 }
 
 .text-features-1 {

@@ -179,13 +179,24 @@ function loadTrains(user_id, id){
                         secondsecondcol_firstrow.appendChild(document.createTextNode(train_hour.replace(':', 'h')));
                         secondsecondcol_firstrow.setAttribute('class', 'col-second-second text-time');
                     } else {
+                        secondsecondcol_firstrow.setAttribute('class', 'col-second-second text-time-retard animation-blink');
                         var minutes = train_hour.substr(3, 4);
                         var hourandret = Math.floor(minutes + train_retard_time);
                         if (hourandret < 10) {
                             hourandret = '0' + hourandret;
                         }
-                        secondsecondcol_firstrow.appendChild(document.createTextNode(train_hour.substr(0, 3).replace(':', 'h') + hourandret));
-                        secondsecondcol_firstrow.setAttribute('class', 'col-second-second text-time-retard');
+
+                        var second_animationblink1 = document.createElement('div');
+                        var second_animationblink2 = document.createElement('div');
+
+                        second_animationblink2.setAttribute('class', 'text-time retard animation-blink-2');
+                        second_animationblink2.appendChild(document.createTextNode(train_hour.substr(0, 3).replace(':', 'h') + hourandret));
+
+                        second_animationblink1.setAttribute('class', 'text-time animation-blink-1');
+                        second_animationblink1.appendChild(document.createTextNode(train_hour.replace(':', 'h')));
+
+                        secondsecondcol_firstrow.appendChild(second_animationblink2);
+                        secondsecondcol_firstrow.appendChild(second_animationblink1);
                     }
                     
                     dest.appendChild(document.createTextNode(train_destination));
