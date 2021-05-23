@@ -175,8 +175,18 @@ function loadTrains(user_id, id){
                     secondfirstcol_firstrow.appendChild(animationblink);
                     secondfirstcol_firstrow.setAttribute('class', 'col-second-first');
                     
-                    secondsecondcol_firstrow.appendChild(document.createTextNode(train_hour.replace(':', 'h')));
-                    secondsecondcol_firstrow.setAttribute('class', 'col-second-second text-time');
+                    if (train_retard_type === 'alheure') {
+                        secondsecondcol_firstrow.appendChild(document.createTextNode(train_hour.replace(':', 'h')));
+                        secondsecondcol_firstrow.setAttribute('class', 'col-second-second text-time');
+                    } else {
+                        var minutes = train_hour.substr(3, 4);
+                        var hourandret = Math.floor(minutes + train_retard_time);
+                        if (hourandret < 10) {
+                            hourandret = '0' + hourandret;
+                        }
+                        secondsecondcol_firstrow.appendChild(document.createTextNode(train_hour.substr(0, 3).replace(':', 'h') + hourandret));
+                        secondsecondcol_firstrow.setAttribute('class', 'col-second-second text-time-retard');
+                    }
                     
                     dest.appendChild(document.createTextNode(train_destination));
                     dest.setAttribute('class', '');

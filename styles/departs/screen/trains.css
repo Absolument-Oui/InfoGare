@@ -578,6 +578,30 @@ a {
     }
 }
 
+/* -- provenance in departures -- */
+
+.scroll-provenance {
+    animation: scrollstop 3s linear infinite;
+    -webkit-animation: scrollstop 3s linear infinite;
+}
+
+@-webkit-keyframes scrollstop {
+    from {
+        transform: translateX(0%);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes scrollstop {
+    from {
+        transform: translateX(0%);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
 
 /* -- scroll-x -- */
 
@@ -692,6 +716,12 @@ a {
 
 .text-time {
     color: #f5f900;
+    font-size: 6.5em;
+    font-weight: bold;
+}
+
+.text-time-retard {
+    color: #f9a200;
     font-size: 6.5em;
     font-weight: bold;
 }
