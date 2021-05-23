@@ -180,8 +180,9 @@ function loadTrains(user_id, id){
                         secondsecondcol_firstrow.setAttribute('class', 'col-second-second text-time');
                     } else {
                         secondsecondcol_firstrow.setAttribute('class', 'col-second-second text-time-retard animation-blink');
-                        var minutes = train_hour.substr(3, 4);
-                        var hourandret = Math.floor(minutes + train_retard_time);
+                        var minutes = Math.floor(train_hour.substr(3, 4));
+                        var retard = Math.floor(train_retard_time);
+                        var hourandret = Math.floor(minutes + retard);
                         if (hourandret < 10) {
                             hourandret = '0' + hourandret;
                         }
