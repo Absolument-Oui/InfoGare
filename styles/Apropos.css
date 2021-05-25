@@ -1,0 +1,15 @@
+@media (max-width: 1023.98px) {
+    marquee {
+        padding-left: 0px;
+        overflow: auto; 
+        text-align: center;
+    }
+}
+
+@media (min-width: 1024px) {
+    marquee {
+        padding-left: 150px;
+        overflow: auto; 
+        text-align: center;
+    }
+}
