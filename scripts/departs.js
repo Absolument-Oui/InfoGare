@@ -180,9 +180,18 @@ function loadTrains(user_id, id){
                         secondsecondcol_firstrow.setAttribute('class', 'col-second-second text-time');
                     } else {
                         secondsecondcol_firstrow.setAttribute('class', 'col-second-second text-time-retard animation-blink');
+                        var hour = Math.floor(train_hour.substr(0, 2));
                         var minutes = Math.floor(train_hour.substr(3, 4));
                         var retard = Math.floor(train_retard_time);
                         var hourandret = Math.floor(minutes + retard);
+
+                        if (hourandret > 59) {
+                            var quotient = Math.floor(hourandret/60);
+                            var rest = hourandret % 60;
+                            hour += quotient;
+                            hourandret = rest;
+                        }
+
                         if (hourandret < 10) {
                             hourandret = '0' + hourandret;
                         }
@@ -191,7 +200,7 @@ function loadTrains(user_id, id){
                         var second_animationblink2 = document.createElement('div');
 
                         second_animationblink2.setAttribute('class', 'text-time retard animation-blink-2');
-                        second_animationblink2.appendChild(document.createTextNode(train_hour.substr(0, 3).replace(':', 'h') + hourandret));
+                        second_animationblink2.appendChild(document.createTextNode(hour + "h" + hourandret));
 
                         second_animationblink1.setAttribute('class', 'text-time animation-blink-1');
                         second_animationblink1.appendChild(document.createTextNode(train_hour.replace(':', 'h')));
