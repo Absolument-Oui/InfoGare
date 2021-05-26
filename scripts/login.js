@@ -48,7 +48,11 @@ function signin(email, password, username) {
         user.updateProfile({
           displayName: username
         }).then(function() {
-            window.location.href = 'index.htm';
+            firebase.database().ref('users').child(user.uid).update({
+              newsletter: document.getElementById('newsletter').checked
+            }).then(() => {
+              window.location.href = 'index.htm';
+            })
         }).catch(function(error) {
           // An error happened.
         });

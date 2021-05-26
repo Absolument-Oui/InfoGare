@@ -98,6 +98,10 @@
             <input type=password class="form-control" id="password1" title="Mot de passe" placeholder="Mot de passe" value="" />
             <span class="form-control-state"></span>
         </div><br />
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="newsletter">
+          <label class="custom-control-label" for="newsletter">S'abonner à la newsletter</label>
+        </div><br>
         <button type="submit" class="btn btn-primary" onclick="signin(document.getElementById('email1').value, document.getElementById('password1').value, document.getElementById('username').value);">S'inscrire</button>&nbsp;
         <span onclick="document.getElementById('signin').hidden=true; document.getElementById('login').hidden=false;" style="cursor: pointer;">Déjà un compte ?</span>
     </div>

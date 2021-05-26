@@ -1303,25 +1303,25 @@ a {
 
 .train-wagons .train-wagons-trains .train-wagons-train .train-wagons-train-wagon.train-tgv-l {
     width: 9.1vh;
-    background-image: url(../../img/screen/wagons/tgv-l.svg);
+    background-image: url(../../../images/screen/wagons/tgv-l.svg);
 }
 
 .train-wagons .train-wagons-trains .train-wagons-train .train-wagons-train-wagon.train-tgv-r {
     width: 9.1vh;
-    background-image: url(../../img/screen/wagons/tgv-r.svg);
+    background-image: url(../../../images/screen/wagons/tgv-r.svg);
 }
 
 .train-wagons .train-wagons-trains .train-wagons-train .train-wagons-train-wagon.train-loco {
     width: 9.1vh;
-    background-image: url(../../img/screen/wagons/loco.svg);
+    background-image: url(../../../images/screen/wagons/loco.svg);
 }
 
 .train-wagons .train-wagons-trains .train-wagons-train .train-wagons-train-wagon.train-wagon {
-    background-image: url(../../img/screen/wagons/wagon.svg);
+    background-image: url(../../../images/screen/wagons/wagon.svg);
 }
 
 .train-wagons .train-wagons-trains .train-wagons-train .train-wagons-train-wagon.train-wagon-bar {
-    background-image: url(../../img/screen/wagons/wagon-bar.svg);
+    background-image: url(../../../images/screen/wagons/wagon-bar.svg);
 }
 
 .train-wagons .train-wagons-line {
@@ -1331,7 +1331,7 @@ a {
     right: 2vh;
     height: 0.5vh;
     background-size: 0.7%;
-    background-image: url(../../img/screen/wagons/train-wagons-line.svg);
+    background-image: url(../../../images/screen/wagons/train-wagons-line.svg);
 }
 
 .train-wagons .train-wagons-marks {
@@ -1365,5 +1365,5 @@ a {
 
 .train-wagons .train-wagons-marks .train-wagons-marks-mark.train-wagons-marks-mark-here {
     border: none;
-    background: transparent url(../../img/screen/wagons/here.svg) no-repeat center;
+    background: transparent url(../../../images/screen/wagons/here.svg) no-repeat center;
 }
