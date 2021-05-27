@@ -273,7 +273,7 @@ function loadTrains(user_id, id){
             document.getElementById('infos').innerHTML = snapshot.val().infos.replace('\n', ' &nbsp;');
 
             document.getElementById('bg').hidden = false;
-            document.getElementById('loader').hidden = true;
+            document.getElementById('loader').style.display = 'none';
             
             scrollX();    
         });

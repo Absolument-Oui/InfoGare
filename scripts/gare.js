@@ -481,10 +481,10 @@ function loadGare(userid){
                         document.getElementById('trains').appendChild(listgroupitem);
                     });
                     document.getElementById('trains').hidden = false;
-                    document.getElementById('loader').hidden = true;
+                    document.getElementById('loader').style.display = 'none';
                 } else {
                     document.getElementById('trains_div').appendChild(document.createTextNode('Il n\'y a pas de trains ;)'));
-                    document.getElementById('loader').hidden = true;
+                    document.getElementById('loader').style.display = 'none';
                 }
             });
         } else {
