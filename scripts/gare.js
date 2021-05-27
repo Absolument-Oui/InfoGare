@@ -172,10 +172,10 @@ function loadGares(userid) {
                 document.getElementById('gares').appendChild(listgroupitem);
             });
             document.getElementById('gares').hidden = false;
-            document.getElementById('loader').hidden = true;
+            document.getElementById('loader').style.display = 'none';
         }else{
             document.getElementById('gares_div').appendChild(document.createTextNode('Aucune gare pour le moment ;)'));
-            document.getElementById('loader').hidden = true;
+            document.getElementById('loader').style.display = 'none';
         }
     });
 }
