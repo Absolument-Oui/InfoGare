@@ -219,7 +219,11 @@ function loadTrains(user_id, id){
         
         database.child("users").child(user_id).child("gares").child(id).get().then((snapshot) => {
             document.getElementById('infos').innerHTML = snapshot.val().infos.replace('\n', ' &nbsp;');
+
+            document.getElementById('bg').hidden = false;
+            document.getElementById('loader').style.display = 'none';
+
+            scrollX();
         });
-        scrollX();
     });
 }
