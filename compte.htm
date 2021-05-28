@@ -10,7 +10,7 @@
     <link rel="icon" href="images/favicon.png" size="32x32" type="image/png" />
     <title>InfoGare - Profil</title>
 </head>
-<body onload="checkLogin(); loadInfos(); " class="light">
+<body onload="checkLogin(); loadInfos(); createLoader();" class="light">
 <div>
     <nav role="navigation" class="mastnav">
   <ul class="mastnav-top">
@@ -55,6 +55,8 @@
 </div>
 
 <div class="main-content">
+  <marquee id="loader" scrollamount="15"><img id="caisse-1"><img id="caisse-2"><img id="caisse-3"></marquee>
+  <div id="content" hidden>
     <i class="icons-circle-account-connected icons-size-140px"></i>
     <br /><br>
     <h1 id="username"></h1>
@@ -91,6 +93,83 @@
       </div>
     </div>
 
+    <label for="param3">Livrée des trains de chargement</label>
+    <div class="select-improved" data-component="select-exclusive">
+      <div class="select-control">
+        <div class="input-group" data-role="select-toggle">
+          <div class="form-control" data-role="placeholder" data-selected-prefix="Sélection actuelle">
+            Sélectionner une livrée
+          </div>
+          <select class="sr-only" id="param3" data-role="input" tabindex="-1" aria-hidden="true">
+            <option data-id="0">Neutre</option>
+            <option data-id="1">Alsace</option>
+            <option data-id="2">Aquitaine</option>
+            <option data-id="3">Auvergne</option>
+            <option data-id="4">Basse Normandie</option>
+            <option data-id="5">Bourgogne</option>
+            <option data-id="6">Bretagne</option>
+            <option data-id="7">Centre</option>
+            <option data-id="8">Champagne Ardenne</option>
+            <option data-id="9">Franche Comté</option>
+            <option data-id="10">Haute Normandie</option>
+            <option data-id="11">Languedoc Roussillon</option>
+            <option data-id="12">Limousin</option>
+            <option data-id="13">Lorraine</option>
+            <option data-id="14">Midi Pyrénées</option>
+            <option data-id="15">Nord pas de Calais</option>
+            <option data-id="16">PACA</option>
+            <option data-id="17">Pays de la Loire</option>
+            <option data-id="18">Picardie</option>
+            <option data-id="19">Poitou Charente</option>
+            <option data-id="20">Rhône Alpes</option>
+          </select>
+          <div class="input-group-append input-group-last">
+            <button class="btn btn-primary btn-only-icon" data-role="btn" type="button" aria-expanded="false" aria-controls="selectgrouptoggle">
+              <i class="icons-arrow-down icons-size-x75" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+        <div class="select-menu" role="list" data-role="menu" id="selectgrouptoggle">
+          <div role="listitem" class="select-group">
+            <div class="select-group-head">
+              <span class="select-group-title text-uppercase">Neutre</span>
+            </div>
+            <div class="select-group-content" role="list">
+              <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="0">Neutre</button></span>
+            </div>
+          </div>
+          <div role="listitem" class="select-group">
+            <div class="select-group-head">
+              <span class="select-group-title text-uppercase">Anciennes régions</span>
+            </div>
+            <div class="select-group-content" role="list">
+              <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="1">Alsace</button></span>
+              <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="2">Aquitaine</button></span>
+              <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="3">Auvergne</button></span>
+              <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="4">Basse Normandie</button></span>
+              <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="5">Bourgogne</button></span>
+              <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="6">Bretagne</button></span>
+              <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="7">Centre</button></span>
+              <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="8">Champagne Ardenne</button></span>
+              <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="9">Franche Comté</button></span>
+              <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="10">Haute Normandie</button></span>
+              <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="11">Languedoc Roussillon</span>
+              <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="12">Limousin</button></span>
+              <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="13">Lorraine</button></span>
+              <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="14">Midi Pyrénées</button></span>
+              <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="15">Nord pas de Calais</button></span>
+              <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="16">PACA</button></span>
+              <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="17">Pays de la Loire</button></span>
+              <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="18">Picardie</button></span>
+              <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="19">Poitou Charente</button></span>
+              <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="20">Rhône Alpes</button></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="btn" onclick="setLivree();">Modifier</button>
+
     <br><br>
 
     <h1>Paramètres des mails</h1>
@@ -125,6 +204,7 @@
         document.write('<scr' + 'ipt type="text/javascript" src="http' + (location.protocol === 'https:' ? 's' : '') + '://www.varietyofdisplayformats.com/c6ab1755c751b39c1d6ce2de57692456/invoke.js"></scr' + 'ipt>');
       </script>
     </center></div>
+  </div>
 
     <div class="footerbar">
         <center><a href=apropos.htm>&Agrave; propos</a> | <a href= cgu.htm>CGU</a> | <a href=mentionslegales.htm>Mentions légales</a> | <a href="donation.htm">Nous soutenir</a></center>
@@ -209,6 +289,7 @@
     <script src="scripts/initialize.js"></script>
     <script src="scripts/login.js"></script>
     <script src="scripts/profile.js"></script>
+    <script src="scripts/loader.js"></script>
     <script>
         if (localStorage.getItem('cookies_accepted') === undefined) {
             $('#cookies').modal('show');

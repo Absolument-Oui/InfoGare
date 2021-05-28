@@ -5,10 +5,18 @@ function modifParams() {
     database.child("users").child(uid).update({
         openmethod: document.getElementById('openinwindow').checked,
         autoopenpanel: document.getElementById('activated').checked,
-        newsletter: document.getElementById('newsletteryes').checked
+        newsletter: document.getElementById('newsletteryes').checked,
     }).then((snapshot) => {
         
     });
+}
+
+function setLivree() {
+    localStorage.setItem('livree', document.getElementById('param3').value);
+}
+
+function getLivree() {
+    document.getElementById('param3').value = localStorage.getItem('livree');
 }
 
 function loadInfos() {
@@ -18,6 +26,7 @@ function loadInfos() {
             document.getElementById('username').innerText = user.displayName;
             document.getElementById('email').innerText = user.email;
             loadParams();
+            getLivree();
             firebase.database().ref('users/'+uid+'/gares').get().then((snapshot) => {
                 var childs = 0;
                 document.getElementById('gares_nbr').innerText = snapshot.numChildren();
@@ -30,6 +39,8 @@ function loadInfos() {
                 email: user.email
             });
         }
+        document.getElementById('content').hidden = false;
+        document.getElementById('loader').style.display = 'none';
     });
 }
 
