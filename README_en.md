@@ -31,3 +31,10 @@ _The code was not available at this moment_
 We are looking for volunteers to help develop the Web and Android version of InfoGares. Do not hesitate to offer your help :)
 
 We accept any useful additions to this software. To do this, open an Issue, then choose "Demande d'ajout" (Add Request). Maybe your request will be accepted ;)
+<<<<<<< HEAD
+=======
+
+## Contact
+
+E-mail : [contact@infogare.fr](mailto:contact@infogare.fr)
+>>>>>>> 19777bf363c0d61bd4e01c390461c64c325e166d
