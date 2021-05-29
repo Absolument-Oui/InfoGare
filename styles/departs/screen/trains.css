@@ -1019,6 +1019,8 @@ a {
 
 .train-logo.train-logo-intercite {
     background-image: url(../../../images/screen/common/logo-intercites.svg);
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
 .train-logo.train-logo-eurostar {
