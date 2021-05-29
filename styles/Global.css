@@ -35,3 +35,7 @@
         padding-bottom: 50px;
     }
 }
+
+#loader {
+    vertical-align: bottom;
+}
