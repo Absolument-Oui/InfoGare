@@ -703,7 +703,8 @@ a {
 .text-type {
     line-height: 1;
     font-size: 3.3em;
-    font-family: 'Avenir';
+    font-weight: 100;
+    font-family: 'Achemine';
     display: inline-block;
 }
 
