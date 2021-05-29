@@ -151,6 +151,8 @@ function loadTrains(user_id, id){
                         logo.setAttribute('class', 'train-logo train-logo-fluo');
                     } else if (train_type === 'TER Occitanie') {
                         logo.setAttribute('class', 'train-logo train-logo-occitanie');
+                    } else if (train_type === 'Intercité') {
+                        logo.setAttribute('class', 'train-logo train-logo-intercite');
                     } else {            
                         logo.setAttribute('class', 'train-logo train-logo-sncf');
                     }
@@ -215,10 +217,18 @@ function loadTrains(user_id, id){
                     secondthirdcol_firstrow.appendChild(dest);
                     secondthirdcol_firstrow.setAttribute('class', 'col-second-third');
                     
-                    voie.appendChild(document.createTextNode(train_voie));
-                    
-                    track.appendChild(voie);
-                    track.setAttribute('class', 'train-track train-track-view voie');
+
+                    if (train_type === 'Car TER') {
+                        voie.setAttribute('class', 'train-track train-track-car');
+
+                        track.appendChild(voie);
+                        track.setAttribute('class', 'train-track train-track-car voie');
+                    } else {
+                        voie.appendChild(document.createTextNode(train_voie));
+                        
+                        track.appendChild(voie);
+                        track.setAttribute('class', 'train-track train-track-view voie');
+                    }
                     
                     if (value['showvoie']) {
                         thirdcol_firstrow.appendChild(track);

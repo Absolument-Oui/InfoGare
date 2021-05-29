@@ -1016,6 +1016,10 @@ a {
     background-image: url(../../../images/screen/common/logo-occitanie.svg);
 }
 
+.train-logo.train-logo-intercite {
+    background-image: url(../../../images/screen/common/logo-intercites.svg);
+}
+
 .train-logo.train-logo-eurostar {
     background-image: url(../../../images/screen/common/logo-eurostar.svg);
 }

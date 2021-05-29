@@ -888,6 +888,10 @@ a {
     background-image: url(../../../images/screen/quai/logo-occitanie-color.svg);
 }
 
+.train-logo.train-logo-intercite {
+    background-image: url(../../../images/screen/quai/logo-intercites.svg);
+}
+
 .train-logo.train-logo-ouigo {
     background-image: url(../../../images/screen/quai/logo-ouigo-color.svg);
 }

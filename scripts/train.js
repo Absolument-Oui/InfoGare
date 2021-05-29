@@ -30,6 +30,8 @@ function loadTrain(uid) {
             logo.setAttribute('class', 'train-logo train-logo-fluo');
         } else if (train_type === 'TER Occitanie') {
             logo.setAttribute('class', 'train-logo train-logo-occitanie');
+        } else if (train_type === 'Intercité') {
+            logo.setAttribute('class', 'train-logo train-logo-intercite');
         } else {            
             logo.setAttribute('class', 'train-logo train-logo-sncf');
         }
@@ -128,9 +130,12 @@ function loadTrain(uid) {
     });
     
     database.child("users").child(uid).child("gares").child(params.get('gid')).get().then((snapshot) => {
-        document.getElementById('infos').innerHTML = snapshot.val().infos.replace('\n', ' &nbsp;');
+        document.getElementById('infos').innerHTML = snapshot.val().infos.replace('\n', ' &nbsp;');    
+        
+        document.getElementById('loader').style.display = 'none';
+        
+        scrollX();
+        scrollY(75);
+
     });
-    
-    scrollX();
-    scrollY(75);
 }
