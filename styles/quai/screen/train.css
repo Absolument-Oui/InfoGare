@@ -207,7 +207,7 @@ a {
 }
 
 .rer.text-train-length {
-    color: #003A79;
+    color: #003A79 !important;
     font-size: 6.5em;
     font-weight: 800;
     font-family: 'Achemine';

@@ -283,9 +283,10 @@ function loadTrains(user_id, id){
             document.getElementById('infos').innerHTML = snapshot.val().infos.replace('\n', ' &nbsp;');
 
             document.getElementById('bg').hidden = false;
-            document.getElementById('loader').style.display = 'none';
+            //document.getElementById('loader').style.display = 'none';
             
-            scrollX();    
+            scrollX();
+            checkHiddenTrains(user_id, id);
         });
     });
 }
@@ -293,24 +294,36 @@ function loadTrains(user_id, id){
 function checkHiddenTrains(uid, gid) {
     database.child('users').child(uid).child('gares').child(gid).child('trains').get().then((snapshot) => {
         snapshot.forEach((child) => {
-            var now = new Date(Date.now());
-            var trainhour = new Date();
-            
-            trainhour.setHours(child.val().hourdepart.substr(0, 2), child.val().hourdepart.substr(3, 5), 0, 0);
-            
-            console.log(now);
-            console.log(trainhour);
+            var now_date = new Date(Date.now());
 
-            if (now.toLocaleTimeString().replaceAll(':', '') > trainhour.toLocaleTimeString().replaceAll(':', '')) {
-                child.update({
-                    hidden: true
+            var nowhour = now_date.getHours();
+            var nowmin = now_date.getMinutes();
+            var trainhour = child.val().hourdepart.substr(0, 2);
+            var trainmin = child.val().hourdepart.substr(3, 4);
+
+            var trainminafter, trainhourafter;
+                        
+            console.log(nowhour + ' : ' + nowmin);
+            console.log(trainhour + ' : ' + trainmin);
+
+            if (Math.floor(trainmin + 2) > 59) {
+                trainhourafter = trainhour + 1;
+                trainminafter =trainmin + ((trainmin + 2) % 60);
+            }
+
+            var child_a = database.child('users').child(uid).child('gares').child(gid).child('trains').child(child.val().id);
+
+            if (nowhour == trainhour && nowmin == trainmin - 20) {
+                child_a.update({
+                    show: true
                 });
-            } else if (now.toLocaleTimeString().replaceAll(':', '') == trainhour.toLocaleTimeString().replaceAll(':', '') - 1) {
-                child.update({
-                    hidden: false
+                console.log('shown');
+            } else if (nowhour <= trainhour && nowmin < trainmin) {
+                child_a.update({
+                    show: false
                 });
+                console.log('hidden');
             }
         });
     });
-    loadTrains(uid, gid);
 }

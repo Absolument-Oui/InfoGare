@@ -2,6 +2,8 @@
 
 var user = undefined;
 
+var SecretCode = null;
+
 function login(email, password) {
     document.getElementById('checkemail').hidden = true;
     document.getElementById('checkpassword').hidden = true;
@@ -13,7 +15,14 @@ function login(email, password) {
   .then((userCredential) => {
     // Signed in
     var user = userCredential.user;
-    window.location.href='index.htm';
+    firebase.database().ref('users/'+user.uid).get().then((snapshot) => {
+      if (snapshot.val().tfa) {
+        SecretCode = snapshot.val().tfacode;
+        $('#tfa').modal('show');
+      } else {
+        window.location.href='index.htm';
+      }
+    });
     // ...
   })
   .catch((error) => {
@@ -66,7 +75,7 @@ function signin(email, password, username) {
             document.getElementById('emailexists').hidden = false;
         }else if (errorCode == 'auth/weak-password') {
             document.getElementById('passwordweak').hidden = false;
-        }else if (errorCode == 'invelid-email') {
+        }else if (errorCode == 'invalid-email') {
             document.getElementById('checkemail').hidden = false;
         }
         document.getElementById('error').hidden = false;
@@ -87,7 +96,7 @@ function checkLogin() {
 
 function sendPass(email) {
   firebase.auth().sendPasswordResetEmail(email).then(() => {
-    alert('Un email de réinitialisation de votre mot de passe viens de vous être envoyé !');
+    alert('Un email de réinitialisation de votre mot de passe viens d\'être envoyé  à' + email + '!');
   });
 }
 
@@ -97,4 +106,13 @@ function logout() {
     }).catch((error) => {
       console.error(error.message);
     });
+}
+
+function checkTfa() {
+  var pin = document.getElementById('tfa_code').value;
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "https://www.authenticatorApi.com/Validate.aspx", true);
+  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  xhr.send("pin="+pin+"&secretCode="+SecretCode);
+  alert(xhr.reponseText);
 }
