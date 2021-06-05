@@ -1023,6 +1023,102 @@ a {
     margin-right: 10%;
 }
 
+.train-logo.train-logo-aleop {
+    background-image: url(../../../images/screen/common/logo-aleop.svg);
+}
+
+.train-logo.train-logo-auvergne-rhone-alpes {
+    background-image: url(../../../images/screen/common/logo-auvergerhonealpes.svg);
+}
+
+.train-logo.train-logo-breizhgo {
+    background-image: url(../../../images/screen/common/logo-breizhgo.svg);
+}
+
+.train-logo.train-logo-db {
+    background-image: url(../../../images/screen/common/logo-db.svg);
+}
+
+.train-logo.train-logo-ter-hauts-de-france {
+    background-image: url(../../../images/screen/common/logo-hautsdefrance.svg);
+}
+
+.train-logo.train-logo-lio {
+    background-image: url(../../../images/screen/common/logo-lio.svg);
+}
+
+.train-logo.train-logo-ter-metrolor {
+    background-image: url(../../../images/screen/common/logo-metrolor.svg);
+}
+
+.train-logo.train-logo-mobigo {
+    background-image: url(../../../images/screen/common/logo-mobigo.svg);
+}
+
+.train-logo.train-logo-remi {
+    background-image: url(../../../images/screen/common/logo-remi.svg);
+}
+
+.train-logo.train-logo-renfe-ave {
+    background-image: url(../../../images/screen/common/logo-renfeave.svg);
+}
+
+.train-logo.train-logo-sbb {
+    background-image: url(../../../images/screen/common/logo-sbb.svg);
+}
+
+.train-logo.train-logo-sncf-1985 {
+    background-image: url(../../../images/screen/common/logo-sncf1985.svg);
+}
+
+.train-logo.train-logo-sncf-1992 {
+    background-image: url(../../../images/screen/common/logo-sncf1992.svg);
+}
+
+.train-logo.train-logo-ter-alsace {
+    background-image: url(../../../images/screen/common/logo-teralsace.svg);
+}
+
+.train-logo.train-logo-ter-aquitaine {
+    background-image: url(../../../images/screen/common/logo-teraquitaine.svg);
+}
+
+.train-logo.train-logo-ter-basse-normandie {
+    background-image: url(../../../images/screen/common/logo-terbassenormandie.svg);
+}
+
+.train-logo.train-logo-ter-bourgogne {
+    background-image: url(../../../images/screen/common/logo-terbourgogne.svg);
+}
+
+.train-logo.train-logo-ter-bretagne {
+    background-image: url(../../../images/screen/common/logo-terbretagne.svg);
+}
+
+.train-logo.train-logo-ter-centre {
+    background-image: url(../../../images/screen/common/logo-tercentre.svg);
+}
+
+.train-logo.train-logo-ter-nord-pas-de-calais {
+    background-image: url(../../../images/screen/common/logo-ternordpasdecalais.svg);
+}
+
+.train-logo.train-logo-poitou-charentes {
+    background-image: url(../../../images/screen/common/logo-terpoitoucharentes.svg);
+}
+
+.train-logo.train-logo-thello {
+    background-image: url(../../../images/screen/common/logo-thello.svg);
+}
+
+.train-logo.train-logo-tram-train {
+    background-image: url(../../../images/screen/common/logo-tramtrain.svg);
+}
+
+.train-logo.train-logo-zou {
+    background-image: url(../../../images/screen/common/logo-zou.svg);
+}
+
 .train-logo.train-logo-eurostar {
     background-image: url(../../../images/screen/common/logo-eurostar.svg);
 }

@@ -63,7 +63,9 @@ function loadParams() {
         } else {
             document.getElementById('newsletterno').checked = true;
         }
-    });
+    }).catch((error) => {
+        document.getElementById('error_loading').hidden = false;
+    })
 }
 
 function chgPass(oldpass, newpass) {

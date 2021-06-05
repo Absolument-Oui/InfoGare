@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 15.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="COMPOSITION" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+	 y="0px" width="479.833px" height="162.987px" viewBox="0 0 479.833 162.987" enable-background="new 0 0 479.833 162.987"
+	 xml:space="preserve">
+<path id="barre" fill="#FFFFFF" d="M421.656,111.793c13.802-6.918,25.409-1.429,30.072,2.395
+	C455.634,99.157,477.207,10.57,479.779,0c-14.819,5.369-33.312,9.045-49.155,11.463C429.712,21.708,423.887,87.168,421.656,111.793z
+	"/>
+<linearGradient id="ZOU_1_" gradientUnits="userSpaceOnUse" x1="42.5244" y1="97.019" x2="426.4854" y2="73.5394">
+	<stop  offset="0" style="stop-color:#FFFFFF"/>
+	<stop  offset="0.1878" style="stop-color:#FFFFFF"/>
+	<stop  offset="0.4334" style="stop-color:#FFFFFF"/>
+	<stop  offset="0.5545" style="stop-color:#FFFFFF"/>
+	<stop  offset="0.6386" style="stop-color:#FFFFFF"/>
+	<stop  offset="0.8013" style="stop-color:#FFFFFF"/>
+	<stop  offset="1" style="stop-color:#FFFFFF"/>
+</linearGradient>
+<path id="ZOU" fill="url(#ZOU_1_)" d="M358.732,43.621c0.001,0.004,0,0.008,0,0.012c0.002,6.78,0,60.686,0,60.686
+	c0,12.119-10.628,21.368-22.718,21.368s-22.709-9.374-22.709-21.368V56.899c0-17.149-4.473-41.441-42.026-41.441
+	c0,0-84.031,0-84.597,0c-40.763,0-73.807,32.96-73.807,73.722c0,13.297,3.565,25.74,9.719,36.515H61.338l65.45-110.137H0
+	c0,15.505,5.485,36.98,27.806,36.98h35.634l-38.967,66.562c-13.391,22.877-13.713,43.885-13.713,43.885s175.526,0,175.923,0
+	c40.762,0,73.806-33.044,73.806-73.806c0-13.35-3.596-25.837-9.795-36.642h18.935c4.46,0,6.312,2.244,6.312,6.388
+	c0,0,0,44.409,0,44.643c0,32.431,21.3,59.411,60.074,59.411c38.735,0,60.092-27.01,60.092-59.411V15.458
+	C365.792,15.458,358.732,31.917,358.732,43.621z M186.683,125.832c-20.242,0-36.651-16.41-36.651-36.651
+	c0-20.242,16.41-36.651,36.651-36.651s36.651,16.409,36.651,36.651C223.334,109.422,206.924,125.832,186.683,125.832z"/>
+<ellipse id="XMLID_32_" fill="#FFFFFF" cx="434.085" cy="141.022" rx="22.208" ry="21.965"/>
+<path id="XMLID_33_" fill="#FFFFFF" d="M421.656,111.793"/>
+</svg>

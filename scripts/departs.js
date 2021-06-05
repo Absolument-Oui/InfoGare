@@ -153,6 +153,54 @@ function loadTrains(user_id, id){
                         logo.setAttribute('class', 'train-logo train-logo-occitanie');
                     } else if (train_type === 'Intercité') {
                         logo.setAttribute('class', 'train-logo train-logo-intercite');
+                    } else if (train_type === 'Aléop') {
+                        logo.setAttribute('class', 'train-logo train-logo-aleop');
+                    } else if (train_type === 'TER Auvergne') {
+                        logo.setAttribute('class', 'train-logo train-logo-ter-auvergne');
+                    } else if (train_type === 'BreizhGo') {
+                        logo.setAttribute('class', 'train-logo train-logo-breizhgo');
+                    } else if (train_type === 'DB') {
+                        logo.setAttribute('class', 'train-logo train-logo-db');
+                    } else if (train_type === 'TER Hauts de France') {
+                        logo.setAttribute('class', 'train-logo train-logo-hauts-de-france');
+                    } else if (train_type === 'Lio') {
+                        logo.setAttribute('class', 'train-logo train-logo-lio');
+                    } else if (train_type === 'Mobigo') {
+                        logo.setAttribute('class', 'train-logo train-logo-mobigo');
+                    } else if (train_type === 'TER Metrolor') {
+                        logo.setAttribute('class', 'train-logo train-logo-ter-metrolor');
+                    } else if (train_type === 'Rémi') {
+                        logo.setAttribute('class', 'train-logo train-logo-remi');
+                    } else if (train_type === 'Renfe Ave') {
+                        logo.setAttribute('class', 'train-logo train-logo-renfe-ave');
+                    } else if (train_type === 'SBB') {
+                        logo.setAttribute('class', 'train-logo train-logo-sbb');
+                    } else if (train_type === 'SNCF (logo 1958)') {
+                        logo.setAttribute('class', 'train-logo train-logo-sncf-1985');
+                    } else if (train_type === 'SNCF (logo 1992)') {
+                        logo.setAttribute('class', 'train-logo train-logo-sncf-1992');
+                    } else if (train_type === 'TER Alsace') {
+                        logo.setAttribute('class', 'train-logo train-logo-ter-alsace');
+                    } else if (train_type === 'TER Aquitaine') {
+                        logo.setAttribute('class', 'train-logo train-logo-ter-aquitaine');
+                    } else if (train_type === 'TER Basse Normandie') {
+                        logo.setAttribute('class', 'train-logo train-logo-ter-basse-normandie');
+                    } else if (train_type === 'TER Bourgogne') {
+                        logo.setAttribute('class', 'train-logo train-logo-ter-bourgogne');
+                    } else if (train_type === 'TER Bretagne') {
+                        logo.setAttribute('class', 'train-logo train-logo-ter-bretagne');
+                    } else if (train_type === 'TER Centre') {
+                        logo.setAttribute('class', 'train-logo train-logo-ter-centre');
+                    } else if (train_type === 'TER Nord pas de Calais') {
+                        logo.setAttribute('class', 'train-logo train-logo-ter-nord-pas-de-calais');
+                    } else if (train_type === 'TER Poitou Charentes') {
+                        logo.setAttribute('class', 'train-logo train-logo-ter-poitou-charentes');
+                    } else if (train_type === 'Thello') {
+                        logo.setAttribute('class', 'train-logo train-logo-thello');
+                    } else if (train_type === 'Tram train') {
+                        logo.setAttribute('class', 'train-logo train-logo-tram-train');
+                    } else if (train_type === 'Zou') {
+                        logo.setAttribute('class', 'train-logo train-logo-zou');
                     } else {            
                         logo.setAttribute('class', 'train-logo train-logo-sncf');
                     }
@@ -305,6 +353,10 @@ function checkHiddenTrains(uid, gid) {
                         
             console.log(nowhour + ' : ' + nowmin);
             console.log(trainhour + ' : ' + trainmin);
+
+            if (nowmin < 10) {
+                nowmin = '0' + nowmin;
+            }
 
             if (Math.floor(trainmin + 2) > 59) {
                 trainhourafter = trainhour + 1;
