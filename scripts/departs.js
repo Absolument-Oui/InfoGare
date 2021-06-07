@@ -334,7 +334,7 @@ function loadTrains(user_id, id){
             //document.getElementById('loader').style.display = 'none';
             
             scrollX();
-            checkHiddenTrains(user_id, id);
+            //checkHiddenTrains(user_id, id);
         });
     });
 }
