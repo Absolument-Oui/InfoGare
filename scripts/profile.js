@@ -38,6 +38,7 @@ function loadInfos() {
             firebase.database().ref('users/'+uid).update({
                 email: user.email
             });
+            checkBetaMode(user.uid);
         }
         document.getElementById('content').hidden = false;
         document.getElementById('loader').style.display = 'none';
