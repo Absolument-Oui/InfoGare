@@ -77,3 +77,13 @@ function chgPass(oldpass, newpass) {
         });
     });
 }
+
+function checkBetaMode(userid) {
+    firebase.database().ref('users/'+userid).get().then((snapshot) => {
+        if (snapshot.val().beta) {
+            document.getElementById('beta').innerHTML = 'Vous êtes inscrit à la béta ;) Vous pouvez y accéder <a href="beta.infogare.fr">ici</a>';
+        } else {
+            document.getElementById('beta').innerHTML = 'Vous n\'êtes pas inscrit à la béta ! Vous pouvez nous envoyer un email ou vous inscrire via <a href="https://forms.gle/UbyzhktKtxDfPdPg7" target="_blank">ce formulaire</a>';
+        }
+    });
+}
