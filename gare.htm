@@ -408,7 +408,7 @@
               <p class="form-control is-placeholder  d-flex align-items-center" data-role="placeholder" data-selected-prefix="Sélection actuelle">Sélectionnez un type de train</p>
               <select class="sr-only" id="modif_train_type" data-role="input" tabindex="-1" aria-hidden="true">
                 <option selected data-role="default-hidden-option" disabled hidden>Sélectionnez un type de train</option>
-                <option data-id="1" >TER</option>
+                                <option data-id="1" >TER</option>
                 <option data-id="2" >TGV</option>
                 <option data-id="3" >inOui</option>
                 <option data-id="4" >OuiGo</option>
@@ -420,6 +420,33 @@
                 <option data-id="10" >TER Occitanie</option>
                 <option data-id="11" >Car TER</option>
                 <option data-id="12" >Intercité</option>
+                <option data-id="13" >Aléop</option>
+                <option data-id="14" >TER Auvergne Rhône Alpes</option>
+                <option data-id="15" >BreizhGo</option>
+                <option data-id="16" >DB</option>
+                <option data-id="17" >TER Hauts de France</option>
+                <option data-id="18" >Lio</option>
+                <option data-id="19" >Mobigo</option>
+                <option data-id="20" >TER Metrolor</option>
+                <option data-id="21" >Rémi</option>
+                <option data-id="22" >Renfe Ave</option>
+                <option data-id="23" >SBB</option>
+                <option data-id="24" >SNCF (logo 1985)</option>
+                <option data-id="25" >SNCF (logo 1992)</option>
+                <option data-id="26" >TER Alsace</option>
+                <option data-id="27" >TER Aquitaine</option>
+                <option data-id="28" >TER Basse Normandie</option>
+                <option data-id="29" >TER Bourgogne</option>
+                <option data-id="30" >TER Bretagne</option>
+                <option data-id="31" >TER Centre</option>
+                <option data-id="32" >TER Nord pas de Calais</option>
+                <option data-id="33" >TER Poitou Charentes</option>
+                <option data-id="34" >Thello</option>
+                <option data-id="35" >Tram train</option>
+                <option data-id="36" >Zou</option>
+                <option data-id="37" >Nomad</option>
+                <option data-id="38" >TER Midi Pyrénées</option>
+                <option data-id="39" >TER Languedoc Roussillon</option>
               </select>
               <div class="input-group-append input-group-last">
                 <button class="btn btn-primary btn-only-icon " data-role="btn" type="button" aria-expanded="false" aria-controls="selecttoggle2">
@@ -437,6 +464,19 @@
                   <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="1">TER</button></span>
                   <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="8">Fluo Grand Est</button></span>
                   <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="10">TER Occitanie</button></span>
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="14">TER Auvergne</button></span>
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="17">TER Hauts de France</button></span>
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="26">TER Alsace</button></span>
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="27">TER Aquitaine</button></span>
+                  <span class="select-menu-item" role="litsitem"><button type="button" data-role="value" data-target="28">TER Basse Normandie</button></span>
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="29">TER Bourgogne</button></span>
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="30">TER Bretagne</button></span>
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="39">TER Languedoc Roussillon</button></span>
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="31">TER Centre</button></span>
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="38">TER Midi Pyrénées</button></span>
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="20">TER Metrolor</button></span>
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="32">TER Nord pas de Calais</button></span>
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="33">TER Poitou Charentes</button></span>
                 </div>
               </div>
               <div class="select-group" role="listitem">
@@ -452,6 +492,14 @@
               </div>
               <div class="select-group" role="listitem">
                 <div class="select-group-head">
+                  <span class="select-group-title text-uppercase">Trains urbains</span>
+                </div>
+                <div class="select-group-content" role="list">
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="35">Tram train</button></span>
+                </div>
+              </div>
+              <div class="select-group" role="listitem">
+                <div class="select-group-head">
                   <span class="select-group-title text-uppercase">Trains internationaux</span>
                 </div>
                 <div class="select-group-content" role="list">
@@ -459,6 +507,10 @@
                   <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="6">Eurostar</button></span>
                   <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="7">TGV Lyria</button></span>
                   <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="9">ICE</button></span>
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="16">DB</button></span>
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="22">Renfe Ave</button></span>
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="23">SBB</button></span>
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="34">Thello</button></span>
                 </div>
               </div>
               <div class="select-group" role="listitem">
@@ -467,6 +519,71 @@
                 </div>
                 <div class="select-group-content" role="list">
                   <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="11">Car TER</button></span>
+                </div>
+              </div>
+              <div class="select-group" role="listitem">
+                <div class="select-group-head">
+                  <span class="select-group-title text-uppercase">Région Bourgogne-Franche-Comté</span>
+                </div>
+                <div class="select-group-content" role="list">
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="19">Mobigo</button></span>
+                </div>
+              </div>
+              <div class="select-group" role="listitem">
+                <div class="select-group-head">
+                  <span class="select-group-title text-uppercase">Région Bretagne</span>
+                </div>
+                <div class="select-group-content" role="list">
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="15">BreizhGo</button></span>
+                </div>
+              </div>
+              <div class="select-group" role="listitem">
+                <div class="select-group-head">
+                  <span class="select-group-title text-uppercase">Région Pays de la Loire</span>
+                </div>
+                <div class="select-group-content" role="list">
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="13">Aléop</button></span>
+                </div>
+              </div>
+              <div class="select-group" role="listitem">
+                <div class="select-group-head">
+                  <span class="select-group-title text-uppercase">Région Occitanie</span>
+                </div>
+                <div class="select-group-content" role="list">
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="18">Lio</button></span>
+                </div>
+              </div>
+              <div class="select-group" role="listitem">
+                <div class="select-group-head">
+                  <span class="select-group-title text-uppercase">Région Centre-Val de Loire</span>
+                </div>
+                <div class="select-group-content" role="list">
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="21">Rémi</button></span>
+                </div>
+              </div>
+              <div class="select-group" role="listitem">
+                <div class="select-group-head">
+                  <span class="select-group-title text-uppercase">Région Provence-Alpes-Côte d'Azur</span>
+                </div>
+                <div class="select-group-content" role="list">
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="36">Zou</button></span>
+                </div>
+              </div>
+              <div class="select-group" role="listitem">
+                <div class="select-group-head">
+                  <span class="select-group-title text-uppercase">Région Normandie</span>
+                </div>
+                <div class="select-group-content" role="list">
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="37">Nomad</button></span>
+                </div>
+              </div>
+              <div class="select-group" role="listitem">
+                <div class="select-group-head">
+                  <span class="select-group-title text-uppercase">Anciens logos SNCF</span>
+                </div>
+                <div class="select-group-content">
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="24">SNCF (logo 1985)</button></span>
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="25">SNCF (logo 1992)</button></span>
                 </div>
               </div>
             </div>
