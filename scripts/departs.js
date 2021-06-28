@@ -70,6 +70,7 @@ function loadTrains(user_id, id){
                     var secondsecondcol_firstrow = document.createElement('div');
                     var secondthirdcol_firstrow = document.createElement('div');
                     var thirdcol_firstrow = document.createElement('div');
+                    var col_hide = document.createElement('div');
                     
                     // First Col
                     var logo = document.createElement('div');
@@ -84,6 +85,10 @@ function loadTrains(user_id, id){
                     
                     // Second Third Col
                     var dest = document.createElement('span');
+
+                    // Col Hide
+                    var col_hide_inner = document.createElement('div');
+                    var alternance = document.createElement('div');
                     
                     // Third Col
                     var track = document.createElement('div');
@@ -106,6 +111,7 @@ function loadTrains(user_id, id){
                     const train_retard_type = value["retardtype"];
                     const train_retard_time = value["retardtime"];
                     const train_voie = value["voie"];
+                    const train_alternance = value["alternance"];
                     
                     var gares_split = train_gares.substr(0, train_gares.length - 1).split("|");
                     var retard, textfeature;
@@ -123,6 +129,18 @@ function loadTrains(user_id, id){
                     } else {
                         retard = 'supprimé';
                         textfeature = 3;
+                    }
+
+                    col_hide.setAttribute('class', 'col-hide');
+                    
+                    if (train_alternance !== "" || train_alternance !== undefined) {
+                        alternance.setAttribute('class', 'train-information-dynamic train-information-dynamic-yellow animation-dynamic');
+                        alternance.innerText = train_alternance;
+                        
+                        col_hide_inner.setAttribute('class', 'col-hide-inner');
+                        col_hide_inner.appendChild(alternance);
+
+                        col_hide.appendChild(col_hide_inner);
                     }
                     
                     gares_split.forEach((item, index) => {
@@ -165,10 +183,16 @@ function loadTrains(user_id, id){
                         logo.setAttribute('class', 'train-logo train-logo-hauts-de-france');
                     } else if (train_type === 'Lio') {
                         logo.setAttribute('class', 'train-logo train-logo-lio');
+                    } else if (train_type === 'TER Languedoc Roussillon') {
+                        logo.setAttribute('class', 'train-logo train-logo-ter-languedoc-roussillon');
                     } else if (train_type === 'Mobigo') {
                         logo.setAttribute('class', 'train-logo train-logo-mobigo');
+                    } else if (train_type === 'Nomad') {
+                        logo.setAttribute('class', 'train-logo train-logo-nomad');
                     } else if (train_type === 'TER Metrolor') {
                         logo.setAttribute('class', 'train-logo train-logo-ter-metrolor');
+                    } else if (train_type === 'TER Midi Pyrénées') {
+                        logo.setAttribute('class', 'train-logo train-logo-ter-midi-pyrenees');
                     } else if (train_type === 'Rémi') {
                         logo.setAttribute('class', 'train-logo train-logo-remi');
                     } else if (train_type === 'Renfe Ave') {
@@ -288,6 +312,7 @@ function loadTrains(user_id, id){
                     firstrow.appendChild(secondsecondcol_firstrow);
                     firstrow.appendChild(secondthirdcol_firstrow);
                     firstrow.appendChild(thirdcol_firstrow);
+                    firstrow.appendChild(col_hide);
                     
                     if (i < 2) {
                         firstcol_secondrow.setAttribute('class', 'col-first');
@@ -334,8 +359,10 @@ function loadTrains(user_id, id){
             //document.getElementById('loader').style.display = 'none';
             
             scrollX();
-            checkHiddenTrains(user_id, id);
+            //checkHiddenTrains(user_id, id);
         });
+    }).catch((error) => {
+        document.getElementById('error_loading').hidden = false;
     });
 }
 

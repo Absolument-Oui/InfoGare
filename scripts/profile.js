@@ -34,6 +34,8 @@ function loadInfos() {
                     childs +=  child.child('trains').numChildren();
                 });
                 document.getElementById('trains_nbr').innerText = childs;
+            }).catch((error) => {
+                document.getElementById('error_loading').hidden = false;
             });
             firebase.database().ref('users/'+uid).update({
                 email: user.email
@@ -75,5 +77,14 @@ function chgPass(oldpass, newpass) {
         firebase.auth().currentUser.updatePassword(newpass).then(() => {
             window.location.reload();
         });
+    });
+}
+
+function joinBeta() {
+    database.child("users").child(uid).update({
+        beta: true
+    }).then((snapshot) => {
+        alert('Merci d\'avoir rejoint le programme bêta ! \nVous allez être redirigé vers la version bêta !');
+        window.location.href = "https://beta.infogare.fr";
     });
 }

@@ -518,7 +518,7 @@ a {
     width: 80%;
     height: 7.5vh;
     font-size: 5vh;
-    font-weight: bold;
+    font-weight: 700;
     line-height: 1.5;
     border: solid 0.5vh #fff;
     border-bottom: none;
@@ -1055,6 +1055,10 @@ a {
     background-image: url(../../../images/screen/common/logo-mobigo.svg);
 }
 
+.train-logo.train-logo-nomad {
+    background-image: url(../../../images/screen/common/logo-nomad.svg);
+}
+
 .train-logo.train-logo-remi {
     background-image: url(../../../images/screen/common/logo-remi.svg);
 }
@@ -1097,6 +1101,14 @@ a {
 
 .train-logo.train-logo-ter-centre {
     background-image: url(../../../images/screen/common/logo-tercentre.svg);
+}
+
+.train-logo.train-logo-ter-languedoc-roussillon {
+    background-image: url(../../../images/screen/common/logo-terlanguedocroussillon.svg);
+}
+
+.train-logo.train-logo-ter-midi-pyrenees {
+    background-image: url(../../../images/screen/common/logo-termidipyrenees.svg);
 }
 
 .train-logo.train-logo-ter-nord-pas-de-calais {

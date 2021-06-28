@@ -8,7 +8,7 @@
 
 @media (min-width: 1024px) {
     marquee {
-        padding-left: 150px;
+        padding-left: 0px;
         overflow: auto; 
         text-align: center;
     }

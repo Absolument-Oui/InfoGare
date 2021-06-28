@@ -136,6 +136,8 @@ function loadArrives(user_id, id){
                     logo.setAttribute('class', 'train-logo train-logo-lio');
                 } else if (train_type === 'Mobigo') {
                     logo.setAttribute('class', 'train-logo train-logo-mobigo');
+                } else if (train_type === 'Nomad') {
+                    logo.setAttribute('class', 'train-logo train-logo-nomad');
                 } else if (train_type === 'TER Metrolor') {
                     logo.setAttribute('class', 'train-logo train-logo-ter-metrolor');
                 } else if (train_type === 'Rémi') {
@@ -260,5 +262,8 @@ function loadArrives(user_id, id){
 
             scrollX();
         });
-    });
+    }).catch((error) => {
+        document.getElementById('error_loading').hidden = false;
+        document.getElementById('loader').style.display = 'none';
+    })
 }

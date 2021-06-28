@@ -177,7 +177,10 @@ function loadGares(userid) {
             document.getElementById('gares_div').appendChild(document.createTextNode('Aucune gare pour le moment ;)'));
             document.getElementById('loader').style.display = 'none';
         }
-    });
+    }).catch((error) => {
+        document.getElementById('error_loading').hidden = false;
+        document.getElementById('loader').style.display = 'none';
+    })
 }
 
 function prepModifGare(gid) {
@@ -216,6 +219,7 @@ function prepModifTrain(tid) {
         document.getElementById('modif_train_hour_depart').value = snapshot.val().hourdepart;
         document.getElementById('modif_train_hour_arrive').value = snapshot.val().hourarrive;
         document.getElementById('modif_train_retard_time').value = snapshot.val().retardtime;
+        document.getElementById('modif_train_alternance').value = snapshot.val().alternance;
         if (snapshot.val().retardtype === 'alheure') {
             document.getElementById('modif_train_alheure').checked = true;
         } else if (snapshot.val().retardtype === 'retindet') {
@@ -291,7 +295,8 @@ function modifTrain(tid) {
         retardtype: retardtype,
         voie: document.getElementById('modif_train_voie').value,
         gares: document.getElementById('modif_train_gares_dest').value,
-        from: document.getElementById('modif_train_gares_prov').value
+        from: document.getElementById('modif_train_gares_prov').value,
+        alternance: document.getElementById('modif_train_alternance').value
     }).then((snapshot) => {
         document.location.reload();
     });
@@ -333,7 +338,9 @@ function createGare(name) {
         id: id,
         name: name,
         infos: document.getElementById('gare_infos').value,
-        type: gare_type
+        type: gare_type,
+        alapproche: document.getElementById('alapproche').value,
+        aquai: document.getElementById('aquai').value
     }).then((snapshot) => {
         document.location.reload();
     });
@@ -491,7 +498,8 @@ function loadGare(userid){
             //window.location.href = "gares.htm";
         }
     }).catch((error) => {
-        // alert(error.message);
+        document.getElementById('error_loading').hidden = false;
+        document.getElementById('loader').style.display = 'none';
     });
 }
 
@@ -501,8 +509,8 @@ function prepDupliTrain(tid) {
         document.getElementById('modif_train_prov').value = snapshot.val().provenance;
         document.getElementById('modif_train_dest').value = snapshot.val().destination;
         document.getElementById('modif_train_type').value = snapshot.val().type;
-        document.getElementById('modif_train_hour_arrive').value = snapshot.val().hourarrive;
-        document.getElementById('modif_train_hour_depart').value = snapshot.val().hourdepart;
+        document.getElementById('modif_train_hour_arrive').value = snapshot.val().hourarrive.replace('h', ':');
+        document.getElementById('modif_train_hour_depart').value = snapshot.val().hourdepart.replace('h', ':');
         if (snapshot.val().retardtype === 'ret') {
             document.getElementById('modif_train_ret').checked = true;
         } else if (snapshot.val().retardtype === 'alheure') {
@@ -516,6 +524,7 @@ function prepDupliTrain(tid) {
         document.getElementById('modif_train_voie').value = snapshot.val().voie;
         document.getElementById('modif_train_gares_prov').value = snapshot.val().from;
         document.getElementById('modif_train_gares_dest').value = snapshot.val().gares;
+        document.getElementById('modif_train_alternance').value = snapshot.val().alternance;
 
         document.getElementById('validate2').setAttribute('onclick', 'dupliTrain()');
         document.getElementById('validate2').innerText = 'Dupliquer';
@@ -538,6 +547,7 @@ function dupliTrain() {
     }
 
     database.child('users').child(uid).child('gares').child(gare_id).child('trains').child(trainid).set({
+        id: trainid,
         number: document.getElementById('modif_train_number').value,
         provenance: document.getElementById('modif_train_prov').value,
         destination: document.getElementById('modif_train_dest').value,
@@ -546,7 +556,10 @@ function dupliTrain() {
         retardtime: document.getElementById('modif_train_retard_time').value,
         voie: document.getElementById('modif_train_voie').value,
         from: document.getElementById('modif_train_gares_prov').value,
-        gares: document.getElementById('modif_train_gares_dest').value
+        gares: document.getElementById('modif_train_gares_dest').value,
+        hourdepart: document.getElementById('modif_train_hour_depart').value,
+        hourarrive: document.getElementById('modif_train_hour_arrive').value,
+        alternance: document.getElementById('modif_train_alternance').value
     }).then(() => {
         window.location.reload();
     })
@@ -595,7 +608,8 @@ function createTrain() {
         retardtime: document.getElementById('retard_time').value,
         from: from,
         gares: gares,
-        voie: document.getElementById('train_voie').value
+        voie: document.getElementById('train_voie').value,
+        alternance: document.getElementById('train_alternance').value
     }).then((snapshot) => {
         document.location.reload();
     });
@@ -606,4 +620,8 @@ var active_train;
 function loadTrainModification(id){
     active_train = id;
     
+}
+
+function checkGare(state) {
+    document.getElementById('gare_rer_edit').hidden = state;
 }

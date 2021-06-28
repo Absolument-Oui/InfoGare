@@ -1,7 +1,10 @@
 ﻿const database = firebase.database().ref();
 var list = new Array();
 
+var uid;
+
 function loadTrains(user_id, id){
+    uid = user_id;
     var ref = database.child("users").child(user_id).child("gares").child(id).child("trains");
     ref.get().then((snapshot) => {
         snapshot.forEach((child) => {
@@ -224,6 +227,44 @@ function loadTrains(user_id, id){
             document.getElementById('loader').style.display = 'none';
 
             scrollX();
+            getInfos(id);
+            checkInfos(id);
         });
+    }).catch((error) => {
+        document.getElementById('error_loading').hidden = false;
+        document.getElementById('loader').style.display = 'none';
+
+        console.error(error);
     });
+}
+
+var nowhour, nowminutes, trainhour, trainminutes;
+var alapproche, aquai;
+
+function getInfos(gid) {
+    database.child("users").child(uid).child("gares").child(gid).get().then((snapshot) => {
+        database.child("users").child(uid).child("gares").child(gid).child("trains").get().then((snapshot) => {
+            snapshot.forEach((child) => {
+                nowhour = new Date().getHours();
+                nowminutes = new Date().getMinutes();
+
+                trainhour = child.val().hourdepart.substr(0, 2);
+                trainminutes = child.val().hourdepart.substr(3, 5);
+
+                console.info(nowhour + ' : ' + nowminutes + ' > ' + trainhour + ' : ' + trainminutes);
+            });
+        });
+        alapproche = snapshot.val().alapproche;
+        aquai = snapshot.val().aquai;
+    });
+}
+
+function checkInfos(gid) {
+
+    if (nowhour == trainhour & nowminutes == (trainminutes - alapproche)) {
+        
+    }
+
+    setTimeout(1000);
+    checkInfos(gid);
 }

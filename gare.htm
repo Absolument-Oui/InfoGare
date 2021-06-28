@@ -13,46 +13,72 @@
 </head>
 <body onload="checkLogin(); createLoader();">
 <div>
-    <nav role="navigation" class="mastnav">
-      <ul class="mastnav-top">
-        <li>
-            <a href="index.htm" class="mastnav-item">
-                <i class="icons-large-building icons-size-1x5" aria-hidden="true"></i>
-                <span class="font-weight-medium">Accueil</span>
-            </a>
-        </li>
-        <li>
-          <a href="gares.htm" class="mastnav-item">
-            <i class="icons-file icons-size-1x5" aria-hidden="true"></i>
-            <span class="font-weight-medium">Mes gares</span>
-          </a>
-        </li>
-        <li>
-          <a href="compte.htm" class="mastnav-item">
-            <i class="icons-menu-account icons-size-1x5" aria-hidden="true"></i>
-            <span class="font-weight-medium">Mon profil</span>
-          </a>
-        </li>
-        <li id="mnu_login" hidden>
-          <a href="login.htm" class="mastnav-item">
-            <i class="icons-circle-account-connected icons-size-1x5" aria-hidden="true"></i>
-            <span class="font-weight-medium">Se connecter</span>
-          </a>
-        </li>
-        <li class="d-lg-none">
-          <button type="button" class="mastnav-item options-menu-btn" data-component="state" data-state="active, active" data-behaviour="toggle, toggle" data-target=".options-menu-btn, .options-menu">
-            <i class="icons-options icons-size-1x5" aria-hidden="true"></i>
-            <span class="font-weight-medium">Plus</span>
+  <div class="mastheader">
+    <div class="mastheader-logo">
+      <a href="index.htm">
+        <img alt="InfoGare" src="images/favicon.png" width="70" />
+      </a>
+    </div>
+    <header role="banner" class="mastheader-title d-none d-xl-block">
+      <h1 class="text-uppercase text-white pt-2 pl-3 mb-0">InfoGare</h1>
+    </header>
+    <div class="mastheader-search pr-md-4 pl-md-4" data-component="searchbar">
+      <label for="galacticbar-search-input" class="font-weight-medium text-white pr-3 mb-0">Rechercher</label>
+      <div class="input-group align-items-center">
+        <div class="form-control-container" data-component="control" data-clear-option="true" role="search">
+          <input id="galacticbar-search-input" type="search" class="form-control clear-option" data-role="input" data-placeholder="Rechercher" />
+          <span class="form-control-state"></span>
+          <button type="button" class="btn-clear btn-primary d-none" data-btn="clear">
+            <span class="sr-only">Clear text</span>
+            <i class="icons-close" aria-hidden="true"></i>
           </button>
-        </li>
-      </ul>
-      <div class="mastnav-bottom d-none d-lg-block">
-        <a href="#" class="mastnav-item mastnav-item-horizontal">
-          <i class="icons-circle-reverse icons-size-1x5" aria-hidden="true"></i>
-          <span class="font-weight-medium" onclick="toggleDarkmode();">Mode sombre</span>
-        </a>
+        </div>
+        <div class="input-group-append input-group-last">
+          <button type="button" class="btn btn-primary btn-only-icon">
+            <span class="sr-only">Rechercher</span>
+            <i class="icons-search" aria-hidden="true"></i>
+          </button>
+        </div>
+        <button type="button" class="btn btn-only-icon btn-white d-block d-md-none" data-role="close">
+          <span class="sr-only">Close search</span>
+          <i class="icons-close icons-size-1x25" aria-hidden="true"></i>
+        </button>
       </div>
-    </nav>
+    </div>
+    <ul class="mastheader-toolbar toolbar mb-0">
+      <li class="toolbar-item separator-gray-500 d-none d-md-flex">
+        <a href="#" class="btn btn-only-icon btn-notif toolbar-item-spacing">
+          <span class="sr-only">Alert</span>
+          <i class="icons-alert-notification icons-size-1x25 icons-md-size-1x5" aria-hidden="true"></i>
+          <span class="notif">0</span>
+        </a>
+      </li>
+      <li class="toolbar-item separator-gray-500 no-separator d-flex d-md-none">
+        <button type="button" class="btn btn-only-icon toolbar-item-spacing" data-component="searchbar-toggle">
+          <span class="sr-only">Open search</span>
+          <i class="icons-search icons-size-1x25 icons-md-size-1x5" aria-hidden="true"></i>
+        </button>
+      </li>
+      <li class="toolbar-item separator-gray-500">
+        <div class="btn-group dropdown">
+          <button class="btn btn-transparent dropdown-toggle toolbar-item-spacing" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-controls="mycontrol">
+            <i class="icons-menu-account icons-size-1x25 icons-md-size-1x5 mr-xl-2" aria-hidden="true"></i>
+            <span class="d-none d-xl-block" id="mnu_username">Veuillez patienter...</span>
+            <i class="icons-arrow-down d-none d-xl-block" aria-hidden="true"></i>
+          </button>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton" id="mycontrol">
+            <ul>
+              <li class="dropdown-item" id="mnu_gares"><a href="gares.htm">Mes gares</a></li>
+              <li class="dropdown-item" id="mnu_compte"><a href="compte.htm">Mon profil</a></li>
+              <li class="dropdown-item" id="mnu_login"><a href="login.htm">Se connecter</a></li>
+              <li class="dropdown-item"><a href="users.htm">Utilisateurs</a></li>
+              <li class="dropdown-item darkmode-btn"><a href="#" onclick="toggleDarkmode();">Mode clair/sombre</a></li>
+            </ul>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
 </div>
 
 <div class="main-content">
@@ -78,6 +104,7 @@
     </div>
     <div id="trains_div" style="margin-top: 25px;">
       <marquee id="loader" scrollamount="15"><img id="caisse-1"><img id="caisse-2"><img id="caisse-3"></marquee>
+      <center><div id="error_loading" hidden><img src="images/loading/Error.gif"></div></center>
         <ul class="list-group" id="trains" hidden=true>
             
         </ul>
@@ -167,6 +194,9 @@
                 <option data-id="34" >Thello</option>
                 <option data-id="35" >Tram train</option>
                 <option data-id="36" >Zou</option>
+                <option data-id="37" >Nomad</option>
+                <option data-id="38" >TER Midi Pyrénées</option>
+                <option data-id="39" >TER Languedoc Roussillon</option>
               </select>
               <div class="input-group-append input-group-last">
                 <button class="btn btn-primary btn-only-icon " data-role="btn" type="button" aria-expanded="false" aria-controls="selecttoggle">
@@ -191,7 +221,9 @@
                   <span class="select-menu-item" role="litsitem"><button type="button" data-role="value" data-target="28">TER Basse Normandie</button></span>
                   <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="29">TER Bourgogne</button></span>
                   <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="30">TER Bretagne</button></span>
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="39">TER Languedoc Roussillon</button></span>
                   <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="31">TER Centre</button></span>
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="38">TER Midi Pyrénées</button></span>
                   <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="20">TER Metrolor</button></span>
                   <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="32">TER Nord pas de Calais</button></span>
                   <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="33">TER Poitou Charentes</button></span>
@@ -289,6 +321,14 @@
               </div>
               <div class="select-group" role="listitem">
                 <div class="select-group-head">
+                  <span class="select-group-title text-uppercase">Région Normandie</span>
+                </div>
+                <div class="select-group-content" role="list">
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="37">Nomad</button></span>
+                </div>
+              </div>
+              <div class="select-group" role="listitem">
+                <div class="select-group-head">
                   <span class="select-group-title text-uppercase">Anciens logos SNCF</span>
                 </div>
                 <div class="select-group-content">
@@ -372,6 +412,11 @@
           <select class="sr-only" data-role="input" tabindex="-1" aria-hidden="true" id="gares" multiple>
           </select>
         </div><br />
+        <label for="train_alternance">Informations dynamiques</label>
+        <div class="form-control-container">
+          <input type="text" class="form-control" id="train_alternance" placeholder="Entrez les informations dynamiques">
+          <span class="form-control-state"></span>
+        </div><br>
         <button type=button class="btn btn-secondary" id="cancel" data-toggle="modal" data-target="#new_train">Annuler</button>&nbsp;<button type=submit class="btn btn-primary" id="validate" data-toggle="modal" data-target="#new_train" onclick="createTrain();">Créer</button>
       </div>
     </div>
@@ -541,6 +586,11 @@
             <input type="text" id="modif_train_gares_dest" class="form-control" placeholder="Entrez les gares desservies" />
             <span class="form-control-state"></span>
         </div><br />
+        <label for="modif_train_alternance">Informations dynamiques</label>
+        <div class="form-control-container">
+          <input type="text" class="form-control" id="train_alternance" placeholder="Entrez les informations dynamiques">
+          <span class="form-control-state"></span>
+        </div><br>
         <button type=button class="btn btn-secondary" id="cancel2" data-toggle="modal" data-target="#modif_train">Annuler</button>&nbsp;<button type=submit class="btn btn-primary" id="validate2" data-toggle="modal" data-target="#modif_train">Modifier</button>
       </div>
     </div>

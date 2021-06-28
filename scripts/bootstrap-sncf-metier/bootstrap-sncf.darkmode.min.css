@@ -5222,17 +5222,10 @@ h1,.h1 {
     border-top: .0625rem solid #4d4f53
 }
 
-@media (max-width: 1023.98px) {
-    .footerbar {
-        bottom:3.25rem
-    }
-}
-
 @media (min-width: 1024px) {
     .footerbar {
-        right:0;
         bottom: 0;
-        width: calc(100% - 6.25rem);
+        width: 100%;
         height: 4.375rem;
         padding-right: .75rem;
         padding-left: 1.875rem

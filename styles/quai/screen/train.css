@@ -932,6 +932,10 @@ a {
     background-image: url(../../../images/screen/quai/logo-mobigo-color.svg);
 }
 
+.train-logo.train-logo-nomad {
+    background-image: url(../../../images/screen/quai/logo-nomad-color.svg);
+}
+
 .train-logo.train-logo-remi {
     background-image: url(../../../images/screen/quai/logo-remi-color.svg);
 }
@@ -974,6 +978,14 @@ a {
 
 .train-logo.train-logo-ter-centre {
     background-image: url(../../../images/screen/quai/logo-tercentre-color.svg);
+}
+
+.train-logo.train-logo-ter-languedoc-roussillon {
+    background-image: url(../../../images/screen/quai/logo-terlanguedocroussillon-color.svg);
+}
+
+.train-logo.train-logo-ter-midi-pyrenees {
+    background-image: url(../../../images/screen/quai/logo-termidipyrenees-color.svg);
 }
 
 .train-logo.train-logo-ter-nord-pas-de-calais {
@@ -1088,7 +1100,8 @@ a {
 }
 
 .trains-station td.trains-station-column {
-    horizontal-align: center;
+    align-content: center;
+    top: 50%;
 }
 
 
@@ -1195,7 +1208,7 @@ a {
     width: 2.5vh;
     height: 2.5vh;
     margin: 0 0.4vh;
-    margin-bottom: 0.5vh;
+    margin-bottom: 50%;
     border-radius: 50%;
     background: #f5f900;
 }
