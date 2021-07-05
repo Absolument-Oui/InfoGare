@@ -34,11 +34,12 @@ function loadInfos() {
                     childs +=  child.child('trains').numChildren();
                 });
                 document.getElementById('trains_nbr').innerText = childs;
+            }).catch((error) => {
+                document.getElementById('error_loading').hidden = false;
             });
             firebase.database().ref('users/'+uid).update({
                 email: user.email
             });
-            checkBetaMode(user.uid);
         }
         document.getElementById('content').hidden = false;
         document.getElementById('loader').style.display = 'none';
@@ -79,12 +80,11 @@ function chgPass(oldpass, newpass) {
     });
 }
 
-function checkBetaMode(userid) {
-    firebase.database().ref('users/'+userid).get().then((snapshot) => {
-        if (snapshot.val().beta) {
-            document.getElementById('beta').innerHTML = 'Vous êtes inscrit à la béta ;) Vous pouvez y accéder <a href="beta.infogare.fr">ici</a>';
-        } else {
-            document.getElementById('beta').innerHTML = 'Vous n\'êtes pas inscrit à la béta ! Vous pouvez nous envoyer un email ou vous inscrire via <a href="https://forms.gle/UbyzhktKtxDfPdPg7" target="_blank">ce formulaire</a>';
-        }
+function joinBeta() {
+    database.child("users").child(uid).update({
+        beta: true
+    }).then((snapshot) => {
+        alert('Merci d\'avoir rejoint le programme bêta ! \nVous allez être redirigé vers la version bêta !');
+        window.location.href = "https://beta.infogare.fr";
     });
 }

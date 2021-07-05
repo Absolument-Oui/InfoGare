@@ -334,13 +334,20 @@ function delTrain(tid) {
 function createGare(name) {
     var id = Math.round(Math.random() * 1000000000)
     var gare_type = document.getElementById('gare_type').value;
+    var hm;
+    if (document.getElementById('gare_rer_edit_hour_1').checked) {
+        hm = 'showhour';
+    } else {
+        hm = 'showremaining';
+    }
     database.child("users").child(uid).child("gares").child(id).set({
         id: id,
         name: name,
         infos: document.getElementById('gare_infos').value,
         type: gare_type,
         alapproche: document.getElementById('alapproche').value,
-        aquai: document.getElementById('aquai').value
+        aquai: document.getElementById('aquai').value,
+        hourmode: hm
     }).then((snapshot) => {
         document.location.reload();
     });

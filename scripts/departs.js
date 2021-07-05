@@ -45,7 +45,8 @@ function loadTrains(user_id, id){
                     retardtype: child.val().retardtype,
                     voie: child.val().voie,
                     show: showed,
-                    showvoie: voieshowed
+                    showvoie: voieshowed,
+                    alternance: child.val().alternance
                 });
             }
         });
@@ -133,7 +134,11 @@ function loadTrains(user_id, id){
 
                     col_hide.setAttribute('class', 'col-hide');
                     
-                    if (train_alternance !== "" || train_alternance !== undefined) {
+                    if (train_alternance === "") {
+
+                    } else if (train_alternance === undefined) {
+
+                    } else {
                         alternance.setAttribute('class', 'train-information-dynamic train-information-dynamic-yellow animation-dynamic');
                         alternance.innerText = train_alternance;
                         
@@ -306,13 +311,28 @@ function loadTrains(user_id, id){
                         thirdcol_firstrow.appendChild(track);
                     }
                     thirdcol_firstrow.setAttribute('class', 'col-third');
+
+                                        
+                    if (train_alternance === "") {
+
+                    } else if (train_alternance === undefined) {
+
+                    } else {
+                        alternance.setAttribute('class', 'train-information-dynamic train-information-dynamic-yellow animation-dynamic');
+                        alternance.innerText = train_alternance;
+                        
+                        col_hide_inner.setAttribute('class', 'col-hide-inner');
+                        col_hide_inner.appendChild(alternance);
+
+                        col_hide.appendChild(col_hide_inner);
+                    }
                     
                     firstrow.appendChild(firstcol_firstrow);
                     firstrow.appendChild(secondfirstcol_firstrow);
                     firstrow.appendChild(secondsecondcol_firstrow);
                     firstrow.appendChild(secondthirdcol_firstrow);
-                    firstrow.appendChild(thirdcol_firstrow);
                     firstrow.appendChild(col_hide);
+                    firstrow.appendChild(thirdcol_firstrow);
                     
                     if (i < 2) {
                         firstcol_secondrow.setAttribute('class', 'col-first');
@@ -363,6 +383,7 @@ function loadTrains(user_id, id){
         });
     }).catch((error) => {
         document.getElementById('error_loading').hidden = false;
+        console.error(error);
     });
 }
 

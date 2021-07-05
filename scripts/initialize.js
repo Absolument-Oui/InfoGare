@@ -6,7 +6,7 @@
     projectId: "infogares-f",
     storageBucket: "infogares-f.appspot.com",
     messagingSenderId: "984551924335",
-    appId: "1:984551924335:web:247f2050a8ac4d68eb639a",
+    appId: "1:984551924335:web:7a6ba46c0cafd4f8eb639a",
     measurementId: "G-DRFJP2SFJ1",
     databaseURL: "https://infogares-f-default-rtdb.europe-west1.firebasedatabase.app/"
   };

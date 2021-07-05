@@ -261,10 +261,10 @@ function getInfos(gid) {
 
 function checkInfos(gid) {
 
-    if (nowhour == trainhour & nowminutes == (trainminutes - alapproche)) {
-        
+    if (nowhour == trainhour && nowminutes == (trainminutes - alapproche)) {
+        console.log('It\'s time!');
     }
 
-    setTimeout(1000);
+    setTimeout(10000);
     checkInfos(gid);
 }
