@@ -22,8 +22,17 @@
     padding-top: 75px;
     padding-left: 10px;
     padding-right: 10px;
+    padding-bottom: 75px;
 }
 
 #loader {
     vertical-align: bottom;
+}
+
+.accordion-item {
+    display: none;
+}
+
+.accordion-item.active {
+    display: block;
 }

@@ -109,6 +109,10 @@ a {
     vertical-align: text-bottom;
 }
 
+.rows .row-group-hidden {
+    display: none;
+}
+
 
 /* -- sizes -- */
 
