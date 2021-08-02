@@ -1,0 +1,436 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <script src="scripts/apparence.js" type="text/javascript"></script>
+    <link title="Light mode" href="scripts/bootstrap-sncf-metier/bootstrap-sncf.min.css" rel="stylesheet">
+    <link title="Dark mode" href="scripts/bootstrap-sncf-metier/bootstrap-sncf.darkmode.min.css" rel="stylesheet alternate">
+    <link rel="Stylesheet" href="styles/Global.css" type="text/css" />
+    <link rel=Stylesheet href="styles/Index.css" type="text/css" />
+    <link rel="icon" href="images/favicon.png" size="16x16" type="image/png" />
+    <link rel="icon" href="images/favicon.png" size="32x32" type="image/png" />
+    <meta name="description" content="Site de création et d'affichage d'infogare" />
+    <meta name="keywords" content="InfoGare, info gare, social gare, SocialGare" />
+    <meta name="author" content="Absolument Oui" />
+    <title>InfoGare - Création d'un train</title>
+    <script data-ad-client="ca-pub-3014614649994013" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  </head>
+<body onload="createLoader();">
+
+<div>
+  <marquee id="loader" scrollamount="15"><img id="caisse-1"><img id="caisse-2"><img id="caisse-3"></marquee>
+  <center><div id="error_loading" data-toggle="modal" data-target="#error_dlg" hidden><img src="images/loading/Error.gif"></div></center>
+  <div class="btn" data-component="state" data-state="active" data-behaviour="toggle" data-target="#general"><div class="management-item-caret"><h2>Général</h2></div></div>
+  <div id="general" class="accordion-item">
+    <label for="train_number">Numéro du train</label>
+        <div class="form-control-container">
+            <input type=text class="form-control" placeholder="Entrez le numéro du train" id="train_number" />
+            <span class="form-control-state"></span>
+        </div><br />
+        <label for="train_prov">Provenance</label>
+        <div class="form-control-container">
+            <input type=text class="form-control" placeholder="Entrez la gare de provenance du train" id="train_prov" />
+            <span class="form-control-state"></span>
+        </div><br />
+        <label for="train_dest">Destination</label>
+        <div class="form-control-container">
+            <input type=text class="form-control" placeholder="Entrez la gare de destination du train" id="train_dest" />
+            <span class="form-control-state"></span>
+        </div><br />
+        <label for="train_type">Type de train</label>
+        <div class="select-improved" data-component="select-exclusive">
+          <div class="select-control">
+            <div class="input-group" data-role="select-toggle">
+              <p class="form-control is-placeholder  d-flex align-items-center" data-role="placeholder" data-selected-prefix="Sélection actuelle">Sélectionnez un type de train</p>
+              <select class="sr-only" id="train_type" data-role="input" tabindex="-1" aria-hidden="true">
+                <option selected data-role="default-hidden-option" disabled hidden>Sélectionnez un type de train</option>
+                <option data-id="1" >TER</option>
+                <option data-id="2" >TGV</option>
+                <option data-id="3" >inOui</option>
+                <option data-id="4" >OuiGo</option>
+                <option data-id="5" >Thalys</option>
+                <option data-id="6" >Eurostar</option>
+                <option data-id="7" >TGV Lyria</option>
+                <option data-id="8" >Fluo Grand Est</option>
+                <option data-id="9" >ICE</option>
+                <option data-id="10" >TER Occitanie</option>
+                <option data-id="11" >Car TER</option>
+                <option data-id="12" >Intercité</option>
+                <option data-id="13" >Aléop</option>
+                <option data-id="14" >TER Auvergne Rhône Alpes</option>
+                <option data-id="15" >BreizhGo</option>
+                <option data-id="16" >DB</option>
+                <option data-id="17" >TER Hauts de France</option>
+                <option data-id="18" >Lio</option>
+                <option data-id="19" >Mobigo</option>
+                <option data-id="20" >TER Metrolor</option>
+                <option data-id="21" >Rémi</option>
+                <option data-id="22" >Renfe Ave</option>
+                <option data-id="23" >SBB</option>
+                <option data-id="24" >SNCF (logo 1985)</option>
+                <option data-id="25" >SNCF (logo 1992)</option>
+                <option data-id="26" >TER Alsace</option>
+                <option data-id="27" >TER Aquitaine</option>
+                <option data-id="28" >TER Basse Normandie</option>
+                <option data-id="29" >TER Bourgogne</option>
+                <option data-id="30" >TER Bretagne</option>
+                <option data-id="31" >TER Centre</option>
+                <option data-id="32" >TER Nord pas de Calais</option>
+                <option data-id="33" >TER Poitou Charentes</option>
+                <option data-id="34" >Thello</option>
+                <option data-id="35" >Tram train</option>
+                <option data-id="36" >Zou</option>
+                <option data-id="37" >Nomad</option>
+                <option data-id="38" >TER Midi Pyrénées</option>
+                <option data-id="39" >TER Languedoc Roussillon</option>
+              </select>
+              <div class="input-group-append input-group-last">
+                <button class="btn btn-primary btn-only-icon " data-role="btn" type="button" aria-expanded="false" aria-controls="selecttoggle">
+                  <i class="icons-arrow-down icons-size-x75" aria-hidden="true"></i>
+                  <span class="sr-only">Sélectionner</span>
+                </button>
+              </div>
+            </div>
+            <div class="select-menu" role="list" data-role="menu" id="-selecttoggle">
+              <div role="listitem" class="select-group">
+                <div class="select-group-head">
+                  <span class="select-group-title text-uppercase">Trains régionaux</span>
+                </div>
+                <div class="select-group-content" role="list">
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="1">TER</button></span>
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="8">Fluo Grand Est</button></span>
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="10">TER Occitanie</button></span>
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="14">TER Auvergne</button></span>
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="17">TER Hauts de France</button></span>
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="26">TER Alsace</button></span>
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="27">TER Aquitaine</button></span>
+                  <span class="select-menu-item" role="litsitem"><button type="button" data-role="value" data-target="28">TER Basse Normandie</button></span>
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="29">TER Bourgogne</button></span>
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="30">TER Bretagne</button></span>
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="39">TER Languedoc Roussillon</button></span>
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="31">TER Centre</button></span>
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="38">TER Midi Pyrénées</button></span>
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="20">TER Metrolor</button></span>
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="32">TER Nord pas de Calais</button></span>
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="33">TER Poitou Charentes</button></span>
+                </div>
+              </div>
+              <div class="select-group" role="listitem">
+                <div class="select-group-head">
+                  <span class="select-group-title text-uppercase">Trains nationaux</span>
+                </div>
+                <div class="select-group-content" role="list">
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="2">TGV</button></span>
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="3">inOui</button></span>
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="4">OuiGo</button></span>
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="12">Intercité</button></span>
+                </div>
+              </div>
+              <div class="select-group" role="listitem">
+                <div class="select-group-head">
+                  <span class="select-group-title text-uppercase">Trains urbains</span>
+                </div>
+                <div class="select-group-content" role="list">
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="35">Tram train</button></span>
+                </div>
+              </div>
+              <div class="select-group" role="listitem">
+                <div class="select-group-head">
+                  <span class="select-group-title text-uppercase">Trains internationaux</span>
+                </div>
+                <div class="select-group-content" role="list">
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="5">Thalys</button></span>
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="6">Eurostar</button></span>
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="7">TGV Lyria</button></span>
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="9">ICE</button></span>
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="16">DB</button></span>
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="22">Renfe Ave</button></span>
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="23">SBB</button></span>
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="34">Thello</button></span>
+                </div>
+              </div>
+              <div class="select-group" role="listitem">
+                <div class="select-group-head">
+                  <span class="select-group-title text-uppercase">Cars</span>
+                </div>
+                <div class="select-group-content" role="list">
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="11">Car TER</button></span>
+                </div>
+              </div>
+              <div class="select-group" role="listitem">
+                <div class="select-group-head">
+                  <span class="select-group-title text-uppercase">Région Bourgogne-Franche-Comté</span>
+                </div>
+                <div class="select-group-content" role="list">
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="19">Mobigo</button></span>
+                </div>
+              </div>
+              <div class="select-group" role="listitem">
+                <div class="select-group-head">
+                  <span class="select-group-title text-uppercase">Région Bretagne</span>
+                </div>
+                <div class="select-group-content" role="list">
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="15">BreizhGo</button></span>
+                </div>
+              </div>
+              <div class="select-group" role="listitem">
+                <div class="select-group-head">
+                  <span class="select-group-title text-uppercase">Région Pays de la Loire</span>
+                </div>
+                <div class="select-group-content" role="list">
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="13">Aléop</button></span>
+                </div>
+              </div>
+              <div class="select-group" role="listitem">
+                <div class="select-group-head">
+                  <span class="select-group-title text-uppercase">Région Occitanie</span>
+                </div>
+                <div class="select-group-content" role="list">
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="18">Lio</button></span>
+                </div>
+              </div>
+              <div class="select-group" role="listitem">
+                <div class="select-group-head">
+                  <span class="select-group-title text-uppercase">Région Centre-Val de Loire</span>
+                </div>
+                <div class="select-group-content" role="list">
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="21">Rémi</button></span>
+                </div>
+              </div>
+              <div class="select-group" role="listitem">
+                <div class="select-group-head">
+                  <span class="select-group-title text-uppercase">Région Provence-Alpes-Côte d'Azur</span>
+                </div>
+                <div class="select-group-content" role="list">
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="36">Zou</button></span>
+                </div>
+              </div>
+              <div class="select-group" role="listitem">
+                <div class="select-group-head">
+                  <span class="select-group-title text-uppercase">Région Normandie</span>
+                </div>
+                <div class="select-group-content" role="list">
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="37">Nomad</button></span>
+                </div>
+              </div>
+              <div class="select-group" role="listitem">
+                <div class="select-group-head">
+                  <span class="select-group-title text-uppercase">Anciens logos SNCF</span>
+                </div>
+                <div class="select-group-content">
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="24">SNCF (logo 1985)</button></span>
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="25">SNCF (logo 1992)</button></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><br>
+        <div class="btn" data-component="state" data-state="active" data-behaviour="toggle" data-target="#heures"><div class="management-item-caret"><h2>Heures</h2></div></div>
+        <div id="heures" class="accordion-item">
+          <label for="train_hour_arrive">Heure d'arrivée</label>
+          <div data-component="picker" data-mode="time" data-increment-hours-on-minutes-max>
+            <div class="input-group" data-toggle>
+              <div class="form-control-container">
+                <input id="train_hour_arrive" tabindex="-1" type="text" class="form-control" placeholder="Sélectionner une heure" data-input>
+                <span class="form-control-state"></span>
+              </div>
+              <div class="input-group-append">
+                <button type="button" class="btn btn-primary btn-only-icon" data-role="btn" aria-expanded="false">
+                  <span class="sr-only">Saisir l’heure</span>
+                  <i class="icons-calendar-time" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+          </div><br /><br />
+          <label for="train_hour_depart">Heure de départ</label>
+          <div data-component="picker" data-mode="time" data-increment-hours-on-minutes-max>
+            <div class="input-group" data-toggle>
+              <div class="form-control-container">
+                <input id="train_hour_depart" tabindex="-1" type="text" class="form-control" placeholder="Sélectionner une heure" data-input>
+                <span class="form-control-state"></span>
+              </div>
+              <div class="input-group-append">
+                <button type="button" class="btn btn-primary btn-only-icon" data-role="btn" aria-expanded="false">
+                  <span class="sr-only">Saisir l’heure</span>
+                  <i class="icons-calendar-time" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div><br>
+      <div class="btn" data-component="state" data-state="active" data-behaviour="toggle" data-target="#retard"><div class="management-item-caret"><h2>Retard</h2></div></div>
+      <div id="retard" class="accordion-item">
+        <label for="train_retard">Retard</label>
+        <div class="form-control-container" id="train_retard">
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" id="train_alheure" name="retards" class="custom-control-input">
+              <label class="custom-control-label font-weight-medium" for="train_alheure">à l'heure</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" id="train_retindet" name="retards" class="custom-control-input">
+              <label class="custom-control-label font-weight-medium" for="train_retindet">ret. indet.</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type=radio id="train_ret" name="retards" class="custom-control-input" />
+                <label class="custom-control-label font-weight-medium" for="train_ret">retard</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type=radio id="train_supprime" name="retards" class="custom-control-input" />
+                <label class="custom-control-label font-weight-medium" for="train_supprime">supprimé</label>
+            </div>
+        </div><br />
+        <label for="train_retard_time">Temps de retard (applicable uniquement si "retard" est séléctionné)</label>
+        <div class="form-control-container">
+            <input type=number id="train_retard_time" class="form-control" placeholder="Entrez le nombre de minutes de retard" />
+            <span class="form-control-state"></span>
+        </div>
+      </div><br />
+      <div class="btn" data-component="state" data-state="active" data-behaviour="toggle" data-target="#voie"><div class="management-item-caret"><h2>Voie</h2></div></div>      
+      <div id="voie" class="accordion-item">
+        <label for="train_voie">Voie de départ</label>
+        <div class="form-control-container">
+            <input type=text id="train_voie" class="form-control" placeholder="Entrez le numéro de la voie" />
+            <span class="form-control-state"></span>
+        </div><br />
+        <label for="train_hall">Hall de départ (gares spécifiques)</label>
+        <div class="form-control-container">
+          <input type="number" maxlength="1" class="form-control" id="train_hall" placeholder="Entrez le numéro du hall">
+          <span class="form-control-state"></span>
+        </div>
+      </div><br>
+      <div class="btn" data-component="state" data-state="active" data-behaviour="toggle" data-target="#gares_div"><div class="management-item-caret"><h2>Gares desservies</h2></div></div>
+      <div id="gares_div" class="accordion-item">
+        <label class="font-weight-medium mb-2" for="addreceivers2">Gares desservies (depuis la provenance)</label>
+        <div class="form-control-container form-chips-container" data-component="chips" id="chips2">
+          <input data-role="typewriter" type="text" class="chips-input stretchy" id="addreceivers2" />
+          <label class="font-weight-medium mb-2 sr-only" for="from">Gares</label>
+          <select class="sr-only" data-role="input" tabindex="-1" aria-hidden="true" id="from" multiple>
+          </select>
+        </div><br />
+        <div class="form-control-container" hidden>
+          <input type="text" class="form-control" id="from_modify">
+          <span class="form-control-state"></span>
+        </div><br>
+        <label class="font-weight-medium mb-2" for="addreceivers1">Gares desservies (vers la destination)</label>
+        <div class="form-control-container form-chips-container" data-component="chips" id="chips">
+          <input data-role="typewriter" type="text" class="chips-input stretchy" id="addreceivers1" />
+          <label class="font-weight-medium mb-2 sr-only" for="gares">Gares</label>
+          <select class="sr-only" data-role="input" tabindex="-1" aria-hidden="true" id="gares" multiple>
+          </select>
+        </div>
+      </div><br />
+        <div class="btn" data-component="state" data-state="active" data-behaviour="toggle" data-target="#informations_dynamiques"><div class="management-item-caret"><h2>Informations dynamiques</h2></div></div>
+        <div id="informations_dynamiques" class="accordion-item">
+            <label for="train_dynamic">Informations dynamiques</label>
+            <div class="form-control-container">
+                <input type="text" class="form-control" id="train_dynamic" placeholder="Entrez les informations dynamiques">
+                <span class="form-control-state"></span>
+            </div><br>
+            <label for="train_dynamic_type">Type d'informations dynamiques</label>
+            <div class="form-control-container" id="train_dynamic_type">
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input type="radio" class="custom-control-input" id="train_dynamic_type_1" name="dynamic">
+                  <label class="custom-control-label font-weight-medium" for="train_dynamic_type_1">Importante (jaune)</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input type="radio" class="custom-control-input" id="train_dynamic_type_2" name="dynamic">
+                  <label class="custom-control-label font-weight-medium" for="train_dynamic_type_2">Normal (blanc)</label>
+                </div>
+            </div>
+        </div><br>
+        <button type=button class="btn btn-secondary" id="cancel" onclick="window.close();">Annuler</button>&nbsp;<button type=submit class="btn btn-primary" id="validate">Créer</button>
+    <center>
+        <ins class="adsbygoogle"
+            style="display:inline-block;width:728px;height:90px"
+            data-ad-client="ca-pub-3014614649994013"
+            data-ad-slot="7082617511"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+
+        <br><br>
+    </center>
+</div>
+
+<div class="modal" tabindex="-1" role="dialog" aria-labelledby="error_dlg_title" id="error_dlg">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="h1 modal-title" id="error_dlg_title">Détails de l'erreur</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <label for="error_caused_by">Causée par</label>
+        <input class="form-control" type="text" id="error_caused_by" disabled>
+        <br>
+        <label for="error_stacktrace">Stacktrace</label>
+        <textarea class="form-control" id="error_stacktrace" disabled></textarea>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" tabindex="-1" role="dialog" aria-labelledby="cookies_title" id="cookies">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="h1 modal-title" id="cookies_title">Vous connaissez la recette des cookies ?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Avant de continuer, nous voulons vous signaler que ce site utilise des cookies afin de vous donner une meilleure expérience.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <!-- SCRIPTS -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-messaging.js"></script>
+    <script src="scripts/jquery/jquery.js"></script>
+    <script src="scripts/bootstrap-sncf-metier/bootstrap-sncf.min.js"></script>
+    <script src="scripts/error_mgmt.js"></script>
+    <script src="scripts/initialize.js"></script>
+    <script src="scripts/login.js"></script>
+    <script src="scripts/gare.js"></script>
+    <script src="scripts/notifications.js"></script>
+    <script src="scripts/loader.js"></script>
+    <script>
+        if (localStorage.getItem('cookies_accepted') === undefined) {
+            $('#cookies').modal('show');
+        }
+        
+        $('#cookies').on('hidden.bs.modal', function (e) {
+          localStorage.setItem('cookies_accepted', true);
+        });
+
+        firebase.auth().onAuthStateChanged((user) => {
+          if (user) {
+            setUid(user.uid);
+            var params = new URLSearchParams(location.search);
+            setGare(params.get('gid'));
+            if (params.get('action') === 'create') {
+              document.getElementById('validate').setAttribute('onclick', 'createTrain();');
+              document.getElementById('loader').style.display = 'none';
+            } else if (params.get('action') === 'modify') {
+              prepModifTrain(params.get('tid'));
+            } else if (params.get('action') === 'duplicate') {
+              prepDupliTrain(params.get('tid'));
+            } else {
+              document.getElementById('loader').style.display = 'none';
+              document.getElementById('error_loading').hidden = false;
+            }    
+          }
+        })
+    </script>
+</body>
+</html>

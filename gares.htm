@@ -72,6 +72,7 @@
               <li class="dropdown-item" id="mnu_login"><a href="login.htm">Se connecter</a></li>
               <li class="dropdown-item"><a href="users.htm">Utilisateurs</a></li>
               <li class="dropdown-item darkmode-btn"><a href="#" onclick="toggleDarkmode();">Mode clair/sombre</a></li>
+              <li class="dropdown-item"><a href="#" data-toggle="modal" data-target="#logout">Se déconnecter</a></li>
             </ul>
           </div>
         </div>
@@ -190,6 +191,18 @@
                 </div>
               </div>
             </div><br>
+            <div id="gare_edit">
+              <label for="gare_edit_time_1">Temps avant affichage (min avant heure de départ)</label>
+              <div class="form-control-container">
+                <input type="number" class="form-control" id="gare_edit_time_1" placeholder="Entrez le nombre de minutes">
+                <span class="form-control-state"></span>
+              </div><br>
+              <label for="gare_edit_time_2">Temps avant masquage (min après heure de départ)</label>
+              <div class="form-control-container">
+                <input type="number" class="form-control" id="gare_edit_time_2" placeholder="Entrez le nombre de minutes">
+                <span class="form-control-state"></span>
+              </div><br>
+            </div><br>
             <button class="btn btn-secondary" data-toggle="modal" data-target="#new_gare">Annuler</button>&nbsp;<button class="btn btn-primary" type=submit onclick="createGare(document.getElementById('gare_name').value);" data-toggle="modal" data-target="#new_gare">Créer</button>
         </div>
     </div>
@@ -216,7 +229,42 @@
               <textarea class="form-control stretchy" id="modif_gare_infos" placeholder="Entrez les informations pour cette gare" ZgotmplZ></textarea>
               <span class="form-control-state"></span>
             </div><br />
-
+            <div id="modif_gare_rer_edit" hidden>
+              <label for="modif_gare_rer_edit_alapproche">Temps vant affichage de "à l'aproche"</label>
+              <div class="form-control-container">
+                <input type="number" class="form-control" id="modif_alapproche" placeholder="Entrez le nombe de minutes avant l'affichage">
+                <span class="form-control-state"></span>
+              </div>
+              <br>
+              <label for="modif_gare_rer_edit_aquai">Temps avant affichage de "a quai"</label>
+              <div class="form-control-container">
+                <input type="number" class="form-control" id="modif_aquai" placeholder="Entrez le nombre de minutes avant l'affichage">
+                <span class="form-control-state"></span>
+              </div><br>
+              <label for="modif_gare_rer_edit_hour">Type d'heure</label>
+              <div class="form-control-container" id="modif_gare_rer_edit_hour">
+                <div class="custom-control custom-radio">
+                  <input type="radio" id="gare_rer_edit_hour_1" name="gare_rer_edit_hour" class="custom-control-input">
+                  <label class="custom-control-label font-weight-medium" for="gare_rer_edit_hour_1">Afficher l'heure d'arrivée</label>
+                </div>
+                <div class="custom-control custom-radio">
+                  <input type="radio" id="gare_rer_edit_hour_2" name="gare_rer_edit_hour" class="custom-control-input">
+                  <label class="custom-control-label font-weight-medium" for="gare_rer_edit_hour_2">Afficher le temps d'attente</label>
+                </div>
+              </div>
+            </div><br>
+            <div id="modify_gare_edit">
+              <label for="gare_edit_time_1">Temps avant affichage (min avant heure de départ)</label>
+              <div class="form-control-container">
+                <input type="number" class="form-control" id="gare_edit_time_1" placeholder="Entrez le nombre de minutes">
+                <span class="form-control-state"></span>
+              </div><br>
+              <label for="gare_edit_time_2">Temps avant masquage (min après heure de départ)</label>
+              <div class="form-control-container">
+                <input type="number" class="form-control" id="gare_edit_time_2" placeholder="Entrez le nombre de minutes">
+                <span class="form-control-state"></span>
+              </div><br>
+            </div><br>
             <button class="btn btn-secondary" data-toggle="modal" data-target="#modif_gare">Annuler</button>&nbsp;<button class="btn btn-primary" data-toggle="modal" data-target="#modif_gare" id="modify_gare_btn">Modifier</button>
         </div>
     </div>
@@ -284,6 +332,26 @@
       </div>
       <div class="modal-body">
         <p>Avant de continuer, nous voulons vous signaler que ce site utilise des cookies afin de vous donner une meilleure expérience.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="logout" tabindex="-1" role="dialog" aria-labelledby="lougout_title" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="h1 modal-title" id="logout_title">Se déconnecter</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        &Ecirc;tes-vous sûr de vouloir vous déconnecter ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
+        <button type="button" class="btn btn-primary btn-danger" onclick="logout();">Oui</button>
       </div>
     </div>
   </div>

@@ -80,6 +80,14 @@ function chgPass(oldpass, newpass) {
     });
 }
 
+function chgUsername(username) {
+    firebase.auth().currentUser.updateProfile({
+        displayName: username
+    }).then(() => {
+        window.location.reload;
+    });
+}
+
 function joinBeta() {
     database.child("users").child(uid).update({
         beta: true

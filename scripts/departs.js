@@ -1,8 +1,14 @@
 ﻿const database = firebase.database().ref();
 
 var list = new Array();
+var time_before_show = 0;
 
 function loadTrains(user_id, id){
+
+    database.child(user_id).child('gares').child(id).get().then((snapshot) => {
+        
+    });
+
     var group = document.createElement('div');
     group.setAttribute('id', 'group');
     var ref = firebase.database().ref("users/" + user_id + "/gares/" + id + "/trains");
@@ -351,6 +357,10 @@ function loadTrains(user_id, id){
                         
                     firstrow.setAttribute('class', 'row');
                     secondrow.setAttribute('class', 'row');
+
+                    var data_time = new Date();
+
+                    data_time.setHours(train_hour.substr(0, 2), train_hour.substr(3, 2));
                     
                     var rowgroup = document.createElement('div');
                     if (i < 2){
@@ -358,6 +368,7 @@ function loadTrains(user_id, id){
                     } else {
                         rowgroup.setAttribute('class', 'row-group row-train');
                     }
+                    rowgroup.setAttribute('data-time', data_time.getTime()/1000);
                     rowgroup.appendChild(firstrow);
                     if (i < 2) {
                         rowgroup.appendChild(secondrow);
@@ -379,7 +390,7 @@ function loadTrains(user_id, id){
             //document.getElementById('loader').style.display = 'none';
             
             scrollX();
-            //checkHiddenTrains(user_id, id);
+            //autoRow();
         });
     }).catch((error) => {
         document.getElementById('error_loading').hidden = false;
@@ -387,43 +398,19 @@ function loadTrains(user_id, id){
     });
 }
 
-function checkHiddenTrains(uid, gid) {
-    database.child('users').child(uid).child('gares').child(gid).child('trains').get().then((snapshot) => {
-        snapshot.forEach((child) => {
-            var now_date = new Date(Date.now());
+function autoRow(){
+	var timestamp = Date.now()/1000;
 
-            var nowhour = now_date.getHours();
-            var nowmin = now_date.getMinutes();
-            var trainhour = child.val().hourdepart.substr(0, 2);
-            var trainmin = child.val().hourdepart.substr(3, 4);
+	$('.row-group').each(function(){
+        console.log($(this).data('time') + ' <=> ' + timestamp);
+		if($(this).data('time') < timestamp){
+			clearInterval('autoRowRun');
 
-            var trainminafter, trainhourafter;
-                        
-            console.log(nowhour + ' : ' + nowmin);
-            console.log(trainhour + ' : ' + trainmin);
+			$(this).addClass('row-group-hidden');
+			$(this).removeClass('row-group');
 
-            if (nowmin < 10) {
-                nowmin = '0' + nowmin;
-            }
-
-            if (Math.floor(trainmin + 2) > 59) {
-                trainhourafter = trainhour + 1;
-                trainminafter =trainmin + ((trainmin + 2) % 60);
-            }
-
-            var child_a = database.child('users').child(uid).child('gares').child(gid).child('trains').child(child.val().id);
-
-            if (nowhour == trainhour && nowmin == trainmin - 20) {
-                child_a.update({
-                    show: true
-                });
-                console.log('shown');
-            } else if (nowhour <= trainhour && nowmin < trainmin) {
-                child_a.update({
-                    show: false
-                });
-                console.log('hidden');
-            }
-        });
-    });
+			autoRowRun = setInterval(autoRow, 10000, 0);
+			return false;
+		}
+	});
 }

@@ -176,11 +176,17 @@ function loadTrain(uid) {
             tr.appendChild(trainstationcolumn);
             tr.appendChild(trainstationstation);
             document.getElementById('gares').appendChild(tr);
+
+            if (snapshot.val().alternance !== undefined || snapshot.val().alternance !== "") {
+                document.getElementById('infos').innerHTML = snapshot.val().alternance;
+            }
         });
     });
     
     database.child("users").child(uid).child("gares").child(params.get('gid')).get().then((snapshot) => {
-        document.getElementById('infos').innerHTML = snapshot.val().infos.replace('\n', ' &nbsp;');    
+        if (document.getElementById('infos').innerHTML === "") {
+            document.getElementById('infos').innerHTML = snapshot.val().infos.replace('\n', ' &nbsp;');    
+        }
         
         document.getElementById('loader').style.display = 'none';
         

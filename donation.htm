@@ -77,6 +77,7 @@
               <li class="dropdown-item" id="mnu_login"><a href="login.htm">Se connecter</a></li>
               <li class="dropdown-item"><a href="users.htm">Utilisateurs</a></li>
               <li class="dropdown-item darkmode-btn"><a href="#" onclick="toggleDarkmode();">Mode clair/sombre</a></li>
+              <li class="dropdown-item"><a href="#" data-toggle="modal" data-target="#logout">Se déconnecter</a></li>
             </ul>
           </div>
         </div>
@@ -102,7 +103,6 @@
       <h1>Vous souhaiter nous soutenir encore plus ?</h1>
       <br>
       <h2>Si vous êtes un utilisateur du navigateur Brave, vous pouvez nous envoyer une contribution mensuelle, afin de nous aider un peu plus.</h2>
-      <br>
       <h2>Si vous souhaitez plus nous aider au développement de ce projet, vous pouvez nous faire un don via <a href="https://utip.io/absolumentoui">uTip</a></h2>
       <br>
       <br /><br /><br /><br />
@@ -137,6 +137,26 @@
   </div>
 </div>
 
+<div class="modal fade" id="logout" tabindex="-1" role="dialog" aria-labelledby="lougout_title" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="h1 modal-title" id="logout_title">Se déconnecter</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        &Ecirc;tes-vous sûr de vouloir vous déconnecter ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
+        <button type="button" class="btn btn-primary btn-danger" onclick="logout();">Oui</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
     <!-- SCRIPTS -->
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
@@ -144,6 +164,8 @@
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-messaging.js"></script>
+    <script src="scripts/jquery/jquery.js"></script>
+    <script src="scripts/bootstrap-sncf-metier/bootstrap-sncf.min.js"></script>
     <script src="scripts/initialize.js"></script>
     <script src="scripts/login.js"></script>
     <script src="scripts/notifications.js"></script>

@@ -73,6 +73,7 @@
               <li class="dropdown-item" id="mnu_login"><a href="login.htm">Se connecter</a></li>
               <li class="dropdown-item"><a href="users.htm">Utilisateurs</a></li>
               <li class="dropdown-item darkmode-btn"><a href="#" onclick="toggleDarkmode();">Mode clair/sombre</a></li>
+              <li class="dropdown-item"><a href="#" data-toggle="modal" data-target="#logout">Se déconnecter</a></li>
             </ul>
           </div>
         </div>
@@ -97,7 +98,7 @@
     
 
     <div id=actions>
-        <div class="btn btn-primary" data-toggle="modal" data-target="#new_train">Nouveau train</div>
+        <div class="btn btn-primary" onclick="window.open('modif_train.htm'+document.location.search+'&action=create', '', 'height=500,wiidth=750');">Nouveau train</div>
         <div id="showdeparts" class="btn btn-success" onclick="window.open('departs.htm'+document.location.search, '', 'height=500,width=750');">Afficher les départs</div>
         <div id="showarrives" class="btn btn-success" onclick="window.open('arrives.htm'+document.location.search, '', 'height=500,width=750');">Afficher les arrivés</div>
         <div id="showpanel" class="btn" onclick="window.open('panel.htm'+document.location.search, '', 'height=500,width=750');">Afficher le panneau de contrôle</div>
@@ -398,6 +399,11 @@
             <input type=text id="train_voie" class="form-control" placeholder="Entrez le numéro de la voie" />
             <span class="form-control-state"></span>
         </div><br />
+        <label for="train_hall">Hall de départ (gares spécifiques)</label>
+        <div class="form-control-container">
+          <input type="number" maxlength="1" class="form-control" id="train_hall" placeholder="Entrez le numéro du hall">
+          <span class="form-control-state"></span>
+        </div><br>
         <label class="font-weight-medium mb-2" for="addreceivers2">Gares desservies (depuis la provenance)</label>
         <div class="form-control-container form-chips-container" data-component="chips">
           <input data-role="typewriter" type="text" class="chips-input stretchy" id="addreceivers2" />
@@ -412,10 +418,21 @@
           <select class="sr-only" data-role="input" tabindex="-1" aria-hidden="true" id="gares" multiple>
           </select>
         </div><br />
-        <label for="train_alternance">Informations dynamiques</label>
+        <label for="train_dynamic">Informations dynamiques</label>
         <div class="form-control-container">
-          <input type="text" class="form-control" id="train_alternance" placeholder="Entrez les informations dynamiques">
+          <input type="text" class="form-control" id="train_dynamic" placeholder="Entrez les informations dynamiques">
           <span class="form-control-state"></span>
+        </div><br>
+        <label for="train_dynamic_type">Type d'informations dynamiques</label>
+        <div id="train_dynamic_type">
+          <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" class="custom-control-input" id="train_dynamic_type_1" name="dynamic">
+            <span class="custom-control-label font-weight-medium" for="train_dynamic_type_1">Importante (jaune)</span>
+          </div>
+          <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" class="custom-control-input" id="train_dynamic_type_2" name="dynamic">
+            <span class="custom-control-label font-weight-medium" for="train_dynamic_type_2">Normal (blanc)</span>
+          </div>
         </div><br>
         <button type=button class="btn btn-secondary" id="cancel" data-toggle="modal" data-target="#new_train">Annuler</button>&nbsp;<button type=submit class="btn btn-primary" id="validate" data-toggle="modal" data-target="#new_train" onclick="createTrain();">Créer</button>
       </div>
@@ -576,6 +593,11 @@
             <input type=text id="modif_train_voie" class="form-control" placeholder="Entrez le numéro de la voie" />
             <span class="form-control-state"></span>
         </div><br />
+        <label for="train_hall">Hall de départ (gares spécifiques)</label>
+        <div class="form-control-container">
+          <input type="number" maxlength="1" class="form-control" id="train_hall" placeholder="Entrez le numéro du hall">
+          <span class="form-control-state"></span>
+        </div><br>
         <label class="font-weight-medium mb-2" for="modif_train_gares_prov">Gares desservies (depuis la provenance)</label>
         <div class="form-control-container">
             <input type="text" id="modif_train_gares_prov" class="form-control" placeholder="Entrez les gares desservies" />
@@ -586,10 +608,21 @@
             <input type="text" id="modif_train_gares_dest" class="form-control" placeholder="Entrez les gares desservies" />
             <span class="form-control-state"></span>
         </div><br />
-        <label for="modif_train_alternance">Informations dynamiques</label>
+        <label for="modif_train_dynamic">Informations dynamiques</label>
         <div class="form-control-container">
-          <input type="text" class="form-control" id="modif_train_alternance" placeholder="Entrez les informations dynamiques">
+          <input type="text" class="form-control" id="modif_train_dynamic" placeholder="Entrez les informations dynamiques">
           <span class="form-control-state"></span>
+        </div><br>
+        <label for="modif_train_dynamic_type">Type d'informations dynamiques</label>
+        <div id="modif_train_dynamic_type">
+          <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" class="custom-control-input" id="modif_train_dynamic_type_1" name="dynamic1">
+            <span class="custom-control-label font-weight-medium" for="modif_train_dynamic_type_1">Importante (jaune)</span>
+          </div>
+          <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" class="custom-control-input" id="modif_train_dynamic_type_2" name="dynamic1">
+            <span class="custom-control-label font-weight-medium" for="modif_train_dynamic_type_2">Normal (blanc)</span>
+          </div>
         </div><br>
         <button type=button class="btn btn-secondary" id="cancel2" data-toggle="modal" data-target="#modif_train">Annuler</button>&nbsp;<button type=submit class="btn btn-primary" id="validate2" data-toggle="modal" data-target="#modif_train">Modifier</button>
       </div>
@@ -629,6 +662,26 @@
       </div>
       <div class="modal-body">
         <p>Avant de continuer, nous voulons vous signaler que ce site utilise des cookies afin de vous donner une meilleure expérience.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="logout" tabindex="-1" role="dialog" aria-labelledby="lougout_title" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="h1 modal-title" id="logout_title">Se déconnecter</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        &Ecirc;tes-vous sûr de vouloir vous déconnecter ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
+        <button type="button" class="btn btn-primary btn-danger" onclick="logout();">Oui</button>
       </div>
     </div>
   </div>

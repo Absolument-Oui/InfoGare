@@ -74,6 +74,7 @@
               <li class="dropdown-item" id="mnu_login"><a href="login.htm">Se connecter</a></li>
               <li class="dropdown-item"><a href="users.htm">Utilisateurs</a></li>
               <li class="dropdown-item darkmode-btn"><a href="#" onclick="toggleDarkmode();">Mode clair/sombre</a></li>
+              <li class="dropdown-item"><a href="#" data-toggle="modal" data-target="#logout">Se déconnecter</a></li>
             </ul>
           </div>
         </div>
@@ -440,6 +441,26 @@
   </div>
 </div>
 
+
+<div class="modal fade" id="logout" tabindex="-1" role="dialog" aria-labelledby="lougout_title" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="h1 modal-title" id="logout_title">Se déconnecter</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        &Ecirc;tes-vous sûr de vouloir vous déconnecter ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
+        <button type="button" class="btn btn-primary btn-danger" onclick="logout();">Oui</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
     <!-- SCRIPTS -->
