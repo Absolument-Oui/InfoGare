@@ -188,6 +188,8 @@ function prepModifGare(gid) {
         document.getElementById('modif_gare_name').value = snapshot.val().name;
         document.getElementById('modify_gare_btn').setAttribute('onclick', 'modifyGare('+snapshot.val().id+');');
         document.getElementById('modif_gare_infos').value = snapshot.val().infos;
+        document.getElementById('modify_gare_edit_time_1').value = snapshot.val().timebeforeshow;
+        document.getElementById('modify_gare_edit_time_2').value = snapshot.val().timeafterhide;
     }).catch((error) => {
         setError('Préparation de la modification de la gare', error.stack);
         document.getElementById('error_loading').hidden = false;
@@ -236,70 +238,14 @@ function prepModifTrain(tid) {
         document.getElementById('train_voie').value = snapshot.val().voie;
         var gares = snapshot.val().gares;
         var from = snapshot.val().from;
-        gares = gares.substr(0, gares.length - 1).split('|');
-        gares.forEach((item, index) => {
-            var chips_group = document.createElement('div');
-            var option = document.createElement('option');
-            var text_span = document.createElement('span');
-            var btn_close = document.createElement('button');
-            var btn_close_span = document.createElement('span');
-            var bnt_close_i = document.createElement('i');
-            
-            text_span.setAttribute('class', 'chips chips-label');
-            text_span.innerText = item;
-            
-            btn_close_span.setAttribute('class', 'sr-only');
-            
-            bnt_close_i.setAttribute('class', 'icons-close');
-            bnt_close_i.setAttribute('aria-hidden', 'true');
-            
-            btn_close.setAttribute('class', 'chips chips-btn chips-only-icon');
-            btn_close.appendChild(btn_close_span);
-            btn_close.appendChild(bnt_close_i);
-            
-            chips_group.appendChild(text_span);
-            chips_group.appendChild(btn_close);
-            
-            option.value = item;
-            option.innerText = item;
-            option.selected = true;
-            chips_group.setAttribute('class', 'chips-group');
-            document.getElementById('chips').insertBefore(chips_group, document.getElementById('addreceivers1'));
-            document.getElementById('gares').appendChild(option);
-        });
+        
+        document.getElementById('from_modify').value = from;
+        document.getElementById('gares_modify').value = gares;
 
-        from = from.susbtr(0, from.length - 1).split('|');
-
-        from.forEach((item, index) => {
-            var chips_group = document.createElement('div');
-            var option = document.createElement('option');
-            var text_span = document.createElement('span');
-            var btn_close = document.createElement('button');
-            var btn_close_span = document.createElement('span');
-            var bnt_close_i = document.createElement('i');
-            
-            text_span.setAttribute('class', 'chips chips-label');
-            text_span.innerText = item;
-            
-            btn_close_span.setAttribute('class', 'sr-only');
-            
-            bnt_close_i.setAttribute('class', 'icons-close');
-            bnt_close_i.setAttribute('aria-hidden', 'true');
-            
-            btn_close.setAttribute('class', 'chips chips-btn chips-only-icon');
-            btn_close.appendChild(btn_close_span);
-            btn_close.appendChild(bnt_close_i);
-            
-            chips_group.appendChild(text_span);
-            chips_group.appendChild(btn_close);
-            
-            option.value = item;
-            option.innerText = item;
-            option.selected = true;
-            chips_group.setAttribute('class', 'chips-group');
-            document.getElementById('chips2').insertBefore(chips_group, document.getElementById('addreceivers2'));
-            document.getElementById('from').appendChild(option);
-        })
+        document.getElementById('from_modify_div').hidden = false;
+        document.getElementById('gares_modify_div').hidden = false;
+        document.getElementById('chips').hidden = true;
+        document.getElementById('chips2').hidden = true;
         
         document.getElementById('validate').setAttribute('onclick', 'modifTrain('+tid+');');
         document.getElementById('validate').innerText = 'Modifier';
@@ -335,12 +281,12 @@ function modifTrain(tid) {
         retardtime: document.getElementById('train_retard_time').value,
         retardtype: retardtype,
         voie: document.getElementById('train_voie').value,
-        gares: document.getElementById('train_gares_dest').value,
-        from: document.getElementById('train_gares_prov').value,
-        alternance: document.getElementById('train_alternance').value,
+        gares: document.getElementById('gares_modify').value,
+        from: document.getElementById('from_modify').value,
+        alternance: document.getElementById('train_dynamic').value,
         hall: document.getElementById('train_hall').value
     }).then((snapshot) => {
-        document.location.reload();
+        window.close();
     }).catch((error) => {
         setError('Application des modifications au train', error.stack);
         document.getElementById('error_loading').hidden = false;
@@ -348,9 +294,21 @@ function modifTrain(tid) {
 }
 
 function modifyGare(gid) {
+    var hm;
+    if (document.getElementById('gare_rer_edit_hour_1').checked) {
+        hm = 'showhour';
+    } else {
+        hm = 'showremaining';
+    }
+
     database.child("users").child(uid).child("gares").child(gid).update({
         name: document.getElementById('modif_gare_name').value,
-        infos: document.getElementById('modif_gare_infos').value
+        infos: document.getElementById('modif_gare_infos').value,
+        alapproche: document.getElementById('modif_alapproche').value,
+        aquai: document.getElementById('modif_aquai').value,
+        hourmode: hm,
+        timebeforeshow: document.getElementById('modify_gare_edit_time_1').value,
+        timeafterhide: document.getElementById('modify_gare_edit_time_2').value
     }).then((snapshot) => {
         document.location.reload();
     }).catch((error) => {
@@ -395,7 +353,9 @@ function createGare(name) {
         type: gare_type,
         alapproche: document.getElementById('alapproche').value,
         aquai: document.getElementById('aquai').value,
-        hourmode: hm
+        hourmode: hm,
+        timebeforeshow: document.getElementById('gare_edit_time_1').value,
+        timeafterhide: document.getElementById('gare_edit_time_2').value
     }).then((snapshot) => {
         document.location.reload();
     });

@@ -104,6 +104,7 @@
         (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
     <div class="footerbar">
+      <br><br>
         <center><a href=apropos.htm>&Agrave; propos</a> | <a href= cgu.htm>CGU</a> | <a href=mentionslegales.htm>Mentions légales</a> | <a href="donation.htm">Nous soutenir</a></center>
     </div>
 </div>
@@ -175,6 +176,27 @@
   </div>
 </div>
 
+<div class="modal" tabindex="-1" role="dialog" aria-labelledby="error_dlg_title" id="error_dlg">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="h1 modal-title" id="error_dlg_title">Détails de l'erreur</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <label for="error_caused_by">Causée par</label>
+        <input class="form-control" type="text" id="error_caused_by" disabled>
+        <br>
+        <label for="error_stacktrace">Stacktrace</label>
+        <textarea class="form-control" id="error_stacktrace" disabled></textarea>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
     <!-- SCRIPTS -->
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
@@ -189,6 +211,7 @@
     <script src="scripts/notifications.js"></script>
     <script src="scripts/loader.js"></script>
     <script src="scripts/users.js"></script>
+    <script src="scripts/error_mgmt.js"></script>
     <script>
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {

@@ -2,11 +2,13 @@
 
 var list = new Array();
 var time_before_show = 0;
+var time_after_hide = 0;
 
 function loadTrains(user_id, id){
 
-    database.child(user_id).child('gares').child(id).get().then((snapshot) => {
-        
+    database.child('users').child(user_id).child('gares').child(id).get().then((snapshot) => {
+        time_before_show = snapshot.val().timebeforeshow;
+        time_after_hide = snapshot.val().timeafterhide;
     });
 
     var group = document.createElement('div');
@@ -359,16 +361,18 @@ function loadTrains(user_id, id){
                     secondrow.setAttribute('class', 'row');
 
                     var data_time = new Date();
+                    var data_time2 = new Date();
 
-                    data_time.setHours(train_hour.substr(0, 2), train_hour.substr(3, 2));
-                    
+                    data_time.setHours(train_hour.substr(0, 2), train_hour.substr(3, 2) + time_before_show);
+                    data_time2.setHours(train_hour.substr(0, 2), train_hour.substr(3, 2) + time_after_hide);
                     var rowgroup = document.createElement('div');
                     if (i < 2){
                         rowgroup.setAttribute('class', 'row-group row-train row-group-2');
                     } else {
                         rowgroup.setAttribute('class', 'row-group row-train');
                     }
-                    rowgroup.setAttribute('data-time', data_time.getTime()/1000);
+                    rowgroup.setAttribute('data-timeshow', data_time.getTime()/1000);
+                    rowgroup.setAttribute('data-timehide', data_time2.getTime()/1000)
                     rowgroup.appendChild(firstrow);
                     if (i < 2) {
                         rowgroup.appendChild(secondrow);
@@ -390,7 +394,7 @@ function loadTrains(user_id, id){
             //document.getElementById('loader').style.display = 'none';
             
             scrollX();
-            //autoRow();
+            autoRow();
         });
     }).catch((error) => {
         document.getElementById('error_loading').hidden = false;
@@ -402,8 +406,8 @@ function autoRow(){
 	var timestamp = Date.now()/1000;
 
 	$('.row-group').each(function(){
-        console.log($(this).data('time') + ' <=> ' + timestamp);
-		if($(this).data('time') < timestamp){
+        console.log($(this).data('timehide') + ' <=> ' + timestamp);
+		if($(this).data('timehide') < timestamp){
 			clearInterval('autoRowRun');
 
 			$(this).addClass('row-group-hidden');

@@ -1,6 +1,12 @@
 const database = firebase.database().ref('users');
 
-var uid = firebase.auth().currentUser.uid;
+var uid = '';
+
+firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+        uid = user.uid;
+    }
+});
 
 function getAllUsers() {
     loadConfidentiality();
@@ -143,7 +149,10 @@ function getUser(id) {
             }
         });
         document.getElementById('loader').style.display = 'none';
-    });
+    }).catch((error) => {
+        setError('Chargement des utiloisateurs', error.stack);
+        document.getElementById('error_loading').hidden = false;
+    })
 }
 
 function setUsername(uname) {

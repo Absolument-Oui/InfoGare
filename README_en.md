@@ -3,6 +3,12 @@ Lire en [[Français]](https://github.com/Absolument-Oui/InfoGares/blob/main/READ
 # InfoGare
 
 Infogare, create infogares become easy!
+
+## Join the beta
+
+You can submit your application to join the beta version of Infogare on our Discord server.
+
+The number of places is limited !
  
 ## For Volunteers
 

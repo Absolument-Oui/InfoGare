@@ -191,7 +191,7 @@ function loadTrain(uid) {
         document.getElementById('loader').style.display = 'none';
         
         scrollX();
-        scrollY(75);
+        scrollY(80);
 
     });
 }
