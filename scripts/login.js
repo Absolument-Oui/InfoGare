@@ -5,7 +5,7 @@ var user = undefined;
 var SecretCode = null;
 
 document.getElementById('login_btn').onclick = function() {
-  location.href = 'https://auth.infogare.fr/login.htm?returnurl=' + encodeURIComponent(location.href)+'&service=infogare&version=beta';
+  location.href = 'https://auth.infogare.fr/login.htm?returnurl=' + encodeURIComponent(location.href)+'&service=infogare&version=release';
 }
 
 function loginWithToken(token) {
