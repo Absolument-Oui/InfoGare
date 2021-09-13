@@ -12,7 +12,7 @@ function loginWithToken(token) {
   firebase.auth().signInWithCustomToken(token).then((user) => {
     console.log(user.user.displayName);
     window.location.href = location.pathname;
-  })
+  });
 }
 
 function login(email, password) {
@@ -60,7 +60,7 @@ function login(email, password) {
         }
         document.getElementById('error').hidden = false;
       });
-    })
+    });
 }
 
 function signin(email, password, username) {
@@ -164,5 +164,5 @@ function checkBeta(userid) {
     if (!snapshot.val().beta) {
       window.location.replace('beta_access_refused.htm');
     }
-  })
+  });
 }
