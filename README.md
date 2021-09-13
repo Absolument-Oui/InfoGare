@@ -6,7 +6,7 @@ InfoGare, créer des infogares deviens facile !
 
 ## Rejoindre la bêta
 
-Vous pouvez envoyer votre candidature pour rejoindre la version béta de Infogare sur notre serveur Discord.
+Vous pouvez remplir notre formulaire pour rejoindre la version bêta de InfoGare ici : https://link.infogare.fr/JoinBeta
 
 Le nombre de places est limité !
  

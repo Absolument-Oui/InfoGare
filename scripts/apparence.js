@@ -33,4 +33,5 @@ function toggleDarkmode() {
   activecss.setAttribute('href', newhref);
   inactivecss.setAttribute('href', oldhref);
   localStorage.setItem('bootstrap-sncf-css-name', name);
+  location.reload()
 }

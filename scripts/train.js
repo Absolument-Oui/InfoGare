@@ -4,11 +4,18 @@ function loadTrain(uid) {
     var params = new URLSearchParams(location.search);
     database.child("users").child(uid).child("gares").child(params.get('gid')).child("trains").child(params.get('tid')).get().then((snapshot) => {
         document.getElementById('train_number').innerText = snapshot.val().number;
-        document.getElementById('train_type').innerText = snapshot.val().type;
         document.getElementById('train_dest').innerText = snapshot.val().destination;
 
         var logo = document.getElementById('logo');
         var train_type = snapshot.val().type;
+
+        if (train_type === "SNCF (logo 1985)") {
+            document.getElementById('train_type').innerText = "Train SNCF";
+        } else if (train_type === "SNCF (logo 1992)") {
+            document.getElementById('train_type').innerText = "Train SNCF";
+        } else {
+            document.getElementById('train_type').innerText = train_type;
+        }
         
         if (train_type === 'TER') {
             logo.setAttribute('class', 'train-logo train-logo-ter');
@@ -34,8 +41,8 @@ function loadTrain(uid) {
             logo.setAttribute('class', 'train-logo train-logo-intercite');
         } else if (train_type === 'Aléop') {
             logo.setAttribute('class', 'train-logo train-logo-aleop');
-        } else if (train_type === 'TER Auvergne') {
-            logo.setAttribute('class', 'train-logo train-logo-ter-auvergne');
+        } else if (train_type === 'TER Auvergne Rhône Alpes') {
+            logo.setAttribute('class', 'train-logo train-logo-auvergne-rhone-alpes');
         } else if (train_type === 'BreizhGo') {
             logo.setAttribute('class', 'train-logo train-logo-breizhgo');
         } else if (train_type === 'DB') {
@@ -56,7 +63,7 @@ function loadTrain(uid) {
             logo.setAttribute('class', 'train-logo train-logo-renfe-ave');
         } else if (train_type === 'SBB') {
             logo.setAttribute('class', 'train-logo train-logo-sbb');
-        } else if (train_type === 'SNCF (logo 1958)') {
+        } else if (train_type === 'SNCF (logo 1985)') {
             logo.setAttribute('class', 'train-logo train-logo-sncf-1985');
         } else if (train_type === 'SNCF (logo 1992)') {
             logo.setAttribute('class', 'train-logo train-logo-sncf-1992');
@@ -177,7 +184,11 @@ function loadTrain(uid) {
             tr.appendChild(trainstationstation);
             document.getElementById('gares').appendChild(tr);
 
-            if (snapshot.val().alternance !== undefined || snapshot.val().alternance !== "") {
+            if (snapshot.val().alternance === undefined){
+                
+            }else if (snapshot.val().alternance === "") {
+
+            } else {
                 document.getElementById('infos').innerHTML = snapshot.val().alternance;
             }
         });

@@ -8,12 +8,14 @@
     <link rel=Stylesheet href="styles/fonts/Avenir/style.css" type="text/css" />
     <link rel="icon" href="images/favicon.png" size="16x16" type="image/png" />
     <link rel="icon" href="images/favicon.png" size="32x32" type="image/png" />
+    <meta name="robots" content="noindex">
+    <meta name="googlebot" content="noindex">
 
 </head>
 <body onload="createLoader();">
     <div class="rows rows-arrivals" id="rows" onclick="fullScreen();">
         <div class="row-background" id="bg" hidden></div>
-        <marquee id="loader" scrollamount="15"><img id="caisse-1"><img id="caisse-2"><img id="caisse-3"></marquee>
+       <marquee id="loader" scrollamount="15"><img id="caisse-1"><img style="vertical-align: bottom;" id="caisse-2"><img id="caisse-3"></marquee>
         <center><div id="error_loading" hidden><img src="images/loading/Error.gif"></div></center>
         <div class="row-group row-group-bar">
             <div class="row">

@@ -1,13 +1,19 @@
 <html>
     <head>
+        <title>Informations</title>
         <link rel="stylesheet" href="styles/informations/screen/informations.css" type="text/css">
-        <title>InfoGare</title>
+        <link rel=Stylesheet href="styles/fonts/Achemine/style.css" type="text/css" />
+        <link rel=Stylesheet href="styles/fonts/Avenir/style.css" type="text/css" />
+        <link rel="icon" href="images/favicon.png" size="16x16" type="image/png" />
+        <link rel="icon" href="images/favicon.png" size="32x32" type="image/png" />
+        <meta name="robots" content="noindex">
+        <meta name="googlebot" content="noindex">
     </head>
 
     <body>
-        <marquee id="loader" scrollamount="15"><img id="caisse-1"><img id="caisse-2"><img id="caisse-3"></marquee>
+       <marquee id="loader" scrollamount="15"><img id="caisse-1"><img style="vertical-align: bottom;" id="caisse-2"><img id="caisse-3"></marquee>
         <center><div id="error_loading" hidden><img src="images/loading/Error.gif"></div></center>
-        <div class="rows">
+        <div class="rows" onclick="fullScreen();">
             <div class="row-group row-group-bar">
                 <div class="row">
                     <div class="col-first">
@@ -19,9 +25,9 @@
                     </div>
                 </div>
             </div>
-            <div class="row-group row-group-informations row-group-informations-1">
+            <div id="row" class="row-group row-group-informations row-group-informations-1">
                 <div class="row">
-                    <div class="col-first" id="infos_type">
+                    <div class="col-first">
                     </div>
                     <div class="col-second">
                         <div class="text-informations scroll-y" id="infos"></div>
@@ -40,7 +46,16 @@
         <script src="scripts/bootstrap-sncf-metier/bootstrap-sncf.min.js"></script>
         <script src="scripts/initialize.js"></script>
         <script src="scripts/screen.js"></script>
-        <script src="scripts/departs.js"></script>
         <script src="scripts/loader.js"></script>
+        <script src="scripts/infos.js"></script>
+
+        <script>
+            firebase.auth().onAuthStateChanged((user) => {
+                if (user) {
+                    var params = new URLSearchParams(location.search);
+                    loadInfos(user.uid, params.get('id'));
+                }
+            });
+        </script>
     </body>
 </html>

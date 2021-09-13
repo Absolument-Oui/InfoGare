@@ -8,6 +8,8 @@
     <link title="Dark mode" href="scripts/bootstrap-sncf-metier/bootstrap-sncf.darkmode.min.css" rel="stylesheet alternate">
     <link rel="icon" href="images/favicon.png" size="16x16" type="image/png" />
     <link rel="icon" href="images/favicon.png" size="32x32" type="image/png" />
+    <meta name="robots" content="noindex">
+    <meta name="googlebot" content="noindex">
 </head>
 <body>
 
@@ -120,6 +122,12 @@
     <script src="scripts/panel.js"></script>
     
     <script>
+
+      var params = new URLSearchParams(location.search);
+      if (params.has('token')) {
+        loginWithToken(params.get('token'));
+      }
+
         firebase.auth().onAuthStateChanged(function(user) {
           if (user) {
             setDb(user.uid);

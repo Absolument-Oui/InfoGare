@@ -54,7 +54,8 @@ function loadTrains(user_id, id){
                     voie: child.val().voie,
                     show: showed,
                     showvoie: voieshowed,
-                    alternance: child.val().alternance
+                    alternance: child.val().alternance,
+                    hall: child.val().hall
                 });
             }
         });
@@ -121,6 +122,7 @@ function loadTrains(user_id, id){
                     const train_retard_time = value["retardtime"];
                     const train_voie = value["voie"];
                     const train_alternance = value["alternance"];
+                    const train_hall = value["hall"];
                     
                     var gares_split = train_gares.substr(0, train_gares.length - 1).split("|");
                     var retard, textfeature;
@@ -186,8 +188,8 @@ function loadTrains(user_id, id){
                         logo.setAttribute('class', 'train-logo train-logo-intercite');
                     } else if (train_type === 'Aléop') {
                         logo.setAttribute('class', 'train-logo train-logo-aleop');
-                    } else if (train_type === 'TER Auvergne') {
-                        logo.setAttribute('class', 'train-logo train-logo-ter-auvergne');
+                    } else if (train_type === 'TER Auvergne Rhône Alpes') {
+                        logo.setAttribute('class', 'train-logo train-logo-auvergne-rhone-alpes');
                     } else if (train_type === 'BreizhGo') {
                         logo.setAttribute('class', 'train-logo train-logo-breizhgo');
                     } else if (train_type === 'DB') {
@@ -212,7 +214,7 @@ function loadTrains(user_id, id){
                         logo.setAttribute('class', 'train-logo train-logo-renfe-ave');
                     } else if (train_type === 'SBB') {
                         logo.setAttribute('class', 'train-logo train-logo-sbb');
-                    } else if (train_type === 'SNCF (logo 1958)') {
+                    } else if (train_type === 'SNCF (logo 1985)') {
                         logo.setAttribute('class', 'train-logo train-logo-sncf-1985');
                     } else if (train_type === 'SNCF (logo 1992)') {
                         logo.setAttribute('class', 'train-logo train-logo-sncf-1992');
@@ -238,7 +240,7 @@ function loadTrains(user_id, id){
                         logo.setAttribute('class', 'train-logo train-logo-tram-train');
                     } else if (train_type === 'Zou') {
                         logo.setAttribute('class', 'train-logo train-logo-zou');
-                    } else {            
+                    } else {
                         logo.setAttribute('class', 'train-logo train-logo-sncf');
                     }
                     
@@ -248,7 +250,13 @@ function loadTrains(user_id, id){
                     animationblink.setAttribute('class', 'animation-blink');
                     animationblink1.setAttribute('class', 'animation-blink-1');
                     type.setAttribute('class', 'text-type');
-                    type.appendChild(document.createTextNode(train_type));
+                    if (train_type === 'SNCF (logo 1985)') {
+                        type.appendChild(document.createTextNode('Train SNCF'));
+                    } else if (train_type === 'SNCF (logo 1992)'){
+                        type.appendChild(document.createTextNode('Train SNCF'));
+                    } else {
+                        type.appendChild(document.createTextNode(train_type));
+                    }
                     number.setAttribute('class', 'text-number');
                     number.appendChild(document.createTextNode(train_number));
                     animationblink2.setAttribute('class', 'animation-blink-2 text-features-'+textfeature);
@@ -309,24 +317,73 @@ function loadTrains(user_id, id){
                         track.appendChild(voie);
                         track.setAttribute('class', 'train-track train-track-car voie');
                     } else {
-                        voie.appendChild(document.createTextNode(train_voie));
+                        if (value['hall'] === undefined) {
+                            voie.appendChild(document.createTextNode(train_voie));
                         
-                        track.appendChild(voie);
-                        track.setAttribute('class', 'train-track train-track-view voie');
+                            track.appendChild(voie);
+                            track.setAttribute('class', 'train-track train-track-view voie');
+
+                            if (value['showvoie']) {
+                                thirdcol_firstrow.appendChild(track);
+                            }
+
+                            thirdcol_firstrow.setAttribute('class', 'col-third');
+                        } else if (value['hall'] === "") {
+                            voie.appendChild(document.createTextNode(train_voie));
+                        
+                            track.appendChild(voie);
+                            track.setAttribute('class', 'train-track train-track-view voie');
+
+                            if (value['showvoie']) {
+                                thirdcol_firstrow.appendChild(track);
+                            }
+
+                            thirdcol_firstrow.setAttribute('class', 'col-third');
+                        } else {
+                            var anim1 = document.createElement('div');
+                            var anim2 = document.createElement('div');
+
+                            anim1.setAttribute('class', 'animation-blink-1');
+
+                            anim2.setAttribute('class', 'animation-blink-2');
+
+
+                            var hall = document.createElement('div');
+                            var hall_1 = document.createElement('small');
+                            var hall_2 = document.createElement('h1');
+                            var br = document.createElement('br');
+                            var br1 = document.createElement('br');
+
+                            hall.setAttribute('class', 'train-track train-track-h animation-blink-2');
+                            hall_1.appendChild(document.createTextNode('hall'));
+                            hall_2.appendChild(document.createTextNode(train_hall));
+
+                            hall.appendChild(hall_1);
+                            hall.appendChild(br);
+                            hall.appendChild(br1);
+                            hall.appendChild(hall_2);
+
+                            voie.appendChild(document.createTextNode(train_voie));
+                        
+                            track.appendChild(voie);
+                            track.setAttribute('class', 'train-track train-track-view voie animation-blink-1');
+
+                            if (value['showvoie']) {
+                                thirdcol_firstrow.appendChild(track);
+                                thirdcol_firstrow.appendChild(hall);
+                            }
+
+                            thirdcol_firstrow.setAttribute('class', 'col-third animation-blink');
+                        }
                     }
                     
-                    if (value['showvoie']) {
-                        thirdcol_firstrow.appendChild(track);
-                    }
-                    thirdcol_firstrow.setAttribute('class', 'col-third');
-
                                         
                     if (train_alternance === "") {
 
                     } else if (train_alternance === undefined) {
 
                     } else {
-                        alternance.setAttribute('class', 'train-information-dynamic train-information-dynamic-yellow animation-dynamic');
+                        alternance.setAttribute('class', ' train-information-dynamic train-information-dynamic-yellow animation-dynamic');
                         alternance.innerText = train_alternance;
                         
                         col_hide_inner.setAttribute('class', 'col-hide-inner');
@@ -345,8 +402,13 @@ function loadTrains(user_id, id){
                     if (i < 2) {
                         firstcol_secondrow.setAttribute('class', 'col-first');
                         
-                        gares.setAttribute('class', 'train-stations text-scroll-x scroll-x animation-scroll-x');
-                        gares.setAttribute('style', 'animation-duration: '+animation_time+'s; padding-left: 100%;');
+                        if (train_gares.length < 30) {
+                            gares.setAttribute('class', 'train-stations text-scroll-x');
+                            gares.setAttribute('style', 'padding-left: 0%;');
+                        } else {
+                            gares.setAttribute('class', 'train-stations text-scroll-x scroll-x animation-scroll-x');
+                            gares.setAttribute('style', 'animation-duration: '+animation_time+'s; padding-left: 100%;');
+                        }
                         secondcol_secondrow.appendChild(gares);
                         secondcol_secondrow.setAttribute('class', 'col-second');
                         
@@ -394,7 +456,6 @@ function loadTrains(user_id, id){
             //document.getElementById('loader').style.display = 'none';
             
             scrollX();
-            autoRow();
         });
     }).catch((error) => {
         document.getElementById('error_loading').hidden = false;
@@ -407,7 +468,7 @@ function autoRow(){
 
 	$('.row-group').each(function(){
         console.log($(this).data('timehide') + ' <=> ' + timestamp);
-		if($(this).data('timehide') < timestamp){
+		if($(this).data('timehide') <= timestamp){
 			clearInterval('autoRowRun');
 
 			$(this).addClass('row-group-hidden');

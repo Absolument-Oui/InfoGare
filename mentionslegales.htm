@@ -2,6 +2,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <title>InfoGare - Mentions légales</title>
+    <script data-ad-client="ca-pub-3014614649994013" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script src="scripts/apparence.js" type="text/javascript"></script>
     <link rel="Stylesheet" href="styles/Global.css" type="text/css" />
     <link title="Light mode" href="scripts/bootstrap-sncf-metier/bootstrap-sncf.min.css" rel="stylesheet">
@@ -12,8 +14,7 @@
     <meta name="description" content="Site de création et d'affichage d'infogare" />
     <meta name="keywords" content="InfoGare, info gare, social gare, SocialGare" />
     <meta name="author" content="Absolument Oui" />
-    <title>InfoGare - Mentions légales</title>
-    <script data-ad-client="ca-pub-3014614649994013" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <meta http-equiv="content-language" content="fr-fr">
 </head>
 <body onload="checkLogin();">
 <div>
@@ -24,7 +25,7 @@
       </a>
     </div>
     <header role="banner" class="mastheader-title d-none d-xl-block">
-      <h1 class="text-uppercase text-white pt-2 pl-3 mb-0"><a href="index.htm" class="text-white">InfoGare</a></h1>
+      <span class="text-uppercase text-white pt-2 pl-3 mb-0 h1"><a href="index.htm" class="text-white">InfoGare</a></span>
     </header>
   </div>
 </div>
@@ -34,7 +35,7 @@
     <h3>1. Présentation du site.</h3>
     <p>En vertu de l'article 6 de la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique, il est précisé aux utilisateurs du site <a href="http://www.infogare.fr/">www.infogare.fr</a> l'identité des différents intervenants dans le cadre de sa réalisation et de son suivi :</p>
     <p><strong>Propriétaire</strong> : Florian Goussot – 21 Rue de Novéant, Arnaville, 54530, France<br />
-    <strong>Créateur</strong>  : <a href="www.floriangoussot.ga">Florian Goussot</a><br />
+    <strong>Créateur</strong>  : Florian Goussot<br />
     <strong>Responsable publication</strong> : Florian Goussot – f.goussot@outlook.com<br />
     Le responsable publication est une personne physique ou une personne morale.<br />
     <strong>Webmaster</strong> : f.goussot@outlook.com<br />
@@ -46,7 +47,6 @@
     <p><strong>Date de mise à jour : mardi 18 mai 2021</strong></p>
     
     <div class="footerbar">
-      <br><br>
         <center><a href=apropos.htm>&Agrave; propos</a> | <a href= cgu.htm>CGU</a> | <a href=mentionslegales.htm>Mentions légales</a> | <a href="donation.htm">Nous soutenir</a></center>
     </div>
 
@@ -77,37 +77,5 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        &Ecirc;tes-vous sûr de vouloir vous déconnecter ?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
-        <button type="button" class="btn btn-primary btn-danger" onclick="logout();">Oui</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-    <!-- SCRIPTS -->
-    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-analytics.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-messaging.js"></script>
-    <script src="scripts/jquery/jquery.js"></script>
-    <script src="scripts/bootstrap-sncf-metier/bootstrap-sncf.min.js"></script>
-    <script src="scripts/initialize.js"></script>
-    <script src="scripts/login.js"></script>
-    <script src="scripts/notifications.js"></script>
-    <script>
-        if (localStorage.getItem('cookies_accepted') === undefined) {
-            $('#cookies').modal('show');
-        }
-        
-        $('#cookies').on('hidden.bs.modal', function (e) {
-          localStorage.setItem('cookies_accepted', true);
-        });
-    </script>
 </body>
 </html>

@@ -87,12 +87,3 @@ function chgUsername(username) {
         window.location.reload;
     });
 }
-
-function joinBeta() {
-    database.child("users").child(uid).update({
-        beta: true
-    }).then((snapshot) => {
-        alert('Merci d\'avoir rejoint le programme bêta ! \nVous allez être redirigé vers la version bêta !');
-        window.location.href = "https://beta.infogare.fr";
-    });
-}
