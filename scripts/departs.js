@@ -55,7 +55,8 @@ function loadTrains(user_id, id){
                     show: showed,
                     showvoie: voieshowed,
                     alternance: child.val().alternance,
-                    hall: child.val().hall
+                    hall: child.val().hall,
+                    alternancetype: child.val().alternancetype
                 });
             }
         });
@@ -123,6 +124,7 @@ function loadTrains(user_id, id){
                     const train_voie = value["voie"];
                     const train_alternance = value["alternance"];
                     const train_hall = value["hall"];
+                    const alternance_type = value["alternancetype"];
                     
                     var gares_split = train_gares.substr(0, train_gares.length - 1).split("|");
                     var retard, textfeature;
@@ -254,6 +256,8 @@ function loadTrains(user_id, id){
                         type.appendChild(document.createTextNode('Train SNCF'));
                     } else if (train_type === 'SNCF (logo 1992)'){
                         type.appendChild(document.createTextNode('Train SNCF'));
+                    } else if (train_type === 'SNCF (carmillon)') {
+                        type.appendChild(document.createTextNode('Train SNCF'));
                     } else {
                         type.appendChild(document.createTextNode(train_type));
                     }
@@ -383,7 +387,11 @@ function loadTrains(user_id, id){
                     } else if (train_alternance === undefined) {
 
                     } else {
-                        alternance.setAttribute('class', ' train-information-dynamic train-information-dynamic-yellow animation-dynamic');
+                        if (alternance_type === 'normal') {
+                            alternance.setAttribute('class', ' train-information-dynamic animation-dynamic');
+                        } else {
+                            alternance.setAttribute('class', ' train-information-dynamic train-information-dynamic-yellow animation-dynamic');
+                        }
                         alternance.innerText = train_alternance;
                         
                         col_hide_inner.setAttribute('class', 'col-hide-inner');
@@ -450,6 +458,9 @@ function loadTrains(user_id, id){
         document.getElementById('rows').appendChild(group);
         
         database.child("users").child(user_id).child("gares").child(id).get().then((snapshot) => {
+            if (snapshot.val().infos.length > 35) {
+                document.getElementById('infos').setAttribute('class', 'bar-informations');
+            }
             document.getElementById('infos').innerHTML = snapshot.val().infos.replace('\n', ' &nbsp;');
 
             document.getElementById('bg').hidden = false;
@@ -476,6 +487,14 @@ function autoRow(){
 
 			autoRowRun = setInterval(autoRow, 10000, 0);
 			return false;
-		}
+		} else if ($(this).data('timeshow') >= timestamp) {
+            clearInterval('autoRowRun');
+
+            $(this).addClass('row-group');
+            $(this).removeClass('row-group-hidden');
+
+            autoRowRun = setInterval(autoRow, 10000, 0);
+            return false;
+        }
 	});
 }

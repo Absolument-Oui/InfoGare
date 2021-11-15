@@ -17,7 +17,7 @@
     <meta name="robots" content="noindex">
     <meta name="googlebot" content="noindex">
   </head>
-<body onload="checkLogin(); createLoader();">
+<body onload="getVersion(); createLoader(); checkLogin();">
 <div>
     <div class="mastheader">
         <div class="mastheader-logo">
@@ -68,13 +68,15 @@
           <li class="toolbar-item separator-gray-500">
             <div class="btn-group dropdown">
               <button class="btn btn-transparent dropdown-toggle toolbar-item-spacing" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-controls="mycontrol">
-                <i class="icons-menu-account icons-size-1x25 icons-md-size-1x5 mr-xl-2" aria-hidden="true"></i>
+                <i id="mnu_user_no_photo" class="icons-menu-account icons-size-1x25 icons-md-size-1x5 mr-xl-2" aria-hidden="true"></i>
+            <img id="mnu_user_photo" height="24" width="24" style="border-radius: 50%; display: none;">
+            <span class="d-none d-xl-block" style="margin-left: 10px;" id="mnu_username">Veuillez patienter...</span>
                 <span class="d-none d-xl-block" id="mnu_username">Veuillez patienter...</span>
                 <i class="icons-arrow-down d-none d-xl-block" aria-hidden="true"></i>
               </button>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton" id="mycontrol">
                 <ul>
-                  <li class="dropdown-item" id="mnu_compte"><a href="compte.htm">Mon profil</a></li>
+                  <li class="dropdown-item" id="mnu_compte"><a href="https://auth.infogare.fr/account.htm" target="_blank">Mon profil</a></li>
                   <li class="dropdown-item" id="mnu_gares"><a href="gares.htm">Mes gares</a></li>
                   <li class="dropdown-item" id="mnu_login"><a id="login_btn">Se connecter</a></li>
                   <li class="dropdown-item" id="mnu_users"><a href="users.htm">Utilisateurs</a></li>
@@ -109,7 +111,8 @@
         (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
     <div class="footerbar">
-        <center><a href=apropos.htm>&Agrave; propos</a> | <a href= cgu.htm>CGU</a> | <a href=mentionslegales.htm>Mentions légales</a> | <a href="donation.htm">Nous soutenir</a></center>
+        <center><a href=apropos.htm>&Agrave; propos</a> | <a href= cgu.htm>CGU</a> | <a href=mentionslegales.htm>Mentions légales</a> | <a href="donation.htm">Nous soutenir</a></center><br>
+    <center><i id="version"></i></center>
     </div>
 </div>
 
@@ -174,6 +177,7 @@
     <script src="scripts/notifications.js"></script>
     <script src="scripts/loader.js"></script>
     <script src="scripts/users.js"></script>
+    <script src="scripts/versioning.js"></script>
     <script>
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {

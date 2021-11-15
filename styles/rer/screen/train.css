@@ -183,7 +183,7 @@ a {
     background: #004394;
 }
 
-.rer.text-station {
+.rer .text-station {
     font-size: 8.7em;
     font-weight: 800;
     display: inline-block;
@@ -742,34 +742,20 @@ a {
     z-index: 0;
 }
 
-.rows .row-group-train.row-group-train-third .row:nth-of-type(2) {
+.rows .row-group-train .row:nth-of-type(2) .col-third {
     background: #51124a;
-    height: 25%;
 }
 
 .rows .row-group-train.row-group-train-third .row:nth-of-type(1) {
     height: 65%;
 }
 
-.rows .row-group-train.row-group-train-third .row:nth-last-of-type(1) .col-first {
-    position: relative;
-    width: 62vh;
-    height: 100%;
-    padding: 2.5vh;
-    vertical-align: top;
-    background: #fff;
+.rows .row-group-train.row-group-train-third .row:nth-of-type(1) .col-second-container {
+    height: 65vh;
 }
 
-.rows .row-group-train.row-group-train-third .row:nth-of-type(1) .col-first>* {
-    position: relative;
-    z-index: 100;
-}
-
-.rows .row-group-train.row-group-train-third .row:nth-of-type(1) .col-second .col-second-container {
-    height: 90vh;
-    overflow: hidden;
-    position: relative;
-    z-index: 0;
+.rows .row-group-train.row-group-train-third .row:nth-of-type(2) {
+    height: 25%;
 }
 
 
@@ -815,11 +801,11 @@ a {
 
 .rows.rows-departures .row-group-train .col-second .train-stations tbody .train-stations-margin-background,
 .rows.rows-transilien .row-group-train .col-second .train-stations tbody .train-stations-margin-background {
-    background-image: url(../../../images/screen/quai/train-stations-margin-background-departure.svg);
+    background-image: url(../../img/screen/backgrounds/train-stations-margin-background-departure.svg);
 }
 
 .rows.rows-arrivals .row-background {
-    background-image: url(../../../images/screen/quai/row-background-arrival.svg);
+    background-image: url(../../img/screen/backgrounds/row-background-arrival.svg);
 }
 
 .rows.rows-arrivals .row-group-bar {
@@ -840,7 +826,7 @@ a {
 }
 
 .rows.rows-arrivals .row-group-train .col-second .train-stations tbody .train-stations-margin-background {
-    background-image: url(../../../images/screen/quai/train-stations-margin-background-arrival.svg);
+    background-image: url(../../img/screen/backgrounds/train-stations-margin-background-arrival.svg);
 }
 
 

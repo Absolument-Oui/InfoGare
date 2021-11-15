@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -16,7 +16,7 @@
     <meta name="author" content="Absolument Oui" />
     <meta http-equiv="content-language" content="fr-fr">
     </head>
-<body onload="getVersion(); checkLogin(); initLogo(); " class="light">
+<body onload="getVersion(); checkLogin(); ">
 <div>
   <br><br><br>
   <div class="mastheader">
@@ -90,25 +90,27 @@
 </div>
 
 <div class="main-content">
-    <center>
-        <img src="images/icon.png" width="260" height="180" id="logo"><br />
-        <br>
-        <h2>InfoGare, créer des infogares deviens facile !</h2>
-
-        <a href="https://link.infogare.fr/Discord" target="_blank"><img src="images/logo-discord.svg" height="50px" width="50px"></a>
-        <a href="https://link.infogare.fr/Twitter" target="_blank"><img src="images/logo-twitter.svg" height="50px" width="50px"></a> <br />
-        <br>
-
-        <ins class="adsbygoogle"
-            style="display:inline-block;width:728px;height:90px"
-            data-ad-client="ca-pub-3014614649994013"
-            data-ad-slot="5523609982"></ins>
-        <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-        
-    </center>
-    
+    <h1>Questionnaire de satisfaction sur le projet InfoGare (SatisForm)</h1>
+    <h2>Bienvenue sur ce questionnaire visant à collecter les éléments de satisfaction des utilisateurs en vu d'une amélioration du projet. Durée estimée : 3 min.</h2>
+    <i>NOTE : votre nom d'utilisateur et adresse email sont récupérées automatiquement depuis votre compte InfoGare</i>
+    <br><br>
+    <div id="part1">
+        <span class="h1">Généralités</span>
+        <br><br>
+        <label>A quelle fréquence utilisez-vous InfoGare (toutes plateformes confondues) ?</label><br>
+        <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" id="part1_uses_btn1" name="part1_uses_btns" class="custom-control-input">
+            <label for="part1_uses_btn1" class="custom-control-label">Plusieurs fois par jour</label>
+        </div>
+        <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" id="part1_uses_btn2" name="part1_uses_btns" class="custom-control-input">
+            <label for="part1_uses_btn2" class="custom-control-label">1 fois par jour</label>
+        </div>
+        <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" id="part1_uses_btn3" name="part1_uses_btns" class="custom-control-input">
+            <label for="part1_uses_btn3" class="custom-control-label">Plusieurs fois par semaine</label>
+        </div>
+    </div>
 </div>
 
 <div data-nosnippet class="footerbar">
@@ -163,7 +165,6 @@
     <script src="scripts/bootstrap-sncf-metier/bootstrap-sncf.min.js"></script>
     <script src="scripts/initialize.js"></script>
     <script src="scripts/login.js"></script>
-    <script src="scripts/versioning.js"></script>
     <script src="scripts/notifications.js"></script>
     <script>
         var params = new URLSearchParams(location.search);

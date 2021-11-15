@@ -13,7 +13,7 @@
     <meta name="robots" content="noindex">
     <meta name="googlebot" content="noindex">
 </head>
-<body onload="checkLogin(); createLoader();">
+<body onload="getVersion(); createLoader(); checkLogin();">
 <div>
   <div class="mastheader">
     <div class="mastheader-logo">
@@ -64,13 +64,14 @@
       <li class="toolbar-item separator-gray-500">
         <div class="btn-group dropdown">
           <button class="btn btn-transparent dropdown-toggle toolbar-item-spacing" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-controls="mycontrol">
-            <i class="icons-menu-account icons-size-1x25 icons-md-size-1x5 mr-xl-2" aria-hidden="true"></i>
-            <span class="d-none d-xl-block" id="mnu_username">Veuillez patienter...</span>
+            <i id="mnu_user_no_photo" class="icons-menu-account icons-size-1x25 icons-md-size-1x5 mr-xl-2" aria-hidden="true"></i>
+            <img id="mnu_user_photo" height="24" width="24" style="border-radius: 50%; display: none;">
+            <span class="d-none d-xl-block" style="margin-left: 10px;" id="mnu_username">Veuillez patienter...</span>
             <i class="icons-arrow-down d-none d-xl-block" aria-hidden="true"></i>
           </button>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton" id="mycontrol">
             <ul>
-              <li class="dropdown-item" id="mnu_compte"><a href="compte.htm">Mon profil</a></li>
+              <li class="dropdown-item" id="mnu_compte"><a href="https://auth.infogare.fr/account.htm" target="_blank">Mon profil</a></li>
               <li class="dropdown-item" id="mnu_gares"><a href="gares.htm">Mes gares</a></li>
               <li class="dropdown-item" id="mnu_login"><a id="login_btn">Se connecter</a></li>
               <li class="dropdown-item" id="mnu_users"><a href="users.htm">Utilisateurs</a></li>
@@ -126,11 +127,29 @@
     </center></div>
 
     <div class="footerbar">
-        <center><a href=apropos.htm>&Agrave; propos</a> | <a href= cgu.htm>CGU</a> | <a href=mentionslegales.htm>Mentions légales</a> | <a href="donation.htm">Nous soutenir</a></center>
+        <center><a href=apropos.htm>&Agrave; propos</a> | <a href= cgu.htm>CGU</a> | <a href=mentionslegales.htm>Mentions légales</a> | <a href="donation.htm">Nous soutenir</a></center><br>
+    <center><i id="version"></i></center>
     </div>
 
-    
+  <div class="modal" id="choose_instance" tabindex="-1" role="dialog" aria-hidden="true" aria-labelledby="choose_instance_title">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="h1 modal-title" id="choose_instance_title">Veuillez choisir</h5>
+        </div>
+        <div class="modal-body">
+          <p>Ce train est peut être affiché pour les départs et les arrivés. Lequel souhaitez-vous afficher ?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="departure_btn" data-dismiss="modal">Départs</button>
+          <button type="button" class="btn btn-secondary" id="arrival_btn" data-dismiss="modal">Arrivés</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+
 
 <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="new_train_title" aria-hidden="true" id="new_train">
   <div class="modal-dialog modal-lg">
@@ -201,6 +220,7 @@
                 <option data-id="37" >Nomad</option>
                 <option data-id="38" >TER Midi Pyrénées</option>
                 <option data-id="39" >TER Languedoc Roussillon</option>
+                <option data-id="40" >SNCF (carmillon)</option>
               </select>
               <div class="input-group-append input-group-last">
                 <button class="btn btn-primary btn-only-icon " data-role="btn" type="button" aria-expanded="false" aria-controls="selecttoggle">
@@ -333,11 +353,12 @@
               </div>
               <div class="select-group" role="listitem">
                 <div class="select-group-head">
-                  <span class="select-group-title text-uppercase">Anciens logos SNCF</span>
+                  <span class="select-group-title text-uppercase">Logos SNCF</span>
                 </div>
                 <div class="select-group-content">
                   <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="24">SNCF (logo 1985)</button></span>
                   <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="25">SNCF (logo 1992)</button></span>
+                  <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="40">SNCF (carmillon)</button></span>
                 </div>
               </div>
             </div>
@@ -703,9 +724,11 @@
     <script src="scripts/bootstrap-sncf-metier/bootstrap-sncf.min.js"></script>
     <script src="scripts/initialize.js"></script>
     <script src="scripts/login.js"></script>
+    <script src="scripts/error_mgmt.js"></script>
     <script src="scripts/notifications.js"></script>
     <script src="scripts/gare.js"></script>
     <script src="scripts/loader.js"></script>
+    <script src="scripts/versioning.js"></script>
     <script>
         if (localStorage.getItem('cookies_accepted') === undefined) {
             $('#cookies').modal('show');

@@ -15,7 +15,9 @@ function loadArrives(user_id, id){
                     from: child.val().from,
                     retardtime: child.val().retardtime,
                     retardtype: child.val().retardtype,
-                    voie: child.val().voie
+                    voie: child.val().voie,
+                    alternance: child.val().alternance,
+                    hall: child.val().hall
                 });
             }
         });
@@ -39,6 +41,7 @@ function loadArrives(user_id, id){
                 var secondsecondcol_firstrow = document.createElement('div');
                 var secondthirdcol_firstrow = document.createElement('div');
                 var thirdcol_firstrow = document.createElement('div');
+                var col_hide = document.createElement('div');
                 
                 // First Col
                 var logo = document.createElement('div');
@@ -53,6 +56,10 @@ function loadArrives(user_id, id){
                 
                 // Second Third Col
                 var dest = document.createElement('span');
+
+                //Col Hide
+                var col_hide_inner = document.createElement('div');
+                var alternance = document.createElement('div');
                 
                 // Third Col
                 var track = document.createElement('div');
@@ -75,6 +82,8 @@ function loadArrives(user_id, id){
                 const train_retard_type = value["retardtype"];
                 const train_retard_time = value["retardtime"];
                 const train_voie = value["voie"];
+                const train_alternance = value["alternance"];
+                const train_hall = value["hall"];
                 
                 var gares_split = train_gares.substr(0, train_gares.length - 1).split("|");
                 var retard, textfeature;
@@ -92,6 +101,22 @@ function loadArrives(user_id, id){
                 } else {
                     retard = 'supprimé';
                     textfeature = 3;
+                }
+
+                col_hide.setAttribute('class', 'col-hide');
+
+                if (train_alternance === "") {
+
+                } else if (train_alternance === undefined) {
+
+                } else {
+                    alternance.setAttribute('class', 'train-information-dynamic train-information-dynamic-yellow animation-dynamic');
+                    alternance.innerText = train_alternance;
+
+                    col_hide_inner.setAttribute('class', 'col-hide-inner');
+                    col_hide_inner.appendChild(alternance);
+
+                    col_hide.appendChild(col_hide_inner);
                 }
                 
                 gares_split.forEach((item, index) => {
@@ -182,7 +207,15 @@ function loadArrives(user_id, id){
                 animationblink.setAttribute('class', 'animation-blink');
                 animationblink1.setAttribute('class', 'animation-blink-1');
                 type.setAttribute('class', 'text-type');
-                type.appendChild(document.createTextNode(train_type));
+                if (train_type === 'SNCF (logo 1985)') {
+                    type.appendChild(document.createTextNode('Train SNCF'));
+                } else if (train_type === 'SNCF (logo 1992)'){
+                    type.appendChild(document.createTextNode('Train SNCF'));
+                } else if (train_type === 'SNCF (carmillon)') {
+                    type.appendChild(document.createTextNode('Train SNCF'));
+                } else {
+                    type.appendChild(document.createTextNode(train_type));
+                }
                 number.setAttribute('class', 'text-number');
                 number.appendChild(document.createTextNode(train_number));
                 animationblink2.setAttribute('class', 'animation-blink-2 text-features-'+textfeature);
@@ -204,26 +237,83 @@ function loadArrives(user_id, id){
                 
                 secondthirdcol_firstrow.appendChild(dest);
                 secondthirdcol_firstrow.setAttribute('class', 'col-second-third');
+                                
+                if (value['hall'] === undefined) {
+                    voie.appendChild(document.createTextNode(train_voie));
                 
-                voie.appendChild(document.createTextNode(train_voie));
+                    track.appendChild(voie);
+                    track.setAttribute('class', 'train-track train-track-view voie');
+
+                    if (value['showvoie']) {
+                        thirdcol_firstrow.appendChild(track);
+                    }
+
+                    thirdcol_firstrow.setAttribute('class', 'col-third');
+                } else if (value['hall'] === "") {
+                    voie.appendChild(document.createTextNode(train_voie));
                 
-                track.appendChild(voie);
-                track.setAttribute('class', 'train-track train-track-view voie');
+                    track.appendChild(voie);
+                    track.setAttribute('class', 'train-track train-track-view voie');
+
+                    if (value['showvoie']) {
+                        thirdcol_firstrow.appendChild(track);
+                    }
+
+                    thirdcol_firstrow.setAttribute('class', 'col-third');
+                } else {
+                    var anim1 = document.createElement('div');
+                    var anim2 = document.createElement('div');
+
+                    anim1.setAttribute('class', 'animation-blink-1');
+
+                    anim2.setAttribute('class', 'animation-blink-2');
+
+
+                    var hall = document.createElement('div');
+                    var hall_1 = document.createElement('small');
+                    var hall_2 = document.createElement('h1');
+                    var br = document.createElement('br');
+                    var br1 = document.createElement('br');
+
+                    hall.setAttribute('class', 'train-track train-track-h animation-blink-2');
+                    hall_1.appendChild(document.createTextNode('hall'));
+                    hall_2.appendChild(document.createTextNode(train_hall));
+
+                    hall.appendChild(hall_1);
+                    hall.appendChild(br);
+                    hall.appendChild(br1);
+                    hall.appendChild(hall_2);
+
+                    voie.appendChild(document.createTextNode(train_voie));
                 
-                thirdcol_firstrow.appendChild(track);
-                thirdcol_firstrow.setAttribute('class', 'col-third');
+                    track.appendChild(voie);
+                    track.setAttribute('class', 'train-track train-track-view voie animation-blink-1');
+
+                    if (value['showvoie']) {
+                        thirdcol_firstrow.appendChild(track);
+                        thirdcol_firstrow.appendChild(hall);
+                    }
+
+                    thirdcol_firstrow.setAttribute('class', 'col-third animation-blink');
+                }
                 
                 firstrow.appendChild(firstcol_firstrow);
                 firstrow.appendChild(secondfirstcol_firstrow);
                 firstrow.appendChild(secondsecondcol_firstrow);
                 firstrow.appendChild(secondthirdcol_firstrow);
+                firstrow.appendChild(col_hide);
                 firstrow.appendChild(thirdcol_firstrow);
                 
                 if (i < 2) {
                     firstcol_secondrow.setAttribute('class', 'col-first');
                     
-                    gares.setAttribute('class', 'train-stations text-scroll-x scroll-x animation-scroll-x');
-                    gares.setAttribute('style', 'animation-duration: '+animation_time+'s; padding-left: 100%;');
+                    if (train_gares.length < 30) {
+                        gares.setAttribute('class', 'train-stations text-scroll-x');
+                        gares.setAttribute('style', 'padding-left: 0%;');
+                    } else {
+                        gares.setAttribute('class', 'train-stations text-scroll-x scroll-x animation-scroll-x');
+                        gares.setAttribute('style', 'animation-duration: '+animation_time+'s; padding-left: 100%;');
+                    }
                     secondcol_secondrow.appendChild(gares);
                     secondcol_secondrow.setAttribute('class', 'col-second');
                     
@@ -255,6 +345,10 @@ function loadArrives(user_id, id){
         });
         
         database.child("users").child(user_id).child("gares").child(id).get().then((snapshot) => {
+            if (snapshot.val().infos.length > 35) {
+                document.getElementById('infos').setAttribute('class', 'bar-informations');
+            }
+
             document.getElementById('infos').innerHTML = snapshot.val().infos.replace('\n', ' &nbsp;');
 
             document.getElementById('bg').hidden = false;
