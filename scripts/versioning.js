@@ -3,7 +3,7 @@ const COMMITS_API_BETA = "https://api.github.com/repos/Absolument-Oui/InfoGare-B
 var req = new XMLHttpRequest();
 
 function getVersion() {
-    if (location.pathname==="infogare.fr"){
+    if (location.host==="infogare.fr"){
         req.open('GET', COMMITS_API, false);
         req.onload = ((e) => {
             var response = JSON.parse(req.response);
@@ -16,7 +16,7 @@ function getVersion() {
         });
         req.send('');
     }
-    if (location.pathname==="beta.infogare.fr"){
+    if (location.host==="beta.infogare.fr"){
         req.open('GET', COMMITS_API_BETA, false);
         req.onload = ((e) => {
             var response = JSON.parse(req.response);
