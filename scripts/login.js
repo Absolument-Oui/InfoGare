@@ -14,7 +14,6 @@ function loginWithToken(token) {
       window.location.href = location.pathname;
     });
   });
-  location.href = 'https://auth.infogare.fr/redirect.htm?returnurl=' + encodeURIComponent(location.href)+'&service=infogare&version=release';
 }
 
 function loginWithToken(token) {
