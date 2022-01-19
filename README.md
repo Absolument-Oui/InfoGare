@@ -1,21 +1,16 @@
-Read in [[English]](https://github.com/Absolument-Oui/InfoGares/blob/main/README_en.md)
+English version [here](https://github.com/Absolument-Oui/InfoGares/blob/main/README_en.md)
 
-# InfoGare
+# Qu'est-ce que InfoGare ?
 
-InfoGare, créer des infogares deviens facile !
+InfoGare est un projet qui à débuté le 4 mai 2021. Il vise à recréer de véritables infogares tel ceux qu'on peut trouver dans les gares SNCF. De plus, ces derniers sont entièrement personnalisables.
 
-## Rejoindre la bêta
+# Comment s'en servir ?
 
-Vous pouvez remplir notre formulaire pour rejoindre la version bêta de InfoGare ici : https://link.infogare.fr/JoinBeta
+Nous vous expliquons tout [ici](https://docs.infogare.fr/InfoGare)
 
-Le nombre de places est limité !
- 
-## Pour les volontaires
+# Comment vous contacter ?
 
-N'hésitez pas à nous rejoindre sur notre Discord afin de nous faire des retours et des suggestions.
+Vous pouvez nous contacter :
 
-## Contact
-
-E-mail : [contact@infogare.fr](mailto:contact@infogare.fr)
-
-Discord : https://link.infogare.fr/Discord
+* Par email : [contact@infogare.fr](mailto:contact@infogare.fr)
+* Sur notre serveur Discord : [https://link.infogare.fr/Discord](https://link.infogare.fr/Discord)
