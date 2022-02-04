@@ -1,6 +1,8 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
     <title>Arrivés</title>
     <link rel=Stylesheet href="styles/departs/screen/trains.css" type="text/css" />
@@ -12,31 +14,37 @@
     <meta name="googlebot" content="noindex">
 
 </head>
+
 <body onload="createLoader();">
     <div class="rows rows-arrivals" id="rows" onclick="fullScreen();">
         <div class="row-background" id="bg" hidden></div>
-        <marquee id="loader" scrollamount="15"><img id="caisse-1"><img style="vertical-align: bottom;" id="caisse-2"><img id="caisse-3"></marquee>
-        <center><div id="error_loading" hidden><img src="images/loading/Error.gif"></div></center>
+        <marquee id="loader" scrollamount="15"><img id="caisse-1"><img style="vertical-align: bottom;"
+                id="caisse-2"><img id="caisse-3"></marquee>
+        <center>
+            <div id="error_loading" hidden><img src="images/loading/Error.png"></div>
+        </center>
         <div class="row-group row-group-bar">
             <div class="row">
                 <div class="col-first">
-                    <div class="bar-informations text-scroll-x scroll-x animation-scroll-x" style="animation-duration: 12.30s; padding-left: 100%;" id="infos"></div></div>
-                    <div class="col-second">
-                        <div class="bar-clock">
-                            <span id="clock-hours">00</span>
-                            <span class="animation-blink">
-                                <span class="animation-blink-clock">:</span>
-                            </span>
-                            <span id="clock-minutes">00</span>
-                            <small id="clock-seconds">00</small>
-                        </div>
+                    <div class="bar-informations text-scroll-x scroll-x animation-scroll-x"
+                        style="animation-duration: 12.30s; padding-left: 100%;" id="infos"></div>
+                </div>
+                <div class="col-second">
+                    <div class="bar-clock">
+                        <span id="clock-hours">00</span>
+                        <span class="animation-blink">
+                            <span class="animation-blink-clock">:</span>
+                        </span>
+                        <span id="clock-minutes">00</span>
+                        <small id="clock-seconds">00</small>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
     </div>
-    
+
     <!-- SCRIPTS -->
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-analytics.js"></script>
@@ -46,27 +54,27 @@
     <script src="scripts/jquery/jquery.js"></script>
     <script src="scripts/bootstrap-sncf-metier/bootstrap-sncf.min.js"></script>
     <script src="scripts/initialize.js"></script>
-    <script src="scripts/screen.js"></script>
-    <script src="scripts/arrives.js"></script>
-    <script src="scripts/loader.js"></script>
+    <script src="scripts/main.js"></script>
+
     <script>
-        firebase.auth().onAuthStateChanged(function(user) {
-          if (user) {
-            var params = new URLSearchParams(document.location.search);
-            if (params.has('uid')) {
-                loadArrives(params.get('uid'), params.get('id'));
+        firebase.auth().onAuthStateChanged(function (user) {
+            if (user) {
+                var params = new URLSearchParams(document.location.search);
+                if (params.has('uid')) {
+                    loadArrives(params.get('uid'), params.get('id'));
+                } else {
+                    loadArrives(user.uid, params.get('id'));
+                }
             } else {
-                loadArrives(user.uid, params.get('id'));
+                var params = new URLSearchParams(document.location.search);
+                if (params.has('uid')) {
+                    loadArrives(params.get('uid'), params.get('id'));
+                }
             }
-          } else {
-            var params = new URLSearchParams(document.location.search);
-            if (params.has('uid')) {
-                loadArrives(params.get('uid'), params.get('id'));
-            }
-          }
         });
-         
+
     </script>
 
 </body>
+
 </html>

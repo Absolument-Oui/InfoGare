@@ -1,142 +1,151 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>Panneau de contrôle de la gare</title>
-    <script src="scripts/apparence.js" type="text/javascript"></script>
-    <link rel="Stylesheet" href="styles/Global.css" type="text/css" />
-    <link title="Light mode" href="scripts/bootstrap-sncf-metier/bootstrap-sncf.min.css" rel="stylesheet">
-    <link title="Dark mode" href="scripts/bootstrap-sncf-metier/bootstrap-sncf.darkmode.min.css" rel="stylesheet alternate">
-    <link rel="icon" href="images/favicon.png" size="16x16" type="image/png" />
-    <link rel="icon" href="images/favicon.png" size="32x32" type="image/png" />
-    <meta name="robots" content="noindex">
-    <meta name="googlebot" content="noindex">
+	<title>Panneau de contrôle de la gare</title>
+	<link rel="Stylesheet" href="styles/Global.css" type="text/css" />
+	<link title="Dark mode" href="scripts/bootstrap-sncf-metier/bootstrap-sncf.darkmode.min.css" rel="stylesheet">
+	<link rel="icon" href="images/favicon.png" size="16x16" type="image/png" />
+	<link rel="icon" href="images/favicon.png" size="32x32" type="image/png" />
+	<meta name="robots" content="noindex">
+	<meta name="googlebot" content="noindex">
 </head>
-<body>
 
-    <div style="padding: 25px;" id="actions" class="form-control-container">
-        <button class="btn" id="close" onclick="closePanel();">Fermer</button>
-        <input type="text" width="100%" class="form-control" id="infos" placeholder="Informations en gare">
-        <button type="button" class="btn btn-primary" id="validate" onclick="changeInfos();">Valider</button>
-    </div>
+<body background="images/bg.gif">
 
-    <div style="padding: 25px;">
-        <ul class="list-group" id="trains" hidden=true>
-            
-        </ul>
-    </div>
+	<div style="padding: 25px;" id="actions" class="form-control-container">
+		<button class="btn" id="close" onclick="closePanel();">Fermer</button>
+		<input type="text" width="100%" class="form-control" id="infos" placeholder="Informations en gare">
+		<button type="button" class="btn btn-primary" id="validate" onclick="changeInfos();">Valider</button>
+	</div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="modif_ret" tabindex="-1" role="dialog" aria-labelledby="modif_ret_title" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="h1 modal-title" id="modif_ret_title">Modifier le retard du train</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <label for="modif_ret_list">Type de retard</label>
-            <div id="modif_ret_list">
-              <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="alheure" name="retinl" class="custom-control-input">
-                <label class="custom-control-label font-weight-medium" for="alheure">à l'heure</label>
-              </div>
-              <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="ret" name="retinl" class="custom-control-input">
-                <label class="custom-control-label font-weight-medium" for="ret">retard</label>
-              </div>
-              <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="retindet" name="retinl" class="custom-control-input">
-                <label class="custom-control-label font-weight-medium" for="retindet">ret. indet.</label>
-              </div>
-              <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="suppr" name="retinl" class="custom-control-input">
-                <label class="custom-control-label font-weight-medium" for="suppr">supprimé</label>
-              </div>
-            </div>
-            <br>
-            <label for="modif_ret_time">Temps de retard (applicable uniquement si "retard" est séléctionné</label>
-            <div class="form-control-container">
-              <input type="number" class="form-control" id="modif_ret_time" placeholder="Entrez le nombre de minutes de retard">
-              <span class="form-control-state"></span>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-            <button type="button" class="btn btn-primary" id="modif_ret_val" data-dismiss="modal">Valider</button>
-          </div>
-        </div>
-      </div>
-    </div>
+	<div style="padding: 25px;">
+		<ul class="list-group" id="trains" hidden=true>
 
-    <!-- Modal -->
-    <div class="modal fade" id="modif_aff" tabindex="-1" role="dialog" aria-labelledby="modif_aff_title" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="h1 modal-title" id="modif_aff_title">Modifier l'affichage du train</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <label for="modif_aff_train">Affichage du train</label>
-            <div class="custom-control custom-checkbox">
-              <input type="checkbox" class="custom-control-input" id="modif_aff_train">
-              <label class="custom-control-label" for="modif_aff_train">Afficher le train</label>
-            </div>
-            <br>
-            <label for="modif_aff_voie">Affichage de la voie</label>
-            <div class="custom-control custom-checkbox">
-              <input type="checkbox" class="custom-control-input" id="modif_aff_voie" onchange="document.getElementById('modif_aff_voie_div').hidden = !this.checked;">
-              <label class="custom-control-label" for="modif_aff_voie">Afficher la voie</label>
-            </div>
-            <br>
-            <div id="modif_aff_voie_div">
-              <label for="modif_aff_voie_voie">Numéro de voie</label>
-              <div class="form-control-container">
-                <input type="text" class="form-control" id="modif_aff_voie_voie" placeholder="Entrez le numéro de la voie">
-                <span class="form-control-state"></span>
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-            <button type="button" class="btn btn-primary" id="modif_aff_val" data-dismiss="modal">Valider</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    
+		</ul>
+	</div>
 
-    <!-- SCRIPTS -->
-    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-analytics.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-messaging.js"></script>
-    <script src="scripts/jquery/jquery.js"></script>
-    <script src="scripts/bootstrap-sncf-metier/bootstrap-sncf.min.js"></script>
-    <script src="scripts/initialize.js"></script>
-    <script src="scripts/panel.js"></script>
-    
-    <script>
+	<!-- Modal -->
+	<div class="modal fade" id="modif_ret" tabindex="-1" role="dialog" aria-labelledby="modif_ret_title"
+		aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="h1 modal-title" id="modif_ret_title">Modifier le retard du train</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<label for="modif_ret_list">Type de retard</label>
+					<div id="modif_ret_list">
+						<div class="custom-control custom-radio custom-control-inline">
+							<input type="radio" id="alheure" name="retinl" class="custom-control-input">
+							<label class="custom-control-label font-weight-medium" for="alheure">à l'heure</label>
+						</div>
+						<div class="custom-control custom-radio custom-control-inline">
+							<input type="radio" id="ret" name="retinl" class="custom-control-input">
+							<label class="custom-control-label font-weight-medium" for="ret">retard</label>
+						</div>
+						<div class="custom-control custom-radio custom-control-inline">
+							<input type="radio" id="retindet" name="retinl" class="custom-control-input">
+							<label class="custom-control-label font-weight-medium" for="retindet">ret. indet.</label>
+						</div>
+						<div class="custom-control custom-radio custom-control-inline">
+							<input type="radio" id="suppr" name="retinl" class="custom-control-input">
+							<label class="custom-control-label font-weight-medium" for="suppr">supprimé</label>
+						</div>
+					</div>
+					<br>
+					<label for="modif_ret_time">Temps de retard (applicable uniquement si "retard" est
+						séléctionné</label>
+					<div class="form-control-container">
+						<input type="number" class="form-control" id="modif_ret_time"
+							placeholder="Entrez le nombre de minutes de retard">
+						<span class="form-control-state"></span>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+					<button type="button" class="btn btn-primary" id="modif_ret_val"
+						data-dismiss="modal">Valider</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
-      var params = new URLSearchParams(location.search);
-      if (params.has('token')) {
-        loginWithToken(params.get('token'));
-      }
+	<!-- Modal -->
+	<div class="modal fade" id="modif_aff" tabindex="-1" role="dialog" aria-labelledby="modif_aff_title"
+		aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="h1 modal-title" id="modif_aff_title">Modifier l'affichage du train</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<label for="modif_aff_train">Affichage du train</label>
+					<div class="custom-control custom-checkbox">
+						<input type="checkbox" class="custom-control-input" id="modif_aff_train">
+						<label class="custom-control-label" for="modif_aff_train">Afficher le train</label>
+					</div>
+					<br>
+					<label for="modif_aff_voie">Affichage de la voie</label>
+					<div class="custom-control custom-checkbox">
+						<input type="checkbox" class="custom-control-input" id="modif_aff_voie"
+							onchange="document.getElementById('modif_aff_voie_div').hidden = !this.checked;">
+						<label class="custom-control-label" for="modif_aff_voie">Afficher la voie</label>
+					</div>
+					<br>
+					<div id="modif_aff_voie_div">
+						<label for="modif_aff_voie_voie">Numéro de voie</label>
+						<div class="form-control-container">
+							<input type="text" class="form-control" id="modif_aff_voie_voie"
+								placeholder="Entrez le numéro de la voie">
+							<span class="form-control-state"></span>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+					<button type="button" class="btn btn-primary" id="modif_aff_val"
+						data-dismiss="modal">Valider</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
-        firebase.auth().onAuthStateChanged(function(user) {
-          if (user) {
-            setDb(user.uid);
-            loadTrains();
-          } else {
 
-          }
-        });
+	<!-- SCRIPTS -->
+	<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-analytics.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-messaging.js"></script>
+	<script src="scripts/jquery/jquery.js"></script>
+	<script src="scripts/bootstrap-sncf-metier/bootstrap-sncf.min.js"></script>
+	<script src="scripts/initialize.js"></script>
+	<script src="scripts/main.js"></script>
 
-    </script>
+	<script>
+
+		var params = new URLSearchParams(location.search);
+		if (params.has('token')) {
+			loginWithToken(params.get('token'));
+		}
+
+		firebase.auth().onAuthStateChanged(function (user) {
+			if (user) {
+				setDb(user.uid);
+				loadPanelTrains();
+			} else {
+
+			}
+		});
+
+	</script>
 </body>
+
 </html>

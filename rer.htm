@@ -1,6 +1,8 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
     <title>Train</title>
     <link rel=Stylesheet href="styles/rer/screen/train.css" type="text/css" />
@@ -11,13 +13,15 @@
     <meta name="robots" content="noindex">
     <meta name="googlebot" content="noindex">
 </head>
+
 <body>
 
     <div class="rows row-screen rows-transilien" onclick="fullScreen();">
         <div class="row-group row-group-bar row-group-bar row-group-bar-yellow">
             <div class="row">
                 <div class="col-first">
-                    <div class="bar-informations text-scroll-x scroll-x animation-scroll-x" style="animation-duration: 12.30s; padding-left: 100%;" id="infos"></div>
+                    <div class="bar-informations text-scroll-x scroll-x animation-scroll-x"
+                        style="animation-duration: 12.30s; padding-left: 100%;" id="infos"></div>
                 </div>
                 <div class="col-second">
                     <div class="bar-clock">
@@ -48,7 +52,7 @@
                     <div class="col-second-container">
                         <table class="train-stations scroll-y">
                             <tbody id="gares">
-                                
+
                             </tbody>
                         </table>
                     </div>
@@ -64,18 +68,19 @@
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-messaging.js"></script>
     <script src="scripts/jquery/jquery.js"></script>
-    <script src="scripts/screen.js"></script>
     <script src="scripts/initialize.js"></script>
-    <script src="scripts/train.js"></script>
-    <script>
-        firebase.auth().onAuthStateChanged(function(user) {
-          if (user) {
-            loadTrain(user.uid);
-          } else {
+    <script src="scripts/main.js"></script>
 
-          }
+    <script>
+        firebase.auth().onAuthStateChanged(function (user) {
+            if (user) {
+                loadTrain(user.uid);
+            } else {
+
+            }
         });
     </script>
 
 </body>
+
 </html>

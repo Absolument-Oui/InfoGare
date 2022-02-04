@@ -1,365 +1,394 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
-    <title>InfoGare - Profil</title>
-    <script src="scripts/apparence.js" type="text/javascript"></script>
-    <link rel="Stylesheet" href="styles/Global.css" type="text/css" />
-    <link title="Light mode" href="scripts/bootstrap-sncf-metier/bootstrap-sncf.min.css" rel="stylesheet">
-    <link title="Dark mode" href="scripts/bootstrap-sncf-metier/bootstrap-sncf.darkmode.min.css" rel="stylesheet alternate">
-    <link rel="icon" href="images/favicon.png" size="16x16" type="image/png" />
-    <link rel="icon" href="images/favicon.png" size="32x32" type="image/png" />
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <meta charset="utf-8">
-    <meta name="description" content="Afficher vos options de compte">
-    <meta http-equiv="content-language" content="fr-fr">
+	<title>InfoGare - Profil</title>
+	<link rel="Stylesheet" href="styles/Global.css" type="text/css" />
+	<link title="Dark mode" href="scripts/bootstrap-sncf-metier/bootstrap-sncf.darkmode.min.css" rel="stylesheet">
+	<link rel="icon" href="images/favicon.png" size="16x16" type="image/png" />
+	<link rel="icon" href="images/favicon.png" size="32x32" type="image/png" />
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<meta charset="utf-8">
+	<meta name="description" content="Afficher vos options de compte">
+	<meta http-equiv="content-language" content="fr-fr">
 </head>
-<body onload="checkLogin(); getVersion(); loadInfos(); createLoader(); checkCode();" class="light">
-<div>
-  <div class="mastheader">
-    <div class="mastheader-logo">
-      <a href="index.htm">
-        <img alt="InfoGare" src="images/favicon.png" width="70" />
-      </a>
-    </div>
-    <header role="banner" class="mastheader-title d-none d-xl-block">
-      <span class="text-uppercase text-white pt-2 pl-3 mb-0 h1"><a href="index.htm" class="text-white">InfoGare</a></span>
-    </header>
-    <div class="mastheader-search pr-md-4 pl-md-4" data-component="searchbar">
-      <label for="galacticbar-search-input" class="font-weight-medium text-white pr-3 mb-0">Rechercher</label>
-      <div class="input-group align-items-center">
-        <div class="form-control-container" data-component="control" data-clear-option="true" role="search">
-          <input id="galacticbar-search-input" type="search" class="form-control clear-option" data-role="input" data-placeholder="Rechercher" />
-          <span class="form-control-state"></span>
-          <button type="button" class="btn-clear btn-primary d-none" data-btn="clear">
-            <span class="sr-only">Clear text</span>
-            <i class="icons-close" aria-hidden="true"></i>
-          </button>
-        </div>
-        <div class="input-group-append input-group-last">
-          <button type="button" class="btn btn-primary btn-only-icon">
-            <span class="sr-only">Rechercher</span>
-            <i class="icons-search" aria-hidden="true"></i>
-          </button>
-        </div>
-        <button type="button" class="btn btn-only-icon btn-white d-block d-md-none" data-role="close">
-          <span class="sr-only">Close search</span>
-          <i class="icons-close icons-size-1x25" aria-hidden="true"></i>
-        </button>
-      </div>
-    </div>
-    <ul class="mastheader-toolbar toolbar mb-0">
-      <li class="toolbar-item separator-gray-500 d-none d-md-flex">
-        <a href="#" class="btn btn-only-icon btn-notif toolbar-item-spacing">
-          <span class="sr-only">Alert</span>
-          <i class="icons-alert-notification icons-size-1x25 icons-md-size-1x5" aria-hidden="true"></i>
-          <span class="notif">0</span>
-        </a>
-      </li>
-      <li class="toolbar-item separator-gray-500 no-separator d-flex d-md-none">
-        <button type="button" class="btn btn-only-icon toolbar-item-spacing" data-component="searchbar-toggle">
-          <span class="sr-only">Open search</span>
-          <i class="icons-search icons-size-1x25 icons-md-size-1x5" aria-hidden="true"></i>
-        </button>
-      </li>
-      <li class="toolbar-item separator-gray-500">
-        <div class="btn-group dropdown">
-          <button class="btn btn-transparent dropdown-toggle toolbar-item-spacing" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-controls="mycontrol">
-            <i id="mnu_user_no_photo" class="icons-menu-account icons-size-1x25 icons-md-size-1x5 mr-xl-2" aria-hidden="true"></i>
-            <img id="mnu_user_photo" height="24" width="24" style="border-radius: 50%; display: none;">
-            <span class="d-none d-xl-block" style="margin-left: 10px;" id="mnu_username">Veuillez patienter...</span>
-            <i class="icons-arrow-down d-none d-xl-block" aria-hidden="true"></i>
-          </button>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton" id="mycontrol">
-            <ul>
-              <li class="dropdown-item" id="mnu_compte"><a href="https://auth.infogare.fr/account.htm" target="_blank">Mon profil</a></li>
-              <li class="dropdown-item" id="mnu_gares"><a href="gares.htm">Mes gares</a></li>
-              <li class="dropdown-item" id="mnu_login"><a id="login_btn">Se connecter</a></li>
-              <li class="dropdown-item" id="mnu_users"><a href="users.htm">Utilisateurs</a></li>
-              <li class="dropdown-item darkmode-btn"><a href="#" onclick="toggleDarkmode();">Mode clair/sombre</a></li>
-              <li class="dropdown-item" id="mnu_logout"><a href="#" data-toggle="modal" data-target="#logout">Se déconnecter</a></li>
-            </ul>
-          </div>
-        </div>
-      </li>
-    </ul>
-  </div>
-</div>
 
-<div class="main-content">
- <marquee id="loader" scrollamount="15"><img id="caisse-1"><img style="vertical-align: bottom;" id="caisse-2"><img id="caisse-3"></marquee>
-  <center><div id="error_loading" hidden><img src="images/loading/Error.gif"></div></center>
-  <div id="content" hidden>
-    <i class="icons-circle-account-connected icons-size-140px"></i>
-    <br /><br>
-    <h1 id="username"></h1>
-    <h3 id="email"></h3>
-    <br />
-    <button class="btn btn-primary" id="chg_pass" data-toggle="modal" data-target="#chg_password">Changer de mot de passe</button> &nbsp; <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#chg_username">Changer le nom d'utilisateur</button> &nbsp; <button type=button class="btn btn-danger" data-toggle="modal" data-target="#logout">Se déconnecter</button>
-    <br /><br />
-    <h1>Paramètres</h1>
+<body onload="checkLogin(); getVersion(); loadUserInfos(); createLoader(); checkCode();"
+	class="light">
+	<div>
+		<div class="mastheader">
+			<div class="mastheader-logo">
+				<a href="index.htm">
+					<img alt="InfoGare" src="images/favicon.png" width="70" />
+				</a>
+			</div>
+			<header role="banner" class="mastheader-title d-none d-xl-block">
+				<span class="text-uppercase text-white pt-2 pl-3 mb-0 h1"><a href="index.htm"
+						class="text-white">InfoGare</a></span>
+			</header>
+			<div class="mastheader-search pr-md-4 pl-md-4" data-component="searchbar">
+				<label for="galacticbar-search-input" class="font-weight-medium text-white pr-3 mb-0">Rechercher</label>
+				<div class="input-group align-items-center">
+					<div class="form-control-container" data-component="control" data-clear-option="true" role="search">
+						<input id="galacticbar-search-input" type="search" class="form-control clear-option"
+							data-role="input" data-placeholder="Rechercher" />
+						<span class="form-control-state"></span>
+						<button type="button" class="btn-clear btn-primary d-none" data-btn="clear">
+							<span class="sr-only">Clear text</span>
+							<i class="icons-close" aria-hidden="true"></i>
+						</button>
+					</div>
+					<div class="input-group-append input-group-last">
+						<button type="button" class="btn btn-primary btn-only-icon">
+							<span class="sr-only">Rechercher</span>
+							<i class="icons-search" aria-hidden="true"></i>
+						</button>
+					</div>
+					<button type="button" class="btn btn-only-icon btn-white d-block d-md-none" data-role="close">
+						<span class="sr-only">Close search</span>
+						<i class="icons-close icons-size-1x25" aria-hidden="true"></i>
+					</button>
+				</div>
+			</div>
+			<ul class="mastheader-toolbar toolbar mb-0">
+				<li class="toolbar-item separator-gray-500 d-none d-md-flex">
+					<a href="#" class="btn btn-only-icon btn-notif toolbar-item-spacing">
+						<span class="sr-only">Alert</span>
+						<i class="icons-alert-notification icons-size-1x25 icons-md-size-1x5" aria-hidden="true"></i>
+						<span class="notif">0</span>
+					</a>
+				</li>
+				<li class="toolbar-item separator-gray-500 no-separator d-flex d-md-none">
+					<button type="button" class="btn btn-only-icon toolbar-item-spacing"
+						data-component="searchbar-toggle">
+						<span class="sr-only">Open search</span>
+						<i class="icons-search icons-size-1x25 icons-md-size-1x5" aria-hidden="true"></i>
+					</button>
+				</li>
+				<li class="toolbar-item separator-gray-500">
+					<div class="btn-group dropdown">
+						<button class="btn btn-transparent dropdown-toggle toolbar-item-spacing" type="button"
+							id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+							aria-controls="mycontrol">
+							<i id="mnu_user_no_photo"
+								class="icons-menu-account icons-size-1x25 icons-md-size-1x5 mr-xl-2"
+								aria-hidden="true"></i>
+							<img id="mnu_user_photo" height="24" width="24" style="border-radius: 50%; display: none;">
+							<span class="d-none d-xl-block" style="margin-left: 10px;" id="mnu_username">Veuillez
+								patienter...</span>
+							<i class="icons-arrow-down d-none d-xl-block" aria-hidden="true"></i>
+						</button>
+						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton"
+							id="mycontrol">
+							<ul>
+								<li class="dropdown-item" id="mnu_compte"><a href="compte.htm">Préférences</a></li>
+								<li class="dropdown-item" id="mnu_gares"><a href="gares.htm">Mes gares</a></li>
+								<li class="dropdown-item" id="mnu_login"><a id="login_btn">Se connecter</a></li>
+								<li class="dropdown-item" id="mnu_users"><a href="users.htm">Utilisateurs</a></li>
+								<li class="dropdown-item" id="mnu_logout"><a href="#" data-toggle="modal"
+										data-target="#logout">Se déconnecter</a></li>
+							</ul>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
 
-    <br>
-    
-    <label for="param1">Ouvrir les écrans dans </label>
-    <div class="options-control">
-      <div class="options-item">
-        <input type="radio" name="optionsRadio" id="openinwindow" class="sr-only" onclick="modifParams();" checked/>
-        <label class="options-btn font-weight-medium" for="openinwindow">Une fênetre à part</label>
-      </div>
-      <div class="options-item">
-        <input type="radio" name="optionsRadio" id="openintab" class="sr-only" onclick="modifParams();"/>
-        <label class="options-btn font-weight-medium" for="openintab">Un nouvel onglet</label>
-      </div>
-    </div>
-    <br><br>
-    <label for="param2">Ouvrir automatiquement le panneau de contrôle</label>
-    <div class="options-control">
-      <div class="options-item">
-        <input type="radio" name="optionsRadio2" id="activated" class="sr-only" onclick="modifParams();" >
-        <label class="options-btn font-weight-medium" for="activated">Activé</label>
-      </div>
-      <div class="options-item">
-        <input type="radio" name="optionsRadio2" id="desactivated" class="sr-only" onclick="modifParams();" checked>
-        <label class="options-btn font-weight-medium" for="desactivated">Désactivé</label>
-      </div>
-    </div>
-    <br><br>
-    <label for="param3">Livrée des trains de chargement</label>
-    <div class="select-improved" data-component="select-exclusive">
-      <div class="select-control">
-        <div class="input-group" data-role="select-toggle">
-          <div class="form-control" data-role="placeholder" data-selected-prefix="Sélection actuelle">
-            Sélectionner une livrée
-          </div>
-          <select class="sr-only" id="param3" data-role="input" tabindex="-1" aria-hidden="true">
-            <option data-id="0">Neutre</option>
-            <option data-id="1">Alsace</option>
-            <option data-id="2">Aquitaine</option>
-            <option data-id="3">Auvergne</option>
-            <option data-id="4">Basse Normandie</option>
-            <option data-id="5">Bourgogne</option>
-            <option data-id="6">Bretagne</option>
-            <option data-id="7">Centre</option>
-            <option data-id="8">Champagne Ardenne</option>
-            <option data-id="9">Franche Comté</option>
-            <option data-id="10">Haute Normandie</option>
-            <option data-id="11">Languedoc Roussillon</option>
-            <option data-id="12">Limousin</option>
-            <option data-id="13">Lorraine</option>
-            <option data-id="14">Midi Pyrénées</option>
-            <option data-id="15">Nord pas de Calais</option>
-            <option data-id="16">PACA</option>
-            <option data-id="17">Pays de la Loire</option>
-            <option data-id="18">Picardie</option>
-            <option data-id="19">Poitou Charente</option>
-            <option data-id="20">Rhône Alpes</option>
-          </select>
-          <div class="input-group-append input-group-last">
-            <button class="btn btn-primary btn-only-icon" data-role="btn" type="button" aria-expanded="false" aria-controls="selectgrouptoggle">
-              <i class="icons-arrow-down icons-size-x75" aria-hidden="true"></i>
-            </button>
-          </div>
-        </div>
-        <div class="select-menu" role="list" data-role="menu" id="selectgrouptoggle">
-          <div role="listitem" class="select-group">
-            <div class="select-group-head">
-              <span class="select-group-title text-uppercase">Neutre</span>
-            </div>
-            <div class="select-group-content" role="list">
-              <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="0">Neutre</button></span>
-            </div>
-          </div>
-          <div role="listitem" class="select-group">
-            <div class="select-group-head">
-              <span class="select-group-title text-uppercase">Anciennes régions</span>
-            </div>
-            <div class="select-group-content" role="list">
-              <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="1">Alsace</button></span>
-              <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="2">Aquitaine</button></span>
-              <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="3">Auvergne</button></span>
-              <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="4">Basse Normandie</button></span>
-              <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="5">Bourgogne</button></span>
-              <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="6">Bretagne</button></span>
-              <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="7">Centre</button></span>
-              <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="8">Champagne Ardenne</button></span>
-              <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="9">Franche Comté</button></span>
-              <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="10">Haute Normandie</button></span>
-              <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="11">Languedoc Roussillon</button></span>
-              <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="12">Limousin</button></span>
-              <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="13">Lorraine</button></span>
-              <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="14">Midi Pyrénées</button></span>
-              <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="15">Nord pas de Calais</button></span>
-              <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="16">PACA</button></span>
-              <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="17">Pays de la Loire</button></span>
-              <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="18">Picardie</button></span>
-              <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="19">Poitou Charente</button></span>
-              <span class="select-menu-item" role="listitem"><button type="button" data-role="value" data-target="20">Rhône Alpes</button></span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <button class="btn" onclick="setLivree();">Modifier</button>
+	<div class="main-content">
+		<marquee id="loader" scrollamount="15"><img id="caisse-1"><img style="vertical-align: bottom;"
+				id="caisse-2"><img id="caisse-3"></marquee>
+		<center>
+			<div id="error_loading" hidden><img src="images/loading/Error.png"></div>
+		</center>
+		<a class="btn btn-primary" href="https://auth.infogare.fr/account.htm">Gérer mon compte</a>
+		<br>
+		<div id="content" hidden>
+			<label for="param1">Ouvrir les écrans dans </label>
+			<div class="options-control">
+				<div class="options-item">
+					<input type="radio" name="optionsRadio" id="openinwindow" class="sr-only" onclick="modifParams();"
+						checked />
+					<label class="options-btn font-weight-medium" for="openinwindow">Une fênetre à part</label>
+				</div>
+				<div class="options-item">
+					<input type="radio" name="optionsRadio" id="openintab" class="sr-only" onclick="modifParams();" />
+					<label class="options-btn font-weight-medium" for="openintab">Un nouvel onglet</label>
+				</div>
+			</div>
+			<br><br>
+			<label for="param2">Ouvrir automatiquement le panneau de contrôle</label>
+			<div class="options-control">
+				<div class="options-item">
+					<input type="radio" name="optionsRadio2" id="activated" class="sr-only" onclick="modifParams();">
+					<label class="options-btn font-weight-medium" for="activated">Activé</label>
+				</div>
+				<div class="options-item">
+					<input type="radio" name="optionsRadio2" id="desactivated" class="sr-only" onclick="modifParams();"
+						checked>
+					<label class="options-btn font-weight-medium" for="desactivated">Désactivé</label>
+				</div>
+			</div>
+			<br><br>
+			<label for="param3">Livrée des trains de chargement</label>
+			<div class="select-improved" data-component="select-exclusive">
+				<div class="select-control">
+					<div class="input-group" data-role="select-toggle">
+						<div class="form-control" data-role="placeholder" data-selected-prefix="Sélection actuelle">
+							Sélectionner une livrée
+						</div>
+						<select class="sr-only" id="param3" data-role="input" tabindex="-1" aria-hidden="true">
+							<option data-id="0">Neutre</option>
+							<option data-id="1">Alsace</option>
+							<option data-id="2">Aquitaine</option>
+							<option data-id="3">Auvergne</option>
+							<option data-id="4">Basse Normandie</option>
+							<option data-id="5">Bourgogne</option>
+							<option data-id="6">Bretagne</option>
+							<option data-id="7">Centre</option>
+							<option data-id="8">Champagne Ardenne</option>
+							<option data-id="9">Franche Comté</option>
+							<option data-id="10">Haute Normandie</option>
+							<option data-id="11">Languedoc Roussillon</option>
+							<option data-id="12">Limousin</option>
+							<option data-id="13">Lorraine</option>
+							<option data-id="14">Midi Pyrénées</option>
+							<option data-id="15">Nord pas de Calais</option>
+							<option data-id="16">PACA</option>
+							<option data-id="17">Pays de la Loire</option>
+							<option data-id="18">Picardie</option>
+							<option data-id="19">Poitou Charente</option>
+							<option data-id="20">Rhône Alpes</option>
+						</select>
+						<div class="input-group-append input-group-last">
+							<button class="btn btn-primary btn-only-icon" data-role="btn" type="button"
+								aria-expanded="false" aria-controls="selectgrouptoggle">
+								<i class="icons-arrow-down icons-size-x75" aria-hidden="true"></i>
+							</button>
+						</div>
+					</div>
+					<div class="select-menu" role="list" data-role="menu" id="selectgrouptoggle">
+						<div role="listitem" class="select-group">
+							<div class="select-group-head">
+								<span class="select-group-title text-uppercase">Neutre</span>
+							</div>
+							<div class="select-group-content" role="list">
+								<span class="select-menu-item" role="listitem"><button type="button" data-role="value"
+										data-target="0">Neutre</button></span>
+							</div>
+						</div>
+						<div role="listitem" class="select-group">
+							<div class="select-group-head">
+								<span class="select-group-title text-uppercase">Anciennes régions</span>
+							</div>
+							<div class="select-group-content" role="list">
+								<span class="select-menu-item" role="listitem"><button type="button" data-role="value"
+										data-target="1">Alsace</button></span>
+								<span class="select-menu-item" role="listitem"><button type="button" data-role="value"
+										data-target="2">Aquitaine</button></span>
+								<span class="select-menu-item" role="listitem"><button type="button" data-role="value"
+										data-target="3">Auvergne</button></span>
+								<span class="select-menu-item" role="listitem"><button type="button" data-role="value"
+										data-target="4">Basse Normandie</button></span>
+								<span class="select-menu-item" role="listitem"><button type="button" data-role="value"
+										data-target="5">Bourgogne</button></span>
+								<span class="select-menu-item" role="listitem"><button type="button" data-role="value"
+										data-target="6">Bretagne</button></span>
+								<span class="select-menu-item" role="listitem"><button type="button" data-role="value"
+										data-target="7">Centre</button></span>
+								<span class="select-menu-item" role="listitem"><button type="button" data-role="value"
+										data-target="8">Champagne Ardenne</button></span>
+								<span class="select-menu-item" role="listitem"><button type="button" data-role="value"
+										data-target="9">Franche Comté</button></span>
+								<span class="select-menu-item" role="listitem"><button type="button" data-role="value"
+										data-target="10">Haute Normandie</button></span>
+								<span class="select-menu-item" role="listitem"><button type="button" data-role="value"
+										data-target="11">Languedoc Roussillon</button></span>
+								<span class="select-menu-item" role="listitem"><button type="button" data-role="value"
+										data-target="12">Limousin</button></span>
+								<span class="select-menu-item" role="listitem"><button type="button" data-role="value"
+										data-target="13">Lorraine</button></span>
+								<span class="select-menu-item" role="listitem"><button type="button" data-role="value"
+										data-target="14">Midi Pyrénées</button></span>
+								<span class="select-menu-item" role="listitem"><button type="button" data-role="value"
+										data-target="15">Nord pas de Calais</button></span>
+								<span class="select-menu-item" role="listitem"><button type="button" data-role="value"
+										data-target="16">PACA</button></span>
+								<span class="select-menu-item" role="listitem"><button type="button" data-role="value"
+										data-target="17">Pays de la Loire</button></span>
+								<span class="select-menu-item" role="listitem"><button type="button" data-role="value"
+										data-target="18">Picardie</button></span>
+								<span class="select-menu-item" role="listitem"><button type="button" data-role="value"
+										data-target="19">Poitou Charente</button></span>
+								<span class="select-menu-item" role="listitem"><button type="button" data-role="value"
+										data-target="20">Rhône Alpes</button></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<button class="btn" onclick="setLivree();">Modifier</button>
 
-    <br><br>
+			<br><br>
 
-    <h1>Paramètres des mails</h1>
-    <label for="param3">Recevoir des emails d'informations</label>
-    <div class="options-control">
-      <div class="options-item">
-        <input type="radio" name="optionsRadio3" id="newsletterno" class="sr-only" onclick="modifParams();" checked>
-        <label class="options-btn font-weight-medium" for="newsletterno">Non</label>
-      </div>
-      <div class="options-item">
-        <input type="radio" name="optionsRadio3" id="newsletteryes" class="sr-only" onclick="modifParams();">
-        <label class="options-btn font-weight-medium" for="newsletteryes">Oui</label>
-      </div>
-    </div>
-    
-    <br><br><br>
-    
-    <h1>Informations sur le compte</h1>
-    <h2>Nombre de gares : <span id="gares_nbr"></span></h2>
-    <h2>Nombre de trains : <span id="trains_nbr"></span></h2>
-    <br><br>
+			<h1>Paramètres des mails</h1>
+			<label for="param3">Recevoir des emails d'informations</label>
+			<h2>La gestion de la newsletter se fait sur <a href="http://newsletter.infogare.fr" target="_blank">le
+					portail newsletter</a>.
 
-    <h1>Zone expérimentale</h1>
-    <span>Inscrivez-vous à la bêta en <a href="https://link.infogare.fr/JoinBeta">cliquant ici !</a></span>
-    <div><center>
-      <ins class="adsbygoogle"
-          style="display:inline-block;width:728px;height:90px"
-          data-ad-client="ca-pub-3014614649994013"
-          data-ad-slot="5057284089"></ins>
-      <script>
-          (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
-    </center></div>
-  </div>
+				<br><br><br>
 
-    <div class="footerbar">
-        <center><a href=apropos.htm>&Agrave; propos</a> | <a href= cgu.htm>CGU</a> | <a href=mentionslegales.htm>Mentions légales</a> | <a href="donation.htm">Nous soutenir</a></center><br>
-    <center><i id="version"></i></center>
-    </div>
+				<h1>Informations sur le compte</h1>
+				<h2>Nombre de gares : <span id="gares_nbr"></span></h2>
+				<h2>Nombre de trains : <span id="trains_nbr"></span></h2>
+				<br><br>
+				<div>
+					<center>
+						<ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px"
+							data-ad-client="ca-pub-3014614649994013" data-ad-slot="5057284089"></ins>
+						<script>
+							(adsbygoogle = window.adsbygoogle || []).push({});
+						</script>
+					</center>
+				</div>
+		</div>
 
-<div class="modal fade" id="logout" tabindex="-1" role="dialog" aria-labelledby="lougout_title" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="h1 modal-title" id="logout_title">Se déconnecter</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        &Ecirc;tes-vous sûr de vouloir vous déconnecter ?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
-        <button type="button" class="btn btn-primary btn-danger" onclick="logout();">Oui</button>
-      </div>
-    </div>
-  </div>
-</div>
+		<div class="footerbar">
+			<center><a href=apropos.htm>&Agrave; propos</a> | <a href=cgu.htm>CGU</a> | <a
+					href=mentionslegales.htm>Mentions légales</a> | <a href="donation.htm">Nous soutenir</a></center>
+			<br>
+			<center><i id="version"></i></center>
+		</div>
 
-<div class="modal" tabindex="-1" role="dialog" aria-labelledby="cookies_title" id="cookies">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="h1 modal-title" id="cookies_title">Vous connaissez la recette des cookies ?</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>Avant de continuer, nous aimerions vous signaler que ce site utilise des cookies afin de vous donner une meilleure expérience.</p>
-      </div>
-    </div>
-  </div>
-</div>
+		<div class="modal fade" id="logout" tabindex="-1" role="dialog" aria-labelledby="lougout_title"
+			aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="h1 modal-title" id="logout_title">Se déconnecter</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						&Ecirc;tes-vous sûr de vouloir vous déconnecter ?
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
+						<button type="button" class="btn btn-primary btn-danger" onclick="logout();">Oui</button>
+					</div>
+				</div>
+			</div>
+		</div>
 
-<div class="modal fade" id="chg_password" tabindex="-1" role="dialog" aria-labelledby="chg_password_title" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="h1 modal-title" id="chg_password_title">Changer de mot de passe</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <label for="chg_password_old">Mot de passe actuel</label>
-        <div class="form-control-container">
-          <input type="password" class="form-control" id="chg_password_old" placeholder="Entrez votre mot de passe actuel">
-          <span class="form-control-state"></span>
-        </div><br>
-        <label for="chg_password_text">Nouveau mot de passe</label>
-        <div class="form-control-container">
-          <input type="password" class="form-control" id="chg_password_text" placeholder="Entrez votre nouveau mot de passe">
-          <span class="form-control-state"></span>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-        <button type="button" class="btn btn-primary btn-danger" onclick="chgPass(document.getElementById('chg_password_old').value, document.getElementById('chg_password_text').value);" data-dismiss="modal">Valider</button>
-      </div>
-    </div>
-  </div>
-</div>
+		<div class="modal" tabindex="-1" role="dialog" aria-labelledby="cookies_title" id="cookies">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="h1 modal-title" id="cookies_title">Vous connaissez la recette des cookies ?</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<p>Avant de continuer, nous aimerions vous signaler que ce site utilise des cookies afin de vous
+							donner une meilleure expérience.</p>
+					</div>
+				</div>
+			</div>
+		</div>
 
-<div class="modal fade" id="chg_username" tabindex="-1" role="dialog" aria-labelledby="chg_username_title" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="h1 modal-title" id="chg_username_title">Changer de nom d'utilisateur</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <label for="chg_username_text">Nouveau nom d'utilisateur</label>
-        <div class="form-control-container">
-          <input type="text" class="form-control" id="chg_username_text" placeholder="Entrez votre nouveau nom d'utilisateur">
-          <span class="form-control-state"></span>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-        <button type="button" class="btn btn-primary btn-danger" onclick="chgUsername(document.getElementById('chg_username_text').value);" data-dismiss="modal">Valider</button>
-      </div>
-    </div>
-  </div>
-</div>
+		<div class="modal fade" id="chg_password" tabindex="-1" role="dialog" aria-labelledby="chg_password_title"
+			aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="h1 modal-title" id="chg_password_title">Changer de mot de passe</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<label for="chg_password_old">Mot de passe actuel</label>
+						<div class="form-control-container">
+							<input type="password" class="form-control" id="chg_password_old"
+								placeholder="Entrez votre mot de passe actuel">
+							<span class="form-control-state"></span>
+						</div><br>
+						<label for="chg_password_text">Nouveau mot de passe</label>
+						<div class="form-control-container">
+							<input type="password" class="form-control" id="chg_password_text"
+								placeholder="Entrez votre nouveau mot de passe">
+							<span class="form-control-state"></span>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+						<button type="button" class="btn btn-primary btn-danger"
+							onclick="chgPass(document.getElementById('chg_password_old').value, document.getElementById('chg_password_text').value);"
+							data-dismiss="modal">Valider</button>
+					</div>
+				</div>
+			</div>
+		</div>
 
-    
-    <!-- SCRIPTS -->
-    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-analytics.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-messaging.js"></script>
-    <script src="scripts/jquery/jquery.js"></script>
-    <script src="scripts/bootstrap-sncf-metier/bootstrap-sncf.min.js"></script>
-    <script src="scripts/initialize.js"></script>
-    <script src="scripts/login.js"></script>
-    <script src="scripts/notifications.js"></script>
-    <script src="scripts/profile.js"></script>
-    <script src="scripts/loader.js"></script>
-    <script src="scripts/discord.js"></script>
-    <script>
+		<div class="modal fade" id="chg_username" tabindex="-1" role="dialog" aria-labelledby="chg_username_title"
+			aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="h1 modal-title" id="chg_username_title">Changer de nom d'utilisateur</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<label for="chg_username_text">Nouveau nom d'utilisateur</label>
+						<div class="form-control-container">
+							<input type="text" class="form-control" id="chg_username_text"
+								placeholder="Entrez votre nouveau nom d'utilisateur">
+							<span class="form-control-state"></span>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+						<button type="button" class="btn btn-primary btn-danger"
+							onclick="chgUsername(document.getElementById('chg_username_text').value);"
+							data-dismiss="modal">Valider</button>
+					</div>
+				</div>
+			</div>
+		</div>
 
-      var params = new URLSearchParams(location.search);
-      if (params.has('token')) {
-        loginWithToken(params.get('token'));
-      }
 
-        if (localStorage.getItem('cookies_accepted') === undefined) {
-            $('#cookies').modal('show');
-        }
-        
-        $('#cookies').on('hidden.bs.modal', function (e) {
-          localStorage.setItem('cookies_accepted', true);
-        });
-    </script>
+		<!-- SCRIPTS -->
+		<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-analytics.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-messaging.js"></script>
+		<script src="scripts/jquery/jquery.js"></script>
+		<script src="scripts/bootstrap-sncf-metier/bootstrap-sncf.min.js"></script>
+		<script src="scripts/initialize.js"></script>
+		<script src="scripts/main.js"></script>
+
+		<script>
+
+			var params = new URLSearchParams(location.search);
+			if (params.has('token')) {
+				loginWithToken(params.get('token'));
+			}
+
+			if (localStorage.getItem('cookies_accepted') === undefined) {
+				$('#cookies').modal('show');
+			}
+
+			$('#cookies').on('hidden.bs.modal', function (e) {
+				localStorage.setItem('cookies_accepted', true);
+			});
+		</script>
 </body>
+
 </html>

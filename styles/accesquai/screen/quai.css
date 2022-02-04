@@ -23,8 +23,8 @@ body {
 }
 
 *,
- :after,
- :before {
+:after,
+:before {
     outline: none;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -33,10 +33,10 @@ body {
 
 *:focus,
 *:active,
- :after:focus,
- :after:active,
- :before:focus,
- :before:active {
+:after:focus,
+:after:active,
+:before:focus,
+:before:active {
     outline: none;
 }
 
@@ -179,6 +179,7 @@ a {
     from {
         visibility: visible;
     }
+
     to {
         visibility: hidden;
     }
@@ -188,6 +189,7 @@ a {
     from {
         visibility: visible;
     }
+
     to {
         visibility: hidden;
     }
@@ -207,6 +209,7 @@ a {
     from {
         transform: translateX(0%);
     }
+
     to {
         transform: translateX(-100%);
     }
@@ -216,6 +219,7 @@ a {
     from {
         transform: translateX(0%);
     }
+
     to {
         transform: translateX(-100%);
     }
@@ -223,7 +227,8 @@ a {
 
 
 @keyframes scrollY {
-   /* 0% { transform: translateY(100%); }
+
+    /* 0% { transform: translateY(100%); }
     25% { transform: translateY(-100%); }
     50% { transform: translateY(100%); }
     75% { transform: translateY(0%); }
@@ -231,7 +236,11 @@ a {
     from {
         transform: translateY(0%);
     }
-    50% { transform: translateY(100%); }
+
+    50% {
+        transform: translateY(100%);
+    }
+
     to {
         transform: translateY(100%);
     }
@@ -241,9 +250,10 @@ a {
     from {
         transform: translateY(0%);
     }
+
     to {
         transform: translateY(100%);
-        animation-timing-function:ease-in-out
+        animation-timing-function: ease-in-out
     }
 }
 
@@ -483,6 +493,7 @@ a {
 .rows.rows-transilien .row-group:nth-of-type(even) .train-track-h:not(.train-track-view) {
     color: #003a79;
 }
+
 /* -- logo -- */
 
 .train-logo {
@@ -746,7 +757,7 @@ a {
     left: 1.8%;
     height: 5%;
     background-size: 0.7%;
-    background-image: url(../../../images/screen/wagons/train-wagons-line.svg);        
+    background-image: url(../../../images/screen/wagons/train-wagons-line.svg);
 }
 
 
@@ -773,6 +784,7 @@ a {
 .arrow-right-down {
     background-image: url(../../../images/screen/accesquai/right_down_arrow.svg);
 }
+
 .arrow-right-up {
     background-image: url(../../../images/screen/accesquai/right_up_arrow.svg);
 }

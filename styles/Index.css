@@ -1,7 +1,3 @@
-﻿.light {
-    background-image: url('../images/bg_index_light.gif');
-}
-
-.dark {
-    background-image: url('../images/bg_index_dark.gif');
+﻿.background {
+    background-image: url('../images/bg.gif');
 }

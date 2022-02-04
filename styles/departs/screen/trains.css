@@ -5,6 +5,7 @@
 /* -- widths -- */
 /* -- base -- */
 @import url("https://fonts.googleapis.com/css?family=Roboto:100,300,100italic,300italic");
+
 html, body {
     width: 100%;
     height: 100%;
@@ -29,8 +30,8 @@ body {
 }
 
 *,
- :after,
- :before {
+:after,
+:before {
     outline: none;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -39,10 +40,10 @@ body {
 
 *:focus,
 *:active,
- :after:focus,
- :after:active,
- :before:focus,
- :before:active {
+:after:focus,
+:after:active,
+:before:focus,
+:before:active {
     outline: none;
 }
 
@@ -244,14 +245,17 @@ a {
         opacity: 0;
         transform: translateX(100%);
     }
+
     10% {
         opacity: 1;
         transform: translateX(0%);
     }
+
     90% {
         opacity: 1;
         transform: translateX(0%);
     }
+
     100% {
         opacity: 0;
         transform: translateX(100%);
@@ -543,6 +547,7 @@ a {
     from {
         visibility: visible;
     }
+
     to {
         visibility: hidden;
     }
@@ -552,6 +557,7 @@ a {
     from {
         visibility: visible;
     }
+
     to {
         visibility: hidden;
     }
@@ -568,6 +574,7 @@ a {
     from {
         transform: translateX(0%);
     }
+
     to {
         transform: translateX(-100%);
     }
@@ -577,6 +584,7 @@ a {
     from {
         transform: translateX(0%);
     }
+
     to {
         transform: translateX(-100%);
     }
@@ -595,6 +603,7 @@ a {
     from {
         transform: translateX(0%);
     }
+
     to {
         transform: translateX(-100%);
     }
@@ -604,6 +613,7 @@ a {
     from {
         transform: translateX(0%);
     }
+
     to {
         transform: translateX(-100%);
     }
@@ -611,7 +621,8 @@ a {
 
 
 @keyframes scrollY {
-   /* 0% { transform: translateY(100%); }
+
+    /* 0% { transform: translateY(100%); }
     25% { transform: translateY(-100%); }
     50% { transform: translateY(100%); }
     75% { transform: translateY(0%); }
@@ -619,7 +630,11 @@ a {
     from {
         transform: translateY(0%);
     }
-    50% { transform: translateY(100%); }
+
+    50% {
+        transform: translateY(100%);
+    }
+
     to {
         transform: translateY(100%);
     }
@@ -629,9 +644,10 @@ a {
     from {
         transform: translateY(0%);
     }
+
     to {
         transform: translateY(100%);
-        animation-timing-function:ease-in-out
+        animation-timing-function: ease-in-out
     }
 }
 
@@ -1174,7 +1190,7 @@ a {
 /* -- rer --*/
 
 .rer.train-lng {
-    height: 100%;
+    height: 75%;
     background: no-repeat center;
     -moz-background-size: contain;
     -o-background-size: contain;
@@ -1353,10 +1369,12 @@ a {
     33% {
         transform: translateY(0%);
     }
+
     50%,
     83.33% {
         transform: translateY(-100%);
     }
+
     100% {
         transform: translateY(-200%);
     }
@@ -1366,10 +1384,12 @@ a {
     33% {
         transform: translateY(0%);
     }
+
     50%,
     83.33% {
         transform: translateY(-100%);
     }
+
     100% {
         transform: translateY(-200%);
     }
@@ -1389,10 +1409,12 @@ a {
     0% {
         transform: translateX(100%) translateZ(0);
     }
+
     20%,
     60% {
         transform: translateX(0%) translateZ(0);
     }
+
     80% {
         transform: translateX(100%) translateZ(0);
     }
@@ -1402,10 +1424,12 @@ a {
     0% {
         transform: translateX(100%) translateZ(0);
     }
+
     20%,
     60% {
         transform: translateX(0%) translateZ(0);
     }
+
     80% {
         transform: translateX(100%) translateZ(0);
     }
@@ -1426,10 +1450,12 @@ a {
     0% {
         width: calc(100% - 0vh);
     }
+
     20%,
     60% {
         width: calc(100% - 55vh);
     }
+
     80% {
         width: calc(100% - 0vh);
     }
@@ -1439,10 +1465,12 @@ a {
     0% {
         width: calc(100% - 0vh);
     }
+
     20%,
     60% {
         width: calc(100% - 55vh);
     }
+
     80% {
         width: calc(100% - 0vh);
     }

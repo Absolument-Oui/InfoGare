@@ -12,7 +12,7 @@
 
     <body>
        <marquee id="loader" scrollamount="15"><img id="caisse-1"><img style="vertical-align: bottom;" id="caisse-2"><img id="caisse-3"></marquee>
-        <center><div id="error_loading" hidden><img src="images/loading/Error.gif"></div></center>
+        <center><div id="error_loading" hidden><img src="images/loading/Error.png"></div></center>
         <div class="rows" onclick="fullScreen();">
             <div class="row-group row-group-bar">
                 <div class="row">
@@ -45,9 +45,8 @@
         <script src="scripts/jquery/jquery.js"></script>
         <script src="scripts/bootstrap-sncf-metier/bootstrap-sncf.min.js"></script>
         <script src="scripts/initialize.js"></script>
-        <script src="scripts/screen.js"></script>
-        <script src="scripts/loader.js"></script>
-        <script src="scripts/infos.js"></script>
+    <script src="scripts/main.js"></script>
+
 
         <script>
             firebase.auth().onAuthStateChanged((user) => {
