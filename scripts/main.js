@@ -2104,7 +2104,7 @@ var gare_id = null;
 var id = null;
 var openmethod = true;
 
-function loadParams() {
+function loadRerParams() {
     database.child("users").child(uid).get().then((snapshot) => {
         openmethod = snapshot.val().openmethod;
         if (!openmethod) {
