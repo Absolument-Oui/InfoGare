@@ -2055,7 +2055,7 @@ function loadTrains(user_id, id) {
             //document.getElementById('loader').style.display = 'none';
 
             scrollX();
-            checkDay();
+            //checkDay();
             clock();
         });
     }).catch((error) => {
