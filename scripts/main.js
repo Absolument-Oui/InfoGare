@@ -2285,7 +2285,7 @@ function loadGareRer(userid) {
                         btnmodify.setAttribute('class', 'btn btn-options dropdown-toggle');
                         btnmodify.setAttribute('type', 'button');
                         btnmodify.setAttribute('title', 'Modifier le train');
-                        btnmodify.setAttribute('onclick', 'prepModifTrain(' + id + ');');
+                        btnmodify.setAttribute('onclick', 'prepModifTrainRer(' + id + ');');
                         btnmodify.setAttribute('data-toggle', 'modal');
                         btnmodify.setAttribute('data-target', '#modif_train');
 
