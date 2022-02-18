@@ -2169,7 +2169,7 @@ function prepModifTrainRer(tid) {
             //document.getElementById('modif_train_gares').appendChild(option);
         });
 
-        document.getElementById('validate2').setAttribute('onclick', 'modifTrain(' + tid + ');');
+        document.getElementById('validate2').setAttribute('onclick', 'modifTrainRer(' + tid + ');');
     });
 }
 
