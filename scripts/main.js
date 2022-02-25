@@ -274,27 +274,27 @@ function prepModifTrain(tid) {
             });
 
         }
-
-        var days = snapshot.val().days.split(',');
-
-        days.forEach(element => {
-            if (element === '1') {
-                document.getElementById('train_days_monday').checked = true;
-            } else if (element === '2') {
-                document.getElementById('train_days_tuesday').checked = true;
-            } else if (element === '3') {
-                document.getElementById('train_days_wednesday').checked = true;
-            } else if (element === '4') {
-                document.getElementById('train_days_thursday').checked = true;
-            } else if (element === '5') {
-                document.getElementById('train_days_friday').checked = true;
-            } else if (element === '6') {
-                document.getElementById('train_days_saturday').checked = true;
-            } else if (element === '7') {
-                document.getElementById('train_days_sunday').checked = true;
-            }
-        });
-
+        if (snapshot.val().days !== undefined) {
+            var days = snapshot.val().days.split(',');
+    
+            days.forEach(element => {
+                if (element === '1') {
+                    document.getElementById('train_days_monday').checked = true;
+                } else if (element === '2') {
+                    document.getElementById('train_days_tuesday').checked = true;
+                } else if (element === '3') {
+                    document.getElementById('train_days_wednesday').checked = true;
+                } else if (element === '4') {
+                    document.getElementById('train_days_thursday').checked = true;
+                } else if (element === '5') {
+                    document.getElementById('train_days_friday').checked = true;
+                } else if (element === '6') {
+                    document.getElementById('train_days_saturday').checked = true;
+                } else if (element === '7') {
+                    document.getElementById('train_days_sunday').checked = true;
+                }
+            });
+        }
 
         document.getElementById('validate').setAttribute('onclick', 'modifTrain(' + tid + ');');
         document.getElementById('validate').innerText = 'Modifier';
