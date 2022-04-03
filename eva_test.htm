@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>EVA TEST</title>
+    <link href="styles/departs/screen/eva.css" rel="stylesheet" type="text/css">
+    <link href="styles/fonts/Achemine/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="rows">
+        <div class="row-head">
+            <div class="logo"></div>
+            <div class="title">ARRIVEES</div>
+            <div class="div-clock">
+                <span class="hours">00</span>
+                <span class="clock-blink">:</span>
+                <span class="minutes">00</span>
+                <span class="seconds">00</span>
+            </div>
+        </div>
+        <div class="rows-group">
+            <!--<div class="row">
+                <div class="first-col">
+                    <div class="hour">12:00</div>
+                </div>
+                <div class="second-col">
+                    <div class="dest">Metz-ville</div>
+                    <div class="gares">
+                        <div class="via">via</div>
+                        <div class="gare">Pagny-sur-Moselle</div>
+                        <div class="gare">Pont-à-Mousson</div>
+                    </div>
+                </div>
+                <div class="third-col">
+                    <div class="voie">
+                        <span class="text-voie">Voie</span>
+                        <span class="number">C</span>
+                    </div>
+                </div>
+                <div class="fourth-col">
+                    <div class="type">TER</div>
+                    <div class="number">837505</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="first-col">
+                    <div class="hour">12:00</div>
+                </div>
+                <div class="second-col">
+                    <div class="dest">Metz-ville</div>
+                    <div class="gares">
+                        <div class="via">via</div>
+                        <div class="gare">Pagny-sur-Moselle</div>
+                        <div class="gare">Pont-à-Mousson</div>
+                    </div>
+                </div>
+                <div class="third-col">
+                    <div class="voie">
+                        <span class="text-voie">Voie</span>
+                        <span class="number">C</span>
+                    </div>
+                </div>
+                <div class="fourth-col">
+                    <div class="type">TER</div>
+                    <div class="number">837505</div>
+                </div>
+            </div><div class="row">
+                <div class="first-col">
+                    <div class="hour">12:00</div>
+                </div>
+                <div class="second-col">
+                    <div class="dest">Metz-ville</div>
+                    <div class="gares">
+                        <div class="via">via</div>
+                        <div class="gare">Pagny-sur-Moselle</div>
+                        <div class="gare">Pont-à-Mousson</div>
+                    </div>
+                </div>
+                <div class="third-col">
+                    <div class="voie">
+                        <span class="text-voie">Voie</span>
+                        <span class="number">C</span>
+                    </div>
+                </div>
+                <div class="fourth-col">
+                    <div class="type">TER</div>
+                    <div class="number">837505</div>
+                </div>
+            </div><div class="row">
+                <div class="first-col">
+                    <div class="hour">12:00</div>
+                </div>
+                <div class="second-col">
+                    <div class="dest">Metz-ville</div>
+                    <div class="gares">
+                        <div class="via">via</div>
+                        <div class="gare">Pagny-sur-Moselle</div>
+                        <div class="gare">Pont-à-Mousson</div>
+                    </div>
+                </div>
+                <div class="third-col">
+                    <div class="voie">
+                        <span class="text-voie">Voie</span>
+                        <span class="number">C</span>
+                    </div>
+                </div>
+                <div class="fourth-col">
+                    <div class="type">TER</div>
+                    <div class="number">837505</div>
+                </div>
+            </div>!-->
+        </div>
+        
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-messaging.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-functions.js"></script>
+    <script src="scripts/jquery/jquery.js"></script>
+    <script src="scripts/bootstrap-sncf-metier/bootstrap-sncf.min.js"></script>
+    <script src="scripts/initialize.js"></script>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/eva.js"></script>
+
+    <script>
+        firebase.auth().onAuthStateChanged(function (user) {
+            loadTrainsEva(user.uid);
+        });
+    </script>
+</body>
+</html>

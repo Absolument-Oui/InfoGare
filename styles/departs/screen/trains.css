@@ -1000,6 +1000,10 @@ a {
     background-image: url(../../../images/screen/common/logo-ouigo.svg);
 }
 
+.train-logo.train-logo-ouigo-classique {
+    background-image: url(../../../images/screen/common/logo-ouigo-classique.svg);
+}
+
 .train-logo.train-logo-ler {
     background-image: url(../../../images/screen/common/logo-ler.svg);
 }
@@ -1184,6 +1188,22 @@ a {
 
 .train-logo.train-logo-t-u {
     background-image: url(../../../images/screen/common/logo-t-u.svg);
+}
+
+.train-logo.train-logo-lunea {
+    background-image: url(../../../images/screen/common/logo-lunea.svg);
+}
+
+.train-logo.train-logo-teoz {
+    background-image: url(../../../images/screen/common/logo-teoz.svg);
+}
+
+.train-logo.train-logo-frecciarossa {
+    background-image: url(../../../images/screen/common/logo-frecciarossa.svg);
+}
+
+.train-logo.train-logo-trenitalia {
+    background-image: url(../../../images/screen/common/logo-trenitalia.svg);
 }
 
 

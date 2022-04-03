@@ -903,6 +903,10 @@ a {
     background-image: url(../../../images/screen/quai/logo-ouigo-color.svg);
 }
 
+.train-logo.train-logo-ouigo-classique {
+    background-image: url(../../../images/screen/quai/logo-ouigo-classique-color.svg);
+}
+
 .train-logo.train-logo-ler {
     background-image: url(../../images/screen/common/logo-ler.svg);
 }
@@ -1075,6 +1079,21 @@ a {
     background-image: url(../../../images/screen/common/logo-t-u.svg);
 }
 
+.train-logo.train-logo-lunea {
+    background-image: url(../../../images/screen/quai/logo-lunea-color.svg);
+}
+
+.train-logo.train-logo-teoz {
+    background-image: url(../../../images/screen/quai/logo-teoz-color.svg);
+}
+
+.train-logo.train-logo-frecciarossa {
+    background-image: url(../../../images/screen/quai/logo-frecciarossa-color.svg);
+}
+
+.train-logo.train-logo-trenitalia {
+    background-image: url(../../../images/screen/quai/logo-trenitalia-color.svg);
+}
 
 /* -- time -- */
 

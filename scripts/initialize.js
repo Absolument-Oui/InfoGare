@@ -14,7 +14,7 @@ if (location.host === 'infogare.fr') {
         appId: "1:984551924335:web:247f2050a8ac4d68eb639a",
         measurementId: "G-DRFJP2SFJ1"
     };
-} else if (location.host === 'beta.infogare.fr') {
+} else if (location.host === 'beta.infogare.fr' || location.host === 'localhost:8080') {
     firebaseConfig = {
         apiKey: "AIzaSyCWi0EChm97lofJrhqBp6wRRtgQGKq8IEg",
         authDomain: "infogares-f.firebaseapp.com",

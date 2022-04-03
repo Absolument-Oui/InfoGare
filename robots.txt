@@ -4,7 +4,7 @@ Disallow: user.htm
 Disallow: train.htm
 Disallow: rer.htm
 Disallow: panel.htm
-Disallow: modif_train.html
+Disallow: modif_train.htm
 Disallow: infos.htm
 Disallow: import_gare.htm
 Disallow: gares.htm

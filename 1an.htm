@@ -1,0 +1,152 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>InfoGare</title>
+    <script data-ad-client="ca-pub-3014614649994013" async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <link title="Dark mode" href="scripts/bootstrap-sncf-metier/bootstrap-sncf.darkmode.min.css" rel="stylesheet">
+    <link rel="Stylesheet" href="styles/Global.css" type="text/css" />
+    <link rel=Stylesheet href="styles/Index.css" type="text/css" />
+    <link rel="icon" href="images/anniversaire/favicon.png" size="16x16" type="image/png" />
+    <link rel="icon" href="images/anniversaire/favicon.png" size="32x32" type="image/png" />
+    <meta name="description" content="Site de création et d'affichage d'infogares" />
+    <meta name="keywords" content="InfoGare, info gare, social gare, SocialGare" />
+    <meta name="author" content="Absolument Oui" />
+    <meta http-equiv="content-language" content="fr-fr">
+</head>
+
+<body background="images/bg.gif" onload="detectAndroid(); getVersion(); checkLogin();" style="min-height: 0;">
+    <div>
+        <br><br><br>
+        <div class="mastheader">
+            <div class="mastheader-logo">
+                <a href="index.htm">
+                    <img alt="InfoGare" src="images/anniversaire/favicon.png" width="70" />
+                </a>
+            </div>
+            <header role="banner" class="mastheader-title d-none d-xl-block">
+                <span class="text-uppercase text-white pt-2 pl-3 mb-0 h1"><a href="index.htm"
+                        class="text-white">InfoGare</a></span>
+            </header>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <center>
+            <img src="images/anniversaire/logo_1an.png" width="500" height="auto" id="logo"><br><br>
+            <h1>InfoGare fête son anniversaire !</h1>
+            <p style="margin-left: 100px; margin-right: 100px;">Le 04 avril 2021 naissait un petit logiciel dénommé
+                Infogares. Sorti dans sa version originale en tant
+                qu'application de bureau Windows, Infogares s'est ensuite transformé en application web, tel que vous le
+                connaissez actuellement. Entre-temps, le nom à changé en <b>"InfoGare"</b>. En 1 an, nous somme passés
+                d'une
+                interface basique, ou les utilisateurs pouvaient mettre leurs horaires de TER sur un écran de départs
+                comme ils le souhaitaient, à une interface plus complète, ou les paramètres sont divers et variés. En 1
+                an, beaucoup de choses ont changés ! Mais pas votre fidélité. Merci à vous de soutenir InfoGare depuis
+                maintenant 1 an !</p>
+            <br>
+            <h2 style="text-align: right; margin-right: 150px;">L'équipe InfoGare</h2>
+            <br><br><br><br>
+            <h1>Quelques photos de cette histoire</h1>
+            <img src="images/anniversaire/screen1.png" width="500" height="auto"><br><i>Infogares en version application
+                bureau</i><br><br>
+            <img src="images/anniversaire/screen2.png" width="500" height="auto"><br><i>Infogares en version application
+                web à ses débuts <small>(screenshot par Guerin Lupus)</small></i><br><br>
+            <img src="images/anniversaire/screen3.png" width="500" height="auto"><br><i>InfoGare actuellement</i>
+        </center>
+        <div class="modal" tabindex="-1" role="dialog" aria-labelledby="cookies_title" id="cookies">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="h1 modal-title" id="cookies_title">Vous connaissez la recette des cookies ?</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Avant de continuer, nous voulons vous signaler que ce site utilise des cookies afin de vous
+                            donner une meilleure expérience.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" tabindex="-1" role="dialog" aria-labelledby="mobile_app_title" id="mobile_app">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="h1 modal-title" id="mobile_app_title">Hey toi !</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Nous vous conseillons d'utiliser l'application Android disponible <a
+                                href="https://link.infogare.fr/Android">ici</a> à l'instar du site Internet.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="logout" tabindex="-1" role="dialog" aria-labelledby="lougout_title"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="h1 modal-title" id="logout_title">Se déconnecter</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        &Ecirc;tes-vous sûr de vouloir vous déconnecter ?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
+                        <button type="button" class="btn btn-primary btn-danger" onclick="logout();">Oui</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div data-nosnippet class="footerbar">
+        <center><a href=apropos.htm>&Agrave; propos</a> | <a href=cgu.htm>CGU</a> | <a href=mentionslegales.htm>Mentions
+                légales</a> | <a href="donation.htm">Nous soutenir</a></center><br>
+        <center><i id="version"></i></center>
+    </div>
+
+
+
+    <!-- SCRIPTS -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-messaging.js"></script>
+    <script src="scripts/jquery/jquery.js"></script>
+    <script src="scripts/bootstrap-sncf-metier/bootstrap-sncf.min.js"></script>
+    <script src="scripts/initialize.js"></script>
+    <script src="scripts/main.js"></script>
+
+    <script>
+        var params = new URLSearchParams(location.search);
+        if (params.has('token')) {
+            loginWithToken(params.get('token'));
+        }
+
+
+        if (localStorage.getItem('cookies_accepted') === undefined) {
+            $('#cookies').modal('show');
+        }
+
+        $('#cookies').on('hidden.bs.modal', function (e) {
+            localStorage.setItem('cookies_accepted', true);
+        });
+    </script>
+</body>
+
+</html>
