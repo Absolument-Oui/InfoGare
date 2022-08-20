@@ -2502,7 +2502,7 @@ firebase.auth().languageCode = 'fr';
 var user = undefined;
 
 document.getElementById('login_btn').onclick = function () {
-    location.href = 'https://auth.infogare.fr/redirect.htm?returnurl=' + encodeURIComponent(location.href) + '&service=infogare&version=release';
+    location.href = 'https://auth.infogare.fr/v2/redirect?returnurl=' + '&service=infogare&version=release';
 }
 
 function loginWithToken(token) {
