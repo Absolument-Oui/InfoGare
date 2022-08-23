@@ -115,6 +115,8 @@
 					width="50px"></a> <br />
 			<br>
 
+			<span style="font-size: 5rem;" id="counter">00 j 00 h 00 m 00 s</span>
+
 			<ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px"
 				data-ad-client="ca-pub-3014614649994013" data-ad-slot="5523609982"></ins>
 			<script>
@@ -211,6 +213,21 @@
 		$('#cookies').on('hidden.bs.modal', function (e) {
 			localStorage.setItem('cookies_accepted', true);
 		});
+
+		var timeInterval = setInterval(getTimeRemaining, 1000);
+
+		function getTimeRemaining() {
+			const total = Date.parse('08/30/2022 14:00:00') - Date.parse(new Date());
+			const seconds = Math.floor((total/1000) % 60);
+			const minutes = Math.floor((total/1000/60) % 60);
+			const hours = Math.floor((total/(1000*60*60)) % 24);
+			const days = Math.floor(total / (1000*60*60*24));
+
+			document.getElementById('counter').innerText = `${days}j ${hours}h ${minutes}m ${seconds}s`;
+			if (total <= 0) {
+				clearInterval(timeInterval);
+			}
+		}
 	</script>
 </body>
 
