@@ -1,0 +1,59 @@
+{
+  "name": "infogare",
+  "version": "2.0.8",
+  "private": true,
+  "homepage": "https://beta.infogare.fr",
+  "dependencies": {
+    "@material/icon-button": "^14.0.0",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.3.0",
+    "@testing-library/user-event": "^13.5.0",
+    "discord.js": "^14.1.2",
+    "firebase": "^9.9.0",
+    "gh-pages": "^4.0.0",
+    "jquery": "^3.6.0",
+    "material-components-web": "^14.0.0",
+    "material-icons": "^1.11.6",
+    "react": "^18.2.0",
+    "react-adsense": "^0.1.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.3.0",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.18.9",
+    "@babel/preset-env": "^7.18.9",
+    "babel-loader": "^8.2.5",
+    "css-loader": "^6.7.1",
+    "sass": "^1.53.0",
+    "sass-loader": "^13.0.2",
+    "webpack": "^5.73.0"
+  }
+}

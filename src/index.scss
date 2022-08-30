@@ -1,0 +1,463 @@
+@use "@material/top-app-bar/mdc-top-app-bar";
+@use "@material/icon-button/icon-button";
+@use "@material/dialog";
+@use "@material/ripple/mdc-ripple";
+@use "@material/button/mdc-button";
+@use "@material/button";
+@use "@material/textfield";
+@use "@material/floating-label/mdc-floating-label";
+@use "@material/notched-outline/mdc-notched-outline";
+@use "@material/line-ripple/mdc-line-ripple";
+@use "@material/card";
+@use "@material/radio/styles" as radio;
+@use "@material/form-field";
+@use "@material/list/mdc-list";
+@use "@material/list";
+@use "@material/menu-surface/mdc-menu-surface";
+@use "@material/menu/mdc-menu";
+@use "@material/select/mdc-select";
+@use "@material/chips/styles" as chips;
+
+@include icon-button.core-styles;
+@include dialog.core-styles;
+@include textfield.core-styles;
+@include card.core-styles;
+@include form-field.core-styles;
+
+@import "material-icons/iconfont/material-icons.scss";
+@import url(./assets/css/departs/screen/trains.css);
+@import url(./assets/css/informations/screen/informations.css);
+@import url(./assets/css/quai/screen/train.css);
+@import url(./assets/fonts/Achemine/style.css);
+
+
+body {
+    height: 100%;
+    width: 100%;
+    background-color: #000;
+    color: #f2f2f2;
+}
+
+.main-content {
+    margin: 25px;
+    font-size: 1rem;
+    font-weight: 400;
+    font-family: "Avenir", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.app-bar {
+    background-color: #333;
+}
+
+.mdc-top-app-bar__section img,
+.mdc-top-app-bar__section .mdc-top-app-bar__title {
+    cursor: pointer;
+    color: #f2f2f2;
+    font-family: "Avenir", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+a:any-link {
+    text-decoration: none;
+}
+
+.big-icon {
+    font-size: 128px;
+}
+
+.center {
+    text-align: center;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.primary {
+    @include button.container-fill-color(#006f94);
+}
+
+.primary-dark {
+    @include button.container-fill-color(#003a79);
+}
+
+.profile-pict {
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.gare-card {
+    @include card.fill-color(#003a79);
+    width: 22%;
+    min-width: 315px;
+    display: inline-table;
+    margin: 5px;
+    line-height: 1.5;
+}
+
+.gare-card__title {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.gare-card__subtitle {
+    font-size: 0.875rem;
+    font-weight: 400;
+}
+
+.gare-card__button {
+    @include button.ink-color(#0080aa);
+}
+
+.full-width {
+    width: 100%;
+}
+
+.menu-item {
+    height: 48px;
+}
+
+.menu-item-text {
+    margin: auto 0;
+}
+
+.menu-item-icon {
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.menu-item.departs {
+    margin: auto 0;
+    background-image: url(./assets/img/common/screen_departs.png);
+    height: 16px;
+    width: 24px;
+    background-size: cover;
+    margin-right: 5px;
+}
+
+.menu-item.arrives {
+    margin: auto 0;
+    background-image: url(./assets/img/common/screen_arrives.png);
+    height: 16px;
+    width: 24px;
+    background-size: cover;
+    margin-right: 5px;
+}
+
+.menu-item.infos {
+    margin: auto 0;
+    background-image: url(./assets/img/common/screen_infos.png);
+    height: 16px;
+    width: 24px;
+    background-size: cover;
+    margin-right: 5px;
+}
+
+.menu-item.quai {
+    margin: auto 0;
+    background-image: url(./assets/img/common/screen_quai.png);
+    height: 16px;
+    width: 24px;
+    background-size: cover;
+    margin-right: 5px;
+}
+
+#root {
+    height: 100%;
+    width: 100%;
+}
+
+.gare-card-media-sncf {
+    background-image: url(./assets/img/common/SNCF.svg);
+    background-size: 50%;
+    padding-top: 56.25%;
+}
+
+.gare-card-media-sncf::before {
+    margin-top: 0;
+}
+
+.gare-card-media-ratp {
+    background-image: url(./assets/img/common/RATP.svg);
+    background-size: 25%;
+    padding-top: 56.25%;
+}
+
+.gare-card-media-ratp::before {
+    margin-top: 0;
+}
+
+.train-card {
+    padding-top: 56.25%;
+    background-size: 50%;
+}
+
+.train-card::before {
+    margin-top: 0;
+}
+
+.train-card-sncf {
+    background-image: url(./assets/img/common/SNCF.svg);
+}
+
+.train-card-inoui {
+    background-image: url(./assets/img/screen/quai/logo-inoui-color.svg);
+}
+
+.train-card-ter {
+    background-image: url(./assets/img/screen/quai/logo-ter-color.svg);
+}
+
+.train-card-tgv {
+    background-image: url(./assets/img/screen/quai/logo-tgv-color.svg);
+}
+
+.train-card-ice {
+    background-image: url(./assets/img/screen/quai/logo-ice-color.svg);
+}
+
+.train-card-lyria {
+    background-image: url(./assets/img/screen/quai/logo-lyria-color.svg);
+}
+
+.train-card-fluo {
+    background-image: url(./assets/img/screen/quai/logo-fluo-color.svg);
+}
+
+.train-card-occitanie {
+    background-image: url(./assets/img/screen/quai/logo-occitanie-color.svg);
+}
+
+.train-card-intercite {
+    background-image: url(./assets/img/screen/quai/logo-intercite-color.svg);
+}
+
+.train-card-ouigo {
+    background-image: url(./assets/img/screen/quai/logo-ouigo-color.svg);
+}
+
+.train-card-ouigo-classique {
+    background-image: url(./assets/img/screen/quai/logo-ouigo-classique-color.svg);
+}
+
+/*.train-card-ler {
+    background-image: url(.train-card/.train-card/img/screen/common/logo-ler-color.svg);
+}*/
+
+.train-card-aleop {
+    background-image: url(./assets/img/screen/quai/logo-aleop-color.svg);
+}
+
+.train-card-auvergne-rhone-alpes {
+    background-image: url(./assets/img/screen/quai/logo-auvergerhonealpes-color.svg);
+}
+
+.train-card-breizhgo {
+    background-image: url(./assets/img/screen/quai/logo-breizhgo-color.svg);
+}
+
+.train-card-db {
+    background-image: url(./assets/img/screen/quai/logo-db-color.svg);
+}
+
+.train-card-ter-hauts-de-france {
+    background-image: url(./assets/img/screen/quai/logo-hautsdefrance-color.svg);
+}
+
+.train-card-lio {
+    background-image: url(./assets/img/screen/quai/logo-lio-color.svg);
+}
+
+.train-card-ter-metrolor {
+    background-image: url(./assets/img/screen/quai/logo-metrolor-color.svg);
+}
+
+.train-card-mobigo {
+    background-image: url(./assets/img/screen/quai/logo-mobigo-color.svg);
+}
+
+.train-card-nomad {
+    background-image: url(./assets/img/screen/quai/logo-nomad-color.svg);
+}
+
+.train-card-remi {
+    background-image: url(./assets/img/screen/quai/logo-remi-color.svg);
+}
+
+.train-card-renfe-ave {
+    background-image: url(./assets/img/screen/quai/logo-renfeave-color.svg);
+}
+
+.train-card-sbb {
+    background-image: url(./assets/img/screen/quai/logo-sbb-color.svg);
+}
+
+.train-card-sncf-1937 {
+    background-image: url(./assets/img/screen/quai/logo-sncf1937-color.svg);
+}
+
+.train-card-sncf-1972 {
+    background-image: url(./assets/img/screen/quai/logo-sncf1972-color.svg);
+}
+
+.train-card-sncf-1985 {
+    background-image: url(./assets/img/screen/quai/logo-sncf1985-color.svg);
+}
+
+.train-card-sncf-1992 {
+    background-image: url(./assets/img/screen/quai/logo-sncf1992-color.svg);
+}
+
+.train-card-ter-alsace {
+    background-image: url(./assets/img/screen/quai/logo-teralsace-color.svg);
+}
+
+.train-card-ter-aquitaine {
+    background-image: url(./assets/img/screen/quai/logo-teraquitaine-color.svg);
+}
+
+.train-card-ter-basse-normandie {
+    background-image: url(./assets/img/screen/quai/logo-terbassenormandie-color.svg);
+}
+
+.train-card-ter-bourgogne {
+    background-image: url(./assets/img/screen/quai/logo-terbourgogne-color.svg);
+}
+
+.train-card-ter-bretagne {
+    background-image: url(./assets/img/screen/quai/logo-terbretagne-color.svg);
+}
+
+.train-card-ter-centre {
+    background-image: url(./assets/img/screen/quai/logo-tercentre-color.svg);
+}
+
+.train-card-ter-languedoc-roussillon {
+    background-image: url(./assets/img/screen/quai/logo-terlanguedocroussillon-color.svg);
+}
+
+.train-card-ter-midi-pyrenees {
+    background-image: url(./assets/img/screen/quai/logo-termidipyrenees-color.svg);
+}
+
+.train-card-ter-nord-pas-de-calais {
+    background-image: url(./assets/img/screen/quai/logo-ternordpasdecalais-color.svg);
+}
+
+.train-card-ter-poitou-charentes {
+    background-image: url(./assets/img/screen/quai/logo-terpoitoucharentes-color.svg);
+}
+
+.train-card-thello {
+    background-image: url(./assets/img/screen/quai/logo-thello-color.svg);
+}
+
+.train-card-tram-train {
+    background-image: url(./assets/img/screen/quai/logo-tramtrain-color.svg);
+}
+
+.train-card-zou {
+    background-image: url(./assets/img/screen/quai/logo-zou-color.svg);
+}
+
+.train-card-eurostar {
+    background-image: url(./assets/img/screen/quai/logo-eurostar-color.svg);
+}
+
+.train-card-thalys {
+    background-image: url(./assets/img/screen/quai/logo-thalys-color.svg);
+}
+
+.train-card-rer-a {
+    background-image: url(./assets/img/screen/rer/logo-rer-a-color.svg);
+}
+
+.train-card-rer-b {
+    background-image: url(./assets/img/screen/rer/logo-rer-b-color.svg);
+}
+
+.train-card-rer-c {
+    background-image: url(./assets/img/screen/rer/logo-rer-c-color.svg);
+}
+
+.train-card-rer-d {
+    background-image: url(./assets/img/screen/rer/logo-rer-d-color.svg);
+}
+
+.train-card-rer-e {
+    background-image: url(./assets/img/screen/rer/logo-rer-e-color.svg);
+}
+
+.train-card-lunea {
+    background-image: url(./assets/img/screen/quai/logo-lunea-color.svg);
+}
+
+.train-card-teoz {
+    background-image: url(./assets/img/screen/quai/logo-teoz-color.svg);
+}
+
+.train-card-frecciarossa {
+    background-image: url(./assets/img/screen/quai/logo-frecciarossa-color.svg);
+}
+
+.train-card-trenitalia {
+    background-image: url(./assets/img/screen/quai/logo-trenitalia-color.svg);
+}
+
+.train-card-cfl {
+    background-image: url(./assets/img/screen/quai/logo-cfl-color.svg);
+}
+
+.train-card-sncb {
+    background-image: url(./assets/img/screen/quai/logo-sncb-color.svg);
+}
+
+.train-card-ter-franche-comte {
+    background-image: url(./assets/img/screen/quai/logo-terfranchecomte-color.svg);
+}
+
+
+.train-card-sncf::before {
+    margin-top: 0;
+}
+
+#departs .departs, #arrives .arrives {
+}
+
+.informations {
+}
+
+.quai {
+    @import url(./assets/css/departs/screen/quai.css);
+}
+
+.train-wagons {
+    width: 9.1vh;
+    height: 8vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.train-wagons.train-loco {
+    background-image: url(./assets/img/screen/wagons/loco.svg);
+}
+
+.train-wagons.train-tgv-l {
+    background-image: url(./assets/img/screen/wagons/tgv-l.svg);
+}
+
+.train-wagons.train-tgv-r {
+    background-image: url(./assets/img/screen/wagons/tgv-r.svg);
+}
+
+.train-wagons.train-wagon {
+    background-image: url(./assets/img/screen/wagons/wagon.svg);
+}
+
+.train-wagons.train-wagon-bar {
+    background-image: url(./assets/img/screen/wagons/wagon-bar.svg);
+}
