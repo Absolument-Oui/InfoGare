@@ -45,7 +45,7 @@ jobs:
       - name: Build and Deploy
         uses: Azure/static-web-apps-deploy@v1
         with:
-          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_JOLLY_TREE_0270ECF03 }}
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_POLITE_MOSS_0CBE3FB03 }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: upload
           app_location: 'build'
