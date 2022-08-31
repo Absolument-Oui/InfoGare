@@ -10,14 +10,7 @@ class AppBase extends Component {
 				<div className="mdc-drawer-app-content mdc-top-app-bar--fixed-adjust">
 					<main className="main-content" id="main-content">
 						<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3014614649994013"
-							crossOrigin="anonymous"></script>
-						<ins className="adsbygoogle"
-							style={{display: 'inline-block', width: '728px', height:'90px'}}
-							data-ad-client="ca-pub-3014614649994013"
-							data-ad-slot="5523609982"></ins>
-						<script>
-							(adsbygoogle = window.adsbygoogle || []).push({ });
-						</script>
+							crossorigin="anonymous"></script>
 						<Outlet />
 					</main>
 				</div>
