@@ -10,6 +10,7 @@ import { MDCDialog } from '@material/dialog';
 import "../index.scss";
 import DeleteTrainDialog from './DeleteTrainDialog';
 import EditTrainDialog from './EditTrainDialog';
+import GoogleAd from './GoogleAd';
 
 class TrainPage extends Component {
     constructor(props) {
@@ -24,6 +25,7 @@ class TrainPage extends Component {
         this.garesRef = React.createRef();
         this.quaiRef = React.createRef();
         this.numTrainRef = React.createRef();
+        this.hallRef = React.createRef();
     }
 
     render() {
@@ -43,6 +45,7 @@ class TrainPage extends Component {
                     </div>
                 </div>
                 <br /><br />
+                <GoogleAd dlot="8153124166" />
                 <table style={{ width: '100%' }}>
                     <thead>
                         <tr style={{ textAlign: 'left' }}>
@@ -85,7 +88,8 @@ class TrainPage extends Component {
                     <tbody>
                         <tr>
                             <td style={{ width: '50%'}}>
-                                <span ref={this.quaiRef}></span>
+                                <div className="train-page-hall"><small>hall</small><br /><br /><h1 ref={this.hallRef}></h1></div>&nbsp;
+                                <div className="train-page-track"><span ref={this.quaiRef}></span></div>
                             </td>
                             <td style={{ width: '50%'}}>
                                 <span ref={this.numTrainRef}></span>
@@ -114,39 +118,47 @@ class TrainPage extends Component {
             this.destRef.current.innerText = train.child('destination').val();
             this.hourDepartRef.current.innerText = train.child('hourdepart').val() ? train.child('hourdepart').val() : '-';
             this.hourArriveRef.current.innerText = train.child('hourarrive').val() ? train.child('hourarrive').val() : '-';
-            this.quaiRef.current.innerText = train.child('quai').val() ? train.child('quai').val() : '-';
+            this.hallRef.current.innerText = train.child('hall').val() ? train.child('hall').val() : '-';
+            this.quaiRef.current.innerText = train.child('voie').val() ? train.child('voie').val() : '-';
             this.numTrainRef.current.innerText = train.child('number').val();
             var gares2 = train.child('gares').val();
             var gares = train.child('from').val();
 
-            if (gares2.constructor === String) {
+            if (typeof(gares) === "string") {
                 gares2 = gares2.split('|').filter(function(el) {
                     return el.length > 0;
                 });
             }
-            if (gares.constructor === String) {
+
+            if (typeof(gares) === "string") {
                 gares = gares.split('|').filter(function(el) {
                     return el.length > 0;
                 });
             }
 
-            gares.forEach(element => {
-                if (element !== '') {
-                    this.garesRef.current.innerHTML += '<span>' + element + '</span> > ';
-                }
-            });
+            if (gares != null) {
+                gares.forEach(element => {
+                    if (element !== '') {
+                        this.garesRef.current.innerHTML += '<span>' + element + '</span> > ';
+                    }
+                });
+            }
             this.garesRef.current.innerHTML += '<span style="font-weight: bold; font-style: oblique">' + gareName + '</span> > ';
-            gares2.forEach(element => {
-                if (element !== '') {
-                    this.garesRef.current.innerHTML += '<span>' + element + '</span> > ';
-                }
-            });
+            if (gares2 != null) {
+                var i = 1;
+                gares2.forEach(element => {
+                    if (element !== '') {
+                        if (i === 2) { this.garesRef.current.innerHTML += ' > '; }
+                        this.garesRef.current.innerHTML += '<span>' + element + '</span>';
+                        i = 2;
+                    }
+                });
+            }
             type = train.child('type').val();
             if (type === 'TER') {
                 this.typeIconRef.current.classList.add('train-logo-ter');
             } else if (type === 'SNCF (carmillon)') {
                 this.typeIconRef.current.classList.add('train-logo-sncf');
-                this.typeRef.current.innerText = 'Train SNCF';
             } else if (type === 'inOui') {
                 this.typeIconRef.current.classList.add('train-logo-inoui');
             } else if (type === 'TGV') {
@@ -191,10 +203,8 @@ class TrainPage extends Component {
                 this.typeIconRef.current.classList.add('train-logo-sbb');
             } else if (type === 'SNCF (logo 1985)') {
                 this.typeIconRef.current.classList.add('train-logo-sncf-1985');
-                this.typeRef.current.innerText = 'Train SNCF';
             } else if (type === 'SNCF (logo 1992)') {
                 this.typeIconRef.current.classList.add('train-logo-sncf-1992');
-                this.typeRef.current.innerText = 'Train SNCF';
             } else if (type === 'TER Alsace') {
                 this.typeIconRef.current.classList.add('train-logo-ter-alsace');
             } else if (type === 'TER Aquitaine') {

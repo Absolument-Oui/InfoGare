@@ -1357,7 +1357,7 @@ a {
 
 .train-track.train-track-h:not(.train-track-view) {
     display: block;
-    padding-top: 0.3em;
+    /*padding-top: 0.3em;*/
     line-height: 0.4;
     background: #fff;
 }

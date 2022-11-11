@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import createRoot from 'react-dom';
 
 import { MDCTextField } from '@material/textfield';
 import { MDCRipple } from '@material/ripple';
@@ -24,6 +23,7 @@ class EditTrainDialog extends Component {
         this.selectTypeRef = React.createRef();
         this.dropBtnRef = React.createRef();
         this.typesMenu = React.createRef();
+        this.trainTypeNameRef = React.createRef();
         this.trainHourDeparture = React.createRef();
         this.trainHourArrival = React.createRef();
         this.trainDelayRef = React.createRef();
@@ -112,6 +112,16 @@ class EditTrainDialog extends Component {
                                     </div>
                                     <div className="mdc-notched-outline__trailing"></div>
                                 </div>
+                            </div><br /><br />
+                            <div className="full-width mdc-text-field mdc-text-field--outlined" ref={this.trainTypeNameRef}>
+                                <input className="mdc-text-field__input" id="trainTypeName" type="text" />
+                                <div className="mdc-notched-outline">
+                                    <div className="mdc-notched-outline__leading"></div>
+                                    <div className="mdc-notched-outline__notch">
+                                        <label htmlFor="trainTypeName" className="mdc-floating-label">Type personnalisé</label>
+                                    </div>
+                                    <div className="mdc-notched-outline__trailing"></div>
+                                </div>
                             </div>
                             <hr />
                             <h2>Horaires et retard</h2>
@@ -195,7 +205,7 @@ class EditTrainDialog extends Component {
                             <h2>Gares desservies</h2>
                             <h5>Provenance</h5>
                             <div className="full-width mdc-text-field mdc-text-field--outlined" ref={this.trainGaresProvenanceInputRef}>
-                                <input className="mdc-text-field__input" id="trainGaresProvenance" type="text" onKeyUpCapture={(e) => { if (e.key === "Enter") { this.addChip(e.target.value, 'chips-provenance'); } }} />
+                                <input className="mdc-text-field__input" id="trainGaresProvenance" type="text" onKeyUpCapture={(e) => { if (e.key === "Enter") { this.addChip(e.target.value, 'edit-chips-provenance'); } }} />
                                 <div className="mdc-notched-outline">
                                     <div className="mdc-notched-outline__leading"></div>
                                     <div className="mdc-notched-outline__notch">
@@ -209,7 +219,7 @@ class EditTrainDialog extends Component {
                             </span>
                             <h5>Destination</h5>
                             <div className="full-width mdc-text-field mdc-text-field--outlined" ref={this.trainGaresDestinationInputRef}>
-                                <input className="mdc-text-field__input" id="trainGaresDestination" type="text" onKeyUpCapture={(e) => { if (e.key === "Enter") { this.addChip(e.target.value, 'chips-destination'); } }} />
+                                <input className="mdc-text-field__input" id="trainGaresDestination" type="text" onKeyUpCapture={(e) => { if (e.key === "Enter") { this.addChip(e.target.value, 'edit-chips-destination'); } }} />
                                 <div className="mdc-notched-outline">
                                     <div className="mdc-notched-outline__leading"></div>
                                     <div className="mdc-notched-outline__notch">
@@ -555,7 +565,11 @@ class EditTrainDialog extends Component {
             document.getElementById(chip).remove();
         }
         chipElem.innerHTML = HTML;
-        document.getElementById(element).appendChild(chipElem);
+        if (element === 'edit-chips-destination') {
+            this.trainGaresDestinationChipsRef.current.appendChild(chipElem);
+        } else {
+            this.trainGaresProvenanceChipsRef.current.appendChild(chipElem);
+        }
         const trainGaresProvenanceInput = new MDCTextField(this.trainGaresProvenanceInputRef.current);
         const trainGaresDestinationInput = new MDCTextField(this.trainGaresDestinationInputRef.current);
         trainGaresProvenanceInput.value = '';
@@ -570,6 +584,7 @@ class EditTrainDialog extends Component {
         const selectType = new MDCTextField(this.selectTypeRef.current);
         const dropBtn = new MDCRipple(this.dropBtnRef.current);
         const typesMenu = new MDCMenu(this.typesMenu.current);
+        const trainTypeName = new MDCTextField(this.trainTypeNameRef.current);
         const trainHourDeparture = new MDCTextField(this.trainHourDeparture.current);
         const trainHourArrival = new MDCTextField(this.trainHourArrival.current);
         const trainDelay = new MDCTextField(this.trainDelayRef.current);
@@ -622,10 +637,20 @@ class EditTrainDialog extends Component {
             trainInfo.value = train.child('alternance').val();
             trainInfoType1Radio.checked = train.child('alternancetype').val() === 'normal';
             trainInfoType2Radio.checked = train.child('alternancetype').val() === 'flashcircu';
-            trainRetard1Radio.checked = train.child('retardtype').val() === 'alheure';
-            trainRetard2Radio.checked = train.child('retardtype').val() === 'ret';
-            trainRetard3Radio.checked = train.child('retardtype').val() === 'retindet';
-            trainRetard4Radio.checked = train.child('retardtype').val() === 'suppr';
+            if (train.child('retardtype').val() === 'alheure') {
+                trainRetard1Radio.checked = true;
+            } else if (train.child('retardtype').val() === 'ret') {
+                trainRetard2Radio.checked = true;
+            } else if (train.child('retardtype').val() === 'retindet') {
+                trainRetard3Radio.checked = true;
+            } else if (train.child('retardtype').val() === 'suppr') {
+                trainRetard4Radio.checked = true;
+            }
+
+            if (train.child('typename').val() != null) {
+                trainTypeName.value = train.child('typename').val();
+            }
+
             train.child('gares').forEach(gare => {
                 this.addChip(gare.val(), 'edit-chips-destination');
             });
@@ -713,22 +738,19 @@ class EditTrainDialog extends Component {
                 }
 
                 var garesProv = [];
-                for (var i = 0; i < document.getElementById('chips-provenance').childElementCount; i++) {
-                    garesProv.push(document.getElementById('chips-provenance').children[i].children[0].children[0].children[1].innerText);
+                for (var i = 0; i < this.trainGaresProvenanceChipsRef.current.childElementCount; i++) {
+                    garesProv.push(this.trainGaresProvenanceChipsRef.current.children[i].children[0].children[0].children[1].innerText);
                 }
-                console.log(garesProv);
 
                 var garesDest = [];
-                for (var j = 0; j < document.getElementById('chips-destination').childElementCount; j++) {
-                    garesDest.push(document.getElementById('chips-destination').children[j].children[0].children[0].children[1].innerText);
+                for (var j = 0; j < this.trainGaresDestinationChipsRef.current.childElementCount; j++) {
+                    garesDest.push(this.trainGaresDestinationChipsRef.current.children[j].children[0].children[0].children[1].innerText);
                 }
-                console.log(garesDest);
 
                 var compo = [];
-                for (var k = 0; k < document.getElementById('train-compo').childElementCount; k++) {
-                    compo.push(document.getElementById('train-compo').children[k].classList[1]);
+                for (var k = 0; k < this.trainCompoRef.current.childElementCount; k++) {
+                    compo.push(this.trainCompoRef.current.children[k].classList[1]);
                 }
-                console.log(compo);
 
                 var retardType;
                 if (trainRetard1Radio.checked) {
@@ -740,7 +762,6 @@ class EditTrainDialog extends Component {
                 } else if (trainRetard4Radio.checked) {
                     retardType = 'suppr';
                 }
-                console.log(retardType);
 
                 var trainInfoType;
                 if (trainInfoType1Radio.checked) {
@@ -759,11 +780,13 @@ class EditTrainDialog extends Component {
                     alternance: trainInfo.value,
                     alternancetype: trainInfoType,
                     retardtype: retardType,
+                    retardtime: trainDelay.value,
                     gares: garesDest,
                     from: garesProv,
                     compo: compo,
                     voie: trainVoie.value,
                     type: selectType.value,
+                    typename: trainTypeName.value,
                     number: trainNumber.value,
                     hall: trainHall.value
                 }).then(() => {

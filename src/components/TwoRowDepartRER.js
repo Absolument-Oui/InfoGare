@@ -55,7 +55,7 @@ class TwoRowDepartRER extends Component {
     componentDidMount() {
         var gares = this.props.gares;
         const elements = [];
-        if (gares.constructor === String) {
+        if (typeof(gares) === "string") {
             gares = gares.split('|').filter(function (el) {
                 return el.length > 0;
             });

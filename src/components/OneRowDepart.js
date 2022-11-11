@@ -10,6 +10,7 @@ class OneRowDepart extends Component {
         this.textFeatures = React.createRef();
         this.timeRef = React.createRef();
         this.typeRef = React.createRef();
+        this.trackView = React.createRef();
     }
 
     render() {
@@ -34,10 +35,8 @@ class OneRowDepart extends Component {
                         <span>{this.props.gare}</span>
                     </div>
                     <div className='col-hide'></div>
-                    <div className='col-third'>
-                        <div className='train-track train-track-view'>
-                            <span>{this.props.track}</span>
-                        </div>
+                    <div className='col-third' ref={this.trackView}>
+                        
                     </div>
                 </div>
             </div>
@@ -50,17 +49,15 @@ class OneRowDepart extends Component {
             this.timeRef.current.classList.add('text-time');
             this.timeRef.current.innerText = this.props.time.replace(':', 'h');
         } else if (this.props.timing.includes('retard')) {
-            var hour = Math.floor(this.props.time.substr(0, 2));
+            var hour = Math.floor(this.props.time.substr(0, 2) * 60);
             var minutes = Math.floor(this.props.time.substr(3, 4));
             var retard = Math.floor(this.props.retard)
-            var timeWithRetard = Math.floor(minutes + retard);
+            var timeWithRetard = Math.floor(hour + minutes + retard);
 
-            if (timeWithRetard > 59) {
-                var quotient = Math.floor(timeWithRetard / 60);
-                var rest = timeWithRetard % 60;
-                hour += quotient;
-                timeWithRetard = rest;
-            }
+            var quotient = Math.floor(timeWithRetard / 60);
+            var rest = timeWithRetard % 60;
+            hour = quotient;
+            timeWithRetard = rest;
 
             if (timeWithRetard < 10) {
                 timeWithRetard = '0' + timeWithRetard;
@@ -89,6 +86,48 @@ class OneRowDepart extends Component {
             divTime.innerText = this.props.time.replace(':', 'h');
             this.timeRef.current.appendChild(divRetard);
             this.timeRef.current.appendChild(divTime);
+        }
+
+        if (this.props.hall !== "" && this.props.hall !== undefined) {
+            var anim1 = document.createElement('div');
+            var anim2 = document.createElement('div');
+
+            anim1.setAttribute('class', 'animation-blink-1');
+            anim2.setAttribute('class', 'animation-blink-2');
+
+            var hall = document.createElement('div');
+            var hallText = document.createElement('small');
+            var hallNumber = document.createElement('h1');
+            var hallBr1 = document.createElement('br');
+            var hallBr2 = document.createElement('br');
+
+            hall.setAttribute('class', 'train-track train-track-h animation-blink-2');
+            hallText.appendChild(document.createTextNode('hall'));
+            hallNumber.appendChild(document.createTextNode(this.props.hall));
+
+            hall.appendChild(hallText);
+            hall.appendChild(hallBr1);
+            hall.appendChild(hallBr2);
+            hall.appendChild(hallNumber);
+
+            var track = document.createElement('div');
+            var trackNumber = document.createElement('span');
+
+            track.setAttribute('class', 'train-track train-track-view voie animation-blink-1');
+            trackNumber.appendChild(document.createTextNode(this.props.track));
+            track.appendChild(trackNumber);
+
+            this.trackView.current.classList.add('animation-blink');
+            this.trackView.current.appendChild(track);
+            this.trackView.current.appendChild(hall);
+        } else {
+            var track = document.createElement('div');
+            var trackNumber = document.createElement('span');
+
+            track.setAttribute('class', 'train-track train-track-view');
+            trackNumber.appendChild(document.createTextNode(this.props.track));
+            track.appendChild(trackNumber);
+            this.trackView.current.appendChild(track);
         }
 
 
@@ -190,6 +229,10 @@ class OneRowDepart extends Component {
             this.logoRef.current.classList.add('train-logo-sncb');
         } else {
             this.logoRef.current.classList.add('train-logo-sncf');
+        }
+
+        if (this.props.typename != null && this.props.typename !== "") {
+            this.typeRef.current.innerText = this.props.typename;
         }
     }
 }

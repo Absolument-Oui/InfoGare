@@ -329,6 +329,10 @@ class QuaiPage extends Component {
             } else {
                 this.trainLogoRef.current.classList.add('train-logo-sncf-color');
             }
+
+            if (snapshot.child('typename').val() != null) {
+                this.typeRef.current.innerText = snapshot.child('typename').val();
+            }
         });
 
         this.clock();

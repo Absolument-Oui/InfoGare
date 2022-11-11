@@ -5,15 +5,18 @@ import biglogo from '../assets/img/common/logo_v2.svg';
 import instgramlogo from '../assets/img/common/logo_instagram.svg';
 import twitterlogo from '../assets/img/common/logo_twitter.svg';
 import discordlogo from '../assets/img/common/logo_discord.svg';
+import GoogleAd from './GoogleAd';
 
 class HomePage extends Component {
     render() {
         return (
             <div className='center'>
+                <GoogleAd slot="5523609982" />
                 <img src={biglogo} height="450" alt="InfoGare" />
                 <h1>Bienvenue sur InfoGare !</h1>
                 <h3><code>Créer des infogares deviens facile</code></h3>
                 <div style={{ height: '100px' }}></div>
+                <GoogleAd slot="5523609982" />
                 <h2>Qu'est-ce qu'InfoGare ?</h2>
                 <span>InfoGare est un site Internet qui vous permet de reproduire les écrans présents en gares SNCF en personnalisant les informations. Diverse options sont disponibles tel que la composition des trains, les gares desservies, les informations dynamiques et bien d'autres.</span><br />
                 <small>ATTENTION : les informations sur les trains et gares que vous trouverez ici sont fictives !</small>

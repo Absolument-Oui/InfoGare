@@ -337,7 +337,7 @@ class EditTrainRERDialog extends Component {
             trainRetard4Radio.checked = data.child('retardtype').val() === 'supprimé';
             var gares = data.child('gares').val();
             const elements = [];
-            if (gares.constructor === String) {
+            if (typeof(gares) === "string") {
                 gares = gares.split('|').filter(function (el) {
                     return el.length > 0;
                 });

@@ -13,6 +13,7 @@ import DeleteGareDialog from './DeleteGareDialog';
 import TrainCard from './TrainCard';
 import { createRoot } from 'react-dom/client';
 import NewTrainDialog from './NewTrainDialog';
+import GoogleAd from './GoogleAd';
 
 class GarePage extends Component {
     constructor(props) {
@@ -46,9 +47,10 @@ class GarePage extends Component {
                         </ul>
                     </div>
                     <br /><br />
+                    <GoogleAd slot="2159604102" />
                     <div id='trains'></div>
                 </div>
-                <EditGareDialog uid={getAuth().currentUser.uid} id={this.props.id} />
+                <EditGareDialog uid={getAuth().currentUser.uid} id={this.props.id} componentRef={this.props.id} />
                 <DeleteGareDialog id={this.props.id} componentRef={this.props.id} />
                 <NewTrainDialog gid={this.props.id} />
             </div>
@@ -88,13 +90,13 @@ class GarePage extends Component {
 
         const editBtn = new MDCRipple(document.querySelector('#editBtn'));
         editBtn.listen('click', () => {
-            const editDialog = new MDCDialog(document.querySelector('#editGareDialog'));
+            const editDialog = new MDCDialog(document.querySelector('#edit-' + this.props.id));
             editDialog.open();
         });
 
         const deleteBtn = new MDCRipple(document.querySelector('#deleteBtn'));
         deleteBtn.listen('click', () => {
-            const deleteDialog = new MDCDialog(document.getElementById(this.props.id));
+            const deleteDialog = new MDCDialog(document.getElementById('delete-'+ this.props.id));
             deleteDialog.open();
         });
 

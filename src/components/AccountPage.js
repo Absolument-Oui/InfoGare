@@ -8,6 +8,7 @@ import "../index.scss";
 import GareCard from './GareCard';
 import { child, get, getDatabase, ref } from 'firebase/database';
 import NewGareDialog from './NewGareDialog';
+import GoogleAd from './GoogleAd';
 
 class AccountPage extends Component {
     constructor(props) {
@@ -27,6 +28,7 @@ class AccountPage extends Component {
                     <h3 id='email' className='inline-block'>Email</h3>
                     <br />
                     <button className='mdc-icon-button material-icons ripple-upgrade' id='newGare'><div className='mdc-icon-button__ripple'>add</div></button>
+                    <GoogleAd slot="4075321002" />
                     <div id='cards'>
 
                     </div>

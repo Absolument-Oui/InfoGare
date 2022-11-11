@@ -152,9 +152,9 @@ class DepartsPage extends Component {
                         }
 
                         if (i < 2) {
-                            elements.push(<TwoRowDepart key={train.id} type={train.child('type').val()} number={train.child('number').val()} timing={timing} time={train.child('hourdepart').val()} track={train.child('voie').val()} retard={train.child('retardtime').val()} gare={train.child('destination').val()} gares={train.child('gares').val()} />);
-                        } else if (i > 2 && i < 8) {
-                            elements.push(<OneRowDepart key={train.id} type={train.child('type').val()} number={train.child('number').val()} timing={timing} time={train.child('hourdepart').val()} track={train.child('voie').val()} retard={train.child('retardtime').val()} gare={train.child('destination').val()} />);
+                            elements.push(<TwoRowDepart key={train.id} type={train.child('type').val()} typename={train.child('typename').val()} number={train.child('number').val()} timing={timing} time={train.child('hourdepart').val()} track={train.child('voie').val()} hall={train.child('hall').val()} retard={train.child('retardtime').val()} gare={train.child('destination').val()} gares={train.child('gares').val()} />);
+                        } else if (i < 7) {
+                            elements.push(<OneRowDepart key={train.id} type={train.child('type').val()} typename={train.child('typename').val()} number={train.child('number').val()} timing={timing} time={train.child('hourdepart').val()} track={train.child('voie').val()} hall={train.child('hall').val()} retard={train.child('retardtime').val()} gare={train.child('destination').val()} />);
                         }
                         i++;
                     }
@@ -182,7 +182,7 @@ class DepartsPage extends Component {
 
                     if (i < 2) {
                         elements.push(<TwoRowDepart key={train.id} type={train.child('type').val()} number={train.child('number').val()} timing={timing} time={train.child('hourdepart').val()} track={train.child('voie').val()} retard={train.child('retardtime').val()} gare={train.child('destination').val()} gares={train.child('gares').val()} />);
-                    } else if (i > 2 && i < 8) {
+                    } else if (i < 8) {
                         elements.push(<OneRowDepart key={train.id} type={train.child('type').val()} number={train.child('number').val()} timing={timing} time={train.child('hourdepart').val()} track={train.child('voie').val()} retard={train.child('retardtime').val()} gare={train.child('destination').val()} />);
                     }
                     i++;
