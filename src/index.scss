@@ -456,7 +456,6 @@ a:any-link {
     background-image: url(./assets/img/screen/wagons/wagon-bar.svg);
 }
 
-<<<<<<< Updated upstream
 .inpage-form {
     @include textfield.ink-color(white);
     @include textfield.label-color(lightgrey);
@@ -500,7 +499,7 @@ a:any-link {
 .train-page-hall small {
     color: #000;
     font-size: 0.4em;
-=======
+    
 /* Snow */
 .snowflake {
     --size: 1vw;
@@ -540,5 +539,4 @@ a:any-link {
 
 .snows {
     position: relative;
->>>>>>> Stashed changes
 }
