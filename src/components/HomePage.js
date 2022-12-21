@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 import '../index.scss';
 
-<<<<<<< Updated upstream
 import biglogo from '../assets/img/common/Logo_Noel.svg';
-=======
-import biglogo from '../assets/img/common/logo_v2.svg';
 import bonhomme from '../assets/img/common/bonhomme.svg';
->>>>>>> Stashed changes
 import instgramlogo from '../assets/img/common/logo_instagram.svg';
 import twitterlogo from '../assets/img/common/logo_twitter.svg';
 import discordlogo from '../assets/img/common/logo_discord.svg';
@@ -16,12 +12,8 @@ class HomePage extends Component {
     render() {
         return (
             <div className='center'>
-<<<<<<< Updated upstream
                 <GoogleAd slot="5523609982" />
-                <img src={biglogo} height="450" alt="InfoGare" />
-=======
                 <img src={biglogo} height="450" alt="InfoGare" id='logo' />
->>>>>>> Stashed changes
                 <h1>Bienvenue sur InfoGare !</h1>
                 <h3><code>Créer des infogares deviens facile</code></h3>
                 <div style={{ height: '100px' }}></div>
