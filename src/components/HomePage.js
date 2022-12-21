@@ -12,6 +12,7 @@ class HomePage extends Component {
     render() {
         return (
             <div className='center'>
+            <div className='snows' id="snows"></div>
                 <GoogleAd slot="5523609982" />
                 <img src={biglogo} height="450" alt="InfoGare" id='logo' />
                 <h1>Bienvenue sur InfoGare !</h1>
