@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../index.scss';
 
-import biglogo from '../assets/img/common/Logo_V2.svg';
+import biglogo from '../assets/img/common/logo_v2.svg';
 import instgramlogo from '../assets/img/common/logo_instagram.svg';
 import twitterlogo from '../assets/img/common/logo_twitter.svg';
 import discordlogo from '../assets/img/common/logo_discord.svg';
