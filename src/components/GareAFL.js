@@ -1,28 +1,19 @@
-import { child, get, getDatabase, orderByChild, ref, query } from 'firebase/database';
-import { getAuth } from 'firebase/auth';
-import React, { Component } from 'react';
+import React, { Component } from "react";
+import { createRoot } from "react-dom";
+import { getAuth } from "firebase/auth";
+import { getDatabase, child, ref, get } from "firebase/database";
+import { MDCRipple } from "@material/ripple";
+import { MDCMenu } from "@material/menu";
+import { MDCList } from "@material/list";
+import { MDCDialog } from "@material/dialog";
 
-import { MDCRipple } from '@material/ripple';
-import { MDCMenu } from '@material/menu';
-import { MDCList } from '@material/list';
-import { MDCDialog } from '@material/dialog';
+import GoogleAd from "./GoogleAd";
+import TrainAFLCard from "./TrainAFLCard";
+import NewTrainAflDialog from "./NewTrainAflDialog";
 
-import "../index.scss";
-import EditGareDialog from './EditGareDialog'
-import DeleteGareDialog from './DeleteGareDialog';
-import TrainCard from './TrainCard';
-import { createRoot } from 'react-dom/client';
-import NewTrainDialog from './NewTrainDialog';
-import GoogleAd from './GoogleAd';
-
-class GarePage extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {};
-    }
-
+class GareAFL extends Component {
     render() {
-        return (
+        return(
             <div className='main-content'>
                 <div className='center'>
                     <h1 id='gareName'></h1>
@@ -50,9 +41,7 @@ class GarePage extends Component {
                     <GoogleAd slot="2159604102" />
                     <div id='trains'></div>
                 </div>
-                <EditGareDialog uid={getAuth().currentUser.uid} id={this.props.id} componentRef={this.props.id} />
-                <DeleteGareDialog id={this.props.id} componentRef={this.props.id} />
-                <NewTrainDialog gid={this.props.id} />
+                <NewTrainAflDialog gid={this.props.id} />
             </div>
         );
     }
@@ -67,9 +56,9 @@ class GarePage extends Component {
             const elements = [];
             gare.child('trains').forEach(train => {
                 if (train.child('hourdepart').val() !== "") {
-                    elements.push(<TrainCard key={train.key} id={train.key} gid={this.props.id} dest={train.child('destination').val()} number={train.child('number').val()} type={train.child('type').val()} time={train.child('hourdepart').val()} />);
+                    elements.push(<TrainAFLCard key={train.key} id={train.key} gid={this.props.id} dest={train.child('destination').val()} number={train.child('number').val()} type={train.child('type').val()} time={train.child('hourdepart').val()} />);
                 } else if (train.child('hourarrive').val() !== "") {
-                    elements.push(<TrainCard key={train.key} id={train.key} gid={this.props.id} dest={train.child('provenance').val()} number={train.child('number').val()} type={train.child('type').val()} time={train.child('hourarrive').val()} arrive={true} />);
+                    elements.push(<TrainAFLCard key={train.key} id={train.key} gid={this.props.id} dest={train.child('provenance').val()} number={train.child('number').val()} type={train.child('type').val()} time={train.child('hourarrive').val()} arrive={true} />);
                 }
             });
             const root = createRoot(document.getElementById('trains'));
@@ -106,14 +95,14 @@ class GarePage extends Component {
         showMenuList.listen('MDCList:action', (event) => {
             console.log(event.detail.index);
             if (event.detail.index === 0) {
-                window.location.href = "/gare/classique/" + this.props.id + "/departs";
+                window.location.href = "/gare/AFL/" + this.props.id + "/departs";
             } else if (event.detail.index === 1) {
-                window.location.href = "/gare/classique/" + this.props.id + "/arrives";
+                window.location.href = "/gare/AFL/" + this.props.id + "/arrives";
             } else if (event.detail.index === 2) {
-                window.location.href = "/gare/classique/" + this.props.id + "/infos";
+                window.location.href = "/gare/AFL/" + this.props.id + "/infos";
             }
         });
     }
 }
 
-export default GarePage;
+export default GareAFL;

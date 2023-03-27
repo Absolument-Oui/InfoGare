@@ -50,7 +50,7 @@ class AppBar extends Component {
     }
 
     loginBtnPressed() {
-        document.location.href = 'https://auth.infogare.fr/v2/redirect?service=infogare&version=release';
+        document.location.href = 'https://auth.infogare.fr/v2/redirect?service=infogare&version=beta';
     }
 }
 

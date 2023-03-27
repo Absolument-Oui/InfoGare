@@ -145,19 +145,19 @@ class OneRowDepart extends Component {
             this.logoRef.current.classList.add('train-logo-ice');
         } else if (type === 'TGV Lyria') {
             this.logoRef.current.classList.add('train-logo-lyria');
-        } else if (type === 'OuiGo') {
+        } else if (type === 'Ouigo') {
             this.logoRef.current.classList.add('train-logo-ouigo');
-        } else if (type === 'OuiGo Classique') {
+        } else if (type === 'Ouigo Classique') {
             this.logoRef.current.classList.add('train-logo-ouigo-classique');
-        } else if (type === 'Fluo Grand Est') {
+        } else if (type === 'TER Fluo') {
             this.logoRef.current.classList.add('train-logo-fluo');
         } else if (type === 'TER Occitanie') {
             this.logoRef.current.classList.add('train-logo-occitanie');
         } else if (type === 'Intercité') {
             this.logoRef.current.classList.add('train-logo-intercite');
-        } else if (type === 'Aléop') {
+        } else if (type === 'Aleop') {
             this.logoRef.current.classList.add('train-logo-aleop');
-        } else if (type === 'TER Auvergne Rhône Alpes') {
+        } else if (type === 'TER Auvergne') {
             this.logoRef.current.classList.add('train-logo-auvergne-rhone-alpes');
         } else if (type === 'BreizhGo') {
             this.logoRef.current.classList.add('train-logo-breizhgo');
@@ -173,12 +173,18 @@ class OneRowDepart extends Component {
             this.logoRef.current.classList.add('train-logo-mobigo');
         } else if (type === 'Nomad') {
             this.logoRef.current.classList.add('train-logo-nomad');
-        } else if (type === 'Rémi') {
+        } else if (type === 'Remi') {
             this.logoRef.current.classList.add('train-logo-remi');
         } else if (type === 'Renfe Ave') {
             this.logoRef.current.classList.add('train-logo-renfe-ave');
         } else if (type === 'SBB') {
             this.logoRef.current.classList.add('train-logo-sbb');
+        } else if (type === 'SNCF (logo 1937)') {
+            this.logoRef.current.classList.add('train-logo-sncf-1937');
+            this.typeRef.current.innerText = 'Train SNCF';
+        } else if (type === 'SNCF (logo 1972)') {
+            this.logoRef.current.classList.add('train-logo-sncf-1972');
+            this.typeRef.current.innerText = 'Train SNCF';
         } else if (type === 'SNCF (logo 1985)') {
             this.logoRef.current.classList.add('train-logo-sncf-1985');
             this.typeRef.current.innerText = 'Train SNCF';
@@ -189,7 +195,7 @@ class OneRowDepart extends Component {
             this.logoRef.current.classList.add('train-logo-ter-alsace');
         } else if (type === 'TER Aquitaine') {
             this.logoRef.current.classList.add('train-logo-ter-aquitaine');
-        } else if (type === 'TER Basse Normandie') {
+        } else if (type === 'TER Basse-Normandie') {
             this.logoRef.current.classList.add('train-logo-ter-basse-normandie');
         } else if (type === 'TER Bourgogne') {
             this.logoRef.current.classList.add('train-logo-ter-bourgogne');

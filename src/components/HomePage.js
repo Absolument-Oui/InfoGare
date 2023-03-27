@@ -11,8 +11,9 @@ class HomePage extends Component {
     render() {
         return (
             <div className='center'>
+                <div className='snows' id="snows"></div>
                 <GoogleAd slot="5523609982" />
-                <img src={biglogo} height="450" alt="InfoGare" id='logo' />
+                <img src={biglogo} alt="InfoGare" id='logo' className='logo' />
                 <h1>Bienvenue sur InfoGare !</h1>
                 <h3><code>Créer des infogares deviens facile</code></h3>
                 <div style={{ height: '100px' }}></div>
@@ -43,6 +44,7 @@ class HomePage extends Component {
     }
 
     componentDidMount() {
+        
     }
 }
 

@@ -14,31 +14,42 @@ import QuaiPage from './components/QuaiPage';
 import GareRERPage from './components/GareRERPage';
 import DepartsRERPage from './components/DepartsRERPage';
 import IssuePage from './components/IssuePage';
+import DepartsAFLPage from './components/DepartsAFLPage';
+import ArrivesAFLPage from './components/ArrivesAFLPage';
+import GareAFL from './components/GareAFL';
+import UsersPage from './components/UsersPage';
+import DOonatePage from './components/DOonatePage';
 
 class App extends Component {
     render() {
         return (
             <BrowserRouter>
                 <Routes>
-                    <Route path="/" element={<AppBase user={this.props.user} auth={this.props.auth}/>}>
+                    <Route path="/" element={<AppBase user={this.props.user} auth={this.props.auth} />}>
                         <Route index element={<HomePage />} />
                         <Route path="account" element={<AccountPage user={this.props.user} />} />
                         <Route path="bug-report" element={<IssuePage />} />
                         <Route path='*' element={<NoPage />} />
-                        <Route path="/gare">
-                            <Route path="*" element={<GarePage id={window.location.pathname.split('/')[2]} />} />
-                            <Route path=":id/train/:trainId" element={<TrainPage gid={window.location.pathname.split('/')[2]} id={window.location.pathname.split('/')[4]} />} />
-                        </Route>
+                        <Route path="/gare/classique/:id"element={<GarePage id={window.location.pathname.split('/')[3]} />} />
+                        <Route path="/gare/classique/:id/train/:trainId" element={<TrainPage gid={window.location.pathname.split('/')[3]} id={window.location.pathname.split('/')[5]} />} />
+                        <Route path="/gare/AFL/:id" element={<GareAFL id={window.location.pathname.split('/')[3]} />} />
+                        <Route path="/gare/RER/:id" element={<GareRERPage id={window.location.pathname.split('/')[3]} />} />
+                        <Route path="/users" element={<UsersPage />} />
+                        <Route path="/donate" element={<DOonatePage />} />
                     </Route>
-                    <Route path="/gare">
-                        <Route path=":id/departs" element={<DepartsPage id={window.location.pathname.split('/')[2]} />} />
-                        <Route path=":id/arrives" element={<ArrivePage id={window.location.pathname.split('/')[2]} />} />
-                        <Route path=":id/infos" element={<InfosPage id={window.location.pathname.split('/')[2]} />} />
-                        <Route path=":id/train/:trainId/quai" element={<QuaiPage gid={window.location.pathname.split('/')[2]} id={window.location.pathname.split('/')[4]} />} />
+                    <Route path="/gare/classique">
+                        <Route path=":id/departs" element={<DepartsPage id={window.location.pathname.split('/')[3]} />} />
+                        <Route path=":id/arrives" element={<ArrivePage id={window.location.pathname.split('/')[3]} />} />
+                        <Route path=":id/infos" element={<InfosPage id={window.location.pathname.split('/')[3]} />} />
+                        <Route path=":id/train/:trainId/quai/depart" element={<QuaiPage mode="depart" gid={window.location.pathname.split('/')[3]} id={window.location.pathname.split('/')[5]} />} />
+                        <Route path=":id/train/:trainId/quai/arrive" element={<QuaiPage mode="arrive" gid={window.location.pathname.split('/')[3]} id={window.location.pathname.split('/')[5]} />} />
                     </Route>
-                    <Route path="/gareRER">
-                        <Route path="*" element={<GareRERPage id={window.location.pathname.split('/')[2]} />} />
-                        <Route path=":id/departs" element={<DepartsRERPage id={window.location.pathname.split('/')[2]} />} />
+                    <Route path="/gare/AFL">
+                        <Route path=":id/departs" element={<DepartsAFLPage id={window.location.pathname.split('/')[3]} />} />
+                        <Route path=":id/arrives" element={<ArrivesAFLPage id={window.location.pathname.split('/')[3]} />} />
+                    </Route>
+                    <Route path="/gare/RER">
+                        <Route path=":id/departs" element={<DepartsRERPage id={window.location.pathname.split('/')[3]} />} />
                     </Route>
                 </Routes>
             </BrowserRouter>

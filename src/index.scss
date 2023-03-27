@@ -26,6 +26,7 @@
 
 @import "material-icons/iconfont/material-icons.scss";
 @import url(./assets/css/departs/screen/trains.css);
+@import url(./assets/css/departs/screen/afl.css);
 @import url(./assets/css/informations/screen/informations.css);
 @import url(./assets/css/quai/screen/train.css);
 @import url(./assets/fonts/Achemine/style.css);
@@ -58,6 +59,18 @@ body {
 
 a:any-link {
     text-decoration: none;
+}
+
+@media screen and (max-width: 800px) {
+    .logo {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 801px) {
+    .logo {
+        width: 50%;
+    }
 }
 
 .big-icon {
@@ -94,6 +107,10 @@ a:any-link {
     line-height: 1.5;
 }
 
+.arrive {
+    @include card.fill-color(#0c5639);
+}
+
 .gare-card__title {
     font-size: 1.5rem;
     font-weight: 500;
@@ -104,8 +121,12 @@ a:any-link {
     font-weight: 400;
 }
 
-.gare-card__button {
+.gare-card__button.depart {
     @include button.ink-color(#0080aa);
+}
+
+.gare-card__button.arrive {
+    @include button.ink-color(#217a42);
 }
 
 .full-width {
@@ -154,9 +175,18 @@ a:any-link {
     margin-right: 5px;
 }
 
-.menu-item.quai {
+.menu-item.quai-depart {
     margin: auto 0;
-    background-image: url(./assets/img/common/screen_quai.png);
+    background-image: url(./assets/img/common/screen_quai_departs.png);
+    height: 16px;
+    width: 24px;
+    background-size: cover;
+    margin-right: 5px;
+}
+
+.menu-item.quai-arrive {
+    margin: auto 0;
+    background-image: url(./assets/img/common/screen_quai_arrives.png);
     height: 16px;
     width: 24px;
     background-size: cover;
@@ -426,7 +456,7 @@ a:any-link {
     @import url(./assets/css/departs/screen/quai.css);
 }
 
-.train-wagons {
+.edit-train-wagons {
     width: 9.1vh;
     height: 8vh;
     background-size: cover;
@@ -436,24 +466,33 @@ a:any-link {
     cursor: pointer;
 }
 
-.train-wagons.train-loco {
+.edit-train-wagons.no-pointer {
+    cursor: default;
+}
+
+.edit-train-wagons.train-loco {
     background-image: url(./assets/img/screen/wagons/loco.svg);
 }
 
-.train-wagons.train-tgv-l {
+.edit-train-wagons.train-tgv-l {
     background-image: url(./assets/img/screen/wagons/tgv-l.svg);
 }
 
-.train-wagons.train-tgv-r {
+.edit-train-wagons.train-tgv-r {
     background-image: url(./assets/img/screen/wagons/tgv-r.svg);
 }
 
-.train-wagons.train-wagon {
+.edit-train-wagons.train-wagon {
     background-image: url(./assets/img/screen/wagons/wagon.svg);
 }
 
-.train-wagons.train-wagon-bar {
+.edit-train-wagons.train-wagon-bar {
     background-image: url(./assets/img/screen/wagons/wagon-bar.svg);
+}
+
+.edit-train-wagons.train-navette {
+    background-image: url(./assets/img/screen/wagons/navette.svg);
+    width: 16.8vh !important;
 }
 
 .inpage-form {
@@ -500,7 +539,7 @@ a:any-link {
     color: #000;
     font-size: 0.4em;
 }
-    
+
 /* Snow */
 .snowflake {
     --size: 1vw;

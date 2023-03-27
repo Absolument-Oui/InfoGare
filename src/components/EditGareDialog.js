@@ -145,14 +145,22 @@ class EditGareDialog extends Component {
         const gareName = new MDCTextField(this.editGareName.current);
         const gareInfo = new MDCTextField(this.editGareInfo.current);
         const gareAffichageType1 = new MDCRadio(this.editGareAffichageType1.current);
+        const gareAffichageType2 = new MDCRadio(this.editGareAffichageType2.current);
         const gareInfosType1 = new MDCRadio(this.editGareInfosType1.current);
 
         const db = getDatabase();
 
+        let screen;
+        if (gareAffichageType1.checked) {
+            screen = 'Normal';
+        } else if (gareAffichageType2.checked) {
+            screen = 'EVA';
+        }
+        
         update(ref(db, 'users/' + this.props.uid + '/gares/' + this.props.id), {
             name: gareName.value,
             infos: gareInfo.value.split('\n').join('<br>'),
-            screen: gareAffichageType1.checked ? 'Normal' : 'EVA',
+            screen: screen,
             infostype: gareInfosType1.checked ? 'informations' : 'flash',
         }).then(() => {
             window.location.reload();

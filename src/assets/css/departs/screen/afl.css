@@ -1,0 +1,292 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Achemine';
+    font-size: 1vh;
+    font-weight: normal;
+    line-height: 1;
+}
+
+.rows-afl {
+    position: relative;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+}
+
+.rows-afl .rows-head {
+    height: 15vh;
+}
+
+.rows-afl .rows-head .text-time {
+    /* width: 40%; */
+    font-size: 10em;
+    color: black;
+    margin-left: 10px;
+    margin-top: 2.5%;
+    display: inline-block;
+}
+
+.rows-afl .rows-head .text-time * {
+    display: inline-block;
+}
+
+.rows-afl .rows-head .title {
+    width: 65%;
+    font-size: 9em;
+    font-weight: bolder;
+    color: black;
+    display: inline-block;
+    text-align: center;
+}
+
+.rows-afl .rows-head .logo {
+    position: absolute;
+    right: 30px;
+    top: 2.5%;
+    width: 20vh;
+    height: 10vh;
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: table-cell;
+}
+
+.rows-afl .rows {
+    height: 80vh;
+    background-color: #005397;
+}
+
+.rows-afl .rows .row-top {
+    height: 6vh;
+}
+
+.rows-afl .rows .row-top .col-first {
+    width: 20vh;
+    display: table-cell;
+}
+
+.rows-afl .rows .row-top .col-second {
+    width: 30vh;
+    display: table-cell;
+    font-size: 5em;
+    font-weight: lighter;
+}
+
+.rows-afl .rows .row-top .col-third {
+    display: table-cell;
+    font-size: 5em;
+    font-weight: lighter;
+}
+
+.rows-afl .rows .row {
+    height: 25vh;
+    padding-top: 15px;
+}
+
+.rows-afl .rows .row:nth-of-type(odd) {
+    background-color: #003A79;
+}
+
+.rows-afl .rows .row .row-first {
+    height: 7vh;
+    display: table;
+    margin-bottom: 2.5px;
+}
+
+.rows-afl .rows .row .row-second {
+    height: 7vh;
+    display: table;
+    margin-bottom: 2.5px;
+}
+
+.rows-afl .rows .row .row-third {
+    height: 7vh;
+    display: table;
+}
+
+.rows-afl .rows .row .row-first .col-first {
+    padding-left: 15px;
+    width: 20vh;
+    min-width: 20vh;
+    display: table-cell;
+    font-size: 6.5em;
+    font-weight: lighter;
+    color: #FFE624;
+}
+
+.rows-afl .rows .row .row-first .col-second {
+    width: 30vh;
+    min-width: 30vh;
+    display: table-cell;
+    font-size: 6.5em;
+    font-weight: lighter;
+    color: white;
+}
+
+.rows-afl .rows .row .row-first .col-third {
+    width: 50%;
+    display: table-cell;
+    font-size: 6.5em;
+    font-weight: bold;
+    color: white;
+}
+
+.rows-afl .rows .row .row-first .col-fourth {
+    position: absolute;
+    display: table-cell;
+    font-size: 6.5em;
+    font-weight: 400;
+    color: #FFE624;
+}
+
+.rows-afl .rows .row .row-second .col-first {
+    padding-left: 15px;
+    width: 20vh;
+    display: table-cell;
+}
+
+.rows-afl .rows .row .row-second .col-second {
+    width: 30vh;
+    display: table-cell;
+    font-size: 6em;
+    font-weight: lighter;
+    color: #89E0FF;
+}
+
+.rows-afl .rows .row .row-second .col-third {
+    position: absolute;
+    left: 50vh;
+    right: 0;
+    display: table-cell;
+    font-size: 6em;
+    font-weight: lighter;
+    color: white;
+    overflow: hidden;
+}
+
+.rows-afl .rows .row .row-second .col-third .gares {
+    display: table;
+    height: 75%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    white-space: nowrap;
+}
+
+.rows-afl .rows .row .row-second .col-third .gares .gare{
+    display: inline;
+    color: white;
+}
+
+.rows-afl .rows .row .row-second .col-third .gares .gare::after{
+    content: '';
+    display: inline-block;
+    width: 1.5vh;
+    height: 1.5vh;
+    margin: 0 1vh;
+    margin-bottom: 0.25vh;
+    border-radius: 50%;
+    background: white;
+}
+
+.rows-afl .rows .row .row-second .col-third .gares .gare:last-child::after{
+    display: none;
+}
+
+.afl-text-scroll-x {
+    font-size: inherit !important;
+}
+
+.clock-blink {
+    animation: blink 1.5s steps(2, start) infinite;
+    -webkit-animation: blink 1.5s steps(2, start) infinite;
+}
+
+@keyframes blink {
+    from {
+        visibility: visible;
+    }
+    to {
+        visibility: hidden;
+    }
+}
+
+@-webkit-keyframes blink {
+    from {
+        visibility: visible;
+    }
+
+    to {
+        visibility: hidden;
+    }
+}
+
+.rows-afl .rows .row .row-third .col-first {
+    width: 50vh;
+    display: table-cell;
+}
+
+.rows-afl .rows .row .row-third .col-second {
+    color: #FFE624;
+    display: table-cell;
+    font-size: 6.5em;
+}
+
+.rows-afl .rows-foot {
+    content: '';
+    display: inline-block;
+    width: 2.5vh;
+    height: 2.5vh;
+    margin: 0 1vh;
+    margin-bottom: 0.25vh;
+    border-radius: 50%;
+    background: black;
+    position: absolute;
+    bottom: 0.5vh;
+    left: 50%;
+}
+
+.wagons {
+    display: inline-block;
+    width: 8.2vh;
+    height: 7.5vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+}
+
+.wagons.wagon-tgv-l {
+    width: 9.1vh;
+    background-image: url(../../../img/screen/afl/tgv-l.svg);
+}
+
+.wagons.wagon-tgv-r {
+    width: 9.1vh;
+    background-image: url(../../../img/screen/afl/tgv-r.svg);
+}
+
+.wagons.wagon-loco {
+    width: 9.1vh;
+    background-image: url(../../../img/screen/afl/loco.svg);
+}
+
+.wagons.wagon-wagon {
+    width: 8.6vh;
+    background-image: url(../../../img/screen/afl/wagon.svg);
+}
+
+.wagons.wagon-wagon-bar {
+    width: 8.6vh;
+    background-image: url(../../../img/screen/afl/wagon-bar.svg);
+}
+
+.wagons.wagon-navette {
+    width: 16.8vh;
+    background-image: url(../../../img/screen/afl/navette.svg);
+}
+

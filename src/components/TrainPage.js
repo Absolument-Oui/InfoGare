@@ -26,6 +26,7 @@ class TrainPage extends Component {
         this.quaiRef = React.createRef();
         this.numTrainRef = React.createRef();
         this.hallRef = React.createRef();
+        this.compoRef = React.createRef();
     }
 
     render() {
@@ -37,8 +38,13 @@ class TrainPage extends Component {
                     <div id='showMenu' className='mdc-menu mdc-menu-surface'>
                         <ul className='mdc-list' role='menu' aria-hidden='true' aria-orientation='vertical' tabIndex='0'>
                             <li className='menu-item mdc-list-item' role='menuitem'>
-                                <span className='menu-item quai'></span>
-                                <span className='menu-item-text mdc-list-item__text'>Quai</span>
+                                <span className='menu-item quai-depart'></span>
+                                <span className='menu-item-text mdc-list-item__text'>Quai (départ)</span>
+                                <span className='mdc-list-item__ripple'></span>
+                            </li>
+                            <li className='menu-item mdc-list-item' role='menuitem'>
+                                <span className='menu-item quai-arrive'></span>
+                                <span className='menu-item-text mdc-list-item__text'>Quai (arrivée)</span>
                                 <span className='mdc-list-item__ripple'></span>
                             </li>
                         </ul>
@@ -93,6 +99,20 @@ class TrainPage extends Component {
                             </td>
                             <td style={{ width: '50%'}}>
                                 <span ref={this.numTrainRef}></span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table style={{ width: '100%' }}>
+                    <thead>
+                        <tr>
+                            <th><h3>Composition du train</h3></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td align='center'>
+                                <div ref={this.compoRef}></div>
                             </td>
                         </tr>
                     </tbody>
@@ -154,6 +174,13 @@ class TrainPage extends Component {
                     }
                 });
             }
+
+            train.child('compo').forEach(compo => {
+                const wagon = document.createElement('div');
+                wagon.className = 'edit-train-wagons no-pointer ' + compo.val();
+                this.compoRef.current.appendChild(wagon);
+            });
+
             type = train.child('type').val();
             if (type === 'TER') {
                 this.typeIconRef.current.classList.add('train-logo-ter');
@@ -263,7 +290,9 @@ class TrainPage extends Component {
         const showMenuList = new MDCList(document.querySelector('.mdc-list'));
         showMenuList.listen('MDCList:action', (event) => {
             if (event.detail.index === 0) {
-                window.location.href = '/gare/' + this.props.gid + '/train/' + this.props.id + '/quai';
+                window.location.href = '/gare/classique/' + this.props.gid + '/train/' + this.props.id + '/quai/depart';
+            } else if (event.detail.index === 1) {
+                window.location.href = '/gare/classique/' + this.props.gid + '/train/' + this.props.id + '/quai/arrive';
             }
         });
 
@@ -278,6 +307,8 @@ class TrainPage extends Component {
             const deleteDialog = new MDCDialog(document.getElementById('delete-' + this.props.id));
             deleteDialog.open();
         });
+
+        console.log(this.props.id);
     }
 }
 

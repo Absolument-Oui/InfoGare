@@ -36,15 +36,15 @@ class GareCard extends Component {
                 <div className="mdc-card__ripple"></div>
                 <div className="mdc-card__actions">
                     <div className="mdc-card__action-buttons">
-                        <button className="gare-card__button mdc-button mdc-card__action mdc-card__action--button" ref={this.showGareBtn}>
+                        <button className="gare-card__button depart mdc-button mdc-card__action mdc-card__action--button" ref={this.showGareBtn}>
                             <div className="mdc-button__ripple"></div>
                             <span className="mdc-button__label">Afficher</span>
                         </button>
-                        <button className="gare-card__button mdc-button mdc-card__action mdc-card__action--button" ref={this.editGareBtn}>
+                        <button className="gare-card__button depart mdc-button mdc-card__action mdc-card__action--button" ref={this.editGareBtn}>
                             <div className="mdc-button__ripple"></div>
                             <span className="mdc-button__label">Editer</span>
                         </button>
-                        <button className="gare-card__button mdc-button mdc-card__action mdc-card__action--button" ref={this.deleteGareBtn}>
+                        <button className="gare-card__button depart mdc-button mdc-card__action mdc-card__action--button" ref={this.deleteGareBtn}>
                             <div className="mdc-button__ripple"></div>
                             <span className="mdc-button__label">Supprimer</span>
                         </button>
@@ -61,9 +61,13 @@ class GareCard extends Component {
         const showBtn = new MDCRipple(this.showGareBtn.current);
         showBtn.listen('click', () => {
             if (this.props.type === 'Gare classique') {
-                window.location.href = `/gare/${this.props.id}`;
-            } else {
-                window.location.href = `/gareRER/${this.props.id}`;
+                if (this.props.screen === 'Normal') {
+                    window.location.href = `/gare/classique/${this.props.id}`;
+                }
+            } else if (this.props.type === 'Gare RER') {
+                window.location.href = `/gare/RER/${this.props.id}`;
+            } else if (this.props.type === 'Gare AFL') {
+                window.location.href = `/gare/AFL/${this.props.id}`;
             }
         });
         const editBtn = new MDCRipple(this.editGareBtn.current);
@@ -76,10 +80,11 @@ class GareCard extends Component {
             const dialog = new MDCDialog(document.getElementById('delete-' + this.props.id));
             dialog.open();
         });
-        if (this.props.type === 'Gare classique') {
-            this.mediaRef.current.classList.add('gare-card-media-sncf');
-        } else {
+        
+        if (this.props.type === 'Gare RER') {
             this.mediaRef.current.classList.add('gare-card-media-ratp');
+        } else {
+            this.mediaRef.current.classList.add('gare-card-media-sncf');
         }
     }
 }

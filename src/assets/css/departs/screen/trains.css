@@ -884,7 +884,6 @@ a {
 }
 
 .rows .row-group-2 .row:nth-of-type(1) .train-track.train-track-h:not(.train-track-view) {
-    padding-top: 0.4em;
     line-height: 0.4;
 }
 
@@ -1357,7 +1356,6 @@ a {
 
 .train-track.train-track-h:not(.train-track-view) {
     display: block;
-    /*padding-top: 0.3em;*/
     line-height: 0.4;
     background: #fff;
 }

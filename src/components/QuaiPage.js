@@ -19,12 +19,20 @@ class QuaiPage extends Component {
         this.typeRef = React.createRef();
         this.numberRef = React.createRef();
         this.stationsRef = React.createRef();
+        this.screenRef = React.createRef();
+        this.rowGroupBarRef = React.createRef();
+        this.compoRef = React.createRef();
+        this.compoTrack = React.createRef();
+        this.compoTitle = React.createRef();
+        this.compoArea = React.createRef();
+        this.rowGroupRef = React.createRef();
+        this.stationsRef = React.createRef();
     }
 
     render() {
         return (
-            <div className='rows rows-departures'>
-                <div className='row-group row-group-bar quai'>
+            <div className='rows' ref={this.screenRef}>
+                <div className='row-group row-group-bar quai' ref={this.rowGroupBarRef}>
                     <div className='row'>
                         <div className='col-first'>
                             <div className='bar-informations text-scroll-x' ref={this.infosRef}></div>
@@ -41,7 +49,7 @@ class QuaiPage extends Component {
                         </div>
                     </div>
                 </div>
-                <div className='row-group row-group-train'>
+                <div className='row-group row-group-train' ref={this.rowGroupRef}>
                     <div className='row'>
                         <div className='col-first'>
                             <div className='row-background quai row-background-quai'></div>
@@ -63,6 +71,28 @@ class QuaiPage extends Component {
 
                                     </tbody>
                                 </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div className='row' style={{display: 'none'}} ref={this.compoRef}>
+                        <div className='col-third'>
+                            <div className='train-wagons-track'>
+                                <div className='train-track-title'>Voie</div>
+                                <div className='train-track-track' ref={this.compoTrack}></div>
+                                <div className='train-track-bottom'></div>
+                            </div>
+                            <div className='train-wagons'>
+                                <div className='train-wagons-line'></div>
+                                <div className='train-wagons-align train-wagons-align-center'>
+                                    <div className='train-wagons-trains train-wagons-trains-reduced'>
+                                        <div className='train-wagons-train' >
+                                            <div className='train-wagons-train-title train-wagons-train-title-yellow' ref={this.compoTitle}></div>
+                                            <div ref={this.compoArea}>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -140,7 +170,6 @@ class QuaiPage extends Component {
         }
         $('#clock-seconds').html(s);
         setInterval(this.clock, '1000');
-        return true;
     }
 
     componentDidMount() {
@@ -152,20 +181,40 @@ class QuaiPage extends Component {
             console.error(error);
         });
 
+        if (this.props.mode === 'depart') {
+            this.screenRef.current.classList.add('rows-departures');
+        } else {
+            this.screenRef.current.classList.add('rows-arrivals');
+        }
+
         const uid = getAuth().currentUser.uid;
         const db = ref(getDatabase(), 'users/' + uid + '/gares/' + this.props.gid + '/trains/' + this.props.id);
 
         get(db, '').then(snapshot => {
             if (snapshot.child('retardtype').val() === 'alheure') {
-                this.timeHoursRef.current.innerHTML = snapshot.child('hourdepart').val().replace(':', 'h');
+                if (this.props.mode === 'depart') {
+                    this.timeHoursRef.current.innerHTML = snapshot.child('hourdepart').val().replace(':', 'h');
+                } else {
+                    this.timeHoursRef.current.innerHTML = snapshot.child('hourarrive').val().replace(':', 'h');
+                }
                 this.timeOntimeRef.current.innerHTML = 'à l\'heure';
-            } else if (snapshot.child('retardtype').val() === 'supprime') {
-                const colMerged = document.createElement('div', { class: 'col-second-merged animation-blink' });
-                const animationBlink1 = document.createElement('span', { class: 'animation-blink-1' });
-                const textTimeHours = document.createElement('div', { class: 'text-time-hours' });
-                textTimeHours.innerHTML = snapshot.child('hourdepart').val().replace(':', 'h');
-                const animationBlink2 = document.createElement('span', { class: 'animation-blink-2' });
-                const textTimeOntime = document.createElement('div', { class: 'text-time-ontime' });
+            } else if (snapshot.child('retardtype').val() === 'suppr') {
+                const colMerged = document.createElement('div');
+                colMerged.classList.add('col-second-merged');
+                colMerged.classList.add('animation-blink');
+                const animationBlink1 = document.createElement('span');
+                animationBlink1.classList.add('animation-blink-1');
+                const textTimeHours = document.createElement('div');
+                textTimeHours.classList.add('text-time-hours');
+                if (this.props.mode === 'depart') {
+                    textTimeHours.innerHTML = snapshot.child('hourdepart').val().replace(':', 'h');
+                } else {
+                    textTimeHours.innerHTML = snapshot.child('hourarrive').val().replace(':', 'h');
+                }
+                const animationBlink2 = document.createElement('span');
+                animationBlink2.classList.add('animation-blink-2');
+                const textTimeOntime = document.createElement('div');
+                textTimeOntime.classList.add('text-time-ontime');
                 textTimeOntime.innerHTML = 'supprimé';
                 animationBlink1.appendChild(textTimeHours);
                 animationBlink2.appendChild(textTimeOntime);
@@ -173,12 +222,22 @@ class QuaiPage extends Component {
                 colMerged.appendChild(animationBlink2);
                 this.trainTimeRef.current.appendChild(colMerged);
             } else if (snapshot.child('retardtype').val() === 'retindet') {
-                const colMerged = document.createElement('div', { class: 'col-second-merged animation-blink' });
-                const animationBlink1 = document.createElement('span', { class: 'animation-blink-1' });
-                const textTimeHours = document.createElement('div', { class: 'text-time-hours' });
-                textTimeHours.innerHTML = snapshot.child('hourdepart').val().replace(':', 'h');
-                const animationBlink2 = document.createElement('span', { class: 'animation-blink-2' });
-                const textTimeOntime = document.createElement('div', { class: 'text-time-ontime' });
+                const colMerged = document.createElement('div');
+                colMerged.classList.add('col-second-merged');
+                colMerged.classList.add('animation-blink');
+                const animationBlink1 = document.createElement('span');
+                animationBlink1.classList.add('animation-blink-1');
+                const textTimeHours = document.createElement('div');
+                textTimeHours.classList.add('text-time-hours');
+                if (this.props.mode === 'depart') {
+                    textTimeHours.innerHTML = snapshot.child('hourdepart').val().replace(':', 'h');
+                } else {
+                    textTimeHours.innerHTML = snapshot.child('hourarrive').val().replace(':', 'h');
+                }
+                const animationBlink2 = document.createElement('span');
+                animationBlink2.classList.add('animation-blink-2');
+                const textTimeOntime = document.createElement('div');
+                textTimeOntime.classList.add('text-time-ontime');
                 textTimeOntime.innerHTML = 'ret. indet.';
                 animationBlink1.appendChild(textTimeHours);
                 animationBlink2.appendChild(textTimeOntime);
@@ -193,7 +252,11 @@ class QuaiPage extends Component {
                 animationBlink1.classList.add('animation-blink-1');
                 const textTimeHours = document.createElement('div');
                 textTimeHours.classList.add('text-time-hours');
-                textTimeHours.innerHTML = snapshot.child('hourdepart').val().replace(':', 'h');
+                if (this.props.mode === 'depart') {
+                    textTimeHours.innerHTML = snapshot.child('hourdepart').val().replace(':', 'h');
+                } else {
+                    textTimeHours.innerHTML = snapshot.child('hourarrive').val().replace(':', 'h');
+                }
                 const animationBlink2 = document.createElement('span');
                 animationBlink2.classList.add('animation-blink-2');
                 const textTimeOntime = document.createElement('div');
@@ -205,16 +268,30 @@ class QuaiPage extends Component {
                 colMerged.appendChild(animationBlink2);
                 this.trainTimeRef.current.appendChild(colMerged);
             }
-            this.stationRef.current.innerHTML = snapshot.child('destination').val();
+            if (this.props.mode === 'depart') {
+                this.stationRef.current.innerHTML = snapshot.child('destination').val();
+            } else {
+                this.stationRef.current.innerHTML = snapshot.child('provenance').val();
+            }
             this.numberRef.current.innerHTML = snapshot.child('number').val();
 
-            const gares = snapshot.child('gares').val();
+            let gares;
+
+            if (this.props.mode === 'depart') {
+                gares = snapshot.child('gares').val();
+            } else {
+                gares = snapshot.child('from').val();
+            }
 
             var i = 0;
             gares.forEach(gare => {
                 const tr = document.createElement('tr');
                 if (i === gares.length - 1) {
-                    tr.className = 'train-stations-last-departures';
+                    if (this.props.mode === 'depart') {
+                        tr.className = 'train-stations-last-departures';
+                    } else {
+                        tr.className = 'train-stations-last-arrivals';
+                    }
                 }
                 const stationColumn = document.createElement('td');
                 stationColumn.className = 'trains-stations-column';
@@ -330,7 +407,7 @@ class QuaiPage extends Component {
                 this.trainLogoRef.current.classList.add('train-logo-sncf-color');
             }
 
-            if (snapshot.child('typename').val() != null) {
+            if (snapshot.child('typename').val() !== "" && snapshot.child('typename').val() !== undefined) {
                 this.typeRef.current.innerText = snapshot.child('typename').val();
             }
         });

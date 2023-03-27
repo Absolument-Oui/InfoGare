@@ -812,7 +812,7 @@ a {
     background-image: url(../../../img/screen/quai/train-stations-margin-background-departure.svg);
 }
 
-.rows.rows-arrivals .row-background {
+.rows.rows-arrivals .row-background.row-background-quai {
     background-image: url(../../../img/screen/quai/row-background-arrival.svg);
 }
 
@@ -1335,14 +1335,14 @@ a {
 
 /* -- track -- */
 
-.quai.train-track {
+.train-wagons-track {
     position: absolute;
-    top: 68.5vh;
+    top: 3.5vh;
     left: 2vh;
     text-align: center;
 }
 
-.train-track .train-track-title {
+.train-wagons-track .train-track-title {
     display: inline-block;
     padding: 0 1.8vh;
     color: #51124a;
@@ -1352,12 +1352,12 @@ a {
     background: #fff;
 }
 
-.train-track .train-track-track {
+.train-wagons-track .train-track-track {
     font-size: 7em;
     font-weight: bold;
 }
 
-.train-track .train-track-bottom {
+.train-wagons-track .train-track-bottom {
     width: 10vh;
     height: 0.5vh;
     border-radius: 1vh;

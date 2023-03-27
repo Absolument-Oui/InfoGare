@@ -68,10 +68,13 @@ class AccountPage extends Component {
                 let gareType;
                 if (gare.child('type').val() === 'neutral') {
                     gareType = 'Gare classique';
-                } else {
+                } else if (gare.child('type').val() === 'RER') {
                     gareType = 'Gare RER';
+                } else if (gare.child('type').val() === 'AFL') {
+                    gareType = 'Gare AFL';
                 }
-                const card = <GareCard key={elements.length} uid={this.props.user.uid} name={gare.child('name').val()} type={gareType} number={gare.child('trains').size} id={gare.key} />;
+
+                const card = <GareCard key={elements.length} uid={this.props.user.uid} name={gare.child('name').val()} type={gareType} number={gare.child('trains').size} id={gare.key} screen={gare.child('screen').val()} />;
                 elements.push(card);
             });
             root.render(elements);

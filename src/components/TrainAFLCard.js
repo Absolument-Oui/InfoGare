@@ -3,10 +3,10 @@ import React, { Component } from 'react';
 import { MDCRipple } from '@material/ripple';
 import { MDCDialog } from '@material/dialog';
 
-import EditTrainDialog from './EditTrainDialog';
+import EditTrainAFLDialog from './EditTrainAFLDialog';
 import DeleteTrainDialog from './DeleteTrainDialog';
 
-class TrainCard extends Component {
+class TrainAFLCard extends Component {
     constructor(props) {
         super(props);
         this.state = {};
@@ -30,7 +30,7 @@ class TrainCard extends Component {
                 <div className="mdc-card__ripple"></div>
                 <div className="mdc-card__actions">
                     <div className="mdc-card__action-buttons">
-                        <button className="gare-card__button mdc-button mdc-card__action mdc-card__action--button" ref={this.showTrainBtn}>
+                        <button className="gare-card__button mdc-button mdc-card__action mdc-card__action--button" style={{display: 'none'}} ref={this.showTrainBtn}>
                             <div className="mdc-button__ripple"></div>
                             <span className="mdc-button__label">Afficher</span>
                         </button>
@@ -44,7 +44,7 @@ class TrainCard extends Component {
                         </button>
                     </div>
                 </div>
-                <EditTrainDialog gid={this.props.gid} id={this.props.id} componentRef={this.props.id} />
+                <EditTrainAFLDialog gid={this.props.gid} id={this.props.id} componentRef={this.props.id} />
                 <DeleteTrainDialog gid={this.props.gid} id={this.props.id} componentRef={this.props.id} />
             </div>
         );
@@ -93,19 +93,19 @@ class TrainCard extends Component {
             this.mediaRef.current.classList.add('train-card-ice');
         } else if (type === 'TGV Lyria') {
             this.mediaRef.current.classList.add('train-card-lyria');
-        } else if (type === 'Ouigo') {
+        } else if (type === 'OuiGo') {
             this.mediaRef.current.classList.add('train-card-ouigo');
-        } else if (type === 'Ouigo Classique') {
+        } else if (type === 'OuiGo Classique') {
             this.mediaRef.current.classList.add('train-card-ouigo-classique');
-        } else if (type === 'TER Fluo') {
+        } else if (type === 'Fluo Grand Est') {
             this.mediaRef.current.classList.add('train-card-fluo');
         } else if (type === 'TER Occitanie') {
             this.mediaRef.current.classList.add('train-card-occitanie');
         } else if (type === 'Intercité') {
             this.mediaRef.current.classList.add('train-card-intercite');
-        } else if (type === 'Aleop') {
+        } else if (type === 'Aléop') {
             this.mediaRef.current.classList.add('train-card-aleop');
-        } else if (type === 'TER Auvergne') {
+        } else if (type === 'TER Auvergne Rhône Alpes') {
             this.mediaRef.current.classList.add('train-card-auvergne-rhone-alpes');
         } else if (type === 'BreizhGo') {
             this.mediaRef.current.classList.add('train-card-breizhgo');
@@ -121,16 +121,12 @@ class TrainCard extends Component {
             this.mediaRef.current.classList.add('train-card-mobigo');
         } else if (type === 'Nomad') {
             this.mediaRef.current.classList.add('train-card-nomad');
-        } else if (type === 'Remi') {
+        } else if (type === 'Rémi') {
             this.mediaRef.current.classList.add('train-card-remi');
         } else if (type === 'Renfe Ave') {
             this.mediaRef.current.classList.add('train-card-renfe-ave');
         } else if (type === 'SBB') {
             this.mediaRef.current.classList.add('train-card-sbb');
-        } else if (type === 'SNCF (logo 1937)') {
-            this.mediaRef.current.classList.add('train-card-sncf-1937');
-        } else if (type === 'SNCF (logo 1972)') {
-            this.mediaRef.current.classList.add('train-card-sncf-1972');
         } else if (type === 'SNCF (logo 1985)') {
             this.mediaRef.current.classList.add('train-card-sncf-1985');
         } else if (type === 'SNCF (logo 1992)') {
@@ -139,7 +135,7 @@ class TrainCard extends Component {
             this.mediaRef.current.classList.add('train-card-ter-alsace');
         } else if (type === 'TER Aquitaine') {
             this.mediaRef.current.classList.add('train-card-ter-aquitaine');
-        } else if (type === 'TER Basse-Normandie') {
+        } else if (type === 'TER Basse Normandie') {
             this.mediaRef.current.classList.add('train-card-ter-basse-normandie');
         } else if (type === 'TER Bourgogne') {
             this.mediaRef.current.classList.add('train-card-ter-bourgogne');
@@ -147,8 +143,6 @@ class TrainCard extends Component {
             this.mediaRef.current.classList.add('train-card-ter-bretagne');
         } else if (type === 'TER Centre') {
             this.mediaRef.current.classList.add('train-card-ter-centre');
-        } else if (type === 'TER Franche Comte') {
-            this.mediaRef.current.classList.add('train-card-ter-franche-comte');
         } else if (type === 'TER Languedoc Roussillon') {
             this.mediaRef.current.classList.add('train-card-ter-languedoc-roussillon');
         } else if (type === 'TER Midi Pyrénées') {
@@ -195,4 +189,4 @@ class TrainCard extends Component {
     }
 }
 
-export default TrainCard;
+export default TrainAFLCard;
