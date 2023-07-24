@@ -159,14 +159,24 @@ class DepartsPage extends Component {
             const elements = [];
             var i = 0;
             departs.forEach(train => {
-                if (train.child('hourdepart').val()) {
+                if (train.child('hourdepart').val() && train.child('show').val() !== false) {
                     let timing;
                     if (train.child('retardtype').val() === 'alheure') {
                         timing = 'à l\'heure';
                     } else if (train.child('retardtype').val() === 'retindet') {
                         timing = 'ret. indet.';
                     } else if (train.child('retardtype').val() === 'ret') {
-                        timing = 'retard ' + train.child('retardtime').val() + ' min.';
+                        if (train.child('retardtime').val() > 60) {
+                            var time = train.child('retardtime').val();
+                            var hours = Math.floor(time / 60);
+                            var minutes = time % 60;
+                            if (minutes < 10) {
+                                minutes = '0' + minutes;
+                            }
+                            timing = 'retard <br>' + hours + 'h' + minutes;
+                        } else {
+                            timing = 'retard <br>' + train.child('retardtime').val() + ' min.';
+                        }
                     } else {
                         timing = 'supprimé';
                     }

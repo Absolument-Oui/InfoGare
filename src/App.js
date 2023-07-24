@@ -19,6 +19,7 @@ import ArrivesAFLPage from './components/ArrivesAFLPage';
 import GareAFL from './components/GareAFL';
 import UsersPage from './components/UsersPage';
 import DOonatePage from './components/DOonatePage';
+import ControlPanel from './components/ControlPanel';
 
 class App extends Component {
     render() {
@@ -41,6 +42,7 @@ class App extends Component {
                         <Route path=":id/departs" element={<DepartsPage id={window.location.pathname.split('/')[3]} />} />
                         <Route path=":id/arrives" element={<ArrivePage id={window.location.pathname.split('/')[3]} />} />
                         <Route path=":id/infos" element={<InfosPage id={window.location.pathname.split('/')[3]} />} />
+                        <Route path=":id/control-panel" element={<ControlPanel id={window.location.pathname.split('/')[3]} />} />
                         <Route path=":id/train/:trainId/quai/depart" element={<QuaiPage mode="depart" gid={window.location.pathname.split('/')[3]} id={window.location.pathname.split('/')[5]} />} />
                         <Route path=":id/train/:trainId/quai/arrive" element={<QuaiPage mode="arrive" gid={window.location.pathname.split('/')[3]} id={window.location.pathname.split('/')[5]} />} />
                     </Route>

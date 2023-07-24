@@ -44,6 +44,11 @@ class GarePage extends Component {
                                 <span className='menu-item-text mdc-list-item__text'>Infos</span>
                                 <span className='mdc-list-item__ripple'></span>
                             </li>
+                            <li className='menu-item mdc-list-item' role='menuitem'>
+                                <span className='menu-item control-panel'></span>
+                                <span className='menu-item-text mdc-list-item__text'>Panneau de contrôle</span>
+                                <span className='mdc-list-item__ripple'></span>
+                            </li>
                         </ul>
                     </div>
                     <br /><br />
@@ -111,6 +116,8 @@ class GarePage extends Component {
                 window.location.href = "/gare/classique/" + this.props.id + "/arrives";
             } else if (event.detail.index === 2) {
                 window.location.href = "/gare/classique/" + this.props.id + "/infos";
+            } else if (event.detail.index === 3) {
+                window.open("/gare/classique/" + this.props.id + "/control-panel", "", "width=800,height=600");
             }
         });
     }

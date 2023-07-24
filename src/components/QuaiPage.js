@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import $ from 'jquery';
 
 import "../index.scss";
-import { getDatabase, ref, get } from 'firebase/database';
+import { getDatabase, ref, get, onValue, query } from 'firebase/database';
 import { getAuth } from 'firebase/auth';
 
 class QuaiPage extends Component {
@@ -74,7 +74,7 @@ class QuaiPage extends Component {
                             </div>
                         </div>
                     </div>
-                    <div className='row' style={{display: 'none'}} ref={this.compoRef}>
+                    <div className='row' style={{ display: 'none' }} ref={this.compoRef}>
                         <div className='col-third'>
                             <div className='train-wagons-track'>
                                 <div className='train-track-title'>Voie</div>
@@ -190,7 +190,12 @@ class QuaiPage extends Component {
         const uid = getAuth().currentUser.uid;
         const db = ref(getDatabase(), 'users/' + uid + '/gares/' + this.props.gid + '/trains/' + this.props.id);
 
-        get(db, '').then(snapshot => {
+        var img = document.createElement('div');
+        img.className = 'departure-background';
+        img.style.display = 'none';
+        document.body.appendChild(img);
+
+        get(db).then(snapshot => {
             if (snapshot.child('retardtype').val() === 'alheure') {
                 if (this.props.mode === 'depart') {
                     this.timeHoursRef.current.innerHTML = snapshot.child('hourdepart').val().replace(':', 'h');
@@ -411,6 +416,17 @@ class QuaiPage extends Component {
                 this.typeRef.current.innerText = snapshot.child('typename').val();
             }
         });
+
+        onValue(query(ref(getDatabase(), `users/${uid}/gares/${this.props.gid}/trains/${this.props.id}/departure`)), (train) => {
+            if (train.val() === true) {
+                document.getElementsByClassName('departure-background')[0].style.display = 'block';
+            } else {
+                document.getElementsByClassName('departure-background')[0].style.display = 'none';
+            }
+        }, (error) => {
+            console.log('Error: ' + error.code);
+        });
+
 
         this.clock();
         this.scrollX();

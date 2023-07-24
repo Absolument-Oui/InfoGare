@@ -17,12 +17,15 @@
 @use "@material/menu/mdc-menu";
 @use "@material/select/mdc-select";
 @use "@material/chips/styles" as chips;
+@use "@material/data-table/data-table";
 
 @include icon-button.core-styles;
 @include dialog.core-styles;
 @include textfield.core-styles;
 @include card.core-styles;
 @include form-field.core-styles;
+@include data-table.core-styles;
+@include data-table.theme-baseline;
 
 @import "material-icons/iconfont/material-icons.scss";
 @import url(./assets/css/departs/screen/trains.css);
@@ -188,6 +191,15 @@ a:any-link {
     margin: auto 0;
     background-image: url(./assets/img/common/screen_quai_arrives.png);
     height: 16px;
+    width: 24px;
+    background-size: cover;
+    margin-right: 5px;
+}
+
+.menu-item.control-panel {
+    margin: auto 0;
+    background-image: url(./assets/img/common/screen_controlpanel.png);
+    height: 14px;
     width: 24px;
     background-size: cover;
     margin-right: 5px;
@@ -538,6 +550,38 @@ a:any-link {
 .train-page-hall small {
     color: #000;
     font-size: 0.4em;
+}
+
+.control-panel-row.depart {
+    background-color: #003a79;
+}
+
+.control-panel-row.arrivee {
+    background-color: #0c5639;
+}
+
+.control-panel-row.both {
+    background: linear-gradient(90deg, rgba(0,58,121,1) 0%, rgba(12,86,57,1) 100%);
+}
+
+.departure-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    background-size: 100% 100%;
+    animation: departureBackground 2s infinite steps(2, start);
+}
+
+@keyframes departureBackground {
+    from {
+        background-image: url(./assets/img/common/depart_en_cours.png);
+    }
+    to {
+        background-image: url(./assets/img/common/depart_en_cours_2.png);
+    }
 }
 
 /* Snow */

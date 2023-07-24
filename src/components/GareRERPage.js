@@ -96,11 +96,11 @@ class GareRERPage extends Component {
         showMenuList.listen('MDCList:action', (event) => {
             console.log(event.detail.index);
             if (event.detail.index === 0) {
-                window.location.href = "/gareRER/" + this.props.id + "/departs";
+                window.location.href = "/gare/RER/" + this.props.id + "/departs";
             } else if (event.detail.index === 1) {
-                window.location.href = "/gareRER/" + this.props.id + "/arrives";
+                window.location.href = "/gare/RER/" + this.props.id + "/arrives";
             } else if (event.detail.index === 2) {
-                window.location.href = "/gareRER/" + this.props.id + "/infos";
+                window.location.href = "/gare/RER/" + this.props.id + "/infos";
             }
         });
     }

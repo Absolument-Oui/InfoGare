@@ -50,7 +50,7 @@ class DeleteTrainDialog extends Component {
                 const gid = this.props.gid;
                 const id = this.props.id;
                 remove(ref(db, 'users/' + uid + '/gares/' + gid + '/trains/' + id)).then(() => {
-                    window.location.href = '/gare/' + gid;
+                    window.location.href = '/gare/classique/' + gid;
                 });
             }
         });
