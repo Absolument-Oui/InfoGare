@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "../index.scss";
-import logo from "../assets/img/common/favicon_v2.svg";
+import logo from "../assets/img/common/Favicon_Noel.svg";
 
 import { MDCDialog } from "@material/dialog";
 

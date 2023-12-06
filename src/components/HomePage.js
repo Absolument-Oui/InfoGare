@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import '../index.scss';
 
-import biglogo from '../assets/img/common/logo_v2.svg';
+import biglogo from '../assets/img/common/Logo_Noel.svg';
+import bonhomme from '../assets/img/common/bonhomme.svg';
 import instgramlogo from '../assets/img/common/logo_instagram.svg';
 import twitterlogo from '../assets/img/common/logo_twitter.svg';
 import discordlogo from '../assets/img/common/logo_discord.svg';
@@ -44,7 +45,23 @@ class HomePage extends Component {
     }
 
     componentDidMount() {
-        
+        for (var i = 0; i < 100; i++) {
+            var snow = document.createElement('div');
+            snow.className = 'snowflake';
+            document.getElementById('snows').appendChild(snow);
+        }
+        var logomode = 0;
+
+        var logo = document.getElementById('logo');
+        logo.onclick = function () {
+            if (logomode == 0) {
+                logo.src = bonhomme;
+                logomode = 1;
+            } else {
+                logo.src = biglogo;
+                logomode = 0;
+            }
+        };
     }
 }
 
