@@ -17,7 +17,11 @@ class HomePage extends Component {
                 <img src={biglogo} alt="InfoGare" id='logo' className='logo' />
                 <h1>Bienvenue sur InfoGare !</h1>
                 <h3><code>Créer des infogares deviens facile</code></h3>
-                <div style={{ height: '100px' }}></div>
+                <div style={{ height: '150px', padding: '1px', backgroundColor: 'red', borderRadius: '5px' }}>
+                    <h2 style={{ color: 'white' }}>ATTENTION !</h2>
+                    <span style={{ color: 'white' }}>Cette version est remplacée par la V3.1 et est vouée à disparaitre d'ici peut!</span><br /><br />
+                    <a style={{ fontWeight: 'bold'}} href="https://absolument-oui.github.io/posts/InfoGare/V3.1-2.html" target="_blank" style={{ color: 'white' }}>Lire cet article</a>
+                </div>
                 <GoogleAd slot="5523609982" />
                 <h2>Qu'est-ce qu'InfoGare ?</h2>
                 <span>InfoGare est un site Internet qui vous permet de reproduire les écrans présents en gares SNCF en personnalisant les informations. Diverse options sont disponibles tel que la composition des trains, les gares desservies, les informations dynamiques et bien d'autres.</span><br />
